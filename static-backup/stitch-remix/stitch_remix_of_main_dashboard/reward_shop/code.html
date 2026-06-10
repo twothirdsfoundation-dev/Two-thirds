@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuestFlow Reward Shop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#efeded",
+                    "secondary": "#5d5f5f",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e3e2e2",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-secondary-container": "#616363",
+                    "on-surface": "#1b1c1c",
+                    "inverse-on-surface": "#f2f0f0",
+                    "background": "#fbf9f9",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "surface-container-highest": "#e3e2e2",
+                    "on-tertiary-container": "#848484",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#1b1b1b",
+                    "surface-container-low": "#f5f3f3",
+                    "outline-variant": "#cfc4c5",
+                    "on-primary-container": "#848484",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#4c4546",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#1b1b1b",
+                    "surface-dim": "#dbdad9",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "primary-fixed": "#e2e2e2",
+                    "primary": "#000000",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#474747",
+                    "tertiary": "#000000",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "outline": "#7e7576",
+                    "secondary-container": "#dfe0e0",
+                    "inverse-surface": "#303031",
+                    "surface": "#fbf9f9",
+                    "on-background": "#1b1c1c",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "surface-bright": "#fbf9f9",
+                    "inverse-primary": "#c6c6c6",
+                    "surface-tint": "#5e5e5e",
+                    "surface-container-high": "#e9e8e7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "section-padding": "96px",
+                    "margin": "48px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "h1": ["Noto Serif"],
+                    "h3": ["Noto Serif"],
+                    "label-sm": ["Inter"],
+                    "h2": ["Noto Serif"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Noto Serif"]
+            },
+            "fontSize": {
+                    "h1": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline/10 docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-4 py-3 md:px-margin">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 border border-outline/20">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMhXPvHXIXfgpSUUCkZgZu91QqD66gl1UHuaHVL2M2GOgl2GgLjJaxJlpupGF1nnf8vQnPrhUKKwY9zf3rpEQ5nMBWCO_4Qdd8A8BGVOaZkBtcnWyGNy50qaCyfxX-KF78xMQxhR6qbyLvOGTIVbLcYTJ7hW6aM-Jl7qesivfljxH_KVYe--kwKkBLnTgzsBVbYLNOgTtiMLlclwB6AyrI2NnL82aMr1-BGJMFH-NfAvVH4xARAU0z09CI_YBa0JUOhO77BGl_XME"/>
+</div>
+<h1 class="font-h2 text-h2 tracking-tight text-primary">QuestFlow</h1>
+</div>
+<div class="flex items-center gap-2 border border-outline/20 px-4 py-2 hover:bg-surface-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">1,250 CREDITS</span>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 md:px-margin pt-8 space-y-8">
+<!-- Minimal Hero Header -->
+<section class="relative w-full py-12 border-b border-outline/20 flex flex-col items-center text-center">
+<span class="text-label-sm font-label-sm tracking-[0.3em] uppercase text-secondary mb-4">The Collection</span>
+<h2 class="font-display text-display text-primary italic lowercase">The Armory</h2>
+<p class="text-on-surface-variant font-body-md mt-4 max-w-md mx-auto">Curated acquisitions for the disciplined practitioner. Exchange your achievements for prestige.</p>
+</section>
+<!-- Category Tabs -->
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar border-b border-outline/10">
+<button class="text-primary border-b-2 border-primary pb-2 font-label-sm text-label-sm tracking-widest whitespace-nowrap">ALL ITEMS</button>
+<button class="text-on-surface-variant hover:text-primary pb-2 font-label-sm text-label-sm tracking-widest transition-all whitespace-nowrap">DIGITAL</button>
+<button class="text-on-surface-variant hover:text-primary pb-2 font-label-sm text-label-sm tracking-widest transition-all whitespace-nowrap">PHYSICAL</button>
+<button class="text-on-surface-variant hover:text-primary pb-2 font-label-sm text-label-sm tracking-widest transition-all whitespace-nowrap">AMPLIFIERS</button>
+</div>
+<!-- Reward Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+<!-- Item 1 -->
+<div class="border border-outline/10 bg-surface flex flex-col group">
+<div class="relative overflow-hidden aspect-[4/3] bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1XAmEoTabDVYar1YDhLRsi-ETIsf_V7EWnTpOGggsGuxB2XdBqQrPylLteHdZpbCXKQlEi_eOEzf9I1QWtTUxf5e97KedmeYbR2AkpyRuSgr5NeIwxg2V3OCegq_z84LHnN_rLkL-luwOAhWRzgDa0LlRqiN7nzIloUUBbkc9fR_eniT69-xcjqLoA9gMDxO3VSXfj9tX8v13EPKsx-l6dqvI8b_kamV-UpUCuy54GON09kd94lmvvtA8yUaVoyRrUH0atdBsqyQ"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-[10px] tracking-widest font-bold px-2 py-1 uppercase">Digital</span>
+</div>
+<div class="p-6 flex flex-col flex-grow border-t border-outline/10">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">15 min Gaming Break</h3>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed">Instant redemption for authorized downtime. Controlled recreation period.</p>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">circle</span>
+<span class="font-label-sm text-primary tracking-widest">150</span>
+</div>
+<button class="bg-primary text-white font-label-sm text-label-sm tracking-widest uppercase px-6 py-3 hover:bg-secondary transition-colors">ACQUIRE</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="border border-outline/10 bg-surface flex flex-col group">
+<div class="relative overflow-hidden aspect-[4/3] bg-surface-container flex items-center justify-center">
+<div class="w-20 h-20 border border-outline/30 flex items-center justify-center grayscale">
+<span class="material-symbols-outlined text-primary text-4xl font-light">checkroom</span>
+</div>
+<span class="absolute top-4 left-4 bg-primary text-white text-[10px] tracking-widest font-bold px-2 py-1 uppercase">Aesthetic</span>
+</div>
+<div class="p-6 flex flex-col flex-grow border-t border-outline/10">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Cyber-Ronin Interface</h3>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed">High-tier visual reconfiguration for profile presence. Monochrome variant.</p>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">circle</span>
+<span class="font-label-sm text-primary tracking-widest">450</span>
+</div>
+<button class="bg-primary text-white font-label-sm text-label-sm tracking-widest uppercase px-6 py-3 hover:bg-secondary transition-colors">ACQUIRE</button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="border border-outline/10 bg-surface flex flex-col group">
+<div class="relative overflow-hidden aspect-[4/3] bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYaj9_VLNUcUiarAFe4IkjTaLNh8ZbxY9xFMnfxS8WRuVI4RI9Zxyb64oxHSB6v-9DuaF1r5OFdPvRiQUbnj6b6P1dsx6fB_GiZPVY4A3snJ-GH2Anh4sIVlEOtKd9ij3pj7Z41_6AUm-yA9vs4zhUzXvz2SZiM3by3lGv9BnQBuuJohoERK5518de_8hXXDxiFKLL1DQ48T7KUXJr6ojTNqOedRWRufCRgxlGMD_70-Nb-v4wvEfR7OB_8JWsq3xug6FVKUqlDAE"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-[10px] tracking-widest font-bold px-2 py-1 uppercase">Physical</span>
+</div>
+<div class="p-6 flex flex-col flex-grow border-t border-outline/10">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Nutritional Credit</h3>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed">$15.00 external commerce voucher for dietary supplementation.</p>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">circle</span>
+<span class="font-label-sm text-primary tracking-widest">800</span>
+</div>
+<button class="bg-primary text-white font-label-sm text-label-sm tracking-widest uppercase px-6 py-3 hover:bg-secondary transition-colors">ACQUIRE</button>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="border border-outline/10 bg-surface flex flex-col group">
+<div class="relative overflow-hidden aspect-[4/3] bg-primary flex items-center justify-center">
+<div class="text-white text-center">
+<span class="material-symbols-outlined text-5xl font-light mb-2">bolt</span>
+<div class="font-h2 text-h2 tracking-tighter lowercase italic">2x multiplier</div>
+</div>
+<span class="absolute top-4 left-4 border border-white/40 text-white text-[10px] tracking-widest font-bold px-2 py-1 uppercase">Amplifier</span>
+</div>
+<div class="p-6 flex flex-col flex-grow border-t border-outline/10">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Efficiency Protocol</h3>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed">Temporary 100% increase to progression velocity. Duration: 60 minutes.</p>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">circle</span>
+<span class="font-label-sm text-primary tracking-widest">300</span>
+</div>
+<button class="bg-primary text-white font-label-sm text-label-sm tracking-widest uppercase px-6 py-3 hover:bg-secondary transition-colors">ACQUIRE</button>
+</div>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="border border-outline/10 bg-surface flex flex-col group">
+<div class="relative overflow-hidden aspect-[4/3] bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsVum50Htd5ubOaFpF8OJrrDJ_37nJ1k-Bh99bv5air4nc5BaHGQ8KZSFezjYQ0BvKO81YhAgm_tf8GGv03pfZFRFF0131rovSck8Xu2zMmxM89Z1q2iLswhEO-cjfQK824m6GVcYSxNs6azZt_2EqMw7efyIjPxVcqp2CuBkLNxYr89OdI8IBvcIL1pR-k0TvDjRzDSKfWSidld6lGqFDOeP52BPcFK6_fyVDptV62XH8kXdqLYSkir2XuDfBgawmokloFnvo51c"/>
+<span class="absolute top-4 left-4 bg-primary text-white text-[10px] tracking-widest font-bold px-2 py-1 uppercase">Physical</span>
+</div>
+<div class="p-6 flex flex-col flex-grow border-t border-outline/10">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Artisan Infusion</h3>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed">Premium stimulant acquisition at participating domestic locations.</p>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">circle</span>
+<span class="font-label-sm text-primary tracking-widest">200</span>
+</div>
+<button class="bg-primary text-white font-label-sm text-label-sm tracking-widest uppercase px-6 py-3 hover:bg-secondary transition-colors">ACQUIRE</button>
+</div>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="border border-outline/10 bg-surface flex flex-col group">
+<div class="relative overflow-hidden aspect-[4/3] bg-surface-container flex items-center justify-center p-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 border border-outline bg-primary"></div>
+<div class="w-10 h-10 border border-outline bg-secondary"></div>
+<div class="w-10 h-10 border border-outline bg-surface-container-highest"></div>
+</div>
+<span class="absolute top-4 left-4 bg-primary text-white text-[10px] tracking-widest font-bold px-2 py-1 uppercase">Digital</span>
+</div>
+<div class="p-6 flex flex-col flex-grow border-t border-outline/10">
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Onyx Dashboard</h3>
+<p class="text-on-surface-variant font-body-md text-sm leading-relaxed">Complete environmental restyle for the master dashboard. Minimalist configuration.</p>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">circle</span>
+<span class="font-label-sm text-primary tracking-widest">600</span>
+</div>
+<button class="bg-primary text-white font-label-sm text-label-sm tracking-widest uppercase px-6 py-3 hover:bg-secondary transition-colors">ACQUIRE</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface border-t border-outline/10">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[10px] tracking-widest uppercase mt-1">Index</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">checklist</span>
+<span class="font-label-sm text-[10px] tracking-widest uppercase mt-1">Objectives</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary px-4 py-1 border-b-2 border-primary active:scale-95" href="#">
+<span class="material-symbols-outlined">shield_with_heart</span>
+<span class="font-label-sm text-[10px] tracking-widest uppercase mt-1">The Armory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-sm text-[10px] tracking-widest uppercase mt-1">Prestige</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] tracking-widest uppercase mt-1">Identity</span>
+</a>
+</nav>
+</body></html>

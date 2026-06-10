@@ -1,0 +1,470 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Two-Thirds | Clean Water, Brighter Futures</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f3f3f7",
+                        "primary-fixed": "#c9e6ff",
+                        "tertiary": "#003544",
+                        "surface-container": "#edeef1",
+                        "inverse-primary": "#97cdf6",
+                        "on-background": "#1A2D37",
+                        "tertiary-fixed-dim": "#91cfea",
+                        "secondary-container": "#fc9174",
+                        "outline": "#71787f",
+                        "on-surface-variant": "#41484e",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c1c7cf",
+                        "surface": "#FFFFFF",
+                        "background": "#FAF9F6",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3133",
+                        "on-secondary-fixed": "#3c0800",
+                        "surface-container-highest": "#e1e2e6",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary": "#FFFFFF",
+                        "surface-variant": "#e1e2e6",
+                        "on-secondary-container": "#742814",
+                        "on-primary-fixed-variant": "#014b6e",
+                        "tertiary-container": "#004d62",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#ffb4a1",
+                        "primary": "#00334d",
+                        "secondary": "#9a442d",
+                        "on-primary-container": "#85bae3",
+                        "secondary-fixed": "#ffdbd2",
+                        "on-tertiary-fixed-variant": "#004d62",
+                        "on-secondary-fixed-variant": "#7c2e19",
+                        "inverse-on-surface": "#f0f1f4",
+                        "primary-container": "#E0F2FE",
+                        "on-tertiary-fixed": "#001f29",
+                        "on-primary-fixed": "#001e2f",
+                        "tertiary-fixed": "#baeaff",
+                        "surface-dim": "#d9dadd",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f8f9fc",
+                        "on-tertiary-container": "#7fbdd7",
+                        "surface-tint": "#296388",
+                        "primary-fixed-dim": "#97cdf6",
+                        "on-surface": "#191c1e",
+                        "surface-container-high": "#e7e8eb",
+                        "accent-yellow": "#FFD700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "section-gap": "80px",
+                        "margin-mobile": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Outfit"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Outfit"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Outfit"],
+                        "display-lg": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "25.6px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28.8px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["56px", {"lineHeight": "64px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .coastal-shadow {
+            box-shadow: 0px 10px 30px rgba(15, 60, 95, 0.04);
+        }
+        .img-overlay-gradient {
+            background: linear-gradient(to bottom, transparent 40%, rgba(0, 51, 77, 0.9) 100%);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+        }
+        .accordion-item.active .arrow-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 shadow-[0px_10px_30px_rgba(15,60,95,0.04)] w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Two-Thirds</div>
+</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Programs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Courses</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-label-md text-label-md hover:opacity-90 transition-all">Donate Now</button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative w-full h-[80vh] min-h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="High-impact shot of children playing with clean water in a coastal village" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnWDfTcUODRDtC1mDMYVgtG2mDqga_C0dls--F7Z_hdofsHwmNDdlWi3ILPv2T1uOzwvNlxl9Y5Ga-UWU7KGc1d5C5LQ-Vx6K0zfS9_7TYdFh6ZQw8F5ADRz9dw9EFs04iN5QEoIcqtiYxTwnXzJUx4HAbMnd4kHKPeOPNDg8ghHN6KNFEkEn0-iE244LCGcuFoSKBEeHEtElQ-PsXEnb2XTcJeTSkcLQAjHWGPLNv5L3p2jzU54h-4HGxBrFMdQkDWzcxIxr6Yy4">
+<div class="absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-transparent"></div>
+</div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full">
+<div class="max-w-xl">
+<h1 class="font-display-lg text-primary mb-4 leading-tight text-display-lg">
+                Clean Water,<br>Brighter Futures.
+            </h1>
+<p class="font-body-lg text-on-surface-variant mb-8 max-w-md">
+                When a child gains access to safe water, time returns to learning, health, and opportunity.
+            </p>
+<button class="bg-accent-yellow text-primary px-8 py-3.5 rounded-lg font-headline-md font-bold shadow-lg hover:brightness-95 transition-all">
+                Donate Now
+            </button>
+</div>
+</div>
+</header>
+<!-- About/Mission Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-16 lg:items-start mb-20">
+<div class="lg:w-1/3">
+<span class="text-secondary font-label-md uppercase tracking-wider mb-4 block">• About Us</span>
+<h2 class="font-headline-lg text-primary leading-tight text-headline-lg">Together, We Restore Access to Clean Water.</h2>
+</div>
+<div class="lg:w-2/3">
+<p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                    Every community deserves reliable, safe water. At Two-Thirds, we transform unsafe sources into sustainable systems through smart engineering and local partnerships. By combining innovation with education, we create long-term solutions that empower families.
+                </p>
+<button class="border border-outline px-8 py-3 rounded-lg font-label-md hover:bg-surface-container transition-colors">Our Mission</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-white p-10 rounded-2xl border border-outline-variant/30 coastal-shadow text-center">
+<div class="text-display-lg text-primary mb-2">50<sup>+</sup></div>
+<div class="text-on-surface-variant font-label-md">Countries</div>
+</div>
+<div class="bg-white p-10 rounded-2xl border border-outline-variant/30 coastal-shadow text-center">
+<div class="text-display-lg text-primary mb-2">1.2M<sup>+</sup></div>
+<div class="text-on-surface-variant font-label-md">People Supported</div>
+</div>
+<div class="bg-white p-10 rounded-2xl border border-outline-variant/30 coastal-shadow text-center">
+<div class="text-display-lg text-primary mb-2">150K<sup>+</sup></div>
+<div class="text-on-surface-variant font-label-md">Water Systems Built</div>
+</div>
+</div>
+<!-- Video Placeholder Section -->
+<div class="mt-20 relative rounded-3xl overflow-hidden aspect-video">
+<img class="w-full h-full object-cover" data-alt="Community children laughing and splashing water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsREy67zE0RKaQH7agJGSPX1c-4PcqVwN8tGtPq3EsDtwN8JfeZKp046IwkqmPWQXrTxDSdrEoYnalUCzpnOzkODXMFYY_TjijgfZFTfT-WSgz0ikviCbelcfE93PcVx_X3H_5w4vlk9MMnDDo6Uv3_-2hxhbupz8YVHHWzhvEdJzo_7DuddDF4s8utboV80BKaadLBwPSgeMkIVQdX_JekNQNnfG_iwg8lin02VsoNAgtSCL8_KHqsxOwVVH5IrA3EXf35Q11MD4">
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<button class="w-20 h-20 bg-accent-yellow rounded-full flex items-center justify-center text-primary coastal-shadow hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Programs/Courses Grid -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12">
+<div>
+<span class="text-secondary font-label-md uppercase tracking-wider mb-2 block">• Featured Courses</span>
+<h2 class="font-headline-lg text-primary text-headline-lg">Small Actions. Lasting Impact.</h2>
+</div>
+<p class="max-w-xs text-on-surface-variant text-right hidden md:block">From clean wells to hygiene training, your support delivers lasting change across communities.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Safe water for schools initiative" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsREy67zE0RKaQH7agJGSPX1c-4PcqVwN8tGtPq3EsDtwN8JfeZKp046IwkqmPWQXrTxDSdrEoYnalUCzpnOzkODXMFYY_TjijgfZFTfT-WSgz0ikviCbelcfE93PcVx_X3H_5w4vlk9MMnDDo6Uv3_-2hxhbupz8YVHHWzhvEdJzo_7DuddDF4s8utboV80BKaadLBwPSgeMkIVQdX_JekNQNnfG_iwg8lin02VsoNAgtSCL8_KHqsxOwVVH5IrA3EXf35Q11MD4">
+<div class="absolute inset-0 img-overlay-gradient"></div>
+<div class="absolute inset-x-0 bottom-0 p-8">
+<h3 class="font-headline-md text-white mb-2">Safe Water for Schools</h3>
+<p class="text-white/80 text-sm mb-4">Provide filtration systems so students can learn without water-related illness.</p>
+<button class="text-white font-label-md border-b border-white/40 pb-1 group-hover:border-white transition-all">Learn More</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Solar powered wells project" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJkwPIfL92p9Ii6g1vAyaMUhCA7fiBAGgvXzfAWgR2gklmVpkX9AYB50tBK86thuhcw94Ssgo0y8FOia9ZgFLRa4S5kgT-aDlfc3_FS_g7Hn-c1BVk8pf8lDHuhUpXN1BWZ9rpBVWPG4isxPjun1WUvkoGjShuMKfY446ALJT_YC1-bAolZDRMHvgLNMlYUKa0ANnp45OAPHxwPGKH9MLDFzURSi-_dTC1JdnaCVRoc0_oqFKpQlIvMJrrxPRtnD-Nkq5Et-CRxgU">
+<div class="absolute inset-0 img-overlay-gradient"></div>
+<div class="absolute inset-x-0 bottom-0 p-8">
+<h3 class="font-headline-md text-white mb-2">Solar-Powered Wells</h3>
+<p class="text-white/80 text-sm mb-4">Install renewable water systems that serve villages year-round.</p>
+<button class="text-white font-label-md border-b border-white/40 pb-1 group-hover:border-white transition-all">Learn More</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Rapid response relief team" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoCxtOr_DT9cf7FKoAXQ2JjsEys6MLmaX8N8fqawp3wIuaOwn5C7GIli836L407DGwYza_LpLnX8rVI-3dB2y42ccCZbJ62fTWJ3Aj71JilmLkoUIkHL2TAXJB3j10sJEA9wXoG3vTTZ3a_uzuv6JgzeEtlg9gCd5qfOjqe3Mgj65EsUqdCc7iuKnnXwSmx4SyVzbNkid_YiIqKoEITgdjIVZBHuQY_OEFNhoTIy7WhQLbkbdeoniydY3ceJbRfMkk6_o4asV_LL4">
+<div class="absolute inset-0 img-overlay-gradient"></div>
+<div class="absolute inset-x-0 bottom-0 p-8">
+<h3 class="font-headline-md text-white mb-2">Rapid Response Relief</h3>
+<p class="text-white/80 text-sm mb-4">Deliver emergency clean water during floods, droughts, and crises.</p>
+<button class="text-white font-label-md border-b border-white/40 pb-1 group-hover:border-white transition-all">Learn More</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Donation/Impact Section -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-accent-yellow">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12">
+<div class="max-w-xl">
+<span class="text-primary font-label-md uppercase tracking-wider mb-2 block">• Programs</span>
+<h2 class="font-headline-lg text-primary text-headline-lg">Make a Meaningful Donation Today</h2>
+</div>
+<p class="max-w-xs text-primary/70 text-right hidden md:block">Transparent funding. Real impact. Every contribution moves a community forward.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Program 1 -->
+<div class="bg-white/40 backdrop-blur-sm p-8 rounded-2xl flex flex-col h-full">
+<h3 class="font-headline-md text-primary mb-2">Community Restoration</h3>
+<p class="text-on-surface-variant text-sm mb-8">Rebuild broken water points and train local maintenance teams.</p>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-bold text-primary mb-2">
+<span class="">Raised <br>$89,900</span>
+<span class="text-right">Goal <br>$240,000</span>
+</div>
+<div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden mb-6">
+<div class="h-full bg-primary" style="width: 37%"></div>
+</div>
+<button class="w-full border border-primary/20 py-3 rounded-lg font-label-md hover:bg-primary/5 transition-all">View Program</button>
+</div>
+</div>
+<!-- Program 2 -->
+<div class="bg-white/40 backdrop-blur-sm p-8 rounded-2xl flex flex-col h-full">
+<h3 class="font-headline-md text-primary mb-2">Water Education Initiative</h3>
+<p class="text-on-surface-variant text-sm mb-8">Teach hygiene and safe water practices in rural communities.</p>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-bold text-primary mb-2">
+<span class="">Raised <br>$98,090</span>
+<span class="text-right">Goal <br>$260,000</span>
+</div>
+<div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden mb-6">
+<div class="h-full bg-primary" style="width: 38%"></div>
+</div>
+<button class="w-full border border-primary/20 py-3 rounded-lg font-label-md hover:bg-primary/5 transition-all">View Program</button>
+</div>
+</div>
+<!-- Program 3 -->
+<div class="bg-white/40 backdrop-blur-sm p-8 rounded-2xl flex flex-col h-full">
+<h3 class="font-headline-md text-primary mb-2">Health &amp; Sanitation Drive</h3>
+<p class="text-on-surface-variant text-sm mb-8">Improve sanitation access to prevent waterborne diseases.</p>
+<div class="mt-auto">
+<div class="flex justify-between text-xs font-bold text-primary mb-2">
+<span class="">Raised <br>$70,980</span>
+<span class="text-right">Goal <br>$220,000</span>
+</div>
+<div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden mb-6">
+<div class="h-full bg-primary" style="width: 32%"></div>
+</div>
+<button class="w-full border border-primary/20 py-3 rounded-lg font-label-md hover:bg-primary/5 transition-all">View Program</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ & Impact Narrative -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<!-- Impact Narrative Section -->
+<div class="flex flex-col lg:flex-row gap-16 items-center mb-section-gap">
+<div class="lg:w-1/2 rounded-3xl overflow-hidden aspect-video lg:aspect-auto lg:h-[400px]">
+<img class="w-full h-full object-cover" data-alt="Hands holding clean water from a spout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-rScSkV_0gew50nfAZhd-LJb5rlqfmtnb-6Tpj6MKg2fqjA50zkpMUMNvtYDCc-XuYenyLP3-8pPvjG_YGhSVuRerx8mkdI1mgXx6M-XeDvmSYGa1VHB43GF_FV8vDFiaJbORB__wuw1GF6VXxuP59nfhMEZtZCUsMMXJ9laOS-JcQO99ke7_U_OWNpeayf4e1cwmvY107wSMEP5jTVZzJPEPG-RnjM-tVbr_mOLF5L5oduv5aIbHfwwdYBCDeV4MzTxzZEfaGhw">
+</div>
+<div class="lg:w-1/2">
+<span class="text-secondary font-label-md uppercase tracking-wider mb-4 block">• Our Impact</span>
+<h2 class="font-headline-lg text-primary mb-6 text-headline-lg">Building Systems That Last for Generations.</h2>
+<p class="text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                    Access to water is more than a basic need; it's the foundation for health, education, and economic growth. We design projects with community ownership at the core, ensuring every system is maintained, protected, and sustained for years to come.
+                </p>
+<button class="border border-outline px-8 py-3 rounded-lg font-label-md hover:bg-surface-container transition-colors">See Our Impact</button>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<span class="text-secondary font-label-md uppercase tracking-wider mb-2 block">• FAQs</span>
+<h2 class="font-headline-lg text-primary mb-4 text-headline-lg">Frequently Asked Questions?</h2>
+<p class="text-on-surface-variant">Every dollar you contribute goes toward the engineering, labor, and materials needed to build sustainable water systems.</p>
+</div>
+<div class="space-y-4">
+<!-- Accordion Item 1 -->
+<div class="accordion-item bg-white border border-outline-variant/30 rounded-xl overflow-hidden active">
+<button class="flex justify-between items-center w-full p-6 text-left" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-primary text-lg">How Does My Donation Provide Clean Water?</span>
+<span class="material-symbols-outlined arrow-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-6 text-on-surface-variant">
+                            Every dollar you contribute goes toward the engineering, labor, and materials needed to build sustainable water systems in high-need coastal areas.
+                        </div>
+</div>
+</div>
+<!-- Accordion Item 2 -->
+<div class="accordion-item bg-white border border-outline-variant/30 rounded-xl overflow-hidden">
+<button class="flex justify-between items-center w-full p-6 text-left" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-primary text-lg">How Do You Ensure The Water Stays Flowing Long Term?</span>
+<span class="material-symbols-outlined arrow-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-6 text-on-surface-variant">
+                            We train local water committees and establish a maintenance fund for each project to ensure longevity.
+                        </div>
+</div>
+</div>
+<!-- Accordion Item 3 -->
+<div class="accordion-item bg-white border border-outline-variant/30 rounded-xl overflow-hidden">
+<button class="flex justify-between items-center w-full p-6 text-left" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-primary text-lg">Where Does Your Organization Work?</span>
+<span class="material-symbols-outlined arrow-icon transition-transform">expand_more</span>
+</button>
+<div class="accordion-content">
+<div class="px-6 pb-6 text-on-surface-variant">
+                            We focus on vulnerable coastal communities across India and Southeast Asia.
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer & Final CTA -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row rounded-[40px] overflow-hidden bg-surface-container-low border border-outline-variant/30">
+<div class="lg:w-1/2 p-12 lg:p-20">
+<h2 class="font-display-lg-mobile md:font-headline-lg text-primary mb-4">864 Million Reasons to Act. One Way to Help.</h2>
+<p class="text-on-surface-variant mb-10">Join us in delivering safe water to communities still facing daily water scarcity.</p>
+<div class="flex gap-4 mb-10 p-1.5 bg-white rounded-xl w-fit">
+<button class="px-6 py-2 rounded-lg font-label-md transition-all hover:bg-surface-container">Give Once</button>
+<button class="px-6 py-2 rounded-lg font-label-md bg-accent-yellow text-primary shadow-sm">Monthly</button>
+</div>
+<div class="mb-10">
+<p class="font-label-md text-on-surface-variant mb-4">Choose an Amount Per Month</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<button class="py-3 border border-outline-variant rounded-lg font-label-md hover:border-primary transition-all">$10 USD/mo</button>
+<button class="py-3 border border-outline-variant rounded-lg font-label-md hover:border-primary transition-all">$20 USD/mo</button>
+<button class="py-3 border border-outline-variant rounded-lg font-label-md hover:border-primary transition-all">$50 USD/mo</button>
+<button class="py-3 border border-outline-variant rounded-lg font-label-md hover:border-primary transition-all">$100 USD/mo</button>
+</div>
+<button class="mt-4 text-primary font-label-md border-b border-primary/20">Other amount</button>
+</div>
+<button class="w-full bg-accent-yellow text-primary py-4 rounded-xl font-headline-md font-bold shadow-lg hover:brightness-95 transition-all">Join Today</button>
+</div>
+<div class="lg:w-1/2 relative h-[400px] lg:h-auto">
+<img class="w-full h-full object-cover" data-alt="Close up of a water tap dripping into hands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJkwPIfL92p9Ii6g1vAyaMUhCA7fiBAGgvXzfAWgR2gklmVpkX9AYB50tBK86thuhcw94Ssgo0y8FOia9ZgFLRa4S5kgT-aDlfc3_FS_g7Hn-c1BVk8pf8lDHuhUpXN1BWZ9rpBVWPG4isxPjun1WUvkoGjShuMKfY446ALJT_YC1-bAolZDRMHvgLNMlYUKa0ANnp45OAPHxwPGKH9MLDFzURSi-_dTC1JdnaCVRoc0_oqFKpQlIvMJrrxPRtnD-Nkq5Et-CRxgU">
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-inverse-surface text-white py-20 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+<div class="col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-accent-yellow text-3xl">water_drop</span>
+<div class="font-headline-md font-bold text-white tracking-tight">Two-Thirds</div>
+</div>
+<p class="text-white/60 mb-8 max-w-xs leading-relaxed">Together, we bring clean water and lasting change to communities worldwide.</p>
+<div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg p-1">
+<input class="bg-transparent border-none focus:ring-0 text-white placeholder-white/40 flex-grow" placeholder="Enter your email" type="email">
+<button class="bg-accent-yellow text-primary px-4 py-2 rounded-md font-bold text-sm">Subscribe</button>
+</div>
+</div>
+<div>
+<h4 class="font-headline-md text-white mb-8 text-lg">Quick Links</h4>
+<ul class="space-y-4 text-white/60 font-label-md">
+<li class=""><a class="hover:text-white transition-colors" href="#">Donation</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">About US</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Programs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-white mb-8 text-lg">More</h4>
+<ul class="space-y-4 text-white/60 font-label-md">
+<li class=""><a class="hover:text-white transition-colors" href="#">Courses</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Testimonials</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-white mb-8 text-lg">Legal &amp; Policy Links</h4>
+<ul class="space-y-4 text-white/60 font-label-md">
+<li class=""><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Support</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Changelog</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-white/40 text-sm">Copyright ©Two-Thirds - Design by wincasoft</p>
+<div class="flex gap-6">
+<a class="text-white/40 hover:text-white" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-white/40 hover:text-white" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-white/40 hover:text-white" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    function toggleAccordion(btn) {
+        const item = btn.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        document.querySelectorAll('.accordion-item').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        // Toggle current item
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    }
+</script>
+
+
+</body></html>

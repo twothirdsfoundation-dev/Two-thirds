@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuestFlow - Leaderboard &amp; Achievements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#efeded",
+                "secondary": "#5d5f5f",
+                "on-primary": "#ffffff",
+                "secondary-fixed": "#e2e2e2",
+                "on-error-container": "#93000a",
+                "surface-variant": "#e3e2e2",
+                "tertiary-fixed": "#e2e2e2",
+                "on-primary-fixed": "#1b1b1b",
+                "on-secondary-container": "#616363",
+                "on-surface": "#1b1c1c",
+                "inverse-on-surface": "#f2f0f0",
+                "background": "#fbf9f9",
+                "on-tertiary-fixed-variant": "#474747",
+                "on-secondary-fixed-variant": "#454747",
+                "on-tertiary-fixed": "#1b1b1b",
+                "surface-container-highest": "#e3e2e2",
+                "on-tertiary-container": "#848484",
+                "error": "#ba1a1a",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#1b1b1b",
+                "surface-container-low": "#f5f3f3",
+                "outline-variant": "#cfc4c5",
+                "on-primary-container": "#848484",
+                "on-secondary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "on-surface-variant": "#4c4546",
+                "primary-fixed-dim": "#c6c6c6",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#1b1b1b",
+                "surface-dim": "#dbdad9",
+                "on-secondary-fixed": "#1a1c1c",
+                "primary-fixed": "#e2e2e2",
+                "primary": "#000000",
+                "on-error": "#ffffff",
+                "on-primary-fixed-variant": "#474747",
+                "tertiary": "#000000",
+                "tertiary-fixed-dim": "#c6c6c6",
+                "outline": "#7e7576",
+                "secondary-container": "#dfe0e0",
+                "inverse-surface": "#303031",
+                "surface": "#fbf9f9",
+                "on-background": "#1b1c1c",
+                "secondary-fixed-dim": "#c6c6c7",
+                "surface-bright": "#fbf9f9",
+                "inverse-primary": "#c6c6c6",
+                "surface-tint": "#5e5e5e",
+                "surface-container-high": "#e9e8e7"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "container-max": "1200px",
+                "section-padding": "96px",
+                "margin": "48px",
+                "unit": "8px",
+                "margin-mobile": "16px",
+                "md": "24px",
+                "lg": "40px",
+                "base": "8px",
+                "xs": "4px"
+        },
+        "fontFamily": {
+                "h1": ["Noto Serif"],
+                "h3": ["Noto Serif"],
+                "label-sm": ["Inter"],
+                "h2": ["Noto Serif"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "display": ["Noto Serif"]
+        },
+        "fontSize": {
+                "h1": ["32px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .monochrome-shadow {
+        box-shadow: 0 4px 20px -5px rgba(0,0,0,0.1);
+    }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile py-base bg-surface/95 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-base">
+<div class="relative">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border border-primary grayscale" data-alt="A close-up high-quality portrait of a young male gamer with a focused expression, surrounded by a glowing neon cyan and electric purple circular level ring. The lighting is dramatic and futuristic, with soft blue highlights reflecting on his skin, emphasizing the achievement-oriented RPG aesthetic. The background is a clean, minimalist gradient that complements the vibrant primary colors of the user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFsh8iytz6GlgUNtEtlVnbEmh6vXXAX_Z1-zcqelALADPMr99ID_HP6AF5HGfR7ki1nBjL4yLcKXmj__cvrux6su_sXfNulEFfk05GeK5G2ZyxstlUFlBDXPRm6vbDhuzG55iz92BX_jObbvgkSyNr9yQmH1acPhcM9OQwJKpKvlVA9HeN0vFYlcUJebHPmiFmJebKldilRQY4AXPHI1VGixn_hp1nW4mwpI1t2VFMnJhr-prZ29Dy0Bf6_i5Sih04UtwiVKWntic"/>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary text-[9px] font-bold px-1.5 py-0.5 rounded-full border border-background">24</div>
+</div>
+<span class="font-display text-h3 font-semibold text-primary tracking-tight">QuestFlow</span>
+</div>
+<button class="flex items-center gap-xs bg-primary text-on-primary px-4 py-2 rounded-full font-label-sm uppercase tracking-widest text-[11px] transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[16px]">monetization_on</span>
+    1,250 COINS
+</button>
+</header>
+<main class="px-margin-mobile pt-md space-y-lg">
+<!-- Hero Section / Rank Highlight -->
+<section class="relative overflow-hidden rounded-xl p-md bg-primary text-on-primary border border-primary">
+<div class="relative z-10 flex flex-col items-center text-center py-base">
+<div class="mb-base p-4 bg-white/10 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-[40px] text-white">military_tech</span>
+</div>
+<h1 class="font-h1 text-h1 uppercase tracking-tight">Current Rank: #12</h1>
+<p class="font-body-md opacity-70 mt-xs font-light">TOP 5% THIS SEASON</p>
+<div class="mt-md w-full max-w-xs">
+<div class="flex justify-between text-[10px] font-semibold tracking-widest uppercase mb-2 opacity-60">
+<span>XP: 8,450</span>
+<span>NEXT: 10,000</span>
+</div>
+<div class="h-1 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full w-[84.5%] bg-white"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements Section -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h2 text-h2 uppercase tracking-tight text-primary">Achievements</h2>
+<button class="text-primary font-label-sm border-b border-primary pb-0.5 hover:opacity-70 transition-opacity">VIEW ALL</button>
+</div>
+<div class="flex gap-md overflow-x-auto pb-4 -mx-margin-mobile px-margin-mobile no-scrollbar">
+<!-- Achievement Card 1 -->
+<div class="bg-surface-container-lowest min-w-[150px] p-md border border-outline-variant flex flex-col items-center text-center monochrome-shadow">
+<div class="w-12 h-12 border border-outline-variant flex items-center justify-center mb-base">
+<span class="material-symbols-outlined text-[24px] text-primary">wb_sunny</span>
+</div>
+<span class="font-label-sm uppercase text-primary tracking-tighter">Early Bird</span>
+<span class="text-[10px] text-secondary mt-1 uppercase font-medium">5 Quests before 8 AM</span>
+</div>
+<!-- Achievement Card 2 -->
+<div class="bg-surface-container-lowest min-w-[150px] p-md border border-outline-variant flex flex-col items-center text-center monochrome-shadow">
+<div class="w-12 h-12 border border-outline-variant flex items-center justify-center mb-base">
+<span class="material-symbols-outlined text-[24px] text-primary">local_fire_department</span>
+</div>
+<span class="font-label-sm uppercase text-primary tracking-tighter">7-Day Streak</span>
+<span class="text-[10px] text-secondary mt-1 uppercase font-medium">Active every day</span>
+</div>
+<!-- Achievement Card 3 -->
+<div class="bg-surface-container-low min-w-[150px] p-md border border-outline-variant flex flex-col items-center text-center opacity-40 grayscale">
+<div class="w-12 h-12 border border-outline-variant flex items-center justify-center mb-base">
+<span class="material-symbols-outlined text-[24px] text-primary">social_distance</span>
+</div>
+<span class="font-label-sm uppercase text-primary tracking-tighter">Socialite</span>
+<span class="text-[10px] text-secondary mt-1 uppercase font-medium">Join 5 group quests</span>
+</div>
+</div>
+</section>
+<!-- Leaderboard Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="font-h2 text-h2 uppercase tracking-tight text-primary">Global Rank</h2>
+<div class="flex bg-surface-container p-1 rounded-sm border border-outline-variant">
+<button class="px-4 py-1.5 bg-primary text-on-primary text-[10px] font-bold uppercase tracking-widest">GLOBAL</button>
+<button class="px-4 py-1.5 text-on-surface-variant text-[10px] font-bold uppercase tracking-widest">FRIENDS</button>
+</div>
+</div>
+<div class="space-y-base">
+<!-- Leaderboard Row 1 -->
+<div class="bg-surface-container-lowest flex items-center p-md border border-outline-variant monochrome-shadow">
+<span class="w-8 font-h3 text-h3 text-primary text-center">1</span>
+<img alt="Rank 1" class="w-10 h-10 rounded-full border border-outline-variant mr-md grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH_DqdsYxnZlBbC2q5i32IJfYRdj1HJ76WLgj79XfCVgx6froAwIzjkPWRv_APCHrxRLNzR_vnH-o0ErWd9YbrzY33v08mL1Oz47GjJUYLPcuzBYK7m9cD28LTHd2aC7XoG8SLvBGsx2YNIwl7v_ElHiEdcZPDsv6hhqKAPwiQmRacyplmdTJWGpcwpKJ8HEQWTRc4XHkOtaflF11wTzPOdkAH4mvbunp0Fsm9ahoHyax_8U53xG4TLqQUR7PZ3FF4sFKg1K1mabk"/>
+<div class="flex-grow">
+<p class="font-label-sm uppercase tracking-tight text-primary">Nova_Explorer</p>
+<p class="text-[10px] uppercase text-secondary font-medium tracking-wider">Diamond League</p>
+</div>
+<div class="text-right">
+<p class="font-h3 text-[18px] text-primary">12,420</p>
+<p class="text-[9px] font-bold text-secondary uppercase tracking-widest">XP</p>
+</div>
+</div>
+<!-- Leaderboard Row 2 -->
+<div class="bg-surface-container-lowest flex items-center p-md border border-outline-variant">
+<span class="w-8 font-h3 text-h3 text-secondary text-center">2</span>
+<img alt="Rank 2" class="w-10 h-10 rounded-full border border-outline-variant mr-md grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpwTs0sV01ilgRMtkFwW-0fEHAJFHrF9z0HETzt94MTLeIzmeIl3GDxJxTNtUdR1AjSS4JcIfTEacbEC2_UTICm0J8e71U0sKeUdV3xtLRZsq45Fh3PizxAOeBWNcsnNIlrB3jFiVW3aAcdESL08P4exnDwgH_hQXcpL15FeQccd92kAEkbwBXiM4a9UvT3e-80Qz-yWiZ_8uN6ssbIFBtoWMatWghXWQZkop3iL4HoTYUDVWYpe-b4VDdFmAQO8hjRD9r21N1P1A"/>
+<div class="flex-grow">
+<p class="font-label-sm uppercase tracking-tight text-primary">PixelQueen</p>
+<p class="text-[10px] uppercase text-secondary font-medium tracking-wider">Diamond League</p>
+</div>
+<div class="text-right">
+<p class="font-h3 text-[18px] text-primary">11,890</p>
+<p class="text-[9px] font-bold text-secondary uppercase tracking-widest">XP</p>
+</div>
+</div>
+<!-- Current User Row (Highlighted) -->
+<div class="bg-primary flex items-center p-md border border-primary monochrome-shadow scale-[1.02] transform transition-transform">
+<span class="w-8 font-h3 text-h3 text-on-primary text-center">12</span>
+<div class="relative mr-md">
+<img alt="Current User" class="w-10 h-10 rounded-full border border-on-primary grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpn9zw9O81zQRS38adBtDD1SESBRSWqYIcLU5xKhfk_-cuTuQ6dt0yvfrxZvMnsXO7i_CvCZM4qOCLiKmDuTgAeetPV1C6gc4MKiCePuQZ-NfC3ZBNE9J9jcti5bIpZrceura7UYx_N0S9j7LstCPQFgp6orp9NsoPwpA4gJX91068UKw7Itkj_A37pqIL34QEOCjeOKKNztV7etGOj4jcNYgOFbTWwFQQ5oZwKd2qFMAr0wflxi1AQyALQAYXCNnJeZ6XdROQRE"/>
+<div class="absolute -top-1 -right-1 bg-on-primary text-[8px] px-1 rounded-full text-primary font-black uppercase">YOU</div>
+</div>
+<div class="flex-grow">
+<p class="font-label-sm uppercase tracking-tight text-on-primary">Alex_Venture</p>
+<p class="text-[10px] uppercase text-on-primary/60 font-medium tracking-wider">Platinum League</p>
+</div>
+<div class="text-right">
+<p class="font-h3 text-[18px] text-on-primary">8,450</p>
+<p class="text-[9px] font-bold text-on-primary/60 uppercase tracking-widest">XP</p>
+</div>
+</div>
+<!-- Leaderboard Row 13 -->
+<div class="bg-surface-container-lowest flex items-center p-md border border-outline-variant opacity-60">
+<span class="w-8 font-h3 text-h3 text-secondary text-center">13</span>
+<img alt="Rank 13" class="w-10 h-10 rounded-full border border-outline-variant mr-md grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmXD4dd-5nA4ioDeuIkhGQvoktVZdHekuCkbINerNjPh0MyLSKuW0tu2lU3XlZ2U9CSIzOHvyOfRJFByZh4faM7guaM4UAA1m3AfGIa8G4IEMsLfevJEhsi9_2flZnqgNnk-itMjv-No9q0QaRg99iU0D3FvDFkWCI4vLz14O4_BEquVCl2JSuB1q4WOsCtdawbvAX85IamjGAnZp3TsXKsXbj14RkvB_TdbokwzsrHa3cxN78pDAeRj8AL1vJMTPaZ_u6faqfXkA"/>
+<div class="flex-grow">
+<p class="font-label-sm uppercase tracking-tight text-primary">CyberStryder</p>
+<p class="text-[10px] uppercase text-secondary font-medium tracking-wider">Platinum League</p>
+</div>
+<div class="text-right">
+<p class="font-h3 text-[18px] text-primary">8,210</p>
+<p class="text-[9px] font-bold text-secondary uppercase tracking-widest">XP</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/95 backdrop-blur-md border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm uppercase text-[9px] mt-1 tracking-widest">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="checklist">checklist</span>
+<span class="font-label-sm uppercase text-[9px] mt-1 tracking-widest">QUESTS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="storefront">storefront</span>
+<span class="font-label-sm uppercase text-[9px] mt-1 tracking-widest">SHOP</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary border-b-2 border-primary px-3 py-1 transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="military_tech">military_tech</span>
+<span class="font-label-sm uppercase text-[9px] mt-1 tracking-widest">RANK</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+<span class="font-label-sm uppercase text-[9px] mt-1 tracking-widest">PROFILE</span>
+</a>
+</nav>
+</body></html>
