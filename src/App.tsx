@@ -724,7 +724,7 @@ export default function App() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
 
           {/* Feathered bottom transition gradient overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg-coastal via-bg-coastal/80 to-transparent pointer-events-none z-20" />
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-coastal to-transparent pointer-events-none z-20" />
 
           {/* Bouncing scroll indicator */}
           <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
