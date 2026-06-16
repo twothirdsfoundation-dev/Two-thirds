@@ -274,10 +274,10 @@ export default function App() {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0.15, 0.75], ["0%", "-15%"]);
-  const yMid = useTransform(scrollYProgress, [0.15, 0.75], ["0%", "-8%"]);
-  const yFg = useTransform(scrollYProgress, [0.15, 0.75], ["0%", "0%"]);
-  const yText = useTransform(scrollYProgress, [0.15, 0.75], ["-12vh", "38vh"]);
+  const yBg = useTransform(scrollYProgress, [0, 0.8], ["0%", "-15%"]);
+  const yMid = useTransform(scrollYProgress, [0, 0.8], ["0%", "-8%"]);
+  const yFg = useTransform(scrollYProgress, [0, 0.8], ["0%", "0%"]);
+  const yText = useTransform(scrollYProgress, [0, 0.8], ["-12vh", "38vh"]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
