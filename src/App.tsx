@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import {
-  Anchor,
   ShieldCheck,
   Mail,
   Phone,
@@ -13,22 +12,21 @@ import {
   Landmark,
   ChevronRight,
   ChevronLeft,
-  Heart,
   Info,
   ArrowDown
 } from "lucide-react";
 
 // Import local images from assets
-import heroSunrise from "./assets/hero-sunrise.png";
-import avatar1 from "./assets/avatar-1.png";
-import avatar2 from "./assets/avatar-2.png";
-import avatar3 from "./assets/avatar-3.png";
 import coastalEducation from "./assets/coastal-education.png";
 import empowermentWomen from "./assets/empowerment-women.png";
 import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
+import parallaxSky from "./assets/parallax-sky.png";
+import parallaxBoats from "./assets/parallax-boats.png";
+import parallaxForeground from "./assets/parallax-foreground.png";
+import manifestoFish from "./assets/manifesto-fish.png";
 
 // Data Models
 interface FocusArea {
@@ -253,7 +251,33 @@ function CountUp({
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
+
+  // Hero Parallax Scroll Hook Setup
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const yBg = useTransform(scrollYProgress, [0.15, 0.75], ["0%", "-15%"]);
+  const yMid = useTransform(scrollYProgress, [0.15, 0.75], ["0%", "-8%"]);
+  const yFg = useTransform(scrollYProgress, [0.15, 0.75], ["0%", "0%"]);
+  const yText = useTransform(scrollYProgress, [0.15, 0.75], ["-12vh", "38vh"]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -515,7 +539,11 @@ export default function App() {
     <div className="min-h-screen bg-bg-coastal text-[#1A2D37] font-sans antialiased selection:bg-primary-container selection:text-primary">
       
       {/* 1. Navbar */}
-      <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-300 liquid-glass border-b border-white/20">
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "liquid-glass border-b border-white/20 shadow-md" 
+          : "bg-transparent border-b border-transparent shadow-none"
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             
@@ -530,7 +558,7 @@ export default function App() {
                 <span className="font-display font-bold text-base tracking-tight text-primary leading-tight">
                   Two-Thirds
                 </span>
-                <span className="text-[10px] font-mono tracking-widest text-[#E07A5F] uppercase leading-tight">
+                <span className="text-[10px] font-mono tracking-widest text-secondary uppercase leading-tight">
                   Community Foundation
                 </span>
               </div>
@@ -631,112 +659,75 @@ export default function App() {
       </nav>
 
       {/* 2. Hero Section */}
-      <section id="home" className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-b from-[#E0F2FE]/40 via-bg-coastal to-bg-coastal">
-        {/* Backdrop visual elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.08),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.05),transparent_70%)] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+      <section 
+        id="home" 
+        ref={heroRef} 
+        className="relative h-[200vh] bg-[#E0F2FE]"
+      >
+        {/* Sticky viewport container */}
+        <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+          
+          {/* Parallax Layers */}
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
+            {/* Sky Layer (Background) */}
+            <motion.div 
+              style={{ y: yBg }}
+              className="absolute inset-0 w-full h-[130%]"
+            >
+              <img 
+                src={parallaxSky} 
+                alt="Kerala sunrise sky" 
+                className="w-full h-full object-cover object-bottom"
+              />
+            </motion.div>
             
-            {/* Left Column: Text Content */}
-            <div className="lg:col-span-7 space-y-8 text-left">
-              <motion.span
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-container text-primary font-mono text-xs font-bold uppercase tracking-wider"
-              >
-                <Anchor className="w-3.5 h-3.5" />
-                <span>Grassroots Trust along Kerala's Shoreline</span>
-              </motion.span>
+            {/* Boats Layer (Midground) */}
+            <motion.div 
+              style={{ y: yMid }}
+              className="absolute inset-0 w-full h-[130%] mix-blend-multiply"
+            >
+              <img 
+                src={parallaxBoats} 
+                alt="Fishing boats silhouettes" 
+                className="w-full h-full object-cover object-bottom"
+              />
+            </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-display font-bold text-4xl sm:text-6xl tracking-tight text-[#003B5C] leading-[1.05]"
+            {/* Heading Layer (Sandwiched in the middle!) */}
+            <motion.div 
+              style={{ y: yText }}
+              className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10"
+            >
+              <h1 
+                style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
+                className="font-display font-bold text-5xl sm:text-8xl tracking-tight text-[#003B5C] leading-[1.05] max-w-4xl"
               >
-                For the <span className="text-[#E07A5F] italic font-serif font-semibold">two-thirds</span> <br />
+                For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
                 who deserve better.
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-stone-600 text-lg leading-relaxed max-w-2xl font-sans"
-              >
-                Traditional fishing hamlets live adjacent to rich marine assets, yet remain highly marginalized. As a registered Section 8 nonprofit, we partner with community leaders to secure sustainable livelihoods, restore mangrove barriers, and assist children to stay in school.
-              </motion.p>
-
-              {/* CTAs & Avatars */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4"
-              >
-                <div className="flex gap-4">
-                  <a
-                    href="#financials"
-                    className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-4 rounded-xl transition-all shadow-md active:scale-95 uppercase"
-                  >
-                    Back Our Work
-                  </a>
-                  <a
-                    href="#contact"
-                    className="bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 font-display font-semibold text-xs tracking-wider px-6 py-4 rounded-xl transition-all shadow-sm active:scale-95 uppercase"
-                  >
-                    Volunteer
-                  </a>
-                </div>
-
-                {/* Avatar stack */}
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-3">
-                    <img className="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src={avatar1} alt="Coastal community member 1" />
-                    <img className="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src={avatar2} alt="Coastal community member 2" />
-                    <img className="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm" src={avatar3} alt="Coastal community member 3" />
-                  </div>
-                  <div className="text-xs text-stone-500 font-mono">
-                    <span className="font-bold text-[#003B5C]">1,500+</span> coastal families partners
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Right Column: Visual Graphic Image */}
-            <div className="lg:col-span-5 relative">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="relative mx-auto max-w-md lg:max-w-none rounded-3xl overflow-hidden shadow-2xl border-4 border-white/80 bg-white"
-              >
-                <img
-                  src={heroSunrise}
-                  alt="Kerala sunrise over coastal fishing harbor with boats"
-                  className="w-full h-[400px] object-cover"
-                />
-                
-                {/* Floating Info card */}
-                <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-sm shadow-lg border border-white/50 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary-container text-secondary flex items-center justify-center shrink-0">
-                    <Heart className="w-5 h-5 fill-current" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-display font-bold text-primary">Direct Grassroots Support</h4>
-                    <p className="text-[10px] text-stone-500 font-mono mt-0.5">100% transparent audits, directly funding village programs</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
+              </h1>
+            </motion.div>
+            
+            {/* Foreground Mangroves Layer */}
+            <motion.div 
+              style={{ y: yFg }}
+              className="absolute inset-0 w-full h-[130%] mix-blend-multiply z-20"
+            >
+              <img 
+                src={parallaxForeground} 
+                alt="Mangrove foliage silhouettes" 
+                className="w-full h-full object-cover object-bottom"
+              />
+            </motion.div>
           </div>
 
+          {/* Subtle warm overlay beam */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
+
+          {/* Feathered bottom transition gradient overlay */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg-coastal via-bg-coastal/80 to-transparent pointer-events-none z-20" />
+
           {/* Bouncing scroll indicator */}
-          <div className="flex justify-center mt-16">
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
             <motion.a
               href="#about"
               animate={{ y: [0, 8, 0] }}
@@ -747,13 +738,114 @@ export default function App() {
               <ArrowDown className="w-4 h-4 text-secondary" />
             </motion.a>
           </div>
+
         </div>
       </section>
 
-      {/* 3. Stats Section */}
+      {/* 4. About Section */}
+      <section id="about" className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden">
+        {/* Soft morning ambient glows */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.04),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
+
+        {/* Decorative fish silhouettes on the sides */}
+        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
+        </div>
+        <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
+        </div>
+        <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-45" />
+        </div>
+        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
+          
+          <div className="text-center space-y-12">
+            <div className="space-y-4">
+              <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+                The Two-Thirds Manifesto
+              </span>
+              <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#003B5C] leading-tight">
+                Our Relationship with the Sea
+              </h2>
+              <div className="w-16 h-1 bg-secondary mx-auto rounded-full mt-4" />
+            </div>
+
+            <div className="space-y-8 text-stone-700 text-lg leading-relaxed font-sans text-left md:text-justify max-w-3xl mx-auto">
+              <p className="font-display font-medium text-xl sm:text-2xl text-[#003B5C] leading-relaxed text-center italic font-serif">
+                "The ocean covers more than two-thirds of our planet. It feeds nations, powers economies, connects continents, and sustains countless lives. Along its shores live communities whose knowledge, resilience, and traditions have shaped humanity's relationship with the sea for generations."
+              </p>
+              
+              <p>
+                Yet many of these communities stand at a crossroads. As the world changes, they face new challenges and new opportunities. Access to education, sustainable livelihoods, innovation, environmental stewardship, and community development has never been more important.
+              </p>
+
+              <p>
+                We believe that the people who live closest to the water deserve the opportunity to thrive while preserving the identity, culture, and wisdom that make their communities unique. Our mission is to support coastal communities in building a future that is prosperous, resilient, and sustainable—one that honors both people and the oceans they call home.
+              </p>
+
+              <p>
+                Together, we work to strengthen livelihoods, empower future generations, protect coastal ecosystems, and create opportunities that allow communities to flourish without leaving their heritage behind.
+              </p>
+
+              <p className="font-display font-bold text-secondary text-center text-xl mt-12 pt-6 border-t border-stone-200/60">
+                Because the two-thirds of the world covered by water deserve communities that are empowered to shape their own future.
+              </p>
+            </div>
+          </div>
+
+          {/* Vision & Mission Grid */}
+          <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-stone-200/60">
+            
+            <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-primary-container text-primary flex items-center justify-center font-display font-bold text-xl">
+                  🌅
+                </div>
+                <h3 className="font-display font-bold text-xl text-[#003B5C]">
+                  Our Vision
+                </h3>
+                <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                  A world where coastal and marginalized traditional communities live with genuine dignity, access to global opportunities, and localized climate resilience.
+                </p>
+              </div>
+              <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
+                Empowering Shorelines
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-2 h-full bg-secondary" />
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center font-display font-bold text-xl">
+                  ⛵
+                </div>
+                <h3 className="font-display font-bold text-xl text-[#003B5C]">
+                  Our Mission
+                </h3>
+                <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                  To work hand-in-hand alongside vulnerable communities to build sustainable decentralized livelihoods, advance high-school education, empower coastal women, and actively secure environment margins—through mutual grassroots trust.
+                </p>
+              </div>
+              <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
+                Co-Created Solutions
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. Stats Section (Impact Section) */}
       <section className="bg-primary text-white py-16 relative overflow-hidden">
         {/* Abstract waves backdrop */}
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.4),transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
@@ -797,65 +889,6 @@ export default function App() {
 
           </div>
         </div>
-      </section>
-
-      {/* 4. About Section */}
-      <section id="about" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-            Our Foundation Core
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            Decentralized Grassroots Mission
-          </h2>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-          <p className="text-stone-600 text-base leading-relaxed">
-            Founded by social professionals, we operate inside traditional village structures. We build solid trust over years, enabling local leaders to shape their own development pathways.
-          </p>
-        </div>
-
-        {/* Vision & Mission Grid */}
-        <div className="grid md:grid-cols-2 gap-8 pt-4">
-          
-          <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#004B6E]" />
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-primary-container text-primary flex items-center justify-center font-display font-bold text-xl">
-                🌅
-              </div>
-              <h3 className="font-display font-bold text-xl text-[#003B5C]">
-                Our Vision
-              </h3>
-              <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                A world where coastal and marginalized traditional communities live with genuine dignity, access to global opportunities, and localized climate resilience.
-              </p>
-            </div>
-            <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
-              Empowering Shorelines
-            </div>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 left-0 w-2 h-full bg-[#E07A5F]" />
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center font-display font-bold text-xl">
-                ⛵
-              </div>
-              <h3 className="font-display font-bold text-xl text-[#003B5C]">
-                Our Mission
-              </h3>
-              <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                To work hand-in-hand alongside vulnerable communities to build sustainable decentralized livelihoods, advance high-school education, empower coastal women, and actively secure environment margins—through mutual grassroots trust.
-              </p>
-            </div>
-            <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
-              Co-Created Solutions
-            </div>
-          </div>
-
-        </div>
-
       </section>
 
       {/* 5. SDG Alignment Grid */}
@@ -1172,7 +1205,7 @@ export default function App() {
                   <h3 className="font-display font-bold text-base text-primary">
                     {member.name}
                   </h3>
-                  <span className="text-[10px] font-mono font-bold text-[#E07A5F] uppercase tracking-wider block">
+                  <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider block">
                     {member.role}
                   </span>
                 </div>
@@ -1271,14 +1304,14 @@ export default function App() {
               Official Bank Registry
             </h3>
 
-            <div className="p-8 rounded-2xl bg-[#004B6E] text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
+            <div className="p-8 rounded-2xl bg-primary text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
               {/* Graphic ring underlay */}
               <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full border-4 border-white/5 pointer-events-none" />
               <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-white/2 pointer-events-none" />
               
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-2">
-                  <Landmark className="w-6 h-6 text-[#E07A5F]" />
+                  <Landmark className="w-6 h-6 text-secondary" />
                   <span className="font-mono text-[10px] tracking-widest uppercase opacity-75">Nongovernmental Registry</span>
                 </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white font-bold">12A / 80G Credits</span>
@@ -1380,7 +1413,7 @@ export default function App() {
           
           {/* Left Column: Contact details */}
           <div className="lg:col-span-5 space-y-8 text-left">
-            <span className="inline-block text-[#E07A5F] font-mono text-xs font-bold uppercase tracking-wider">
+            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
               Join the Movement
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#FAF9F6] leading-tight">
@@ -1499,7 +1532,7 @@ export default function App() {
       </section>
 
       {/* 10. Footer */}
-      <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-[#004B6E]">
+      <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-12 pb-12 border-b border-white/5 text-left">
           
           {/* Logo & description */}
@@ -1573,7 +1606,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-stone-500 font-mono">
           <p>© {new Date().getFullYear()} Two-Thirds Community Foundation. All rights reserved.</p>
           <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#E07A5F]" />
+            <ShieldCheck className="w-4 h-4 text-secondary" />
             <span>Under section 80G credits, Income Tax Department, India</span>
           </div>
         </div>

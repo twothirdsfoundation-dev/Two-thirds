@@ -6,14 +6,14 @@
   --font-display: "Outfit", sans-serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
   
-  --color-primary: #004B6E;
-  --color-primary-light: #00608C;
-  --color-primary-dark: #003650;
+  --color-primary: #003B5C;
+  --color-primary-light: #004E7A;
+  --color-primary-dark: #00263C;
   --color-primary-container: #E0F2FE;
   
-  --color-secondary: #E07A5F;
-  --color-secondary-light: #E8957F;
-  --color-secondary-container: #FDF2E9;
+  --color-secondary: #B24C35;
+  --color-secondary-light: #C85B43;
+  --color-secondary-container: #FBF0EC;
   
   --color-tertiary: #155E75;
   --color-tertiary-light: #1E81A0;
@@ -59,9 +59,9 @@
   background: #FAF9F6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #004B6E;
+  background: var(--color-primary);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #003650;
+  background: var(--color-primary-dark);
 }
