@@ -274,10 +274,10 @@ export default function App() {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 0.8], ["0%", "-15%"]);
-  const yMid = useTransform(scrollYProgress, [0, 0.8], ["0%", "-8%"]);
-  const yFg = useTransform(scrollYProgress, [0, 0.8], ["0%", "0%"]);
-  const yText = useTransform(scrollYProgress, [0, 0.8], ["-12vh", "38vh"]);
+  const yBg = useTransform(scrollYProgress, [0, 1.0], ["0%", "-10%"]);
+  const yMid = useTransform(scrollYProgress, [0, 1.0], ["0%", "-5%"]);
+  const yFg = useTransform(scrollYProgress, [0, 1.0], ["0%", "0%"]);
+  const yText = useTransform(scrollYProgress, [0, 1.0], ["-12vh", "38vh"]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -662,10 +662,10 @@ export default function App() {
       <section 
         id="home" 
         ref={heroRef} 
-        className="relative h-[130vh] md:h-[150vh] bg-[#E0F2FE]"
+        className="relative h-[120vh] md:h-[130vh] bg-[#E0F2FE]"
       >
         {/* Sticky viewport container */}
-        <div className="sticky top-0 w-full h-[85vh] md:h-[90vh] overflow-hidden flex items-center justify-center">
+        <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
           
           {/* Parallax Layers */}
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
