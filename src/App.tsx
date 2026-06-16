@@ -662,7 +662,7 @@ export default function App() {
       <section 
         id="home" 
         ref={heroRef} 
-        className="relative h-[200vh] bg-[#E0F2FE]"
+        className="relative h-[150vh] md:h-[200vh] bg-[#E0F2FE]"
       >
         {/* Sticky viewport container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
@@ -700,7 +700,7 @@ export default function App() {
             >
               <h1 
                 style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-5xl sm:text-8xl tracking-tight text-[#003B5C] leading-[1.05] max-w-4xl"
+                className="font-display font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tight text-[#003B5C] leading-[1.05] max-w-4xl"
               >
                 For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
                 who deserve better.
