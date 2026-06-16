@@ -274,10 +274,10 @@ export default function App() {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1.0], ["0%", "-10%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1.0], ["0%", "-5%"]);
+  const yBg = useTransform(scrollYProgress, [0, 1.0], ["0%", "-20%"]);
+  const yMid = useTransform(scrollYProgress, [0, 1.0], ["0%", "-10%"]);
   const yFg = useTransform(scrollYProgress, [0, 1.0], ["0%", "0%"]);
-  const yText = useTransform(scrollYProgress, [0, 1.0], ["-12vh", "38vh"]);
+  const yText = useTransform(scrollYProgress, [0, 1.0], ["-12vh", "75vh"]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -662,7 +662,7 @@ export default function App() {
       <section 
         id="home" 
         ref={heroRef} 
-        className="relative h-[120vh] md:h-[130vh] bg-[#E0F2FE]"
+        className="relative h-[160vh] md:h-[220vh] bg-[#E0F2FE]"
       >
         {/* Sticky viewport container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
@@ -696,15 +696,31 @@ export default function App() {
             {/* Heading Layer (Sandwiched in the middle!) */}
             <motion.div 
               style={{ y: yText }}
-              className="absolute inset-0 flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10"
+              className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10"
             >
               <h1 
                 style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tight text-[#003B5C] leading-[1.05] max-w-4xl"
+                className="font-display font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#003B5C] leading-[1.05] max-w-4xl"
               >
                 For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
                 who deserve better.
               </h1>
+              
+              {/* Floating CTA Buttons inside parallax layer */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
+                <a
+                  href="#contact"
+                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-8 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+                >
+                  Get Involved
+                </a>
+                <a
+                  href="#about"
+                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-8 py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                >
+                  Explore Manifesto
+                </a>
+              </div>
             </motion.div>
             
             {/* Foreground Mangroves Layer */}
