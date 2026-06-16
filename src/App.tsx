@@ -274,8 +274,8 @@ export default function App() {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1.0], ["0%", "-20%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1.0], ["0%", "-10%"]);
+  const yBg = useTransform(scrollYProgress, [0, 1.0], ["-20%", "0%"]);
+  const yMid = useTransform(scrollYProgress, [0, 1.0], ["-10%", "0%"]);
   const yFg = useTransform(scrollYProgress, [0, 1.0], ["0%", "0%"]);
   const yText = useTransform(scrollYProgress, [0, 1.0], ["-12vh", "75vh"]);
 
