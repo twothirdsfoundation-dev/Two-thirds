@@ -277,7 +277,8 @@ export default function App() {
   const yBg = useTransform(scrollYProgress, [0, 1.0], ["-20%", "0%"]);
   const yMid = useTransform(scrollYProgress, [0, 1.0], ["-10%", "0%"]);
   const yFg = useTransform(scrollYProgress, [0, 1.0], ["0%", "0%"]);
-  const yText = useTransform(scrollYProgress, [0, 1.0], ["-12vh", "75vh"]);
+  const yText = useTransform(scrollYProgress, [0, 1.0], ["-4vh", "65vh"]);
+  const opacityText = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -695,7 +696,7 @@ export default function App() {
 
             {/* Heading Layer (Sandwiched in the middle!) */}
             <motion.div 
-              style={{ y: yText }}
+              style={{ y: yText, opacity: opacityText }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10"
             >
               <h1 
