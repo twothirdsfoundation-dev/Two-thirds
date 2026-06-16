@@ -662,10 +662,10 @@ export default function App() {
       <section 
         id="home" 
         ref={heroRef} 
-        className="relative h-[150vh] md:h-[200vh] bg-[#E0F2FE]"
+        className="relative h-[130vh] md:h-[150vh] bg-[#E0F2FE]"
       >
         {/* Sticky viewport container */}
-        <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+        <div className="sticky top-0 w-full h-[85vh] md:h-[90vh] overflow-hidden flex items-center justify-center">
           
           {/* Parallax Layers */}
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
