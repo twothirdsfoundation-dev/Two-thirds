@@ -701,7 +701,7 @@ export default function App() {
             >
               <h1 
                 style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#003B5C] leading-[1.05] max-w-4xl"
+                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
               >
                 For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
                 who deserve better.
@@ -711,13 +711,13 @@ export default function App() {
               <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
                 <a
                   href="#contact"
-                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-8 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3   rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
                 >
                   Get Involved
                 </a>
                 <a
                   href="#about"
-                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-8 py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3   rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
                 >
                   Explore Manifesto
                 </a>
