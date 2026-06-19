@@ -117,12 +117,12 @@ const focusAreas: FocusArea[] = [
     image: coastalLivelihoods
   },
   {
-    id: "climate",
-    title: "Climate & Environment",
+    id: "environment",
+    title: "Environment Projects",
     emoji: "🌱",
-    tagline: "Mangrove restoration, awareness, disaster preparedness",
-    description: "Planting native mangrove saplings to buffer cyclone surges, fighting tidal erosion and beach degradation, and carrying out coastal plastic trash extraction.",
-    accomplishments: "Restored 1.2 hectares of active mangrove buffers since 2018.",
+    tagline: "Nature tools, GINTL curriculum, Coastal Walks, Sea Voices",
+    description: "Helping coastal children engage deeply with local ecology through GINTL Climate Change Education, Sea Voices storytelling, and hands-on Coastal Walks.",
+    accomplishments: "Successfully conducted international climate exchanges (GINTL) and Climate Week Sea Voices workshops.",
     image: mangroveRestoration
   },
   {
@@ -544,14 +544,372 @@ function EducarePage() {
   );
 }
 
+function EnvironmentPage() {
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#0A3D2A]">
+        <img
+          src={mangroveRestoration}
+          alt="Coastal Mangrove Restoration Kerala"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#0A3D2A]/60 to-transparent" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-md"
+          >
+            🌱 Coastal Ecological Initiative
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight"
+          >
+            ENVIRONMENT INITIATIVE
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 bg-secondary mx-auto rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
+          >
+            Empowering the next generation to protect, understand, and cherish our fragile coastal ecosystem.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 2. Who We Are Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:col-span-7 space-y-6 text-left"
+        >
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            Our Mission
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#0A3D2A]">
+            Restoring Shoreline Resilience
+          </h2>
+          <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-emerald-600 shadow-sm">
+            "As a coastal village abutting a major city, Perumathura faces multiple challenges of climate change, coastal erosion, and biodiversity loss while simultaneously holding on to a rich ecological and cultural heritage."
+          </p>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            In this context, our work focuses on helping children engage deeply with their environment through nature-immersive tools and modules that make climate and ecological realities tangible while also celebrating the area's unique biodiversity. By weaving together knowledge, history, and local ecology, we aim to foster awareness, care, and stakeholdership rooted in the lived realities of Perumathura.
+          </p>
+        </motion.div>
+
+        {/* Stats Column */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6"
+        >
+          <h3 className="font-display font-bold text-lg text-emerald-700 text-left border-b border-stone-100 pb-3">
+            Ecology & Outreach
+          </h3>
+
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#0A3D2A]">
+                <CountUp target={3} />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Exchange Countries
+              </span>
+            </div>
+
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#0A3D2A]">
+                <CountUp target={120} suffix="+" />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Storytelling Youth & Elders
+              </span>
+            </div>
+
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#0A3D2A]">
+                <CountUp target={45} suffix="+" />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Shoreline Walks
+              </span>
+            </div>
+
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#0A3D2A]">
+                <CountUp target={800} suffix="+" />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Mangroves Planted & Monitored
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 3. Core Pillars (Methodology) Section */}
+      <section className="py-20 bg-stone-100 border-y border-stone-200/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Methodology
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#0A3D2A]">
+              Our Ecological Methodology
+            </h2>
+            <div className="w-16 h-1 bg-emerald-600 mx-auto rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 overflow-hidden">
+            {[
+              {
+                title: "Learning From The Ground",
+                desc: "Developing nature-immersive learning tools and outdoor observation modules that translate abstract climate concepts into tangible local realities."
+              },
+              {
+                title: "Weaving Culture",
+                desc: "Connecting traditional ecological knowledge (traditional navigation, oceanic forecasts, folklore) with modern climate sciences, bridging generation gaps."
+              },
+              {
+                title: "Empower For Action",
+                desc: "Providing coastal youth with the structured framework and confidence to document changes, voice shoreline issues, and participate in active conservation."
+              }
+            ].map((p, i) => {
+              const directionX = i === 0 ? -50 : i === 2 ? 50 : 0;
+              const directionY = i === 1 ? 50 : 0;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: directionX, y: directionY }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.7, delay: i * 0.1, ease: "easeOut" }}
+                  className="bg-white p-8 rounded-3xl shadow-sm border border-stone-200/40 text-left space-y-4 hover:shadow-md transition-shadow"
+                >
+                  <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-mono font-bold text-sm">
+                    0{i + 1}
+                  </div>
+                  <h4 className="font-display font-bold text-lg text-[#0A3D2A]">{p.title}</h4>
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans">{p.desc}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Projects / Initiatives Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+            Programs
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#0A3D2A]">
+            Core Environmental Projects
+          </h2>
+          <div className="w-16 h-1 bg-emerald-600 mx-auto rounded-full" />
+        </div>
+
+        <div className="space-y-12">
+          {/* Project 1: Climate Change Curriculum */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-3xl border border-stone-200/60 p-8 md:p-12 shadow-sm grid md:grid-cols-12 gap-8 items-center"
+          >
+            <div className="md:col-span-7 text-left space-y-4">
+              <span className="inline-block text-[9px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-600">
+                🌐 GINTL INTERNATIONAL INITIATIVE
+              </span>
+              <h3 className="font-display font-bold text-2xl text-[#0A3D2A]">
+                Climate Change Curriculum
+              </h3>
+              <p className="text-sm text-stone-600 leading-relaxed font-sans">
+                Funded by the Global Innovation Network for Teaching and Learning (GINTL), this initiative explores how teachers perceive their role in advancing climate crisis awareness. It establishes a strong collaboration between India, Ghana, and Finland, using Finland's education expertise as a valuable reference point.
+              </p>
+              <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                By exchanging teaching tools and modules, the program integrates direct climate actions and regional realities into school curricula, empowering teachers to nurture ecological responsibility across continents.
+              </p>
+            </div>
+            <div className="md:col-span-5 bg-emerald-50/60 rounded-2xl p-6 border border-emerald-100 space-y-4 text-left">
+              <h4 className="font-display font-semibold text-[#0A3D2A] text-sm">Key Focus Areas:</h4>
+              <ul className="space-y-2 text-xs text-stone-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">•</span>
+                  <span>Cross-continental pedagogy sharing (Finland, India, Ghana)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">•</span>
+                  <span>Integrating climate reality into national/local curricula</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">•</span>
+                  <span>Strengthening school teacher capacities in climate science</span>
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Project 2: Sea Voices Workshop */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-3xl border border-stone-200/60 p-8 md:p-12 shadow-sm grid md:grid-cols-12 gap-8 items-center"
+          >
+            <div className="md:col-span-5 bg-emerald-50/60 rounded-2xl p-6 border border-emerald-100 space-y-4 text-left md:order-2">
+              <h4 className="font-display font-semibold text-[#0A3D2A] text-sm">Workshop Highlights:</h4>
+              <ul className="space-y-2 text-xs text-stone-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">•</span>
+                  <span>Intergenerational dialogue (fishing elders & coastal youth)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">•</span>
+                  <span>Traditional navigation and fish migration weather wisdom</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 font-bold">•</span>
+                  <span>Documenting change via storytelling, art, and shoreline walks</span>
+                </li>
+              </ul>
+            </div>
+            <div className="md:col-span-7 text-left space-y-4 md:order-1">
+              <span className="inline-block text-[9px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-600">
+                ⚓ CLIMATE WEEK 2025 SPECIAL
+              </span>
+              <h3 className="font-display font-bold text-2xl text-[#0A3D2A]">
+                Sea Voices Storytelling Workshop
+              </h3>
+              <p className="text-sm text-stone-600 leading-relaxed font-sans">
+                Conducted during Climate Week 2025, Sea Voices is a storytelling space connecting generations. It brings veteran fishermen together with youth to share rich traditional maritime knowledge—like sky-reading, wind directions, and fish breeding tracks.
+              </p>
+              <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                Through drawing, creative writing, and intergenerational shoreline walks, young participants learn first-hand about sea surges, heat stress, and shifts in coastal ecology, ensuring centuries-old coastal wisdom is not lost to modernization.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Project 3: The Coastal Walk Program */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-3xl border border-stone-200/60 p-8 md:p-12 shadow-sm text-left space-y-6"
+          >
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div className="space-y-2">
+                <span className="inline-block text-[9px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-600">
+                  🌊 FIELD EXPERIENCE
+                </span>
+                <h3 className="font-display font-bold text-2xl text-[#0A3D2A]">
+                  The Coastal Walk Program
+                </h3>
+              </div>
+              <p className="text-stone-500 text-xs font-semibold font-mono">
+                TRANSFORMING HOW CHILDREN VALUE THEIR SHORELINE
+              </p>
+            </div>
+
+            <p className="text-sm text-stone-600 leading-relaxed font-sans">
+              The Coastal Walk is a hands-on structured journey that transforms passive ocean observation into active, research-based understanding. Recognizing the threats of beach erosion, plastic pollution, and habitat degradation at their doorstep, this program equips children with tools to explore their local marine ecosystem.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6 pt-4">
+              <div className="p-6 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
+                <span className="text-xs font-mono font-bold text-emerald-700 tracking-wider uppercase block">Step 1: Learn</span>
+                <h4 className="font-display font-semibold text-stone-800 text-sm">Coastal Ecology & Geology</h4>
+                <p className="text-xs text-stone-500 leading-relaxed">
+                  Equipping children with scientific knowledge on wave dynamics, tide patterns, soil compositions, and marine species classification.
+                </p>
+              </div>
+
+              <div className="p-6 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
+                <span className="text-xs font-mono font-bold text-emerald-700 tracking-wider uppercase block">Step 2: Connect</span>
+                <h4 className="font-display font-semibold text-stone-800 text-sm">Local Stories & Heritage</h4>
+                <p className="text-xs text-stone-500 leading-relaxed">
+                  Sharing local history, fishing folklore, and cultural roots of maritime communities to foster an intimate, personal connection to the place.
+                </p>
+              </div>
+
+              <div className="p-6 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
+                <span className="text-xs font-mono font-bold text-emerald-700 tracking-wider uppercase block">Step 3: Act</span>
+                <h4 className="font-display font-semibold text-stone-800 text-sm">Conservation & Solutions</h4>
+                <p className="text-xs text-stone-500 leading-relaxed">
+                  Highlighting challenges like erosion and pollution, and empowering kids with practical tools to monitor shores, document microplastics, and drive change.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 5. CTA Section */}
+      <section className="py-16 bg-[#0A3D2A] text-white overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto px-4 text-center space-y-6"
+        >
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-white">
+            Support the Coastal Environmental Initiative
+          </h2>
+          <p className="text-stone-300 text-sm max-w-xl mx-auto leading-relaxed">
+            Your contributions help purchase research modules, finance shoreline walks, and scale international climate exchange curriculums for vulnerable fishing youth.
+          </p>
+          <div className="pt-2">
+            <a
+              href="#contact"
+              onClick={() => {
+                window.location.hash = "#contact";
+              }}
+              className="inline-block bg-secondary hover:bg-secondary-light text-white font-display font-semibold text-xs tracking-wider px-8 py-3 rounded-xl transition-all shadow-md uppercase active:scale-95 cursor-pointer"
+            >
+              Get In Touch to Support
+            </a>
+          </div>
+        </motion.div>
+      </section>
+    </div>
+  );
+}
+
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<"home" | "educare">("home");
+  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment">("home");
 
   useEffect(() => {
     const handleHashChange = () => {
-      if (window.location.hash === "#educare") {
+      const hash = window.location.hash;
+      const path = window.location.pathname;
+      if (hash === "#educare" || path.includes("/educare")) {
         setCurrentView("educare");
+      } else if (hash === "#environment" || path.includes("/environment")) {
+        setCurrentView("environment");
       } else {
         setCurrentView("home");
       }
@@ -913,6 +1271,13 @@ export default function App() {
               >
                 Educare
               </a>
+              <a
+                href="#environment"
+                className={`hover:text-secondary transition-colors font-bold ${currentView === "environment" ? "text-secondary border-b-2 border-secondary" : ""
+                  }`}
+              >
+                Environment
+              </a>
               <a href="#team" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Team</a>
               <a href="#financials" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Financials</a>
               <a
@@ -978,9 +1343,16 @@ export default function App() {
                 <a
                   href="#educare"
                   onClick={() => { setIsMobileMenuOpen(false); }}
-                  className="py-2 border-b border-stone-100 hover:text-secondary font-bold text-secondary"
+                  className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "educare" ? "font-bold text-secondary" : ""}`}
                 >
                   Educare
+                </a>
+                <a
+                  href="#environment"
+                  onClick={() => { setIsMobileMenuOpen(false); }}
+                  className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "environment" ? "font-bold text-secondary" : ""}`}
+                >
+                  Environment
                 </a>
                 <a
                   href="#team"
@@ -1498,10 +1870,10 @@ export default function App() {
                             <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
                           </div>
 
-                          {area.id === "educare" && (
+                          {(area.id === "educare" || area.id === "environment") && (
                             <div className="pt-1">
                               <a
-                                href="#educare"
+                                href={`#${area.id}`}
                                 className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
                               >
                                 Explore Full Initiative
@@ -1908,8 +2280,10 @@ export default function App() {
             </div>
           </section>
         </>
-      ) : (
+      ) : currentView === "educare" ? (
         <EducarePage />
+      ) : (
+        <EnvironmentPage />
       )}
 
       {/* 10. Footer */}
