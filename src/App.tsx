@@ -270,7 +270,7 @@ function EducarePage() {
           className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
-        
+
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
@@ -317,7 +317,7 @@ function EducarePage() {
           className="md:col-span-7 space-y-6 text-left"
         >
           <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
-            Our Vision
+            Our Approach
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
             Nurturing Coastal Potential
@@ -341,7 +341,7 @@ function EducarePage() {
           <h3 className="font-display font-bold text-lg text-primary text-left border-b border-stone-100 pb-3">
             Our Direct Impact
           </h3>
-          
+
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-1 text-left">
               <span className="block text-3xl sm:text-4xl font-display font-bold text-[#003B5C]">
@@ -351,7 +351,7 @@ function EducarePage() {
                 Student Info Sessions
               </span>
             </div>
-            
+
             <div className="space-y-1 text-left">
               <span className="block text-3xl sm:text-4xl font-display font-bold text-[#003B5C]">
                 <CountUp target={250} suffix="+" />
@@ -416,8 +416,8 @@ function EducarePage() {
             ].map((p, i) => {
               const directionX = (i % 2 === 0) ? -50 : 50;
               return (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   initial={{ opacity: 0, x: directionX }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
@@ -588,10 +588,9 @@ export default function App() {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1.0], ["-20%", "0%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1.0], ["-10%", "0%"]);
-  const yFg = useTransform(scrollYProgress, [0, 1.0], ["0%", "0%"]);
-  const yText = useTransform(scrollYProgress, [0, 1.0], ["-4vh", "65vh"]);
+  const yBg = useTransform(scrollYProgress, [0, 1.0], [0, 180]);
+  const yMid = useTransform(scrollYProgress, [0, 1.0], [0, 90]);
+  const yText = useTransform(scrollYProgress, [0, 1.0], [-30, 480]);
   const opacityText = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
 
   // Clipboard Copied States
@@ -661,7 +660,7 @@ export default function App() {
     if (target && firstCard && middleCard) {
       const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
       isProgrammaticScrollRef.current = true;
-      
+
       container.scrollTo({
         left: target.offsetLeft - container.offsetLeft - (container.clientWidth - target.clientWidth) / 2,
         behavior: "smooth"
@@ -684,7 +683,7 @@ export default function App() {
         } else {
           setActiveCardIndex(nextPhysicalIndex % N);
         }
-        
+
         isProgrammaticScrollRef.current = false;
       }, 500);
     }
@@ -857,24 +856,23 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg-coastal text-[#1A2D37] font-sans antialiased selection:bg-primary-container selection:text-primary">
-      
+
       {/* 1. Navbar */}
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "liquid-glass border-b border-white/20 shadow-md" 
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+          ? "liquid-glass border-b border-white/20 shadow-md"
           : "bg-transparent border-b border-transparent shadow-none"
-      }`}>
+        }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
-            
+
             {/* Logo */}
-            <a 
-              href="#" 
-              onClick={(e) => { 
-                e.preventDefault(); 
-                setCurrentView("home"); 
-                window.location.hash = ""; 
-              }} 
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentView("home");
+                window.location.hash = "";
+              }}
               className="flex items-center gap-3 group"
             >
               <img
@@ -898,11 +896,10 @@ export default function App() {
               <a href="#sdg" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">SDG Alignment</a>
               <a href="#reality" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">The Problem</a>
               <a href="#programs" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Our Focus</a>
-              <a 
-                href="#educare" 
-                className={`hover:text-secondary transition-colors font-bold ${
-                  currentView === "educare" ? "text-secondary border-b-2 border-secondary" : ""
-                }`}
+              <a
+                href="#educare"
+                className={`hover:text-secondary transition-colors font-bold ${currentView === "educare" ? "text-secondary border-b-2 border-secondary" : ""
+                  }`}
               >
                 Educare
               </a>
@@ -1005,905 +1002,901 @@ export default function App() {
       {currentView === "home" ? (
         <>
           {/* 2. Hero Section */}
-          <section 
-            id="home" 
-            ref={heroRef} 
+          <section
+            id="home"
+            ref={heroRef}
             className="relative h-[130vh] md:h-[150vh] bg-[#E0F2FE]"
           >
-        {/* Sticky viewport container */}
-        <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
-          
-          {/* Parallax Layers */}
-          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
-            {/* Sky Layer (Background) */}
-            <motion.div 
-              style={{ y: yBg }}
-              className="absolute inset-0 w-full h-[130%]"
-            >
-              <img 
-                src={parallaxSky} 
-                alt="Kerala sunrise sky" 
-                className="w-full h-full object-cover object-bottom"
-              />
-            </motion.div>
-            
-            {/* Boats Layer (Midground) */}
-            <motion.div 
-              style={{ y: yMid }}
-              className="absolute inset-0 w-full h-[130%] mix-blend-multiply"
-            >
-              <img 
-                src={parallaxBoats} 
-                alt="Fishing boats silhouettes" 
-                className="w-full h-full object-cover object-bottom"
-              />
-            </motion.div>
+            {/* Sticky viewport container */}
+            <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
-            {/* Heading Layer (Sandwiched in the middle!) */}
-            <motion.div 
-              style={{ y: yText, opacity: opacityText }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10"
-            >
-              <h1 
-                style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
-              >
-                For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
-                who deserve better.
-              </h1>
-              
-              {/* Floating CTA Buttons inside parallax layer */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
-                <a
-                  href="#contact"
-                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3   rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+              {/* Parallax Layers */}
+              <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
+                {/* Sky Layer (Background) */}
+                <motion.div
+                  style={{ y: yBg }}
+                  className="absolute inset-0 w-full h-[130%] will-change-transform"
                 >
-                  Get Involved
-                </a>
-                <a
+                  <img
+                    src={parallaxSky}
+                    alt="Kerala sunrise sky"
+                    className="w-full h-full object-cover object-bottom"
+                  />
+                </motion.div>
+
+                {/* Boats Layer (Midground) */}
+                <motion.div
+                  style={{ y: yMid }}
+                  className="absolute inset-0 w-full h-[130%] mix-blend-multiply will-change-transform"
+                >
+                  <img
+                    src={parallaxBoats}
+                    alt="Fishing boats silhouettes"
+                    className="w-full h-full object-cover object-bottom"
+                  />
+                </motion.div>
+
+                {/* Heading Layer (Sandwiched in the middle!) */}
+                <motion.div
+                  style={{ y: yText, opacity: opacityText }}
+                  className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
+                >
+                  <h1
+                    style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
+                    className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
+                  >
+                    For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
+                    who deserve better.
+                  </h1>
+
+                  {/* Floating CTA Buttons inside parallax layer */}
+                  <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
+                    <a
+                      href="#contact"
+                      className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3   rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+                    >
+                      Get Involved
+                    </a>
+                    <a
+                      href="#about"
+                      className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3   rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                    >
+                      Explore Manifesto
+                    </a>
+                  </div>
+                </motion.div>
+
+                {/* Foreground Mangroves Layer (Static - no motion needed) */}
+                <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
+                  <img
+                    src={parallaxForeground}
+                    alt="Mangrove foliage silhouettes"
+                    className="w-full h-full object-cover object-bottom"
+                  />
+                </div>
+              </div>
+
+              {/* Subtle warm overlay beam */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
+
+              {/* Feathered bottom transition gradient overlay */}
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-coastal to-transparent pointer-events-none z-20" />
+
+              {/* Bouncing scroll indicator */}
+              <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
+                <motion.a
                   href="#about"
-                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3   rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-400 hover:text-primary transition-colors cursor-pointer"
                 >
-                  Explore Manifesto
-                </a>
+                  <span>Scroll to Explore</span>
+                  <ArrowDown className="w-4 h-4 text-secondary" />
+                </motion.a>
               </div>
-            </motion.div>
-            
-            {/* Foreground Mangroves Layer */}
-            <motion.div 
-              style={{ y: yFg }}
-              className="absolute inset-0 w-full h-[130%] mix-blend-multiply z-20"
-            >
-              <img 
-                src={parallaxForeground} 
-                alt="Mangrove foliage silhouettes" 
-                className="w-full h-full object-cover object-bottom"
-              />
-            </motion.div>
-          </div>
 
-          {/* Subtle warm overlay beam */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
+            </div>
+          </section>
 
-          {/* Feathered bottom transition gradient overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-coastal to-transparent pointer-events-none z-20" />
+          {/* 4. About Section */}
+          <section id="about" className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden">
+            {/* Soft morning ambient glows */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.04),transparent_70%)] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
 
-          {/* Bouncing scroll indicator */}
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
-            <motion.a
-              href="#about"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-400 hover:text-primary transition-colors cursor-pointer"
-            >
-              <span>Scroll to Explore</span>
-              <ArrowDown className="w-4 h-4 text-secondary" />
-            </motion.a>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. About Section */}
-      <section id="about" className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden">
-        {/* Soft morning ambient glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.04),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
-
-        {/* Decorative fish silhouettes on the sides */}
-        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
-        </div>
-        <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
-        </div>
-        <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-45" />
-        </div>
-        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
-          
-          <div className="text-center space-y-12">
-            <div className="space-y-4">
-              <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-                The Two-Thirds Manifesto
-              </span>
-              <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#003B5C] leading-tight">
-                Our Relationship with the Sea
-              </h2>
-              <div className="w-16 h-1 bg-secondary mx-auto rounded-full mt-4" />
+            {/* Decorative fish silhouettes on the sides */}
+            <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+              <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
+            </div>
+            <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+              <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
+            </div>
+            <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+              <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-45" />
+            </div>
+            <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
+              <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
             </div>
 
-            <div className="space-y-8 text-stone-700 text-lg leading-relaxed font-sans text-left md:text-justify max-w-3xl mx-auto">
-              <p className="font-display font-medium text-xl sm:text-2xl text-[#003B5C] leading-relaxed text-center italic font-serif">
-                "The ocean covers more than two-thirds of our planet. It feeds nations, powers economies, connects continents, and sustains countless lives. Along its shores live communities whose knowledge, resilience, and traditions have shaped humanity's relationship with the sea for generations."
-              </p>
-              
-              <p>
-                Yet many of these communities stand at a crossroads. As the world changes, they face new challenges and new opportunities. Access to education, sustainable livelihoods, innovation, environmental stewardship, and community development has never been more important.
-              </p>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
 
-              <p>
-                We believe that the people who live closest to the water deserve the opportunity to thrive while preserving the identity, culture, and wisdom that make their communities unique. Our mission is to support coastal communities in building a future that is prosperous, resilient, and sustainable—one that honors both people and the oceans they call home.
-              </p>
-
-              <p>
-                Together, we work to strengthen livelihoods, empower future generations, protect coastal ecosystems, and create opportunities that allow communities to flourish without leaving their heritage behind.
-              </p>
-
-              <p className="font-display font-bold text-secondary text-center text-xl mt-12 pt-6 border-t border-stone-200/60">
-                Because the two-thirds of the world covered by water deserve communities that are empowered to shape their own future.
-              </p>
-            </div>
-          </div>
-
-          {/* Vision & Mission Grid */}
-          <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-stone-200/60">
-            
-            <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-container text-primary flex items-center justify-center font-display font-bold text-xl">
-                  🌅
+              <div className="text-center space-y-12">
+                <div className="space-y-4">
+                  <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+                    The Two-Thirds Manifesto
+                  </span>
+                  <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#003B5C] leading-tight">
+                    Our Relationship with the Sea
+                  </h2>
+                  <div className="w-16 h-1 bg-secondary mx-auto rounded-full mt-4" />
                 </div>
-                <h3 className="font-display font-bold text-xl text-[#003B5C]">
-                  Our Vision
-                </h3>
-                <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                  A world where coastal and marginalized traditional communities live with genuine dignity, access to global opportunities, and localized climate resilience.
-                </p>
-              </div>
-              <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
-                Empowering Shorelines
-              </div>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-0 w-2 h-full bg-secondary" />
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center font-display font-bold text-xl">
-                  ⛵
+                <div className="space-y-8 text-stone-700 text-lg leading-relaxed font-sans text-left md:text-justify max-w-3xl mx-auto">
+                  <p className="font-display font-medium text-xl sm:text-2xl text-[#003B5C] leading-relaxed text-center italic font-serif">
+                    "The ocean covers more than two-thirds of our planet. It feeds nations, powers economies, connects continents, and sustains countless lives. Along its shores live communities whose knowledge, resilience, and traditions have shaped humanity's relationship with the sea for generations."
+                  </p>
+
+                  <p>
+                    Yet many of these communities stand at a crossroads. As the world changes, they face new challenges and new opportunities. Access to education, sustainable livelihoods, innovation, environmental stewardship, and community development has never been more important.
+                  </p>
+
+                  <p>
+                    We believe that the people who live closest to the water deserve the opportunity to thrive while preserving the identity, culture, and wisdom that make their communities unique. Our mission is to support coastal communities in building a future that is prosperous, resilient, and sustainable—one that honors both people and the oceans they call home.
+                  </p>
+
+                  <p>
+                    Together, we work to strengthen livelihoods, empower future generations, protect coastal ecosystems, and create opportunities that allow communities to flourish without leaving their heritage behind.
+                  </p>
+
+                  <p className="font-display font-bold text-secondary text-center text-xl mt-12 pt-6 border-t border-stone-200/60">
+                    Because the two-thirds of the world covered by water deserve communities that are empowered to shape their own future.
+                  </p>
                 </div>
-                <h3 className="font-display font-bold text-xl text-[#003B5C]">
-                  Our Mission
-                </h3>
-                <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                  To work hand-in-hand alongside vulnerable communities to build sustainable decentralized livelihoods, advance high-school education, empower coastal women, and actively secure environment margins—through mutual grassroots trust.
-                </p>
               </div>
-              <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
-                Co-Created Solutions
-              </div>
-            </div>
 
-          </div>
+              {/* Vision & Mission Grid */}
+              <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-stone-200/60">
 
-        </div>
-      </section>
-
-      {/* 3. Stats Section (Impact Section) */}
-      <section className="bg-primary text-white py-16 relative overflow-hidden">
-        {/* Abstract waves backdrop */}
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-            
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={8} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Years of Local trust</p>
-            </div>
-            
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                ₹<CountUp target={50} suffix="L" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Target Campaign Budgets</p>
-            </div>
-            
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={5} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Hamlets Co-Created</p>
-            </div>
-            
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={120} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Women Mentored</p>
-            </div>
-            
-            <div className="grid col-span-2 md:col-span-1 place-content-center pt-2 md:pt-0">
-              <div className="space-y-1">
-                <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#14B8A6]">
-                  <CountUp target={240} suffix="+" />
-                </h3>
-                <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Students Guided</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 5. SDG Alignment Grid */}
-      <section id="sdg" className="py-24 bg-[#E0F2FE]/15 border-y border-stone-200/40 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-[#155E75] font-mono text-xs font-bold uppercase tracking-wider">
-              Global Standards Integration
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              Strategic Alignment with UN SDGs
-            </h2>
-            <div className="w-16 h-1 bg-[#155E75] mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              We align our local projects with United Nations Sustainable Development Goals (SDGs) to coordinate regional impact.
-            </p>
-          </div>
-
-          {/* SDG Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#0A97D9] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  14
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Life Below Water</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Supporting marine ecology, restoring coastal biodiversity, and preventing shoreline plastics dump.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#0A97D9] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#FF3A21] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  5
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Gender Equality</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Fostering women SHG banking, credit resources, and vocational trade groups.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#FF3A21] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#4C9F38] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  4
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Quality Education</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Evening classrooms, digital study packs, and student mentorship libraries.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#4C9F38] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#3F7E44] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  13
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Climate Action</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Local mangrove nurseries, storm-surge buffers, and sea erosion defenses.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#3F7E44] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#A21942] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  8
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Decent Work</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Aquaculture systems, modern dry fish equipment, and market link integrations.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#A21942] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Reality Section (Sticky Stacking Deck) */}
-      <section id="reality" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-            Critical Realities
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            The Challenges We Tackle Head-On
-          </h2>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-          <p className="text-stone-600 text-sm">
-            India's coastal margins are home to over 150 million people, facing unique structural challenges that require direct co-created solutions.
-          </p>
-        </div>
-
-        {/* Sticky Deck Wrapper */}
-        <div className="relative space-y-12 max-w-4xl mx-auto pb-12">
-          {realityCards.map((card, idx) => (
-            <div
-              key={idx}
-              className={`sticky w-full p-8 sm:p-10 rounded-2xl shadow-2xl ${card.bg} ${card.text} border ${card.border} flex flex-col justify-between h-[380px] sm:h-[360px]`}
-              style={{
-                top: `${110 + idx * 24}px`,
-                transform: `scale(${1 - (realityCards.length - idx) * 0.015})`,
-                zIndex: idx + 1
-              }}
-            >
-              <div className="space-y-4 text-left">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-display font-bold text-xl sm:text-2xl leading-none">
-                      {card.title}
+                <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary-container text-primary flex items-center justify-center font-display font-bold text-xl">
+                      🌅
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-[#003B5C]">
+                      Our Vision
                     </h3>
-                    <p className="text-[10px] font-mono uppercase tracking-widest opacity-80 mt-1.5 font-bold">
-                      {card.tagline}
+                    <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                      A world where coastal and marginalized traditional communities live with genuine dignity, access to global opportunities, and localized climate resilience.
                     </p>
                   </div>
-                  <span className="text-stone-400 font-mono text-sm font-bold">0{idx + 1}</span>
+                  <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
+                    Empowering Shorelines
+                  </div>
                 </div>
-                
-                <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic max-w-2xl">
-                  "{card.description}"
-                </p>
+
+                <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 left-0 w-2 h-full bg-secondary" />
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center font-display font-bold text-xl">
+                      ⛵
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-[#003B5C]">
+                      Our Mission
+                    </h3>
+                    <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                      To work hand-in-hand alongside vulnerable communities to build sustainable decentralized livelihoods, advance high-school education, empower coastal women, and actively secure environment margins—through mutual grassroots trust.
+                    </p>
+                  </div>
+                  <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
+                    Co-Created Solutions
+                  </div>
+                </div>
+
               </div>
 
-              <div className="pt-6 border-t border-black/10 flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-left">
-                <p className="text-xs text-stone-600 leading-relaxed max-w-xl">
-                  <span className="font-bold uppercase text-[10px] block mb-0.5">Our Strategic Approach:</span>
-                  {card.details}
-                </p>
-                <div className="flex items-center gap-1 text-xs font-bold font-mono opacity-80 shrink-0">
-                  <span>Co-Designed</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
+            </div>
+          </section>
+
+          {/* 3. Stats Section (Impact Section) */}
+          <section className="bg-primary text-white py-16 relative overflow-hidden">
+            {/* Abstract waves backdrop */}
+            <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+
+                <div className="space-y-1">
+                  <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+                    <CountUp target={8} suffix="+" />
+                  </h3>
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Years of Local trust</p>
                 </div>
+
+                <div className="space-y-1">
+                  <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+                    ₹<CountUp target={50} suffix="L" />
+                  </h3>
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Target Campaign Budgets</p>
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+                    <CountUp target={5} suffix="+" />
+                  </h3>
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Hamlets Co-Created</p>
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+                    <CountUp target={120} suffix="+" />
+                  </h3>
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Women Mentored</p>
+                </div>
+
+                <div className="grid col-span-2 md:col-span-1 place-content-center pt-2 md:pt-0">
+                  <div className="space-y-1">
+                    <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#14B8A6]">
+                      <CountUp target={240} suffix="+" />
+                    </h3>
+                    <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Students Guided</p>
+                  </div>
+                </div>
+
               </div>
             </div>
-          ))}
-        </div>
+          </section>
 
-      </section>
+          {/* 5. SDG Alignment Grid */}
+          <section id="sdg" className="py-24 bg-[#E0F2FE]/15 border-y border-stone-200/40 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
-      {/* 7. Programs Section (Scroll Synchronized Focus Areas) */}
-      <section id="programs" className="py-24 bg-surface-low border-y border-stone-200/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-primary font-mono text-xs font-bold uppercase tracking-wider">
-              Operational Focus
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              Strategic Focus Areas
-            </h2>
-            <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              Hover over the carousel to pause cycling. Tap on indicators to skip, or swipe the cards directly.
-            </p>
-          </div>
+              <div className="text-center max-w-2xl mx-auto space-y-4">
+                <span className="inline-block text-[#155E75] font-mono text-xs font-bold uppercase tracking-wider">
+                  Global Standards Integration
+                </span>
+                <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+                  Strategic Alignment with UN SDGs
+                </h2>
+                <div className="w-16 h-1 bg-[#155E75] mx-auto rounded-full" />
+                <p className="text-stone-600 text-sm">
+                  We align our local projects with United Nations Sustainable Development Goals (SDGs) to coordinate regional impact.
+                </p>
+              </div>
 
-          {/* Sync Indicators/Thumbnails Row */}
-          <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
-            {focusAreas.map((area, idx) => (
-              <button
-                key={area.id}
-                onClick={() => handlePillClick(idx)}
-                className={`px-4 py-2 text-xs font-display font-bold rounded-full border transition-all cursor-pointer ${
-                  activeCardIndex === idx
-                    ? "bg-primary border-primary text-white shadow-md"
-                    : "bg-white border-stone-200 text-[#003B5C] hover:bg-stone-50"
-                }`}
-              >
-                <span className="mr-1">{area.emoji}</span>
-                {area.title.split(" ")[0]}
-              </button>
-            ))}
-          </div>
+              {/* SDG Grid */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
-          {/* Horizontal scroll container with snap */}
-          <div
-            className="relative"
-            onMouseEnter={() => setIsCarouselHovered(true)}
-            onMouseLeave={() => setIsCarouselHovered(false)}
-            onMouseDown={() => setIsCarouselHovered(true)}
-            onMouseUp={() => setIsCarouselHovered(false)}
-            onTouchStart={() => setIsCarouselHovered(true)}
-            onTouchEnd={() => setIsCarouselHovered(false)}
-          >
-            <div
-              ref={scrollContainerRef}
-              onScroll={handleScroll}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 px-[15vw] md:px-[20vw] scrollbar-none"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              {duplicatedAreas.map((area, idx) => (
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 bg-[#0A97D9] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                      14
+                    </div>
+                    <h4 className="font-display font-bold text-sm text-[#003B5C]">Life Below Water</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                      Supporting marine ecology, restoring coastal biodiversity, and preventing shoreline plastics dump.
+                    </p>
+                  </div>
+                  <div className="pt-4 text-[10px] text-[#0A97D9] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                    Active Anchor
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 bg-[#FF3A21] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                      5
+                    </div>
+                    <h4 className="font-display font-bold text-sm text-[#003B5C]">Gender Equality</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                      Fostering women SHG banking, credit resources, and vocational trade groups.
+                    </p>
+                  </div>
+                  <div className="pt-4 text-[10px] text-[#FF3A21] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                    Active Anchor
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 bg-[#4C9F38] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                      4
+                    </div>
+                    <h4 className="font-display font-bold text-sm text-[#003B5C]">Quality Education</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                      Evening classrooms, digital study packs, and student mentorship libraries.
+                    </p>
+                  </div>
+                  <div className="pt-4 text-[10px] text-[#4C9F38] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                    Active Anchor
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 bg-[#3F7E44] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                      13
+                    </div>
+                    <h4 className="font-display font-bold text-sm text-[#003B5C]">Climate Action</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                      Local mangrove nurseries, storm-surge buffers, and sea erosion defenses.
+                    </p>
+                  </div>
+                  <div className="pt-4 text-[10px] text-[#3F7E44] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                    Active Anchor
+                  </div>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 bg-[#A21942] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                      8
+                    </div>
+                    <h4 className="font-display font-bold text-sm text-[#003B5C]">Decent Work</h4>
+                    <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                      Aquaculture systems, modern dry fish equipment, and market link integrations.
+                    </p>
+                  </div>
+                  <div className="pt-4 text-[10px] text-[#A21942] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                    Active Anchor
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          {/* 6. Reality Section (Sticky Stacking Deck) */}
+          <section id="reality" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+            <div className="text-center max-w-2xl mx-auto space-y-4">
+              <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+                Critical Realities
+              </span>
+              <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+                The Challenges We Tackle Head-On
+              </h2>
+              <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+              <p className="text-stone-600 text-sm">
+                India's coastal margins are home to over 150 million people, facing unique structural challenges that require direct co-created solutions.
+              </p>
+            </div>
+
+            {/* Sticky Deck Wrapper */}
+            <div className="relative space-y-12 max-w-4xl mx-auto pb-12">
+              {realityCards.map((card, idx) => (
                 <div
-                  key={`${area.id}-${idx}`}
-                  ref={(el) => {
-                    programRefs.current[idx] = el;
+                  key={idx}
+                  className={`sticky w-full p-8 sm:p-10 rounded-2xl shadow-2xl ${card.bg} ${card.text} border ${card.border} flex flex-col justify-between h-[380px] sm:h-[360px]`}
+                  style={{
+                    top: `${110 + idx * 24}px`,
+                    transform: `scale(${1 - (realityCards.length - idx) * 0.015})`,
+                    zIndex: idx + 1
                   }}
-                  className="w-[70vw] md:w-[60vw] max-w-[750px] shrink-0 snap-center"
                 >
-                  <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden grid md:grid-cols-12 h-auto md:h-[380px]">
-                    
-                    {/* Left Column: Details */}
-                    <div className="p-8 md:col-span-7 flex flex-col justify-between text-left space-y-6">
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-3xl">{area.emoji}</span>
-                          <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
-                        </div>
-                        <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase">
-                          {area.tagline}
-                        </p>
-                        <p className="text-xs text-stone-600 leading-relaxed font-sans">
-                          {area.description}
+                  <div className="space-y-4 text-left">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h3 className="font-display font-bold text-xl sm:text-2xl leading-none">
+                          {card.title}
+                        </h3>
+                        <p className="text-[10px] font-mono uppercase tracking-widest opacity-80 mt-1.5 font-bold">
+                          {card.tagline}
                         </p>
                       </div>
-
-                      <div className="p-4 rounded-xl bg-[#E0F2FE]/40 border-l-4 border-primary">
-                        <span className="font-mono font-bold text-[9px] uppercase text-primary tracking-wider block">Accomplished status:</span>
-                        <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
-                      </div>
-
-                      {area.id === "educare" && (
-                        <div className="pt-1">
-                          <a
-                            href="#educare"
-                            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
-                          >
-                            Explore Full Initiative
-                            <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                          </a>
-                        </div>
-                      )}
+                      <span className="text-stone-400 font-mono text-sm font-bold">0{idx + 1}</span>
                     </div>
 
-                    {/* Right Column: Image */}
-                    <div className="bg-stone-100 md:col-span-5 relative h-48 md:h-full">
-                      <img
-                        src={area.image}
-                        alt={area.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-transparent to-transparent pointer-events-none" />
-                    </div>
+                    <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic max-w-2xl">
+                      "{card.description}"
+                    </p>
+                  </div>
 
+                  <div className="pt-6 border-t border-black/10 flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-left">
+                    <p className="text-xs text-stone-600 leading-relaxed max-w-xl">
+                      <span className="font-bold uppercase text-[10px] block mb-0.5">Our Strategic Approach:</span>
+                      {card.details}
+                    </p>
+                    <div className="flex items-center gap-1 text-xs font-bold font-mono opacity-80 shrink-0">
+                      <span>Co-Designed</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Carousel navigation arrows */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 hidden md:flex justify-between px-2 pointer-events-none">
-              <button
-                onClick={() => scrollPrev()}
-                className="w-10 h-10 rounded-full bg-white shadow-md border border-stone-200 flex items-center justify-center text-primary hover:text-secondary cursor-pointer pointer-events-auto active:scale-90 transition-transform"
-                aria-label="Previous Slide"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => scrollNext()}
-                className="w-10 h-10 rounded-full bg-white shadow-md border border-stone-200 flex items-center justify-center text-primary hover:text-secondary cursor-pointer pointer-events-auto active:scale-90 transition-transform"
-                aria-label="Next Slide"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+          </section>
 
-        </div>
-      </section>
+          {/* 7. Programs Section (Scroll Synchronized Focus Areas) */}
+          <section id="programs" className="py-24 bg-surface-low border-y border-stone-200/40">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-      {/* Meet the Team Section */}
-      <section id="team" className="py-24 bg-stone-50 border-y border-stone-200/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          
-          <div className="max-w-2xl mx-auto space-y-4">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#E6FFFA] text-[#155E75] font-mono text-[10px] font-bold uppercase tracking-wider">
-              Meet the Team
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              The Faces Behind the Foundation
-            </h2>
-            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              A group of dedicated social workers, professionals, and researchers working to guide resources straight to community ideas.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
-            {teamMembers.map((member, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/50 flex flex-col items-center text-center space-y-4 hover:shadow-xl hover:border-stone-300 transition-all duration-300 group"
-              >
-                {/* Avatar circle with dotted border */}
-                <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#155E75] flex items-center justify-center bg-stone-50 transition-transform duration-300 group-hover:scale-105 shrink-0">
-                  <span className="font-display font-bold text-xl text-[#003B5C]">
-                    {member.initials}
-                  </span>
-                </div>
-
-                <div className="space-y-1">
-                  <h3 className="font-display font-bold text-base text-primary">
-                    {member.name}
-                  </h3>
-                  <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider block">
-                    {member.role}
-                  </span>
-                </div>
-
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  {member.bio}
+              <div className="text-center max-w-2xl mx-auto space-y-4">
+                <span className="inline-block text-primary font-mono text-xs font-bold uppercase tracking-wider">
+                  Operational Focus
+                </span>
+                <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+                  Strategic Focus Areas
+                </h2>
+                <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+                <p className="text-stone-600 text-sm">
+                  Hover over the carousel to pause cycling. Tap on indicators to skip, or swipe the cards directly.
                 </p>
               </div>
-            ))}
-          </div>
 
-        </div>
-      </section>
-
-      {/* 8. Involved/Financials Section (Budgets, Copy Board) */}
-      <section id="financials" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-            Budgets & Audits
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            Expansion Funding Goals & Transparency
-          </h2>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-          <p className="text-stone-600 text-sm">
-            We are registered under Section 8(1) of the Companies Act, 2013 (CIN U88900KL2026NPL100608). Track our campaign expansions below.
-          </p>
-        </div>
-
-        {/* Progress Bars & Bank Cards Grid */}
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left: Goals */}
-          <div className="lg:col-span-7 space-y-8 text-left">
-            <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
-              Budget Goals Tracking
-            </h3>
-
-            <div className="space-y-6">
-              {growthGoals.map((goal) => {
-                const percentage = Math.min(100, Math.round((goal.currentAmount / goal.targetAmount) * 100));
-                return (
-                  <div key={goal.id} className="p-6 rounded-2xl bg-white shadow-coastal border border-stone-200/50 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <span className="px-2.5 py-0.5 rounded bg-primary-container text-primary text-[10px] font-mono font-bold uppercase">
-                          {goal.timeline}
-                        </span>
-                        <h4 className="font-display font-bold text-sm text-[#003B5C] mt-2">{goal.title}</h4>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-[10px] text-stone-400 font-mono uppercase block">Goal Target</span>
-                        <span className="font-display font-bold text-sm text-secondary">₹{(goal.targetAmount / 100000).toFixed(0)} Lakhs</span>
-                      </div>
-                    </div>
-
-                    {/* Progress slider bar */}
-                    <div className="space-y-1.5">
-                      <div className="flex justify-between text-xs text-stone-600 font-medium">
-                        <span>Audited Campaign</span>
-                        <span className="font-mono text-[#155E75]">{percentage}% Funded</span>
-                      </div>
-                      <div className="w-full bg-stone-100 h-3.5 rounded-full overflow-hidden border border-stone-200/40">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${percentage}%` }}
-                          transition={{ duration: 0.8 }}
-                          className="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
-                        />
-                      </div>
-                      <div className="flex justify-between font-mono text-[10px] text-stone-400">
-                        <span>Achieved: ₹{goal.currentAmount.toLocaleString("en-IN")}</span>
-                        <span>Total: ₹{goal.targetAmount.toLocaleString("en-IN")}</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-3 border-t border-stone-100 space-y-1.5 text-xs text-stone-500">
-                      <span className="font-bold text-[#003B5C] block text-[10px] uppercase tracking-wider">Objectives:</span>
-                      <ul className="grid gap-1 pl-4 list-disc">
-                        {goal.objectives.map((obj, i) => (
-                          <li key={i}>{obj}</li>
-                        ))}
-                      </ul>
-                      <p className="text-[10px] italic pt-2 border-t border-dashed border-stone-100">{goal.details}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right: Bank Account Details Card */}
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
-              Official Bank Registry
-            </h3>
-
-            <div className="p-8 rounded-2xl bg-primary text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
-              {/* Graphic ring underlay */}
-              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full border-4 border-white/5 pointer-events-none" />
-              <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-white/2 pointer-events-none" />
-              
-              <div className="flex justify-between items-start">
-                <div className="flex items-center gap-2">
-                  <Landmark className="w-6 h-6 text-secondary" />
-                  <span className="font-mono text-[10px] tracking-widest uppercase opacity-75">Nongovernmental Registry</span>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white font-bold">12A / 80G Credits</span>
+              {/* Sync Indicators/Thumbnails Row */}
+              <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+                {focusAreas.map((area, idx) => (
+                  <button
+                    key={area.id}
+                    onClick={() => handlePillClick(idx)}
+                    className={`px-4 py-2 text-xs font-display font-bold rounded-full border transition-all cursor-pointer ${activeCardIndex === idx
+                        ? "bg-primary border-primary text-white shadow-md"
+                        : "bg-white border-stone-200 text-[#003B5C] hover:bg-stone-50"
+                      }`}
+                  >
+                    <span className="mr-1">{area.emoji}</span>
+                    {area.title.split(" ")[0]}
+                  </button>
+                ))}
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <span className="text-[10px] text-white/50 font-mono uppercase block">Beneficiary Entity</span>
-                  <p className="font-display font-bold text-sm sm:text-base tracking-wide">
-                    TWO-THIRDS COMMUNITY FOUNDATION
-                  </p>
-                </div>
-
-                <div className="grid gap-3 font-mono text-xs">
-                  
-                  {/* Account number item */}
-                  <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
-                    <div>
-                      <span className="text-[9px] text-white/40 uppercase block font-sans">Account Number</span>
-                      <span className="font-bold tracking-wider text-sm">926020011506637</span>
-                    </div>
-                    <button
-                      onClick={() => copyToClipboard("926020011506637", "account")}
-                      className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
-                      title="Copy Account Number"
+              {/* Horizontal scroll container with snap */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsCarouselHovered(true)}
+                onMouseLeave={() => setIsCarouselHovered(false)}
+                onMouseDown={() => setIsCarouselHovered(true)}
+                onMouseUp={() => setIsCarouselHovered(false)}
+                onTouchStart={() => setIsCarouselHovered(true)}
+                onTouchEnd={() => setIsCarouselHovered(false)}
+              >
+                <div
+                  ref={scrollContainerRef}
+                  onScroll={handleScroll}
+                  className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 px-[15vw] md:px-[20vw] scrollbar-none"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {duplicatedAreas.map((area, idx) => (
+                    <div
+                      key={`${area.id}-${idx}`}
+                      ref={(el) => {
+                        programRefs.current[idx] = el;
+                      }}
+                      className="w-[70vw] md:w-[60vw] max-w-[750px] shrink-0 snap-center"
                     >
-                      {copiedAccount ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
-                  </div>
+                      <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden grid md:grid-cols-12 h-auto md:h-[380px]">
 
-                  {/* IFSC Number item */}
-                  <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
-                    <div>
-                      <span className="text-[9px] text-white/40 uppercase block font-sans">IFSC Code</span>
-                      <span className="font-bold tracking-wider text-sm">UTIB0000028</span>
+                        {/* Left Column: Details */}
+                        <div className="p-8 md:col-span-7 flex flex-col justify-between text-left space-y-6">
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-2">
+                              <span className="text-3xl">{area.emoji}</span>
+                              <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
+                            </div>
+                            <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase">
+                              {area.tagline}
+                            </p>
+                            <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                              {area.description}
+                            </p>
+                          </div>
+
+                          <div className="p-4 rounded-xl bg-[#E0F2FE]/40 border-l-4 border-primary">
+                            <span className="font-mono font-bold text-[9px] uppercase text-primary tracking-wider block">Accomplished status:</span>
+                            <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
+                          </div>
+
+                          {area.id === "educare" && (
+                            <div className="pt-1">
+                              <a
+                                href="#educare"
+                                className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
+                              >
+                                Explore Full Initiative
+                                <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                              </a>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Right Column: Image */}
+                        <div className="bg-stone-100 md:col-span-5 relative h-48 md:h-full">
+                          <img
+                            src={area.image}
+                            alt={area.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-transparent to-transparent pointer-events-none" />
+                        </div>
+
+                      </div>
                     </div>
-                    <button
-                      onClick={() => copyToClipboard("UTIB0000028", "ifsc")}
-                      className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
-                      title="Copy IFSC Code"
-                    >
-                      {copiedIfsc ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
-                  </div>
-
+                  ))}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-xs font-sans">
-                  <div>
-                    <span className="text-[9px] text-white/50 font-mono uppercase block">Bank Name</span>
-                    <p className="font-semibold text-stone-100">Axis Bank Ltd</p>
-                  </div>
-                  <div>
-                    <span className="text-[9px] text-white/50 font-mono uppercase block">Branch Name</span>
-                    <p className="font-semibold text-stone-100">Trivandrum Main Branch</p>
-                  </div>
+                {/* Carousel navigation arrows */}
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 hidden md:flex justify-between px-2 pointer-events-none">
+                  <button
+                    onClick={() => scrollPrev()}
+                    className="w-10 h-10 rounded-full bg-white shadow-md border border-stone-200 flex items-center justify-center text-primary hover:text-secondary cursor-pointer pointer-events-auto active:scale-90 transition-transform"
+                    aria-label="Previous Slide"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => scrollNext()}
+                    className="w-10 h-10 rounded-full bg-white shadow-md border border-stone-200 flex items-center justify-center text-primary hover:text-secondary cursor-pointer pointer-events-auto active:scale-90 transition-transform"
+                    aria-label="Next Slide"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/60">
-                <div className="flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-secondary" />
-                  <span>Axis Bank Verified</span>
-                </div>
-                <span>Secured transfers only</span>
-              </div>
             </div>
+          </section>
 
-            {/* Meet Team Members */}
-            <div className="bg-white p-6 rounded-2xl border border-stone-200/50 space-y-4">
-              <h4 className="font-display font-bold text-sm text-[#003B5C]">Board of Directors</h4>
-              <div className="grid gap-3">
+          {/* Meet the Team Section */}
+          <section id="team" className="py-24 bg-stone-50 border-y border-stone-200/40">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+
+              <div className="max-w-2xl mx-auto space-y-4">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#E6FFFA] text-[#155E75] font-mono text-[10px] font-bold uppercase tracking-wider">
+                  Meet the Team
+                </span>
+                <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+                  The Faces Behind the Foundation
+                </h2>
+                <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+                <p className="text-stone-600 text-sm">
+                  A group of dedicated social workers, professionals, and researchers working to guide resources straight to community ideas.
+                </p>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
                 {teamMembers.map((member, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 rounded-xl">
-                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-xs shrink-0">
-                      {member.initials}
+                  <div
+                    key={i}
+                    className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/50 flex flex-col items-center text-center space-y-4 hover:shadow-xl hover:border-stone-300 transition-all duration-300 group"
+                  >
+                    {/* Avatar circle with dotted border */}
+                    <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#155E75] flex items-center justify-center bg-stone-50 transition-transform duration-300 group-hover:scale-105 shrink-0">
+                      <span className="font-display font-bold text-xl text-[#003B5C]">
+                        {member.initials}
+                      </span>
                     </div>
-                    <div>
-                      <h5 className="font-display font-bold text-xs text-primary">{member.name}</h5>
-                      <p className="text-[9px] text-stone-400 font-mono uppercase">{member.role}</p>
+
+                    <div className="space-y-1">
+                      <h3 className="font-display font-bold text-base text-primary">
+                        {member.name}
+                      </h3>
+                      <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider block">
+                        {member.role}
+                      </span>
                     </div>
+
+                    <p className="text-xs text-stone-600 leading-relaxed">
+                      {member.bio}
+                    </p>
                   </div>
                 ))}
               </div>
+
+            </div>
+          </section>
+
+          {/* 8. Involved/Financials Section (Budgets, Copy Board) */}
+          <section id="financials" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+            <div className="text-center max-w-2xl mx-auto space-y-4">
+              <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+                Budgets & Audits
+              </span>
+              <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+                Expansion Funding Goals & Transparency
+              </h2>
+              <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+              <p className="text-stone-600 text-sm">
+                We are registered under Section 8(1) of the Companies Act, 2013 (CIN U88900KL2026NPL100608). Track our campaign expansions below.
+              </p>
             </div>
 
-          </div>
+            {/* Progress Bars & Bank Cards Grid */}
+            <div className="grid lg:grid-cols-12 gap-12 items-start">
 
-        </div>
+              {/* Left: Goals */}
+              <div className="lg:col-span-7 space-y-8 text-left">
+                <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
+                  Budget Goals Tracking
+                </h3>
 
-      </section>
+                <div className="space-y-6">
+                  {growthGoals.map((goal) => {
+                    const percentage = Math.min(100, Math.round((goal.currentAmount / goal.targetAmount) * 100));
+                    return (
+                      <div key={goal.id} className="p-6 rounded-2xl bg-white shadow-coastal border border-stone-200/50 space-y-4">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <span className="px-2.5 py-0.5 rounded bg-primary-container text-primary text-[10px] font-mono font-bold uppercase">
+                              {goal.timeline}
+                            </span>
+                            <h4 className="font-display font-bold text-sm text-[#003B5C] mt-2">{goal.title}</h4>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-[10px] text-stone-400 font-mono uppercase block">Goal Target</span>
+                            <span className="font-display font-bold text-sm text-secondary">₹{(goal.targetAmount / 100000).toFixed(0)} Lakhs</span>
+                          </div>
+                        </div>
 
-      {/* 9. Contact & Get Involved Form */}
-      <section id="contact" className="py-24 bg-primary text-white relative overflow-hidden border-t-8 border-secondary">
-        {/* Soft marine graphics background */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.4),transparent_60%)] pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Contact details */}
-          <div className="lg:col-span-5 space-y-8 text-left">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              Join the Movement
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#FAF9F6] leading-tight">
-              Get Involved With Our Shoreline Team
-            </h2>
-            <p className="text-[#E0F2FE]/80 text-sm leading-relaxed">
-              We recruit and onboard volunteers, coordinate academic partnerships, and handle CSR programs. Drop us a line and let's configure collaboration!
-            </p>
+                        {/* Progress slider bar */}
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between text-xs text-stone-600 font-medium">
+                            <span>Audited Campaign</span>
+                            <span className="font-mono text-[#155E75]">{percentage}% Funded</span>
+                          </div>
+                          <div className="w-full bg-stone-100 h-3.5 rounded-full overflow-hidden border border-stone-200/40">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${percentage}%` }}
+                              transition={{ duration: 0.8 }}
+                              className="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                            />
+                          </div>
+                          <div className="flex justify-between font-mono text-[10px] text-stone-400">
+                            <span>Achieved: ₹{goal.currentAmount.toLocaleString("en-IN")}</span>
+                            <span>Total: ₹{goal.targetAmount.toLocaleString("en-IN")}</span>
+                          </div>
+                        </div>
 
-            <div className="space-y-4 text-xs font-mono text-[#E0F2FE]/90">
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4.5 h-4.5 text-secondary shrink-0" />
-                <span>Trivandrum Coastline, Kerala, India</span>
-              </div>
-              <a href="tel:+919037518593" className="flex items-center gap-3 hover:text-white transition-colors">
-                <Phone className="w-4.5 h-4.5 text-secondary shrink-0" />
-                <span>+91 9037518593</span>
-              </a>
-              <a href="mailto:twothirdscommunityfoundation@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors break-all">
-                <Mail className="w-4.5 h-4.5 text-secondary shrink-0" />
-                <span>twothirdscommunityfoundation@gmail.com</span>
-              </a>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
-              <Info className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-              <div className="text-stone-300 text-xs">
-                <span className="font-bold text-[#E0F2FE] block text-[10px] uppercase font-mono tracking-wider">Registration Code:</span>
-                U88900KL2026NPL100608. Under section 12A/80G tax claims.
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Form wrapper */}
-          <div className="lg:col-span-7 bg-white text-[#1A2D37] p-8 rounded-3xl shadow-2xl border border-white/20">
-            <h3 className="font-display font-bold text-lg text-primary mb-6 text-left">
-              Send an Inquiry Message
-            </h3>
-
-            <form onSubmit={handleContactSubmit} className="space-y-4 text-left">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Your Name</label>
-                  <input
-                    type="text"
-                    value={formName}
-                    onChange={(e) => setFormName(e.target.value)}
-                    placeholder="e.g. Bindu Sajeev"
-                    className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                    required
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Email Address</label>
-                  <input
-                    type="email"
-                    value={formEmail}
-                    onChange={(e) => setFormEmail(e.target.value)}
-                    placeholder="e.g. bindu@gmail.com"
-                    className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                    required
-                  />
+                        <div className="pt-3 border-t border-stone-100 space-y-1.5 text-xs text-stone-500">
+                          <span className="font-bold text-[#003B5C] block text-[10px] uppercase tracking-wider">Objectives:</span>
+                          <ul className="grid gap-1 pl-4 list-disc">
+                            {goal.objectives.map((obj, i) => (
+                              <li key={i}>{obj}</li>
+                            ))}
+                          </ul>
+                          <p className="text-[10px] italic pt-2 border-t border-dashed border-stone-100">{goal.details}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Inquiry Type</label>
-                <select
-                  value={formType}
-                  onChange={(e) => setFormType(e.target.value)}
-                  className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                >
-                  <option value="General Query">General Query / Question</option>
-                  <option value="Volunteer Opportunity">Volunteer Onboarding</option>
-                  <option value="Donation / CSR Grant">Donation & CSR Partnerships</option>
-                  <option value="Youth Mentorship">Youth Classroom Program</option>
-                </select>
+              {/* Right: Bank Account Details Card */}
+              <div className="lg:col-span-5 space-y-6 text-left">
+                <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
+                  Official Bank Registry
+                </h3>
+
+                <div className="p-8 rounded-2xl bg-primary text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
+                  {/* Graphic ring underlay */}
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full border-4 border-white/5 pointer-events-none" />
+                  <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-white/2 pointer-events-none" />
+
+                  <div className="flex justify-between items-start">
+                    <div className="flex items-center gap-2">
+                      <Landmark className="w-6 h-6 text-secondary" />
+                      <span className="font-mono text-[10px] tracking-widest uppercase opacity-75">Nongovernmental Registry</span>
+                    </div>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white font-bold">12A / 80G Credits</span>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <span className="text-[10px] text-white/50 font-mono uppercase block">Beneficiary Entity</span>
+                      <p className="font-display font-bold text-sm sm:text-base tracking-wide">
+                        TWO-THIRDS COMMUNITY FOUNDATION
+                      </p>
+                    </div>
+
+                    <div className="grid gap-3 font-mono text-xs">
+
+                      {/* Account number item */}
+                      <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
+                        <div>
+                          <span className="text-[9px] text-white/40 uppercase block font-sans">Account Number</span>
+                          <span className="font-bold tracking-wider text-sm">926020011506637</span>
+                        </div>
+                        <button
+                          onClick={() => copyToClipboard("926020011506637", "account")}
+                          className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
+                          title="Copy Account Number"
+                        >
+                          {copiedAccount ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
+                        </button>
+                      </div>
+
+                      {/* IFSC Number item */}
+                      <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
+                        <div>
+                          <span className="text-[9px] text-white/40 uppercase block font-sans">IFSC Code</span>
+                          <span className="font-bold tracking-wider text-sm">UTIB0000028</span>
+                        </div>
+                        <button
+                          onClick={() => copyToClipboard("UTIB0000028", "ifsc")}
+                          className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
+                          title="Copy IFSC Code"
+                        >
+                          {copiedIfsc ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
+                        </button>
+                      </div>
+
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 text-xs font-sans">
+                      <div>
+                        <span className="text-[9px] text-white/50 font-mono uppercase block">Bank Name</span>
+                        <p className="font-semibold text-stone-100">Axis Bank Ltd</p>
+                      </div>
+                      <div>
+                        <span className="text-[9px] text-white/50 font-mono uppercase block">Branch Name</span>
+                        <p className="font-semibold text-stone-100">Trivandrum Main Branch</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/60">
+                    <div className="flex items-center gap-1">
+                      <ShieldCheck className="w-4 h-4 text-secondary" />
+                      <span>Axis Bank Verified</span>
+                    </div>
+                    <span>Secured transfers only</span>
+                  </div>
+                </div>
+
+                {/* Meet Team Members */}
+                <div className="bg-white p-6 rounded-2xl border border-stone-200/50 space-y-4">
+                  <h4 className="font-display font-bold text-sm text-[#003B5C]">Board of Directors</h4>
+                  <div className="grid gap-3">
+                    {teamMembers.map((member, i) => (
+                      <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 rounded-xl">
+                        <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-xs shrink-0">
+                          {member.initials}
+                        </div>
+                        <div>
+                          <h5 className="font-display font-bold text-xs text-primary">{member.name}</h5>
+                          <p className="text-[9px] text-stone-400 font-mono uppercase">{member.role}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Message</label>
-                <textarea
-                  rows={4}
-                  value={formMessage}
-                  onChange={(e) => setFormMessage(e.target.value)}
-                  placeholder="How would you like to collaborate with us?"
-                  className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                  required
-                />
+            </div>
+
+          </section>
+
+          {/* 9. Contact & Get Involved Form */}
+          <section id="contact" className="py-24 bg-primary text-white relative overflow-hidden border-t-8 border-secondary">
+            {/* Soft marine graphics background */}
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.4),transparent_60%)] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+
+              {/* Left Column: Contact details */}
+              <div className="lg:col-span-5 space-y-8 text-left">
+                <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+                  Join the Movement
+                </span>
+                <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#FAF9F6] leading-tight">
+                  Get Involved With Our Shoreline Team
+                </h2>
+                <p className="text-[#E0F2FE]/80 text-sm leading-relaxed">
+                  We recruit and onboard volunteers, coordinate academic partnerships, and handle CSR programs. Drop us a line and let's configure collaboration!
+                </p>
+
+                <div className="space-y-4 text-xs font-mono text-[#E0F2FE]/90">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-4.5 h-4.5 text-secondary shrink-0" />
+                    <span>Trivandrum Coastline, Kerala, India</span>
+                  </div>
+                  <a href="tel:+919037518593" className="flex items-center gap-3 hover:text-white transition-colors">
+                    <Phone className="w-4.5 h-4.5 text-secondary shrink-0" />
+                    <span>+91 9037518593</span>
+                  </a>
+                  <a href="mailto:twothirdscommunityfoundation@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors break-all">
+                    <Mail className="w-4.5 h-4.5 text-secondary shrink-0" />
+                    <span>twothirdscommunityfoundation@gmail.com</span>
+                  </a>
+                </div>
+
+                <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
+                  <Info className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+                  <div className="text-stone-300 text-xs">
+                    <span className="font-bold text-[#E0F2FE] block text-[10px] uppercase font-mono tracking-wider">Registration Code:</span>
+                    U88900KL2026NPL100608. Under section 12A/80G tax claims.
+                  </div>
+                </div>
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary-light text-white text-xs font-display font-semibold tracking-wider py-4 rounded-xl cursor-pointer shadow-md transition-colors active:scale-98 uppercase"
-              >
-                Send Message
-              </button>
+              {/* Right Column: Form wrapper */}
+              <div className="lg:col-span-7 bg-white text-[#1A2D37] p-8 rounded-3xl shadow-2xl border border-white/20">
+                <h3 className="font-display font-bold text-lg text-primary mb-6 text-left">
+                  Send an Inquiry Message
+                </h3>
 
-              <AnimatePresence>
-                {isFormSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="p-4 bg-[#E6FFFA] border border-teal-200 rounded-xl text-teal-800 text-xs font-semibold text-center mt-4"
+                <form onSubmit={handleContactSubmit} className="space-y-4 text-left">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Your Name</label>
+                      <input
+                        type="text"
+                        value={formName}
+                        onChange={(e) => setFormName(e.target.value)}
+                        placeholder="e.g. Bindu Sajeev"
+                        className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
+                        required
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Email Address</label>
+                      <input
+                        type="email"
+                        value={formEmail}
+                        onChange={(e) => setFormEmail(e.target.value)}
+                        placeholder="e.g. bindu@gmail.com"
+                        className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Inquiry Type</label>
+                    <select
+                      value={formType}
+                      onChange={(e) => setFormType(e.target.value)}
+                      className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
+                    >
+                      <option value="General Query">General Query / Question</option>
+                      <option value="Volunteer Opportunity">Volunteer Onboarding</option>
+                      <option value="Donation / CSR Grant">Donation & CSR Partnerships</option>
+                      <option value="Youth Mentorship">Youth Classroom Program</option>
+                    </select>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Message</label>
+                    <textarea
+                      rows={4}
+                      value={formMessage}
+                      onChange={(e) => setFormMessage(e.target.value)}
+                      placeholder="How would you like to collaborate with us?"
+                      className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary-light text-white text-xs font-display font-semibold tracking-wider py-4 rounded-xl cursor-pointer shadow-md transition-colors active:scale-98 uppercase"
                   >
-                    🎉 Inquiry received! Our Trivandrum field officers will email you back within 24-48 hours.
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </form>
-          </div>
+                    Send Message
+                  </button>
 
-        </div>
-      </section>
+                  <AnimatePresence>
+                    {isFormSubmitted && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="p-4 bg-[#E6FFFA] border border-teal-200 rounded-xl text-teal-800 text-xs font-semibold text-center mt-4"
+                      >
+                        🎉 Inquiry received! Our Trivandrum field officers will email you back within 24-48 hours.
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </form>
+              </div>
+
+            </div>
+          </section>
         </>
       ) : (
         <EducarePage />
@@ -1912,7 +1905,7 @@ export default function App() {
       {/* 10. Footer */}
       <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-12 pb-12 border-b border-white/5 text-left">
-          
+
           {/* Logo & description */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
@@ -1958,7 +1951,7 @@ export default function App() {
                 Donations are audit-logged and eligible for Corporate Social Responsibility credit allocations under Indian tax guidelines.
               </p>
             </div>
-            
+
             {/* Custom Brand SVG Icons (lucide does not contain brands) */}
             <div className="flex items-center gap-4 pt-2">
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="Instagram">
