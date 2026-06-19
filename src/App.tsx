@@ -308,8 +308,14 @@ function EducarePage() {
 
 
       {/* 2. Who We Are Section */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center">
-        <div className="md:col-span-7 space-y-6 text-left">
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:col-span-7 space-y-6 text-left"
+        >
           <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
             Our Vision
           </span>
@@ -322,10 +328,16 @@ function EducarePage() {
           <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
             We focus on building strong foundations for our educators, creating a curriculum that feels relevant and validating, and using teaching methods that connect with children's lives. At the heart of our effort is the classroom itself—a space of caring relationships and holistic growth. We assess students in ways that empower them, and we ensure everything we do is woven into the vibrant fabric of the Perumathura community. This integrated approach allows us to provide an education that is transformative, lighting a path forward for our children.
           </p>
-        </div>
+        </motion.div>
 
         {/* Impact Stats Column */}
-        <div className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6">
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6"
+        >
           <h3 className="font-display font-bold text-lg text-primary text-left border-b border-stone-100 pb-3">
             Our Direct Impact
           </h3>
@@ -367,7 +379,7 @@ function EducarePage() {
               </span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 3. Core Principles Section */}
@@ -383,7 +395,7 @@ function EducarePage() {
             <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-hidden">
             {[
               {
                 title: "Equity and Excellence",
@@ -401,15 +413,25 @@ function EducarePage() {
                 title: "Teaching The Whole Child",
                 desc: "Moving beyond basic text memorization to nurture cognitive, physical, creative, and socio-emotional dimensions simultaneously."
               }
-            ].map((p, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200/40 text-left space-y-3">
-                <div className="w-8 h-8 rounded-full bg-[#E0F2FE] text-primary flex items-center justify-center font-mono font-bold text-xs">
-                  0{i + 1}
-                </div>
-                <h4 className="font-display font-bold text-base text-[#003B5C]">{p.title}</h4>
-                <p className="text-xs text-stone-600 leading-relaxed font-sans">{p.desc}</p>
-              </div>
-            ))}
+            ].map((p, i) => {
+              const directionX = (i % 2 === 0) ? -50 : 50;
+              return (
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, x: directionX }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.7, delay: i * 0.1, ease: "easeOut" }}
+                  className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200/40 text-left space-y-3"
+                >
+                  <div className="w-8 h-8 rounded-full bg-[#E0F2FE] text-primary flex items-center justify-center font-mono font-bold text-xs">
+                    0{i + 1}
+                  </div>
+                  <h4 className="font-display font-bold text-base text-[#003B5C]">{p.title}</h4>
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans">{p.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -426,7 +448,7 @@ function EducarePage() {
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden">
           {[
             {
               title: "Academic Execution",
@@ -458,23 +480,47 @@ function EducarePage() {
               desc: "Celebrating heritage and fostering a sense of shared belonging. Festivities like Independence Day, Kerala Piravi, Ramadan, and our Annual Day boost student morale, strengthen community relationships, and establish deep cultural pride.",
               badge: "🎉 FESTIVALS"
             }
-          ].map((pillar, i) => (
-            <div key={i} className="p-8 rounded-3xl border border-stone-200/40 text-left flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow bg-white">
-              <div className="space-y-4">
-                <span className="inline-block text-[9px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-600">
-                  {pillar.badge}
-                </span>
-                <h3 className="font-display font-bold text-lg text-[#003B5C]">{pillar.title}</h3>
-                <p className="text-xs text-stone-600 leading-relaxed font-sans">{pillar.desc}</p>
-              </div>
-            </div>
-          ))}
+          ].map((pillar, i) => {
+            let initialAnim = {};
+            if (i % 3 === 0) {
+              initialAnim = { opacity: 0, x: -50 };
+            } else if (i % 3 === 1) {
+              initialAnim = { opacity: 0, y: 50 };
+            } else {
+              initialAnim = { opacity: 0, x: 50 };
+            }
+
+            return (
+              <motion.div
+                key={i}
+                initial={initialAnim}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.7, delay: (i % 3) * 0.1, ease: "easeOut" }}
+                className="p-8 rounded-3xl border border-stone-200/40 text-left flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow bg-white"
+              >
+                <div className="space-y-4">
+                  <span className="inline-block text-[9px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-600">
+                    {pillar.badge}
+                  </span>
+                  <h3 className="font-display font-bold text-lg text-[#003B5C]">{pillar.title}</h3>
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans">{pillar.desc}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
       {/* 5. CTA Section */}
-      <section className="py-16 bg-[#003B5C] text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+      <section className="py-16 bg-[#003B5C] text-white overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto px-4 text-center space-y-6"
+        >
           <h2 className="font-display font-bold text-2xl sm:text-3xl text-white">
             Support Educare's Educational Revolution
           </h2>
@@ -492,7 +538,7 @@ function EducarePage() {
               Get In Touch to Support
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
