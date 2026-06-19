@@ -1221,10 +1221,10 @@ function HomePage() {
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
           {/* Parallax Layers */}
-          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
             {/* Sky Layer (Background) */}
             <div
-              style={{ transform: `translate3d(0, ${yBg}px, 0)` }}
+              style={{ transform: `translateY(${yBg}px)` }}
               className="absolute inset-0 w-full h-[130%] will-change-transform"
             >
               <img
@@ -1236,7 +1236,7 @@ function HomePage() {
 
             {/* Boats Layer (Midground) - mix-blend-multiply removed for performance */}
             <div
-              style={{ transform: `translate3d(0, ${yMid}px, 0)` }}
+              style={{ transform: `translateY(${yMid}px)` }}
               className="absolute inset-0 w-full h-[130%] will-change-transform"
             >
               <img
@@ -1249,7 +1249,7 @@ function HomePage() {
             {/* Heading Layer (Sandwiched in the middle!) */}
             <div
               style={{ 
-                transform: `translate3d(0, ${yText}px, 0)`,
+                transform: `translateY(${yText}px)`,
                 opacity: opacityText 
               }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
