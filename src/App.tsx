@@ -941,10 +941,10 @@ function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const yBg = scrollTop * 0.3;
-  const yMid = scrollTop * 0.15;
-  const yText = -30 + scrollTop * 0.75;
-  const opacityText = Math.max(0, 1 - scrollTop / 500);
+  const yBg = (scrollTop || 0) * 0.3;
+  const yMid = (scrollTop || 0) * 0.15;
+  const yText = -30 + (scrollTop || 0) * 0.75;
+  const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -1215,6 +1215,7 @@ function HomePage() {
         id="home"
         ref={heroRef}
         className="relative h-[140vh] md:h-[200vh] bg-[#E0F2FE]"
+        style={{ backgroundColor: '#E0F2FE' }}
       >
         {/* Sticky viewport container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
