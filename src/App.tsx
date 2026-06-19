@@ -922,18 +922,14 @@ function EnvironmentPage() {
 function HomePage() {
   const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
 
-  // Hero Parallax Scroll Hook Setup
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end end"]
-  });
+  const { scrollY } = useScroll();
 
-  // Use direct scrollYProgress to avoid stuck/lagging issues
-  const yBg = useTransform(scrollYProgress, [0, 1.0], [0, 180]);
-  const yMid = useTransform(scrollYProgress, [0, 1.0], [0, 90]);
-  const yText = useTransform(scrollYProgress, [0, 1.0], [-30, 480]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  // Use direct window scrollY in pixels to avoid NaN/offset binding issues
+  const yBg = useTransform(scrollY, [0, 800], [0, 240]);
+  const yMid = useTransform(scrollY, [0, 800], [0, 120]);
+  const yText = useTransform(scrollY, [0, 800], [-30, 600]);
+  const opacityText = useTransform(scrollY, [0, 500], [1, 0]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
