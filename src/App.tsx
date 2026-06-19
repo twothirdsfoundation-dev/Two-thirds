@@ -320,9 +320,6 @@ function EducarePage() {
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
             Back to Home
           </a>
-          <span className="text-[10px] font-mono font-bold text-stone-400 uppercase tracking-widest">
-            Snehatheeram Collaboration
-          </span>
         </div>
       </div>
 
