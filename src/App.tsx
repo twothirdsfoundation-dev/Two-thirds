@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   ShieldCheck,
   Mail,
@@ -921,15 +921,30 @@ function EnvironmentPage() {
 
 function HomePage() {
   const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
-
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollY } = useScroll();
 
-  // Use direct window scrollY in pixels to avoid NaN/offset binding issues
-  const yBg = useTransform(scrollY, [0, 800], [0, 240]);
-  const yMid = useTransform(scrollY, [0, 800], [0, 120]);
-  const yText = useTransform(scrollY, [0, 800], [-30, 600]);
-  const opacityText = useTransform(scrollY, [0, 500], [1, 0]);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollTop(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    setScrollTop(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const yBg = scrollTop * 0.3;
+  const yMid = scrollTop * 0.15;
+  const yText = -30 + scrollTop * 0.75;
+  const opacityText = Math.max(0, 1 - scrollTop / 500);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -1207,8 +1222,8 @@ function HomePage() {
           {/* Parallax Layers */}
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 isolate">
             {/* Sky Layer (Background) */}
-            <motion.div
-              style={{ y: yBg }}
+            <div
+              style={{ transform: `translate3d(0, ${yBg}px, 0)` }}
               className="absolute inset-0 w-full h-[130%] will-change-transform"
             >
               <img
@@ -1216,11 +1231,11 @@ function HomePage() {
                 alt="Kerala sunrise sky"
                 className="w-full h-full object-cover object-bottom"
               />
-            </motion.div>
+            </div>
 
             {/* Boats Layer (Midground) - mix-blend-multiply removed for performance */}
-            <motion.div
-              style={{ y: yMid }}
+            <div
+              style={{ transform: `translate3d(0, ${yMid}px, 0)` }}
               className="absolute inset-0 w-full h-[130%] will-change-transform"
             >
               <img
@@ -1228,11 +1243,14 @@ function HomePage() {
                 alt="Fishing boats silhouettes"
                 className="w-full h-full object-cover object-bottom"
               />
-            </motion.div>
+            </div>
 
             {/* Heading Layer (Sandwiched in the middle!) */}
-            <motion.div
-              style={{ y: yText, opacity: opacityText }}
+            <div
+              style={{ 
+                transform: `translate3d(0, ${yText}px, 0)`,
+                opacity: opacityText 
+              }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
             >
               <h1
@@ -1258,7 +1276,7 @@ function HomePage() {
                   Explore Manifesto
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             {/* Foreground Mangroves Layer (Static - no motion needed) - mix-blend-multiply removed for performance */}
             <div className="absolute inset-0 w-full h-full z-20">
