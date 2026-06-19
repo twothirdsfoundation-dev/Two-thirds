@@ -13,7 +13,8 @@ import {
   ChevronRight,
   ChevronLeft,
   Info,
-  ArrowDown
+  ArrowDown,
+  ArrowLeft
 } from "lucide-react";
 
 // Import local images from assets
@@ -27,6 +28,7 @@ import parallaxSky from "./assets/parallax-sky.png";
 import parallaxBoats from "./assets/parallax-boats.png";
 import parallaxForeground from "./assets/parallax-foreground.png";
 import manifestoFish from "./assets/manifesto-fish.png";
+import educareClassroom from "./assets/educare-classroom.png";
 
 // Data Models
 interface FocusArea {
@@ -132,6 +134,15 @@ const focusAreas: FocusArea[] = [
     description: "Organizing mobile health clinics, distributing fresh iron-fortified multi-nutrient food packets list, and creating hygienic community sanitation layouts in remote coastal hamlets.",
     accomplishments: "Conducted 15+ remote check-up camps with expert pediatricians.",
     image: healthNutrition
+  },
+  {
+    id: "educare",
+    title: "Educare Initiative",
+    emoji: "🎓",
+    tagline: "Reimagining learning and growth for coastal children",
+    description: "A comprehensive framework bridging academic execution, teacher training, and community-parental engagement to transform classrooms into spaces of holistic growth.",
+    accomplishments: "Empowered 350+ students with academic tutoring, anti-drug awareness, and scholastic awards.",
+    image: educareClassroom
   }
 ];
 
@@ -249,8 +260,284 @@ function CountUp({
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
+function EducarePage() {
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        <img
+          src={educareClassroom}
+          alt="Coastal Classroom Kerala"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-md"
+          >
+            🎓 Coastal Educational Initiative
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight"
+          >
+            EDUCARE
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 bg-secondary mx-auto rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
+          >
+            Reimagining learning and growth for the children of coastal Perumathura.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Back Link Floating Bar */}
+      <div className="bg-white/80 backdrop-blur-md sticky top-20 z-45 border-b border-stone-200 py-3.5 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.hash = "";
+            }}
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#003B5C] hover:text-secondary group transition-colors uppercase tracking-wider font-display cursor-pointer"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
+            Back to Home
+          </a>
+          <span className="text-[10px] font-mono font-bold text-stone-400 uppercase tracking-widest">
+            Snehatheeram Collaboration
+          </span>
+        </div>
+      </div>
+
+      {/* 2. Who We Are Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center">
+        <div className="md:col-span-7 space-y-6 text-left">
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            Our Vision
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            Nurturing Coastal Potential
+          </h2>
+          <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
+            "For the past seven years, we have been on a heartfelt journey to reimagine learning for the children of coastal Perumathura. Our work is built on a simple belief: that education should honour the unique identity, culture, and potential of every student."
+          </p>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            We focus on building strong foundations for our educators, creating a curriculum that feels relevant and validating, and using teaching methods that connect with children's lives. At the heart of our effort is the classroom itself—a space of caring relationships and holistic growth. We assess students in ways that empower them, and we ensure everything we do is woven into the vibrant fabric of the Perumathura community. This integrated approach allows us to provide an education that is transformative, lighting a path forward for our children.
+          </p>
+        </div>
+
+        {/* Impact Stats Column */}
+        <div className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6">
+          <h3 className="font-display font-bold text-lg text-primary text-left border-b border-stone-100 pb-3">
+            Our Direct Impact
+          </h3>
+          
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#003B5C]">
+                <CountUp target={200} suffix="+" />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Student Info Sessions
+              </span>
+            </div>
+            
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#003B5C]">
+                <CountUp target={250} suffix="+" />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Parental Sessions
+              </span>
+            </div>
+
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#003B5C]">
+                <CountUp target={25} />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Teacher Training
+              </span>
+            </div>
+
+            <div className="space-y-1 text-left">
+              <span className="block text-3xl sm:text-4xl font-display font-bold text-[#003B5C]">
+                <CountUp target={200} suffix="+" />
+              </span>
+              <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
+                Cultural Events
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Core Principles Section */}
+      <section className="py-20 bg-stone-100 border-y border-stone-200/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Methodology
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              Foundational Principles
+            </h2>
+            <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Equity and Excellence",
+                desc: "Standardizing educational opportunity to bridge socioeconomic disparities, ensuring every student has equal access to quality resources."
+              },
+              {
+                title: "Student-Teacher Relationships",
+                desc: "Fostering stable, caring mentorships inside the classroom to provide safety, boost motivation, and build student confidence."
+              },
+              {
+                title: "Identity Development",
+                desc: "Integrating maritime folklore and local heritage, helping coastal children take pride in their community identity and background."
+              },
+              {
+                title: "Teaching The Whole Child",
+                desc: "Moving beyond basic text memorization to nurture cognitive, physical, creative, and socio-emotional dimensions simultaneously."
+              }
+            ].map((p, i) => (
+              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200/40 text-left space-y-3">
+                <div className="w-8 h-8 rounded-full bg-[#E0F2FE] text-primary flex items-center justify-center font-mono font-bold text-xs">
+                  0{i + 1}
+                </div>
+                <h4 className="font-display font-bold text-base text-[#003B5C]">{p.title}</h4>
+                <p className="text-xs text-stone-600 leading-relaxed font-sans">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Pillars Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+            Operational Pillars
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            Our Six Core Programs
+          </h2>
+          <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Academic Execution",
+              desc: "Building deep conceptual understanding through daily immersive tutoring. We employ regular formative checkpoints and targeted annual high-stakes exam strategies. Hands-on science and mathematics workshops transform abstract theory into practical, exciting discovery.",
+              badge: "📚 SCHOLASTIC"
+            },
+            {
+              title: "Holistic Student Enrichment",
+              desc: "Unlocking potential outside standard curriculum boundaries. We integrate sports like badminton and Wushu, creative arts circles, and character-building values sessions. Regular field trips transform the world into an interactive, wall-less learning environment.",
+              badge: "🎨 CREATIVE & PHYSICAL"
+            },
+            {
+              title: "Teacher Training",
+              desc: "Empowering educators, the heartbeat of our project. We invest deeply in continuous upskilling workshops focusing on advanced pedagogy, curriculum design, outdoor integration, and research documentation, transforming them into innovative facilitators.",
+              badge: "🛠️ CAPACITY BUILDING"
+            },
+            {
+              title: "Strategic Collaboration",
+              desc: "Forging critical alliances with leading foundations, CSR efforts, and community networks (such as KIMS CSR, Vakkom Moulavi Foundation, and Haiyya) to secure expertise, shared purpose, and a stable financial foundation for long-term scalability.",
+              badge: "🤝 ALLIANCES"
+            },
+            {
+              title: "Community & Parental Engagement",
+              desc: "Bridging the gap between school and home via periodic teacher home visits and parent counseling sessions. We integrate community-wide anti-drug campaigns and child well-being initiatives to build a supportive ecosystem surrounding the student.",
+              badge: "🏡 ECOSYSTEM"
+            },
+            {
+              title: "Cultural Events",
+              desc: "Celebrating heritage and fostering a sense of shared belonging. Festivities like Independence Day, Kerala Piravi, Ramadan, and our Annual Day boost student morale, strengthen community relationships, and establish deep cultural pride.",
+              badge: "🎉 FESTIVALS"
+            }
+          ].map((pillar, i) => (
+            <div key={i} className="p-8 rounded-3xl border border-stone-200/40 text-left flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow bg-white">
+              <div className="space-y-4">
+                <span className="inline-block text-[9px] font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-stone-100 text-stone-600">
+                  {pillar.badge}
+                </span>
+                <h3 className="font-display font-bold text-lg text-[#003B5C]">{pillar.title}</h3>
+                <p className="text-xs text-stone-600 leading-relaxed font-sans">{pillar.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. CTA Section */}
+      <section className="py-16 bg-[#003B5C] text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center space-y-6">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-white">
+            Support Educare's Educational Revolution
+          </h2>
+          <p className="text-stone-300 text-sm max-w-xl mx-auto leading-relaxed">
+            Help us expand our coastal classrooms, fund science workshops, and upskill more teachers. Every contribution fuels direct opportunities for coastal children.
+          </p>
+          <div className="pt-2">
+            <a
+              href="#contact"
+              onClick={() => {
+                window.location.hash = "#contact";
+              }}
+              className="inline-block bg-secondary hover:bg-secondary-light text-white font-display font-semibold text-xs tracking-wider px-8 py-3 rounded-xl transition-all shadow-md uppercase active:scale-95 cursor-pointer"
+            >
+              Get In Touch to Support
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<"home" | "educare">("home");
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === "#educare") {
+        setCurrentView("educare");
+      } else {
+        setCurrentView("home");
+      }
+    };
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentView]);
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -302,7 +589,8 @@ export default function App() {
   const handlePillClick = (index: number) => {
     setActiveCardIndex(index);
     const container = scrollContainerRef.current;
-    const target = programRefs.current[5 + index]; // Target the middle set for stability
+    const N = focusAreas.length;
+    const target = programRefs.current[N + index]; // Target the middle set for stability
     if (container && target) {
       isProgrammaticScrollRef.current = true;
       container.scrollTo({
@@ -321,9 +609,10 @@ export default function App() {
 
     const scrollLeft = container.scrollLeft;
     const clientWidth = container.clientWidth;
+    const N = focusAreas.length;
 
     // Find the current physical closest index
-    let closestIndex = 5;
+    let closestIndex = N;
     let minDistance = Infinity;
     programRefs.current.forEach((el, index) => {
       if (el) {
@@ -340,7 +629,7 @@ export default function App() {
     const nextPhysicalIndex = closestIndex + 1;
     const target = programRefs.current[nextPhysicalIndex];
     const firstCard = programRefs.current[0];
-    const middleCard = programRefs.current[5];
+    const middleCard = programRefs.current[N];
 
     if (target && firstCard && middleCard) {
       const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
@@ -358,15 +647,15 @@ export default function App() {
           return;
         }
 
-        if (nextPhysicalIndex >= 10) {
+        if (nextPhysicalIndex >= 2 * N) {
           container.style.scrollBehavior = "auto";
           container.scrollLeft -= setWidth;
           setTimeout(() => {
             if (container) container.style.scrollBehavior = "smooth";
           }, 15);
-          setActiveCardIndex((nextPhysicalIndex - 5) % 5);
+          setActiveCardIndex((nextPhysicalIndex - N) % N);
         } else {
-          setActiveCardIndex(nextPhysicalIndex % 5);
+          setActiveCardIndex(nextPhysicalIndex % N);
         }
         
         isProgrammaticScrollRef.current = false;
@@ -380,9 +669,10 @@ export default function App() {
 
     const scrollLeft = container.scrollLeft;
     const clientWidth = container.clientWidth;
+    const N = focusAreas.length;
 
     // Find the current physical closest index
-    let closestIndex = 5;
+    let closestIndex = N;
     let minDistance = Infinity;
     programRefs.current.forEach((el, index) => {
       if (el) {
@@ -399,7 +689,7 @@ export default function App() {
     const prevPhysicalIndex = closestIndex - 1;
     const target = programRefs.current[prevPhysicalIndex];
     const firstCard = programRefs.current[0];
-    const middleCard = programRefs.current[5];
+    const middleCard = programRefs.current[N];
 
     if (target && firstCard && middleCard) {
       const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
@@ -417,15 +707,15 @@ export default function App() {
           return;
         }
 
-        if (prevPhysicalIndex < 5) {
+        if (prevPhysicalIndex < N) {
           container.style.scrollBehavior = "auto";
           container.scrollLeft += setWidth;
           setTimeout(() => {
             if (container) container.style.scrollBehavior = "smooth";
           }, 15);
-          setActiveCardIndex((prevPhysicalIndex + 5) % 5);
+          setActiveCardIndex((prevPhysicalIndex + N) % N);
         } else {
-          setActiveCardIndex(prevPhysicalIndex % 5);
+          setActiveCardIndex(prevPhysicalIndex % N);
         }
 
         isProgrammaticScrollRef.current = false;
@@ -441,9 +731,10 @@ export default function App() {
     if (!container) return;
     const scrollLeft = container.scrollLeft;
     const clientWidth = container.clientWidth;
+    const N = focusAreas.length;
 
     // 1. Find the closest card index
-    let closestIndex = 5;
+    let closestIndex = N;
     let minDistance = Infinity;
     programRefs.current.forEach((el, index) => {
       if (el) {
@@ -457,23 +748,23 @@ export default function App() {
       }
     });
 
-    // 2. Map closestIndex to 0..4 for active pill state
-    setActiveCardIndex(closestIndex % 5);
+    // 2. Map closestIndex to active pill state
+    setActiveCardIndex(closestIndex % N);
 
     // 3. Silent wrapping
     const firstCard = programRefs.current[0];
-    const middleCard = programRefs.current[5];
+    const middleCard = programRefs.current[N];
     if (firstCard && middleCard) {
       const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
 
-      if (closestIndex < 5) {
+      if (closestIndex < N) {
         // Jump from Set 1 to equivalent in Set 2
         container.style.scrollBehavior = "auto";
         container.scrollLeft += setWidth;
         setTimeout(() => {
           if (container) container.style.scrollBehavior = "smooth";
         }, 15);
-      } else if (closestIndex >= 10) {
+      } else if (closestIndex >= 2 * N) {
         // Jump from Set 3 to equivalent in Set 2
         container.style.scrollBehavior = "auto";
         container.scrollLeft -= setWidth;
@@ -493,11 +784,12 @@ export default function App() {
     return () => clearInterval(interval);
   }, [isCarouselHovered]);
 
-  // On mount, scroll to the middle set (index 5)
+  // On mount, scroll to the middle set
   useEffect(() => {
     const timer = setTimeout(() => {
       const container = scrollContainerRef.current;
-      const target = programRefs.current[5];
+      const N = focusAreas.length;
+      const target = programRefs.current[N];
       if (container && target) {
         container.style.scrollBehavior = "auto";
         container.scrollLeft = target.offsetLeft - container.offsetLeft - (container.clientWidth - target.clientWidth) / 2;
@@ -549,7 +841,15 @@ export default function App() {
           <div className="flex justify-between h-20 items-center">
             
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-3 group">
+            <a 
+              href="#" 
+              onClick={(e) => { 
+                e.preventDefault(); 
+                setCurrentView("home"); 
+                window.location.hash = ""; 
+              }} 
+              className="flex items-center gap-3 group"
+            >
               <img
                 src={logo}
                 alt="Two-Thirds Community Foundation Logo"
@@ -567,14 +867,23 @@ export default function App() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center gap-8 font-sans font-medium text-sm text-[#003B5C]">
-              <a href="#about" className="hover:text-secondary transition-colors">About Us</a>
-              <a href="#sdg" className="hover:text-secondary transition-colors">SDG Alignment</a>
-              <a href="#reality" className="hover:text-secondary transition-colors">The Problem</a>
-              <a href="#programs" className="hover:text-secondary transition-colors">Our Focus</a>
-              <a href="#team" className="hover:text-secondary transition-colors">Team</a>
-              <a href="#financials" className="hover:text-secondary transition-colors">Financials</a>
+              <a href="#about" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">About Us</a>
+              <a href="#sdg" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">SDG Alignment</a>
+              <a href="#reality" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">The Problem</a>
+              <a href="#programs" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Our Focus</a>
+              <a 
+                href="#educare" 
+                className={`hover:text-secondary transition-colors font-bold ${
+                  currentView === "educare" ? "text-secondary border-b-2 border-secondary" : ""
+                }`}
+              >
+                Educare
+              </a>
+              <a href="#team" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Team</a>
+              <a href="#financials" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Financials</a>
               <a
                 href="#contact"
+                onClick={() => setCurrentView("home")}
                 className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-md active:scale-95 uppercase"
               >
                 Involved
@@ -606,49 +915,56 @@ export default function App() {
               <div className="px-4 pt-2 pb-6 space-y-3 flex flex-col text-[#003B5C] font-semibold text-sm">
                 <a
                   href="#about"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="py-2 border-b border-stone-100 hover:text-secondary"
                 >
                   About Us
                 </a>
                 <a
                   href="#sdg"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="py-2 border-b border-stone-100 hover:text-secondary"
                 >
                   SDG Alignment
                 </a>
                 <a
                   href="#reality"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="py-2 border-b border-stone-100 hover:text-secondary"
                 >
                   The Problem
                 </a>
                 <a
                   href="#programs"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="py-2 border-b border-stone-100 hover:text-secondary"
                 >
                   Our Focus
                 </a>
                 <a
+                  href="#educare"
+                  onClick={() => { setIsMobileMenuOpen(false); }}
+                  className="py-2 border-b border-stone-100 hover:text-secondary font-bold text-secondary"
+                >
+                  Educare
+                </a>
+                <a
                   href="#team"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="py-2 border-b border-stone-100 hover:text-secondary"
                 >
                   Team
                 </a>
                 <a
                   href="#financials"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="py-2 border-b border-stone-100 hover:text-secondary"
                 >
                   Financials
                 </a>
                 <a
                   href="#contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
                   className="bg-primary text-white text-center py-3 rounded-xl hover:bg-primary-light transition-all shadow-md uppercase text-xs font-bold tracking-wider"
                 >
                   Get Involved
@@ -659,12 +975,14 @@ export default function App() {
         </AnimatePresence>
       </nav>
 
-      {/* 2. Hero Section */}
-      <section 
-        id="home" 
-        ref={heroRef} 
-        className="relative h-[130vh] md:h-[150vh] bg-[#E0F2FE]"
-      >
+      {currentView === "home" ? (
+        <>
+          {/* 2. Hero Section */}
+          <section 
+            id="home" 
+            ref={heroRef} 
+            className="relative h-[130vh] md:h-[150vh] bg-[#E0F2FE]"
+          >
         {/* Sticky viewport container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
           
@@ -1149,6 +1467,18 @@ export default function App() {
                         <span className="font-mono font-bold text-[9px] uppercase text-primary tracking-wider block">Accomplished status:</span>
                         <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
                       </div>
+
+                      {area.id === "educare" && (
+                        <div className="pt-1">
+                          <a
+                            href="#educare"
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
+                          >
+                            Explore Full Initiative
+                            <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                          </a>
+                        </div>
+                      )}
                     </div>
 
                     {/* Right Column: Image */}
@@ -1547,6 +1877,10 @@ export default function App() {
 
         </div>
       </section>
+        </>
+      ) : (
+        <EducarePage />
+      )}
 
       {/* 10. Footer */}
       <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
