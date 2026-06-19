@@ -13,8 +13,7 @@ import {
   ChevronRight,
   ChevronLeft,
   Info,
-  ArrowDown,
-  ArrowLeft
+  ArrowDown
 } from "lucide-react";
 
 // Import local images from assets
@@ -306,22 +305,7 @@ function EducarePage() {
         </div>
       </section>
 
-      {/* Back Link Floating Bar */}
-      <div className="bg-white/80 backdrop-blur-md sticky top-20 z-45 border-b border-stone-200 py-3.5 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.hash = "";
-            }}
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#003B5C] hover:text-secondary group transition-colors uppercase tracking-wider font-display cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
-            Back to Home
-          </a>
-        </div>
-      </div>
+
 
       {/* 2. Who We Are Section */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center">
