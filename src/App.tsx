@@ -568,11 +568,15 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 40;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -858,8 +862,8 @@ export default function App() {
     <div className="min-h-screen bg-bg-coastal text-[#1A2D37] font-sans antialiased selection:bg-primary-container selection:text-primary">
 
       {/* 1. Navbar */}
-      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? "liquid-glass border-b border-white/20 shadow-md"
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-[background-color,border-color,box-shadow] duration-300 ${isScrolled
+          ? "bg-white/95 border-b border-stone-200/80 shadow-sm"
           : "bg-transparent border-b border-transparent shadow-none"
         }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
