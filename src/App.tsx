@@ -1234,10 +1234,10 @@ function HomePage() {
               />
             </div>
 
-            {/* Boats Layer (Midground) - mix-blend-multiply removed for performance */}
+            {/* Boats Layer (Midground) */}
             <div
               style={{ transform: `translateY(${yMid}px)` }}
-              className="absolute inset-0 w-full h-[130%] will-change-transform"
+              className="absolute inset-0 w-full h-[130%] mix-blend-multiply will-change-transform"
             >
               <img
                 src={parallaxBoats}
@@ -1279,8 +1279,8 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Foreground Mangroves Layer (Static - no motion needed) - mix-blend-multiply removed for performance */}
-            <div className="absolute inset-0 w-full h-full z-20">
+            {/* Foreground Mangroves Layer (Static - no motion needed) */}
+            <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
               <img
                 src={parallaxForeground}
                 alt="Mangrove foliage silhouettes"
@@ -1317,17 +1317,17 @@ function HomePage() {
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.04),transparent_70%)] pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
 
-        {/* Decorative fish silhouettes on the sides - mix-blend-multiply removed for performance */}
-        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none z-0">
+        {/* Decorative fish silhouettes on the sides */}
+        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
           <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
         </div>
-        <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none z-0">
+        <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
           <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
         </div>
-        <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none z-0">
+        <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
           <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-45" />
         </div>
-        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none z-0">
+        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
           <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
         </div>
 
