@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 import {
   ShieldCheck,
   Mail,
@@ -592,10 +592,16 @@ export default function App() {
     offset: ["start start", "end start"]
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1.0], [0, 180]);
-  const yMid = useTransform(scrollYProgress, [0, 1.0], [0, 90]);
-  const yText = useTransform(scrollYProgress, [0, 1.0], [-30, 480]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    damping: 50,
+    stiffness: 300,
+    mass: 0.5
+  });
+
+  const yBg = useTransform(smoothProgress, [0, 1.0], [0, 180]);
+  const yMid = useTransform(smoothProgress, [0, 1.0], [0, 90]);
+  const yText = useTransform(smoothProgress, [0, 1.0], [-30, 480]);
+  const opacityText = useTransform(smoothProgress, [0, 0.65], [1, 0]);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
