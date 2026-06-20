@@ -941,9 +941,9 @@ function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const yBg = -(scrollTop || 0) * 0.08;
-  const yMid = -(scrollTop || 0) * 0.16;
-  const yText = -30 - (scrollTop || 0) * 0.5;
+  const yBg = -80 + (scrollTop || 0) * 0.06;
+  const yMid = -120 + (scrollTop || 0) * 0.1;
+  const yText = -30 + (scrollTop || 0) * 0.75;
   const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
   // Clipboard Copied States
