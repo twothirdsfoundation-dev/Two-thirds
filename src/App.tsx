@@ -941,9 +941,9 @@ function HomePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const yBg = (scrollTop || 0) * 0.3;
-  const yMid = (scrollTop || 0) * 0.15;
-  const yText = -30 + (scrollTop || 0) * 0.75;
+  const yBg = -(scrollTop || 0) * 0.08;
+  const yMid = -(scrollTop || 0) * 0.16;
+  const yText = -30 - (scrollTop || 0) * 0.5;
   const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
   // Clipboard Copied States
@@ -1225,7 +1225,7 @@ function HomePage() {
             {/* Sky Layer (Background) */}
             <div
               style={{ transform: `translateY(${yBg}px)` }}
-              className="absolute inset-0 w-full h-[130%] will-change-transform"
+              className="absolute top-0 left-0 w-full h-[130%] will-change-transform"
             >
               <img
                 src={parallaxSky}
@@ -1237,7 +1237,7 @@ function HomePage() {
             {/* Boats Layer (Midground) */}
             <div
               style={{ transform: `translateY(${yMid}px)` }}
-              className="absolute inset-0 w-full h-[130%] mix-blend-multiply will-change-transform"
+              className="absolute top-0 left-0 w-full h-[130%] mix-blend-multiply will-change-transform"
             >
               <img
                 src={parallaxBoats}
