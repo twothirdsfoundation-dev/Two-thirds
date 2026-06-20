@@ -942,7 +942,7 @@ function HomePage() {
   }, []);
 
   const yBg = -80 + (scrollTop || 0) * 0.06;
-  const yMid = -120 + (scrollTop || 0) * 0.1;
+  const yMid = -40 + (scrollTop || 0) * 0.08;
   const yText = -30 + (scrollTop || 0) * 0.75;
   const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
