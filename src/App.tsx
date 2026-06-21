@@ -1513,10 +1513,10 @@ function HomePage() {
                 The Two-Thirds Story
               </span>
               <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-primary leading-tight">
-                Two-thirds of this earth is water.
+                Two-thirds of our world is salt and tide.
               </h2>
               <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
-                And for millions of people, that water isn't a view — it's a livelihood, an identity, a way of life passed down before anyone thought to write it down.
+                For those who live where the waves break, the ocean is neither a view nor a boundary. It is an inheritance, a living lexicon, and a quiet rhythm of survival woven into the shoreline long before history was first recorded.
               </p>
               
               <div className="pt-4">
@@ -1536,24 +1536,24 @@ function HomePage() {
               {/* Highlight card 1: Indigenous Knowledge */}
               <div className="bg-secondary-container/40 border-l-4 border-secondary p-6 sm:p-8 rounded-r-2xl shadow-sm">
                 <p className="font-display font-medium text-lg sm:text-xl text-[#003B5C] leading-relaxed italic font-serif">
-                  "Fishermen who can read a storm three hours before it hits. Families who know which currents carry fish and which carry danger. Communities sitting on generations of knowledge that no university has ever thought to study."
+                  "An elder who reads the breath of the monsoon hours before it breaks. A mother who knows which currents carry life, and which carry danger. Entire shores holding a deep, unwritten library of ecological wisdom that no modern university has ever thought to study."
                 </p>
               </div>
 
               {/* Bold transition statement */}
               <div className="py-2">
                 <p className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight leading-snug">
-                  These are the people we mean when we say two-thirds.
+                  This living memory is the silent depth we stand with when we say two-thirds.
                 </p>
               </div>
 
               {/* Copy block 2: Systems Critique */}
               <div className="space-y-6 text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
                 <p>
-                  And for too long, the systems built to serve people — the schools, the policies, the development programs — were never really built for them. They arrived with answers to questions nobody asked, solutions to problems nobody defined, and left without understanding what was actually needed.
+                  Yet for decades, the systems designed to support these shores were built in rooms far from the scent of salt. Well-meaning policies, rigid curriculums, and standard development schemes arrived with pre-packaged answers to questions never asked—trying to fix problems they never took the time to feel or understand.
                 </p>
                 <p>
-                  Eight years ago, Sajid started showing up anyway. Sitting with communities. Listening before speaking. Understanding before acting.
+                  Eight years ago, Sajid chose a different path. He showed up on the shores, sat on the sand, and simply listened—believing that the questions of the coastline were far more valuable than any answers brought from the mainland.
                 </p>
               </div>
 
@@ -1563,16 +1563,16 @@ function HomePage() {
                   <Compass className="w-6 h-6 text-accent-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-lg text-primary mb-1">Grassroots Birth</h4>
+                  <h4 className="font-display font-bold text-lg text-primary mb-1">Born of the Coast</h4>
                   <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                    Two-Thirds Community Foundation is what that became. Built not from remote boardrooms, but from thousands of hours spent on the sand, co-designing climate resilience alongside those who live closest to the tides.
+                    Two-Thirds Community Foundation was born from that patience. We do not impose models from the outside; we sit, learn, and co-create ecological, educational, and social resilience from the sand up.
                   </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
       <section 
