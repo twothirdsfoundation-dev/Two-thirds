@@ -1553,7 +1553,7 @@ function HomePage() {
                   Yet for decades, the systems designed to support these shores were built in rooms far from the scent of salt. Well-meaning policies, rigid curriculums, and standard development schemes arrived with pre-packaged answers to questions never asked—trying to fix problems they never took the time to feel or understand.
                 </p>
                 <p>
-                  Eight years ago, Sajid chose a different path. He showed up on the shores, sat on the sand, and simply listened—believing that the questions of the coastline were far more valuable than any answers brought from the mainland.
+                  Eight years ago, the founder of the foundation chose a different path: to show up on the shores and simply listen—valuing the questions of the coastline far above any answers brought from the mainland.
                 </p>
               </div>
 
