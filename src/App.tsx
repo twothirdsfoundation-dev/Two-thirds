@@ -1576,7 +1576,7 @@ function HomePage() {
 
       {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
       <section 
-        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat"
+        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{ backgroundImage: `url(${coastalApproachBg})` }}
       >
         {/* Dark overlay for text contrast */}
