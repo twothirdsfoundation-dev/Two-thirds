@@ -37,6 +37,7 @@ import parallaxBoats from "./assets/parallax-boats.png";
 import parallaxForeground from "./assets/parallax-foreground.png";
 import manifestoFish from "./assets/manifesto-fish.png";
 import educareClassroom from "./assets/educare-classroom.png";
+import coastalApproachBg from "./assets/coastal-approach-bg.png";
 
 // Import Environment Initiative images
 import envImage1 from "./assets/Enviroment/image 1.webp";
@@ -1566,11 +1567,36 @@ function HomePage() {
                   <p className="text-stone-600 text-sm leading-relaxed font-sans">
                     Two-Thirds Community Foundation is what that became. Built not from remote boardrooms, but from thousands of hours spent on the sand, co-designing climate resilience alongside those who live closest to the tides.
                   </p>
-                </div>
               </div>
-
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+      {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
+      <section 
+        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${coastalApproachBg})` }}
+      >
+        {/* Dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-[#1A2D37]/75 mix-blend-multiply z-0" />
+        
+        {/* Subtle decorative top and bottom gradients */}
+        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#FAF9F6]/10 to-transparent pointer-events-none z-1" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none z-1" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+          <span className="inline-block text-[#2DD4BF] font-mono text-xs font-bold uppercase tracking-wider">
+            Our Approach
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight leading-tight max-w-2xl mx-auto">
+            Leveraging simultaneous environmental &amp; community benefits
+          </h2>
+          <div className="w-12 h-1 bg-[#2DD4BF] mx-auto rounded-full" />
+          <p className="text-stone-100 text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-3xl mx-auto font-medium">
+            Two-Thirds aims to secure local ecosystems and build community-wellbeing through integrated, grassroots-led models. We combine traditional marine wisdom with modern research to address environmental and livelihood concerns—working hand-in-hand with coastal panchayats, fishing families, and local youth to co-design active resilience.
+          </p>
         </div>
       </section>
 

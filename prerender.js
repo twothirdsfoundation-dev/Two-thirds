@@ -30,6 +30,9 @@ async function run() {
     // Replace absolute relative "/assets/" in HTML
     phpMarkup = phpMarkup.split('"/assets/').join('"' + wpAssetPathPrefix);
     phpMarkup = phpMarkup.split("'/assets/").join("'" + wpAssetPathPrefix);
+    phpMarkup = phpMarkup.split('url(/assets/').join('url(' + wpAssetPathPrefix);
+    phpMarkup = phpMarkup.split('url("/assets/').join('url("' + wpAssetPathPrefix);
+    phpMarkup = phpMarkup.split("url('/assets/").join("url('" + wpAssetPathPrefix);
 
     // Read index.php from template
     const templateIndexPhpPath = path.join(templateDir, 'index.php');
