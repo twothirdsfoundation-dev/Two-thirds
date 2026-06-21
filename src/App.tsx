@@ -249,7 +249,12 @@ function CountUp({
   suffix?: string;
   duration?: number;
 }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(() => {
+    if (typeof window === "undefined") {
+      return target;
+    }
+    return 0;
+  });
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -273,7 +278,7 @@ function CountUp({
     return () => clearInterval(timer);
   }, [isInView, target, duration]);
 
-  return <span ref={ref}>{count}{suffix}</span>;
+  return <span ref={ref} suppressHydrationWarning={true}>{count}{suffix}</span>;
 }
 
 function EducarePage() {
@@ -1090,6 +1095,7 @@ function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
 
   const [scrollTop, setScrollTop] = useState(0);
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -1497,83 +1503,74 @@ function HomePage() {
           <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
-
-          <div className="text-center space-y-12">
-            <div className="space-y-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            {/* Left side: Large Typographic Hook & CTA (Sticky on desktop) */}
+            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
               <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-                The Two-Thirds Manifesto
+                The Two-Thirds Story
               </span>
-              <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#003B5C] leading-tight">
-                Our Relationship with the Sea
+              <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-primary leading-tight">
+                Two-thirds of this earth is water.
               </h2>
-              <div className="w-16 h-1 bg-secondary mx-auto rounded-full mt-4" />
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                And for millions of people, that water isn't a view — it's a livelihood, an identity, a way of life passed down before anyone thought to write it down.
+              </p>
+              
+              <div className="pt-4">
+                <button
+                  onClick={() => setIsStoryModalOpen(true)}
+                  className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+                >
+                  Our Story
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
 
-            <div className="space-y-8 text-stone-700 text-lg leading-relaxed font-sans text-left md:text-justify max-w-3xl mx-auto">
-              <p className="font-display font-medium text-xl sm:text-2xl text-[#003B5C] leading-relaxed text-center italic font-serif">
-                "The ocean covers more than two-thirds of our planet. It feeds nations, powers economies, connects continents, and sustains countless lives. Along its shores live communities whose knowledge, resilience, and traditions have shaped humanity's relationship with the sea for generations."
-              </p>
-
-              <p>
-                Yet many of these communities stand at a crossroads. As the world changes, they face new challenges and new opportunities. Access to education, sustainable livelihoods, innovation, environmental stewardship, and community development has never been more important.
-              </p>
-
-              <p>
-                We believe that the people who live closest to the water deserve the opportunity to thrive while preserving the identity, culture, and wisdom that make their communities unique. Our mission is to support coastal communities in building a future that is prosperous, resilient, and sustainable—one that honors both people and the oceans they call home.
-              </p>
-
-              <p>
-                Together, we work to strengthen livelihoods, empower future generations, protect coastal ecosystems, and create opportunities that allow communities to flourish without leaving their heritage behind.
-              </p>
-
-              <p className="font-display font-bold text-secondary text-center text-xl mt-12 pt-6 border-t border-stone-200/60">
-                Because the two-thirds of the world covered by water deserve communities that are empowered to shape their own future.
-              </p>
-            </div>
-          </div>
-
-          {/* Vision & Mission Grid */}
-          <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-stone-200/60">
-
-            <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-0 w-2 h-full bg-primary" />
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-primary-container text-primary flex items-center justify-center">
-                  <Waves className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-display font-bold text-xl text-[#003B5C]">
-                  Our Vision
-                </h3>
-                <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                  A world where coastal and marginalized traditional communities live with genuine dignity, access to global opportunities, and localized climate resilience.
+            {/* Right side: Storyteller narrative details */}
+            <div className="lg:col-span-7 space-y-8">
+              
+              {/* Highlight card 1: Indigenous Knowledge */}
+              <div className="bg-secondary-container/40 border-l-4 border-secondary p-6 sm:p-8 rounded-r-2xl shadow-sm">
+                <p className="font-display font-medium text-lg sm:text-xl text-[#003B5C] leading-relaxed italic font-serif">
+                  "Fishermen who can read a storm three hours before it hits. Families who know which currents carry fish and which carry danger. Communities sitting on generations of knowledge that no university has ever thought to study."
                 </p>
               </div>
-              <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
-                Empowering Shorelines
-              </div>
-            </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/60 relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-0 w-2 h-full bg-secondary" />
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center">
-                  <Anchor className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="font-display font-bold text-xl text-[#003B5C]">
-                  Our Mission
-                </h3>
-                <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                  To work hand-in-hand alongside vulnerable communities to build sustainable decentralized livelihoods, advance high-school education, empower coastal women, and actively secure environment margins—through mutual grassroots trust.
+              {/* Bold transition statement */}
+              <div className="py-2">
+                <p className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight leading-snug">
+                  These are the people we mean when we say two-thirds.
                 </p>
               </div>
-              <div className="pt-6 text-[10px] font-mono text-stone-400 uppercase tracking-widest border-t border-stone-100 mt-6">
-                Co-Created Solutions
+
+              {/* Copy block 2: Systems Critique */}
+              <div className="space-y-6 text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
+                <p>
+                  And for too long, the systems built to serve people — the schools, the policies, the development programs — were never really built for them. They arrived with answers to questions nobody asked, solutions to problems nobody defined, and left without understanding what was actually needed.
+                </p>
+                <p>
+                  Eight years ago, Sajid started showing up anyway. Sitting with communities. Listening before speaking. Understanding before acting.
+                </p>
               </div>
+
+              {/* Highlight card 2: Sajid & birth of foundation */}
+              <div className="bg-accent-cyan-bg/30 border border-accent-cyan/10 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-4">
+                <div className="p-3 bg-[#E6FFFA] rounded-xl border border-accent-cyan/15 text-accent-cyan shrink-0">
+                  <Compass className="w-6 h-6 text-accent-cyan" />
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-lg text-primary mb-1">Grassroots Birth</h4>
+                  <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                    Two-Thirds Community Foundation is what that became. Built not from remote boardrooms, but from thousands of hours spent on the sand, co-designing climate resilience alongside those who live closest to the tides.
+                  </p>
+                </div>
+              </div>
+
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -2279,6 +2276,153 @@ function HomePage() {
 
         </div>
       </section>
+
+      {/* Narrative Story Modal */}
+      <AnimatePresence>
+        {isStoryModalOpen && (
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsStoryModalOpen(false)}
+              className="fixed inset-0 bg-primary-dark/70 backdrop-blur-sm"
+            />
+
+            {/* Modal Body Container */}
+            <div className="flex min-h-screen items-center justify-center p-4 sm:p-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="relative w-full max-w-2xl bg-bg-coastal rounded-3xl shadow-2xl overflow-hidden border border-stone-200 z-10"
+              >
+                {/* Header banner */}
+                <div className="bg-primary text-white p-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_70%)] pointer-events-none" />
+                  <button
+                    onClick={() => setIsStoryModalOpen(false)}
+                    className="absolute top-6 right-6 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                  <span className="text-[10px] font-mono tracking-widest text-secondary font-bold uppercase block mb-1">
+                    Eight Years of Listening
+                  </span>
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl leading-snug">
+                    The Journey of Two-Thirds
+                  </h3>
+                  <p className="text-white/80 text-xs sm:text-sm font-sans mt-2 max-w-lg">
+                    How an individual showing up with questions became a resilient, community-led foundation across Kerala's coastlines.
+                  </p>
+                </div>
+
+                {/* Timeline content */}
+                <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto space-y-8 scrollbar-none">
+                  
+                  {/* Timeline line */}
+                  <div className="relative border-l-2 border-stone-200 pl-6 sm:pl-8 ml-3 space-y-8">
+                    
+                    {/* Item 1 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-secondary flex items-center justify-center text-secondary shadow-sm">
+                        <Compass className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-secondary-container text-secondary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2018 • Showing Up
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Listening on the Shores</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Ahmed Sajid starts visiting remote Kerala fishing hamlets, sitting on the shores and listening to the stories and struggles of the traditional fishers.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 2 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary shadow-sm">
+                        <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-primary-container text-primary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2020 • First Sparks
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Evening Circles & Women's Groups</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Starting evening study circles for students to prevent early dropouts and organizing the first women's self-help groups to build financial independence.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 3 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-accent-cyan flex items-center justify-center text-accent-cyan shadow-sm">
+                        <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-accent-cyan-bg text-accent-cyan font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2022 • Expanding Access
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Structured Curriculum & Health Camps</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Introducing structured curriculum aids, youth mentorship circles, and organizing pediatrics camps in remote coastal areas.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 4 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary shadow-sm">
+                        <Anchor className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-primary-container text-primary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2024 • Co-Created Models
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Decentralized Livelihoods</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Building decentralized dryer cooperatives and seaweed aquaculture networks to secure sustainable livelihoods.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 5 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-secondary flex items-center justify-center text-secondary shadow-sm">
+                        <Waves className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-secondary-container text-secondary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2026 • Formally Incorporated
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Two-Thirds Community Foundation</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Formally incorporating as a Section 8 NGO, carrying forward the grassroots trust of coastal Kerala.
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* Footer close */}
+                <div className="bg-stone-50 border-t border-stone-200 px-6 py-4 flex justify-end">
+                  <button
+                    onClick={() => setIsStoryModalOpen(false)}
+                    className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all cursor-pointer uppercase shadow-sm"
+                  >
+                    Close Story
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
