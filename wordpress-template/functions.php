@@ -40,4 +40,15 @@ function twothirds_theme_scripts() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'twothirds_theme_scripts' );
+
+/**
+ * Filter the script tag to add type="module" for Vite's ES module enqueuing.
+ */
+function twothirds_add_module_to_script( $tag, $handle, $src ) {
+    if ( 'twothirds-js' === $handle ) {
+        $tag = '<script type="module" src="' . esc_url( $src ) . '" id="twothirds-js-js"></script>';
+    }
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'twothirds_add_module_to_script', 10, 3 );
 ?>
