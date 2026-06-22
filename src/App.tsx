@@ -2784,10 +2784,17 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-8 font-sans font-medium text-sm text-[#003B5C]">
-            <a href="#about" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">About Us</a>
-            <a href="#sdg" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">SDG Alignment</a>
-            <a href="#reality" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">The Problem</a>
-            <a href="#programs" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Our Focus</a>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentView("home");
+                window.location.hash = "";
+              }}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "home" ? "text-secondary border-b-2 border-secondary" : ""}`}
+            >
+              Home
+            </a>
             
             {/* Educare Dropdown Submenu */}
             <div className="relative group py-2">
@@ -2837,14 +2844,12 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               Women's Empowerment
             </a>
 
-            <a href="#team" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Team</a>
-            <a href="#financials" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Financials</a>
             <a
               href="#contact"
               onClick={() => setCurrentView("home")}
               className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-md active:scale-95 uppercase"
             >
-              Involved
+              Get Involved
             </a>
           </div>
 
@@ -2872,32 +2877,11 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
           >
             <div className="px-4 pt-2 pb-6 space-y-3 flex flex-col text-[#003B5C] font-semibold text-sm">
               <a
-                href="#about"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
-                className="py-2 border-b border-stone-100 hover:text-secondary"
+                href="#"
+                onClick={(e) => { e.preventDefault(); setCurrentView("home"); setIsMobileMenuOpen(false); window.location.hash = ""; }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "home" ? "font-bold text-secondary" : ""}`}
               >
-                About Us
-              </a>
-              <a
-                href="#sdg"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
-                className="py-2 border-b border-stone-100 hover:text-secondary"
-              >
-                SDG Alignment
-              </a>
-              <a
-                href="#reality"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
-                className="py-2 border-b border-stone-100 hover:text-secondary"
-              >
-                The Problem
-              </a>
-              <a
-                href="#programs"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
-                className="py-2 border-b border-stone-100 hover:text-secondary"
-              >
-                Our Focus
+                Home
               </a>
 
               {/* Mobile Educare sub-menu */}
@@ -2932,20 +2916,6 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
                 className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "women-empowerment" ? "font-bold text-secondary" : ""}`}
               >
                 Women's Empowerment
-              </a>
-              <a
-                href="#team"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
-                className="py-2 border-b border-stone-100 hover:text-secondary"
-              >
-                Team
-              </a>
-              <a
-                href="#financials"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
-                className="py-2 border-b border-stone-100 hover:text-secondary"
-              >
-                Financials
               </a>
               <a
                 href="#contact"
