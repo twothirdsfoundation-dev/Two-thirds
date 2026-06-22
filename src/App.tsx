@@ -1249,7 +1249,7 @@ function WomenEmpowermentPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
             <Anchor className="w-3.5 h-3.5 text-secondary" />
-            PENMA Initiative
+            Coastal Women's Initiative
           </span>
           <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight">
             WOMEN'S EMPOWERMENT
@@ -1260,7 +1260,7 @@ function WomenEmpowermentPage() {
           </p>
         </div>
       </section>
-
+ 
       {/* Main Content */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         {/* Intro */}
@@ -1270,13 +1270,13 @@ function WomenEmpowermentPage() {
               Womanhood &amp; Solidarity
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
-              Penma: Nurturing Strength on the Shoreline
+              Coastal Solidarity: Nurturing Strength on the Shoreline
             </h2>
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
               The life of women in coastal Perumathura is shaped by a complex interplay of environmental vulnerability, economic precarity, and deep-rooted social structures. The collapse of fishing due to climate change has eroded traditional household income, forcing women into insecure, low-wage work while managing heavy domestic responsibilities.
             </p>
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-              <strong>PENMA (Womanhood)</strong> was launched in response to provide economic and social security to women. Since its inception in 2010, Penma has stood as a pillar of strength and support within the community, offering a cooperative voice for women to organize, learn, and grow.
+              Our <strong>Women's Solidarity and Empowerment Initiative</strong> was launched in response to provide economic and social security to women. Since its inception in 2010, this movement has stood as a pillar of strength and support within the community, offering a cooperative voice for women to organize, learn, and grow.
             </p>
           </div>
           <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm grid grid-cols-2 gap-6 text-center">
@@ -1316,7 +1316,7 @@ function WomenEmpowermentPage() {
           </div>
         </div>
 
-        {/* Future Proposed Projects (Copied from Snehatheeram Penma Page) */}
+        {/* Future Proposed Projects */}
         <div className="bg-[#FFF9E6]/50 border border-amber-200/40 p-8 sm:p-12 rounded-3xl space-y-8 text-left">
           <div className="space-y-3">
             <span className="text-amber-700 font-mono text-xs font-bold uppercase tracking-wider">Proposed Programmes (2026-2027)</span>
