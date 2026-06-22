@@ -12,6 +12,7 @@ import {
   Landmark,
   ChevronRight,
   ChevronLeft,
+  ChevronDown,
   Info,
   ArrowDown,
   BookOpen,
@@ -108,16 +109,16 @@ const teamMembers = [
 
 const focusAreas: FocusArea[] = [
   {
-    id: "edu",
-    title: "Education & Youth",
+    id: "educare",
+    title: "Education Initiative",
     icon: BookOpen,
-    tagline: "Ensuring coastal children stay in school and dream big",
-    description: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote coastal fishing villages. We provide learning kits and career workshops to curb high dropout rates.",
-    accomplishments: "Supported 240+ students with study-mentorship circles.",
-    image: coastalEducation
+    tagline: "Reimagining learning and growth for coastal children",
+    description: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote coastal fishing villages. We combine academic tutoring with community engagement to transform learning spaces.",
+    accomplishments: "Empowered 350+ students with academic tutoring, anti-drug awareness, and scholastic awards.",
+    image: educareClassroom
   },
   {
-    id: "women",
+    id: "women-empowerment",
     title: "Women’s Empowerment",
     icon: Anchor,
     tagline: "Skill training, SHGs, leadership, and financial literacy",
@@ -151,15 +152,6 @@ const focusAreas: FocusArea[] = [
     description: "Organizing mobile health clinics, distributing fresh iron-fortified multi-nutrient food packets list, and creating hygienic community sanitation layouts in remote coastal hamlets.",
     accomplishments: "Conducted 15+ remote check-up camps with expert pediatricians.",
     image: healthNutrition
-  },
-  {
-    id: "educare",
-    title: "Educare Initiative",
-    icon: GraduationCap,
-    tagline: "Reimagining learning and growth for coastal children",
-    description: "A comprehensive framework bridging academic execution, teacher training, and community-parental engagement to transform classrooms into spaces of holistic growth.",
-    accomplishments: "Empowered 350+ students with academic tutoring, anti-drug awareness, and scholastic awards.",
-    image: educareClassroom
   }
 ];
 
@@ -1091,6 +1083,278 @@ function EnvironmentPage() {
   );
 }
 
+function InternshipsPage() {
+  const internships = [
+    {
+      title: "Data Analyst Intern",
+      description: "Transform raw data into actionable insights that drive our mission forward.",
+      link: "https://drive.google.com/file/d/1TK9RZmn3Lq_iqF445McTvS5uQKem5Hok/view?usp=drive_link",
+      icon: Activity,
+      color: "border-sky-300 hover:border-sky-500",
+      iconBg: "bg-sky-50 text-sky-600"
+    },
+    {
+      title: "Education Intern",
+      description: "Help shape the future by creating engaging learning experiences for the next generation.",
+      link: "https://drive.google.com/file/d/11St5XT6q1CKfrNonLUyhYgvBwaCJafm2/view?usp=drive_link",
+      icon: BookOpen,
+      color: "border-teal-300 hover:border-teal-500",
+      iconBg: "bg-teal-50 text-teal-600"
+    },
+    {
+      title: "Health Intern",
+      description: "Champion community well-being and contribute to impactful public health initiatives.",
+      link: "https://drive.google.com/file/d/1eQOdKbbIemivp1KFhPTyZZzBjkk-dLS7/view?usp=drive_link",
+      icon: LifeBuoy,
+      color: "border-red-300 hover:border-red-500",
+      iconBg: "bg-red-50 text-red-600"
+    },
+    {
+      title: "Livelihood Intern",
+      description: "Empower individuals and communities by developing sustainable skills and economic opportunities.",
+      link: "https://drive.google.com/file/d/1Lm2RXmpwoysKzJSLEPsmhagHI6oekd12/view?usp=drive_link",
+      icon: Fish,
+      color: "border-amber-300 hover:border-amber-500",
+      iconBg: "bg-amber-50 text-amber-600"
+    },
+    {
+      title: "Culture Research Intern",
+      description: "Become a storyteller for heritage, helping to document and preserve unique cultural traditions.",
+      link: "https://drive.google.com/file/d/10R3m2Q9GjGR_w73rsmbETnp1mqxABfg3/view?usp=drive_link",
+      icon: Compass,
+      color: "border-indigo-300 hover:border-indigo-500",
+      iconBg: "bg-indigo-50 text-indigo-600"
+    },
+    {
+      title: "Research Intern - Women Empowerment",
+      description: "Investigate, analyze, and advocate for solutions that advance gender equality and women’s rights.",
+      link: "https://drive.google.com/file/d/1lOzsfqv92BB4fOR8TnXiM9MvuetXqyPv/view?usp=drive_link",
+      icon: Anchor,
+      color: "border-rose-300 hover:border-rose-500",
+      iconBg: "bg-rose-50 text-rose-600"
+    }
+  ];
+
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* Hero Banner */}
+      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden bg-[#0A3B5C]">
+        <img
+          src={coastalEducation}
+          alt="Coastal Mentorship Kerala"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 filter brightness-95"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#0A3B5C]/75 to-transparent" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <GraduationCap className="w-3.5 h-3.5 text-secondary" />
+            Scholarly Opportunities
+          </span>
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight">
+            INTERNSHIPS
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
+            Bridging the gap between academic learning and practical application, fostering the next generation of scholars and practitioners committed to social impact.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-primary">
+            Research &amp; Implementation Opportunities
+          </h2>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            We are seeking qualified interns to join our multidisciplinary research and implementation team. This program provides a scholarly platform to investigate critical issues in community welfare and empowerment. Interns will employ different methodologies to contribute to specialized projects across six focal areas.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {internships.map((intern, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className={`bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm flex flex-col justify-between hover:shadow-md hover:scale-[1.01] transition-all duration-300 ${intern.color}`}
+            >
+              <div className="space-y-4">
+                <div className={`p-3 rounded-2xl w-fit ${intern.iconBg}`}>
+                  <intern.icon className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-primary">{intern.title}</h3>
+                <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                  {intern.description}
+                </p>
+              </div>
+              <div className="pt-6">
+                <a
+                  href={intern.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center inline-block bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider py-3 rounded-xl transition-all shadow-sm active:scale-95 uppercase"
+                >
+                  Learn More &amp; Apply
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function WomenEmpowermentPage() {
+  const activities = [
+    {
+      title: "Entrepreneurship & Craft Co-ops",
+      description: "Trained 100+ women in producing eco-friendly bags, skillfully linking traditional craftsmanship with environmental sustainability and income generation.",
+      icon: Anchor,
+      accent: "text-amber-600 bg-amber-50"
+    },
+    {
+      title: "Community Health & Welfare",
+      description: "Organizing cancer detection camps and health awareness classes in collaboration with the State Chief Minister's Cancer Detection Programs and Snehita Women's Health Foundation.",
+      icon: LifeBuoy,
+      accent: "text-red-600 bg-red-50"
+    },
+    {
+      title: "Digital & Financial Literacy",
+      description: "Mobilizing micro-savings Self-Help Groups (SHGs) and training women in digital banking (UPI) and micro-enterprise financial management.",
+      icon: ShieldCheck,
+      accent: "text-teal-600 bg-teal-50"
+    },
+    {
+      title: "Scholastic & Merit Awards",
+      description: "Supporting deserving and talented female students to pursue their educational dreams, ensuring long-term progress for families and the shoreline.",
+      icon: BookOpen,
+      accent: "text-indigo-600 bg-indigo-50"
+    }
+  ];
+
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* Hero Banner */}
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#7F1D1D]">
+        <img
+          src={empowermentWomen}
+          alt="Women Empowerment Kerala Coast"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#7F1D1D]/70 to-transparent" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <Anchor className="w-3.5 h-3.5 text-secondary" />
+            PENMA Initiative
+          </span>
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight">
+            WOMEN'S EMPOWERMENT
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          <p className="text-stone-200 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-sans font-medium">
+            Building economic agency and social resilience for women across coastal Kerala.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        {/* Intro */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-6">
+            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Womanhood &amp; Solidarity
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
+              Penma: Nurturing Strength on the Shoreline
+            </h2>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+              The life of women in coastal Perumathura is shaped by a complex interplay of environmental vulnerability, economic precarity, and deep-rooted social structures. The collapse of fishing due to climate change has eroded traditional household income, forcing women into insecure, low-wage work while managing heavy domestic responsibilities.
+            </p>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+              <strong>PENMA (Womanhood)</strong> was launched in response to provide economic and social security to women. Since its inception in 2010, Penma has stood as a pillar of strength and support within the community, offering a cooperative voice for women to organize, learn, and grow.
+            </p>
+          </div>
+          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm grid grid-cols-2 gap-6 text-center">
+            <div className="space-y-2 p-6 rounded-2xl bg-stone-50 border border-stone-100">
+              <h3 className="font-display font-extrabold text-4xl text-primary">250+</h3>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-stone-500 font-bold">Beneficiaries</p>
+            </div>
+            <div className="space-y-2 p-6 rounded-2xl bg-stone-50 border border-stone-100">
+              <h3 className="font-display font-extrabold text-4xl text-secondary">35+</h3>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-stone-500 font-bold">Active Members</p>
+            </div>
+            <div className="col-span-2 space-y-2 p-6 rounded-2xl bg-stone-50 border border-stone-100">
+              <h3 className="font-display font-extrabold text-2xl text-[#0A5F8F]">15 Years</h3>
+              <p className="text-[10px] font-mono uppercase tracking-widest text-stone-500 font-bold">of Coastal Solidarity</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Existing Projects Grid */}
+        <div className="space-y-12">
+          <div className="text-center space-y-3">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-primary">Core Action Areas</h2>
+            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            {activities.map((act, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm flex gap-6 items-start">
+                <div className={`p-3 rounded-2xl shrink-0 ${act.accent}`}>
+                  <act.icon className="w-6 h-6" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-display font-bold text-lg text-primary">{act.title}</h3>
+                  <p className="text-stone-600 text-xs leading-relaxed font-sans">{act.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Future Proposed Projects (Copied from Snehatheeram Penma Page) */}
+        <div className="bg-[#FFF9E6]/50 border border-amber-200/40 p-8 sm:p-12 rounded-3xl space-y-8 text-left">
+          <div className="space-y-3">
+            <span className="text-amber-700 font-mono text-xs font-bold uppercase tracking-wider">Proposed Programmes (2026-2027)</span>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-primary">Holistic Development Roadmap</h2>
+            <p className="text-stone-600 text-sm font-sans max-w-3xl">
+              Evidence from our 15 years of work highlights two pressing challenges that we will begin addressing with a comprehensive needs-assessment study in 2026-2027:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+            {/* Programme 1: Women Led Households */}
+            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-amber-100 shadow-sm space-y-4">
+              <div className="p-2.5 bg-amber-50 rounded-xl text-amber-700 w-fit">
+                <Compass className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Women Led Households</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                High divorce rates result in many female-headed households with limited livelihood opportunities (with only a quarter of employed women earning year-round incomes). Guided by these insights, our focus will be to co-create a strategic plan for holistic development—one that addresses economic vulnerability while strengthening the social and emotional resilience of women and their families.
+              </p>
+            </div>
+
+            {/* Programme 2: Gender Volunteers */}
+            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-amber-100 shadow-sm space-y-4">
+              <div className="p-2.5 bg-amber-50 rounded-xl text-amber-700 w-fit">
+                <Waves className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Gender Volunteers</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                We are building a network of local women trained to serve as the first points of contact, listeners, and guides. As peers, they understand cultural nuances and daily struggles, making their support authentic and effective. These volunteers provide peer-to-peer guidance, identify community needs, connect women to resources, and act as champions of change.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function HomePage() {
   const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
   const heroRef = useRef<HTMLElement>(null);
@@ -1877,7 +2141,13 @@ function HomePage() {
                           <div className="p-2.5 bg-stone-50 rounded-xl border border-stone-100/80 text-primary">
                             <area.icon className="w-6 h-6 text-primary" />
                           </div>
-                          <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
+                          {area.id === "educare" || area.id === "environment" || area.id === "women-empowerment" ? (
+                            <a href={`#${area.id}`} className="hover:text-secondary hover:underline transition-all">
+                              <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
+                            </a>
+                          ) : (
+                            <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
+                          )}
                         </div>
                         <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase">
                           {area.tagline}
@@ -1892,7 +2162,7 @@ function HomePage() {
                         <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
                       </div>
 
-                      {(area.id === "educare" || area.id === "environment") && (
+                      {(area.id === "educare" || area.id === "environment" || area.id === "women-empowerment") && (
                         <div className="pt-1">
                           <a
                             href={`#${area.id}`}
@@ -2454,8 +2724,8 @@ function HomePage() {
 }
 
 interface NavbarProps {
-  currentView: "home" | "educare" | "environment";
-  setCurrentView: (view: "home" | "educare" | "environment") => void;
+  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment";
+  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment") => void;
 }
 
 function Navbar({ currentView, setCurrentView }: NavbarProps) {
@@ -2518,13 +2788,39 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             <a href="#sdg" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">SDG Alignment</a>
             <a href="#reality" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">The Problem</a>
             <a href="#programs" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Our Focus</a>
-            <a
-              href="#educare"
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "educare" ? "text-secondary border-b-2 border-secondary" : ""
+            
+            {/* Educare Dropdown Submenu */}
+            <div className="relative group py-2">
+              <button
+                className={`hover:text-secondary transition-colors font-bold flex items-center gap-1 cursor-pointer ${
+                  currentView === "educare" || currentView === "internships" ? "text-secondary" : ""
                 }`}
-            >
-              Educare
-            </a>
+              >
+                Educare
+                <ChevronDown className="w-3.5 h-3.5" />
+              </button>
+              <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-stone-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <a
+                  href="#educare"
+                  onClick={() => setCurrentView("educare")}
+                  className={`block px-4 py-2 text-xs font-semibold hover:bg-stone-50 hover:text-secondary ${
+                    currentView === "educare" ? "text-secondary bg-stone-50" : "text-stone-700"
+                  }`}
+                >
+                  Educare Overview
+                </a>
+                <a
+                  href="#internships"
+                  onClick={() => setCurrentView("internships")}
+                  className={`block px-4 py-2 text-xs font-semibold hover:bg-stone-50 hover:text-secondary ${
+                    currentView === "internships" ? "text-secondary bg-stone-50" : "text-stone-700"
+                  }`}
+                >
+                  Internships
+                </a>
+              </div>
+            </div>
+
             <a
               href="#environment"
               className={`hover:text-secondary transition-colors font-bold ${currentView === "environment" ? "text-secondary border-b-2 border-secondary" : ""
@@ -2532,6 +2828,15 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             >
               Environment
             </a>
+            
+            <a
+              href="#women-empowerment"
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "women-empowerment" ? "text-secondary border-b-2 border-secondary" : ""
+                }`}
+            >
+              Women's Empowerment
+            </a>
+
             <a href="#team" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Team</a>
             <a href="#financials" onClick={() => setCurrentView("home")} className="hover:text-secondary transition-colors">Financials</a>
             <a
@@ -2594,19 +2899,39 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               >
                 Our Focus
               </a>
-              <a
-                href="#educare"
-                onClick={() => { setIsMobileMenuOpen(false); }}
-                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "educare" ? "font-bold text-secondary" : ""}`}
-              >
-                Educare
-              </a>
+
+              {/* Mobile Educare sub-menu */}
+              <div className="flex flex-col border-b border-stone-100 py-2">
+                <span className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1.5">Educare Program</span>
+                <a
+                  href="#educare"
+                  onClick={() => { setCurrentView("educare"); setIsMobileMenuOpen(false); }}
+                  className={`pl-3 py-1.5 text-sm hover:text-secondary ${currentView === "educare" ? "font-bold text-secondary" : ""}`}
+                >
+                  — Educare Overview
+                </a>
+                <a
+                  href="#internships"
+                  onClick={() => { setCurrentView("internships"); setIsMobileMenuOpen(false); }}
+                  className={`pl-3 py-1.5 text-sm hover:text-secondary ${currentView === "internships" ? "font-bold text-secondary" : ""}`}
+                >
+                  — Internships
+                </a>
+              </div>
+
               <a
                 href="#environment"
-                onClick={() => { setIsMobileMenuOpen(false); }}
+                onClick={() => { setCurrentView("environment"); setIsMobileMenuOpen(false); }}
                 className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "environment" ? "font-bold text-secondary" : ""}`}
               >
                 Environment
+              </a>
+              <a
+                href="#women-empowerment"
+                onClick={() => { setCurrentView("women-empowerment"); setIsMobileMenuOpen(false); }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "women-empowerment" ? "font-bold text-secondary" : ""}`}
+              >
+                Women's Empowerment
               </a>
               <a
                 href="#team"
@@ -2638,7 +2963,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
 }
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment">("home");
+  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment">("home");
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -2648,6 +2973,10 @@ export default function App() {
         setCurrentView("educare");
       } else if (hash === "#environment" || path.includes("/environment")) {
         setCurrentView("environment");
+      } else if (hash === "#internships" || path.includes("/internships")) {
+        setCurrentView("internships");
+      } else if (hash === "#women-empowerment" || path.includes("/women-empowerment")) {
+        setCurrentView("women-empowerment");
       } else {
         setCurrentView("home");
       }
@@ -2684,8 +3013,14 @@ export default function App() {
         <HomePage />
       ) : currentView === "educare" ? (
         <EducarePage />
-      ) : (
+      ) : currentView === "environment" ? (
         <EnvironmentPage />
+      ) : currentView === "internships" ? (
+        <InternshipsPage />
+      ) : currentView === "women-empowerment" ? (
+        <WomenEmpowermentPage />
+      ) : (
+        <HomePage />
       )}
 
       {/* 10. Footer */}
