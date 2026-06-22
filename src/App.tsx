@@ -1774,13 +1774,13 @@ function HomePage() {
             {/* Left side: Large Typographic Hook & CTA (Sticky on desktop) */}
             <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
               <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-                The Two-Thirds Story
+                About the Foundation
               </span>
               <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-primary leading-tight">
-                Two-thirds of our world is salt and tide.
+                Two-Thirds Community Foundation
               </h2>
               <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
-                For those who live where the waves break, the ocean is neither a view nor a boundary. It is an inheritance, a living lexicon, and a quiet rhythm of survival woven into the shoreline long before history was first recorded.
+                A registered Section 8 not-for-profit organisation committed to environmental sustainability, community-led conservation, and social justice.
               </p>
               
               <div className="pt-4">
@@ -1794,42 +1794,29 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Right side: Storyteller narrative details */}
-            <div className="lg:col-span-7 space-y-8">
+            {/* Right side: Mission & Objectives (Dakshin style) */}
+            <div className="lg:col-span-7 space-y-6 text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
+              <p>
+                Two-Thirds Community Foundation is a charitable organisation dedicated to protecting marine ecosystems and supporting traditional fishing hamlets across Kerala, India. 
+              </p>
               
-              {/* Highlight card 1: Indigenous Knowledge */}
-              <div className="bg-secondary-container/40 border-l-4 border-secondary p-6 sm:p-8 rounded-r-2xl shadow-sm">
-                <p className="font-display font-medium text-lg sm:text-xl text-[#003B5C] leading-relaxed italic font-serif">
-                  "An elder who reads the breath of the monsoon hours before it breaks. A mother who knows which currents carry life, and which carry danger. Entire shores holding a deep, unwritten library of ecological wisdom that no modern university has ever thought to study."
-                </p>
-              </div>
+              <p>
+                Our mission is to inform, empower, and catalyse conservation and natural resource management, while promoting sustainable livelihoods, quality education, and social development. We adopt interdisciplinary and community-led approaches in our research and interventions, combining marine ecology, sociology, and economics.
+              </p>
+              
+              <p>
+                Our goal is to promote ecologically and socially appropriate approaches to environmental stewardship and livelihood security, enhancing community stakes and rights in decision-making to co-create resilience from the sand up.
+              </p>
 
-              {/* Bold transition statement */}
-              <div className="py-2">
-                <p className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight leading-snug">
-                  This living memory is the silent depth we stand with when we say two-thirds.
-                </p>
-              </div>
-
-              {/* Copy block 2: Systems Critique */}
-              <div className="space-y-6 text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
-                <p>
-                  Yet for decades, the systems designed to support these shores were built in rooms far from the scent of salt. Well-meaning policies, rigid curriculums, and standard development schemes arrived with pre-packaged answers to questions never asked—trying to fix problems they never took the time to feel or understand.
-                </p>
-                <p>
-                  Eight years ago, the founder of the foundation chose a different path: to show up on the shores and simply listen—valuing the questions of the coastline far above any answers brought from the mainland.
-                </p>
-              </div>
-
-              {/* Highlight card 2: Sajid & birth of foundation */}
-              <div className="bg-accent-cyan-bg/30 border border-accent-cyan/10 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-4">
+              {/* Highlight card: Grassroots Philosophy */}
+              <div className="bg-accent-cyan-bg/30 border border-accent-cyan/10 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-4 mt-6">
                 <div className="p-3 bg-[#E6FFFA] rounded-xl border border-accent-cyan/15 text-accent-cyan shrink-0">
                   <Compass className="w-6 h-6 text-accent-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-lg text-primary mb-1">Born of the Coast</h4>
+                  <h4 className="font-display font-bold text-lg text-primary mb-1">Our Philosophy</h4>
                   <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                    Two-Thirds Community Foundation was born from that patience. We do not impose models from the outside; we sit, learn, and co-create ecological, educational, and social resilience from the sand up.
+                    We do not impose models from the outside. Our approach integrates local coastal wisdom with research-driven solutions, working flexibly across scales in partnership with local communities, government departments, and civil society organizations.
                   </p>
                 </div>
               </div>
