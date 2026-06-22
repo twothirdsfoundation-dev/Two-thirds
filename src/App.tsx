@@ -2830,6 +2830,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
 
             <a
               href="#environment"
+              onClick={() => setCurrentView("environment")}
               className={`hover:text-secondary transition-colors font-bold ${currentView === "environment" ? "text-secondary border-b-2 border-secondary" : ""
                 }`}
             >
@@ -2838,6 +2839,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             
             <a
               href="#women-empowerment"
+              onClick={() => setCurrentView("women-empowerment")}
               className={`hover:text-secondary transition-colors font-bold ${currentView === "women-empowerment" ? "text-secondary border-b-2 border-secondary" : ""
                 }`}
             >
