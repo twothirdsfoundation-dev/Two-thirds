@@ -82,9 +82,9 @@ export const blogPosts: BlogPost[] = [
     id: "1",
     slug: "perumathura-days",
     title: "Perumathura Days: A Gram Fellow's Exploration of a Coastal Village in Kerala",
-    excerpt: "IIT Gandhinagar Gram Fellow Jaseemul Farhan explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
+    excerpt: "IIT Gandhinagar Gram Fellow Jaseemul Lukman explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
     date: "January 21, 2026",
-    author: "Jaseemul Farhan",
+    author: "Jaseemul Lukman",
     readTime: "7 min read",
     image: perumathuraVillage,
     category: "Field Diaries",
@@ -133,10 +133,10 @@ const teamMembers = [
     initials: "LL"
   },
   {
-    name: "Jaseemul Farhan",
+    name: "Jaseemul Lukman",
     role: "Co-founder",
     bio: "PhD Scholar at Jamia Millia Islamia, leading research and advocacy projects.",
-    initials: "JF"
+    initials: "JL"
   },
   {
     name: "Khaleel Hamadan",
