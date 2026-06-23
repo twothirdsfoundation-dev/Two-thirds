@@ -23,7 +23,11 @@ import {
   GraduationCap,
   Waves,
   Activity,
-  Compass
+  Compass,
+  Calendar,
+  User,
+  Clock,
+  ArrowLeft
 } from "lucide-react";
 
 // Import local images from assets
@@ -39,6 +43,7 @@ import parallaxForeground from "./assets/parallax-foreground.png";
 import manifestoFish from "./assets/manifesto-fish.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
+import perumathuraVillage from "./assets/perumathura-village.png";
 
 // Import Environment Initiative images
 import envImage1 from "./assets/Enviroment/image 1.webp";
@@ -58,6 +63,40 @@ interface FocusArea {
   accomplishments: string;
   image: string;
 }
+
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string[];
+  date: string;
+  author: string;
+  readTime: string;
+  image: string;
+  category: string;
+}
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: "1",
+    slug: "perumathura-days",
+    title: "Perumathura Days: A Gram Fellow's Exploration of a Coastal Village in Kerala",
+    excerpt: "IIT Gandhinagar Gram Fellow Jaseemul Farhan explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
+    date: "January 21, 2026",
+    author: "Jaseemul Farhan",
+    readTime: "7 min read",
+    image: perumathuraVillage,
+    category: "Field Diaries",
+    content: [
+      "The last three weeks of 2023 marked a profoundly memorable period in my life, providing a remarkable conclusion to the year. As a Gram Fellow from IIT Gandhinagar, I had the privilege of residing in the enchanting coastal village of Perumathura, nestled in the Thiruvananthapuram district of Kerala, located 340 km away from my hometown during the winter break. While initially disheartened about missing out on spending the vacation with my family while my friends did, my time in Perumathura was so fulfilling that it mitigated the longing for my home and village. As an M.A. Society and Culture research student, I am particularly grateful for the invaluable ethnographic experience gained during this stint, made possible through the generosity of the remarkable individuals in this coastal haven. This blog recounts my journey, capturing the essence of my experiences during these weeks in Perumathura.",
+      "Gram Fellowship of IIT Gandhinagar aims to encourage students to immerse themselves in the experience of village life. During the fellowship stay, students are expected to engage with the village community to understand their concerns, welfare, values, and beyond. The students also have the opportunity to comprehend prevailing socio-political, economic, cultural, and humanitarian factors in the community. They are encouraged to earn their livelihood and meet their needs by working for the community during their stay in the village. Gram fellows are required to spend three weeks during the winter break experiencing the life of common rural people who may not have access to sufficient resources. It is considered an opportunity for fellows to think beyond technological interventions and address the concerns of the community. Beyond that, fellows are free to conduct fieldwork with specific objectives aligned with their academic research interests.",
+      "In the heart of Kerala's marine richness lies a disregarded community, the skilled fisherfolk integral to the state's identity yet often ignored in the acclaimed \"Kerala model of development\". Despite being the lifeline of Malayali diets, the fisherfolk face social prejudices based on caste and class. Nevertheless, the resilience and selflessness exhibited by fishermen in times of crisis are truly remarkable. I vividly recall their heroic efforts during the devastating 2018 flood when they brought their boats to rescue those stranded in the affected hinterland areas, including my own locality. These aspects have instilled in me a desire to delve further into the intricacies of the lives of a coastal community, thereby proposing it for the Gram Fellowship.",
+      "Additionally, I am interested in studying more about the Muslim fisherfolk community, which led me in search of a suitable field. As I hail from Malabar, I first thought of selecting a coastal village in North Kerala. However, the Fellowship committee suggested exploring beyond my familiar space, leading me to the southernmost district, Thiruvananthapuram, the heart of Kerala's coastal region with the largest fishing population. Following thorough digital surveying and inquiries, I chose Perumathura, a lush hamlet nestled between Kadinamkulam backwaters and the Arabian Sea, flourishing with fishing, coir production, and a significant Muslim heritage tied to the legendary Chera King Cheraman Perumal.",
+      "Perumathura is situated as a serene coastal hamlet, resembling a peninsula, nestled between the Kadinamkulam backwaters in the east, the Arabian Sea in the west, Muthalappozhi estuary in the north, and Mariyanadu in the south. Despite not being officially recognized as a single administrative unit, the people of Perumathura identify themselves within these distinct boundaries, often referring to it as \"Akhila Perumathura\" (All Perumathura). The village is scattered across three local gram panchayats: Chirayinkeezh, Azhoor, and Kadinamkulam, dividing between Chirayinkeezh and Thiruvananthapuram taluks. With their headquarters located quite a distance away from the village, the need for proper decentralization has arisen, prompting discussions about establishing a separate panchayat for Perumathura to address common challenges. Due to the absence of a vehicle, most of my exploration was conducted on foot. Nevertheless, I thoroughly enjoyed strolling through the length and breadth of Perumathura, which consistently offered picturesque visuals, providing ample material for my phone camera."
+    ]
+  }
+];
 
 interface RealityCard {
   title: string;
@@ -2261,6 +2300,80 @@ function HomePage() {
         </div>
       </section>
 
+      {/* 7.5. Field Diaries (Blog Section) */}
+      <section id="blog-preview" className="py-24 bg-stone-50 border-y border-stone-200/40 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          
+          <div className="max-w-2xl mx-auto space-y-4">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0369A1] font-mono text-[10px] font-bold uppercase tracking-wider">
+              Field Notes
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              Stories &amp; Diaries from the Ground
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm">
+              Read personal narratives and field reports from researchers, volunteers, and fellows working along the shores of Kerala.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto justify-center text-left">
+            {blogPosts.map((post) => (
+              <div 
+                key={post.id}
+                className="bg-white rounded-3xl overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group h-full"
+              >
+                {/* Cover Image */}
+                <div className="relative h-48 overflow-hidden bg-stone-100 shrink-0">
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur-sm text-white font-mono text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+                    {post.category}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-grow space-y-4">
+                  {/* Metadata */}
+                  <div className="flex items-center gap-4 text-stone-400 text-[10px] font-mono">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {post.date}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" />
+                      {post.readTime}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display font-bold text-lg text-primary leading-snug group-hover:text-secondary transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+
+                  <p className="text-stone-600 text-xs leading-relaxed font-sans line-clamp-3 flex-grow">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="pt-2">
+                    <a 
+                      href={"#blog/" + post.slug}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-secondary transition-colors uppercase tracking-wider cursor-pointer"
+                    >
+                      Read Story
+                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* 8. Involved/Financials Section (Budgets, Copy Board) */}
       <section id="financials" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
@@ -2723,9 +2836,119 @@ function HomePage() {
   );
 }
 
+interface BlogPostPageProps {
+  slug: string;
+}
+
+function BlogPostPage({ slug }: BlogPostPageProps) {
+  const post = blogPosts.find((p) => p.slug === slug);
+
+  if (!post) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-stone-50 text-stone-800 p-8">
+        <h2 className="font-display font-bold text-2xl text-primary mb-4">Post Not Found</h2>
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-md uppercase cursor-pointer"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[60vh] sm:h-[70vh] flex items-center justify-center overflow-hidden bg-stone-900">
+        <img
+          src={post.image}
+          alt={post.title}
+          className="absolute inset-0 w-full h-full object-cover opacity-40 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/60 to-transparent" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6 pt-16">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <BookOpen className="w-3.5 h-3.5 text-secondary" />
+            {post.category}
+          </span>
+          <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight max-w-3xl mx-auto">
+            {post.title}
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          
+          {/* Metadata */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-stone-300 text-xs sm:text-sm font-sans font-medium">
+            <span className="flex items-center gap-1.5">
+              <Calendar className="w-4 h-4 text-secondary" />
+              {post.date}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <User className="w-4 h-4 text-secondary" />
+              {post.author}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock className="w-4 h-4 text-secondary" />
+              {post.readTime}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Content Section */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16 text-left">
+        {/* Back Link */}
+        <div className="mb-10">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-stone-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-wider group"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            Back to Home
+          </a>
+        </div>
+
+        {/* Article Body */}
+        <article className="prose prose-stone max-w-none space-y-8">
+          {post.content.map((paragraph, index) => {
+            // Apply drop cap to the first paragraph
+            if (index === 0) {
+              return (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-stone-700 text-base sm:text-lg leading-relaxed font-sans first-letter:float-left first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-display first-letter:font-bold first-letter:text-primary first-letter:mr-3 first-letter:mt-1"
+                >
+                  {paragraph}
+                </motion.p>
+              );
+            }
+            return (
+              <motion.p
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5 }}
+                className="text-stone-700 text-base sm:text-lg leading-relaxed font-sans"
+              >
+                {paragraph}
+              </motion.p>
+            );
+          })}
+        </article>
+      </section>
+    </div>
+  );
+}
+
 interface NavbarProps {
-  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment";
-  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment") => void;
+  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog";
+  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog") => void;
 }
 
 function Navbar({ currentView, setCurrentView }: NavbarProps) {
@@ -2935,7 +3158,8 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
 }
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment">("home");
+  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog">("home");
+  const [selectedBlogPostSlug, setSelectedBlogPostSlug] = useState<string>("");
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -2949,6 +3173,14 @@ export default function App() {
         setCurrentView("internships");
       } else if (hash === "#women-empowerment" || path.includes("/women-empowerment")) {
         setCurrentView("women-empowerment");
+      } else if (hash.startsWith("#blog/") || path.includes("/blog/")) {
+        const slug = hash.startsWith("#blog/") ? hash.substring(6) : path.split("/blog/")[1]?.split("/")[0] || "";
+        if (slug) {
+          setSelectedBlogPostSlug(slug);
+          setCurrentView("blog");
+        } else {
+          setCurrentView("home");
+        }
       } else {
         setCurrentView("home");
       }
@@ -2961,7 +3193,7 @@ export default function App() {
   useEffect(() => {
     if (currentView === "home") {
       const hash = window.location.hash;
-      if (hash && hash !== "#home") {
+      if (hash && hash !== "#home" && !hash.startsWith("#blog/")) {
         const timer = setTimeout(() => {
           const element = document.getElementById(hash.slice(1));
           if (element) {
@@ -2991,6 +3223,8 @@ export default function App() {
         <InternshipsPage />
       ) : currentView === "women-empowerment" ? (
         <WomenEmpowermentPage />
+      ) : currentView === "blog" ? (
+        <BlogPostPage slug={selectedBlogPostSlug} />
       ) : (
         <HomePage />
       )}
