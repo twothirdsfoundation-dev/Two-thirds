@@ -1394,12 +1394,270 @@ function WomenEmpowermentPage() {
   );
 }
 
-function HomePage() {
+function AboutUsPage() {
+  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* 1. Hero Banner */}
+      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        {/* Soft background glow */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/70 to-transparent" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <Anchor className="w-3.5 h-3.5 text-secondary" />
+            Who We Are
+          </span>
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
+            About Us
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          <p className="text-stone-200 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-sans font-medium">
+            Building resilience, education, and sustainable livelihoods in partnership with coastal Kerala.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. Main Content */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Decorative fish silhouettes on the sides */}
+        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.06] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
+        </div>
+        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.06] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
+        </div>
+
+        {/* Divided Editorial Rows */}
+        <div className="space-y-4 relative z-10">
+          
+          {/* Row 1: Who Are the Two-Thirds? */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 first:pt-0 border-b border-stone-200/50">
+            <div className="md:col-span-4 space-y-2">
+              <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Identity</span>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
+                Who Are the Two-Thirds?
+              </h3>
+            </div>
+            <div className="md:col-span-8 space-y-6">
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, sustain the coastline.
+              </p>
+              <p className="font-display font-bold text-xl sm:text-2xl text-[#0A5F8F] leading-snug">
+                We work with these communities. Not for them.
+              </p>
+            </div>
+          </div>
+
+          {/* Row 2: What We Believe */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 border-b border-stone-200/50">
+            <div className="md:col-span-4 space-y-2">
+              <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">02 / Philosophy</span>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
+                What We Believe
+              </h3>
+            </div>
+            <div className="md:col-span-8 space-y-6">
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                A child from a fishing hamlet isn't behind because they lack ability. They're behind because the systems around them weren't built with them in mind. We don't bring outside solutions and hand them down.
+              </p>
+              <p className="font-display font-bold text-xl sm:text-2xl text-secondary leading-snug">
+                We start with what coastal communities already know and build from there.
+              </p>
+            </div>
+          </div>
+
+          {/* Row 3: What We Do */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 last:pb-0">
+            <div className="md:col-span-4 space-y-2">
+              <span className="text-xs font-mono font-bold text-primary uppercase tracking-widest block">03 / Action</span>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
+                What We Do
+              </h3>
+            </div>
+            <div className="md:col-span-8 space-y-6">
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                We work across education, livelihoods, environment, and health — because these things aren't separate. A child's schooling is connected to their family's income, which is connected to the health of the coastline they depend on.
+              </p>
+              <p className="font-display font-bold text-xl sm:text-2xl text-primary leading-snug">
+                So we address all of it. Together. With the community.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Timeline modal launcher button */}
+        <div className="text-center pt-16 border-t border-stone-200/50 mt-12 relative z-10">
+          <button
+            onClick={() => setIsStoryModalOpen(true)}
+            className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+          >
+            Explore Our Story Timeline
+            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+      </section>
+
+      {/* Story Timeline Modal */}
+      <AnimatePresence>
+        {isStoryModalOpen && (
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsStoryModalOpen(false)}
+              className="fixed inset-0 bg-primary-dark/70 backdrop-blur-sm"
+            />
+
+            {/* Modal Body Container */}
+            <div className="flex min-h-screen items-center justify-center p-4 sm:p-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="relative w-full max-w-2xl bg-bg-coastal rounded-3xl shadow-2xl overflow-hidden border border-stone-200 z-10"
+              >
+                {/* Header banner */}
+                <div className="bg-primary text-white p-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_70%)] pointer-events-none" />
+                  <button
+                    onClick={() => setIsStoryModalOpen(false)}
+                    className="absolute top-6 right-6 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                    aria-label="Close modal"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                  <span className="text-[10px] font-mono tracking-widest text-secondary font-bold uppercase block mb-1">
+                    Eight Years of Listening
+                  </span>
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl leading-snug">
+                    The Journey of Two-Thirds
+                  </h3>
+                  <p className="text-white/80 text-xs sm:text-sm font-sans mt-2 max-w-lg">
+                    How an individual showing up with questions became a resilient, community-led foundation across Kerala's coastlines.
+                  </p>
+                </div>
+
+                {/* Timeline content */}
+                <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto space-y-8 scrollbar-none">
+                  
+                  {/* Timeline line */}
+                  <div className="relative border-l-2 border-stone-200 pl-6 sm:pl-8 ml-3 space-y-8">
+                    
+                    {/* Item 1 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-secondary flex items-center justify-center text-secondary shadow-sm">
+                        <Compass className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-secondary-container text-secondary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2018 • Showing Up
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Listening on the Shores</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Ahmed Sajid starts visiting remote Kerala fishing hamlets, sitting on the shores and listening to the stories and struggles of the traditional fishers.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 2 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary shadow-sm">
+                        <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-primary-container text-primary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2020 • First Sparks
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Evening Circles & Women's Groups</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Starting evening study circles for students to prevent early dropouts and organizing the first women's self-help groups to build financial independence.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 3 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-accent-cyan flex items-center justify-center text-accent-cyan shadow-sm">
+                        <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-accent-cyan-bg text-accent-cyan font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2022 • Expanding Access
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Structured Curriculum & Health Camps</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Introducing structured curriculum aids, youth mentorship circles, and organizing pediatrics camps in remote coastal areas.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 4 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary shadow-sm">
+                        <Anchor className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-primary-container text-primary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2024 • Co-Created Models
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Decentralized Livelihoods</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Building decentralized dryer cooperatives and seaweed aquaculture networks to secure sustainable livelihoods.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 5 */}
+                    <div className="relative">
+                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-secondary flex items-center justify-center text-secondary shadow-sm">
+                        <Waves className="w-3 h-3 sm:w-4 sm:h-4" />
+                      </div>
+                      <div className="space-y-1">
+                        <span className="inline-block bg-secondary-container text-secondary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
+                          2026 • Formally Incorporated
+                        </span>
+                        <h4 className="font-display font-bold text-base text-primary">Two-Thirds Community Foundation</h4>
+                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+                          Formally incorporating as a Section 8 NGO, carrying forward the grassroots trust of coastal Kerala.
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* Footer close */}
+                <div className="bg-stone-50 border-t border-stone-200 px-6 py-4 flex justify-end">
+                  <button
+                    onClick={() => setIsStoryModalOpen(false)}
+                    className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all cursor-pointer uppercase shadow-sm"
+                  >
+                    Close Story
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+interface HomePageProps {
+  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us") => void;
+}
+
+function HomePage({ setCurrentView }: HomePageProps) {
   const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
   const heroRef = useRef<HTMLElement>(null);
 
   const [scrollTop, setScrollTop] = useState(0);
-  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -1819,74 +2077,21 @@ function HomePage() {
             <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
           </div>
 
-          {/* Divided Editorial Rows */}
-          <div className="space-y-4 max-w-5xl mx-auto">
-            
-            {/* Row 1: Who Are the Two-Thirds? */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 first:pt-0 border-b border-stone-200/50">
-              <div className="md:col-span-4 space-y-2">
-                <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Identity</span>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
-                  Who Are the Two-Thirds?
-                </h3>
-              </div>
-              <div className="md:col-span-8 space-y-6">
-                <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
-                  Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, sustain the coastline.
-                </p>
-                <p className="font-display font-bold text-xl sm:text-2xl text-[#0A5F8F] leading-snug">
-                  We work with these communities. Not for them.
-                </p>
-              </div>
+          {/* Simple Manifesto Paragraph & Button */}
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed">
+              Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, and sustain the coastline. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
+            </p>
+            <div className="pt-4">
+              <a
+                href="#about-us"
+                onClick={() => setCurrentView("about-us")}
+                className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+              >
+                Read Our Full Story
+                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
-
-            {/* Row 2: What We Believe */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 border-b border-stone-200/50">
-              <div className="md:col-span-4 space-y-2">
-                <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">02 / Philosophy</span>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
-                  What We Believe
-                </h3>
-              </div>
-              <div className="md:col-span-8 space-y-6">
-                <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
-                  A child from a fishing hamlet isn't behind because they lack ability. They're behind because the systems around them weren't built with them in mind. We don't bring outside solutions and hand them down.
-                </p>
-                <p className="font-display font-bold text-xl sm:text-2xl text-secondary leading-snug">
-                  We start with what coastal communities already know and build from there.
-                </p>
-              </div>
-            </div>
-
-            {/* Row 3: What We Do */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 last:pb-0">
-              <div className="md:col-span-4 space-y-2">
-                <span className="text-xs font-mono font-bold text-primary uppercase tracking-widest block">03 / Action</span>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
-                  What We Do
-                </h3>
-              </div>
-              <div className="md:col-span-8 space-y-6">
-                <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
-                  We work across education, livelihoods, environment, and health — because these things aren't separate. A child's schooling is connected to their family's income, which is connected to the health of the coastline they depend on.
-                </p>
-                <p className="font-display font-bold text-xl sm:text-2xl text-primary leading-snug">
-                  So we address all of it. Together. With the community.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Call-to-action button for full timeline story */}
-          <div className="text-center pt-16 border-t border-stone-200/50 mt-12">
-            <button
-              onClick={() => setIsStoryModalOpen(true)}
-              className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
-            >
-              Explore Our Timeline
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </button>
           </div>
         </div>
       </section>
@@ -2700,152 +2905,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Narrative Story Modal */}
-      <AnimatePresence>
-        {isStoryModalOpen && (
-          <div className="fixed inset-0 z-50 overflow-y-auto">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsStoryModalOpen(false)}
-              className="fixed inset-0 bg-primary-dark/70 backdrop-blur-sm"
-            />
-
-            {/* Modal Body Container */}
-            <div className="flex min-h-screen items-center justify-center p-4 sm:p-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-2xl bg-bg-coastal rounded-3xl shadow-2xl overflow-hidden border border-stone-200 z-10"
-              >
-                {/* Header banner */}
-                <div className="bg-primary text-white p-8 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_70%)] pointer-events-none" />
-                  <button
-                    onClick={() => setIsStoryModalOpen(false)}
-                    className="absolute top-6 right-6 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
-                    aria-label="Close modal"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                  <span className="text-[10px] font-mono tracking-widest text-secondary font-bold uppercase block mb-1">
-                    Eight Years of Listening
-                  </span>
-                  <h3 className="font-display font-bold text-2xl sm:text-3xl leading-snug">
-                    The Journey of Two-Thirds
-                  </h3>
-                  <p className="text-white/80 text-xs sm:text-sm font-sans mt-2 max-w-lg">
-                    How an individual showing up with questions became a resilient, community-led foundation across Kerala's coastlines.
-                  </p>
-                </div>
-
-                {/* Timeline content */}
-                <div className="p-6 sm:p-8 max-h-[60vh] overflow-y-auto space-y-8 scrollbar-none">
-                  
-                  {/* Timeline line */}
-                  <div className="relative border-l-2 border-stone-200 pl-6 sm:pl-8 ml-3 space-y-8">
-                    
-                    {/* Item 1 */}
-                    <div className="relative">
-                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-secondary flex items-center justify-center text-secondary shadow-sm">
-                        <Compass className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="inline-block bg-secondary-container text-secondary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
-                          2018 • Showing Up
-                        </span>
-                        <h4 className="font-display font-bold text-base text-primary">Listening on the Shores</h4>
-                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
-                          Ahmed Sajid starts visiting remote Kerala fishing hamlets, sitting on the shores and listening to the stories and struggles of the traditional fishers.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Item 2 */}
-                    <div className="relative">
-                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary shadow-sm">
-                        <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="inline-block bg-primary-container text-primary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
-                          2020 • First Sparks
-                        </span>
-                        <h4 className="font-display font-bold text-base text-primary">Evening Circles & Women's Groups</h4>
-                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
-                          Starting evening study circles for students to prevent early dropouts and organizing the first women's self-help groups to build financial independence.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Item 3 */}
-                    <div className="relative">
-                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-accent-cyan flex items-center justify-center text-accent-cyan shadow-sm">
-                        <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="inline-block bg-accent-cyan-bg text-accent-cyan font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
-                          2022 • Expanding Access
-                        </span>
-                        <h4 className="font-display font-bold text-base text-primary">Structured Curriculum & Health Camps</h4>
-                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
-                          Introducing structured curriculum aids, youth mentorship circles, and organizing pediatrics camps in remote coastal areas.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Item 4 */}
-                    <div className="relative">
-                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center text-primary shadow-sm">
-                        <Anchor className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="inline-block bg-primary-container text-primary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
-                          2024 • Co-Created Models
-                        </span>
-                        <h4 className="font-display font-bold text-base text-primary">Decentralized Livelihoods</h4>
-                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
-                          Building decentralized dryer cooperatives and seaweed aquaculture networks to secure sustainable livelihoods.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Item 5 */}
-                    <div className="relative">
-                      <div className="absolute -left-[35px] sm:-left-[43px] top-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-secondary flex items-center justify-center text-secondary shadow-sm">
-                        <Waves className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </div>
-                      <div className="space-y-1">
-                        <span className="inline-block bg-secondary-container text-secondary font-mono font-bold text-[9px] px-2 py-0.5 rounded-full uppercase">
-                          2026 • Formally Incorporated
-                        </span>
-                        <h4 className="font-display font-bold text-base text-primary">Two-Thirds Community Foundation</h4>
-                        <p className="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
-                          Formally incorporating as a Section 8 NGO, carrying forward the grassroots trust of coastal Kerala.
-                        </p>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                {/* Footer close */}
-                <div className="bg-stone-50 border-t border-stone-200 px-6 py-4 flex justify-end">
-                  <button
-                    onClick={() => setIsStoryModalOpen(false)}
-                    className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all cursor-pointer uppercase shadow-sm"
-                  >
-                    Close Story
-                  </button>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
@@ -2961,8 +3020,8 @@ function BlogPostPage({ slug }: BlogPostPageProps) {
 }
 
 interface NavbarProps {
-  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog";
-  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog") => void;
+  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us";
+  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us") => void;
 }
 
 function Navbar({ currentView, setCurrentView }: NavbarProps) {
@@ -3031,6 +3090,14 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               className={`hover:text-secondary transition-colors font-bold ${currentView === "home" ? "text-secondary border-b-2 border-secondary" : ""}`}
             >
               Home
+            </a>
+
+            <a
+              href="#about-us"
+              onClick={() => setCurrentView("about-us")}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "about-us" ? "text-secondary border-b-2 border-secondary" : ""}`}
+            >
+              About Us
             </a>
             
             {/* Educare Dropdown Submenu */}
@@ -3123,6 +3190,14 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
                 Home
               </a>
 
+              <a
+                href="#about-us"
+                onClick={() => { setCurrentView("about-us"); setIsMobileMenuOpen(false); }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "about-us" ? "font-bold text-secondary" : ""}`}
+              >
+                About Us
+              </a>
+
               {/* Mobile Educare sub-menu */}
               <div className="flex flex-col border-b border-stone-100 py-2">
                 <span className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1.5">Educare Program</span>
@@ -3172,7 +3247,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
 }
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog">("home");
+  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us">("home");
   const [selectedBlogPostSlug, setSelectedBlogPostSlug] = useState<string>("");
 
   useEffect(() => {
@@ -3187,6 +3262,8 @@ export default function App() {
         setCurrentView("internships");
       } else if (hash === "#women-empowerment" || path.includes("/women-empowerment")) {
         setCurrentView("women-empowerment");
+      } else if (hash === "#about-us" || path.includes("/about-us")) {
+        setCurrentView("about-us");
       } else if (hash.startsWith("#blog/") || path.includes("/blog/")) {
         const slug = hash.startsWith("#blog/") ? hash.substring(6) : path.split("/blog/")[1]?.split("/")[0] || "";
         if (slug) {
@@ -3228,7 +3305,9 @@ export default function App() {
       <Navbar currentView={currentView} setCurrentView={setCurrentView} />
 
       {currentView === "home" ? (
-        <HomePage />
+        <HomePage setCurrentView={setCurrentView} />
+      ) : currentView === "about-us" ? (
+        <AboutUsPage />
       ) : currentView === "educare" ? (
         <EducarePage />
       ) : currentView === "environment" ? (
@@ -3240,7 +3319,7 @@ export default function App() {
       ) : currentView === "blog" ? (
         <BlogPostPage slug={selectedBlogPostSlug} />
       ) : (
-        <HomePage />
+        <HomePage setCurrentView={setCurrentView} />
       )}
 
       {/* 10. Footer */}
