@@ -1441,6 +1441,9 @@ function AboutUsPage() {
               <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
                 Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, sustain the coastline.
               </p>
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed.
+              </p>
               <p className="font-display font-bold text-xl sm:text-2xl text-[#0A5F8F] leading-snug">
                 We work with these communities. Not for them.
               </p>
