@@ -196,46 +196,46 @@ const focusAreas: FocusArea[] = [
 
 const realityCards: RealityCard[] = [
   {
-    title: "Economic Instability",
-    tagline: "Volatile Trades & Exploitative Rings",
-    description: "Centuries-old fishing hamlets are forced into seasonal vulnerability. Near-shore stocks are depleting, fuel overheads are rising, and middlemen take the bulk of catch values.",
-    details: "Traditional fishermen struggle with market integration. Our livelihood program creates direct-to-consumer micro-dryer cooperatives that increase value-retention locally by over 40%.",
+    title: "Market & Credit Exclusion",
+    tagline: "Systemic Isolation from Catch Value",
+    description: "The community does not lack economic enterprise; rather, structural market designs and exploitative middleman rings intercept the true value of their catch, leaving fishers with high fuel overheads and seasonal precarity.",
+    details: "Our livelihood program creates direct-to-consumer micro-dryer cooperatives that bypass exploitative intermediaries and increase local value-retention by over 40%.",
     bg: "bg-[#E0F2FE]", // Soft light sky blue
     text: "text-[#003B5C]",
     border: "border-sky-200"
   },
   {
-    title: "Climate Vulnerability",
-    tagline: "Estuary Degradation & Beach Erosion",
-    description: "Kerala's coastline experiences severe beach loss every year. Cyclonic storm surges flood houses and destroy essential equipment, forcing communities further inland.",
-    details: "Standard concrete seawalls break down and worsen neighboring beaches. We champion nature-based solutions, restoring native mangrove buffers to stabilize coastal soils and shield fishers' homes.",
+    title: "Ecological Neglect",
+    tagline: "Imposed Engineering vs. Nature's Shield",
+    description: "Severe beach loss and cyclonic surges are worsened by rigid, top-down concrete engineering that fails under pressure. Traditional knowledge of shoreline buffers is discarded in favor of mainland answers.",
+    details: "We champion nature-based solutions, restoring native mangrove buffers to stabilize coastal soils and shield fishers' homes, combining local wisdom with ecological science.",
     bg: "bg-[#E6FFFA]", // Soft light teal/cyan
     text: "text-[#155E75]",
     border: "border-teal-200"
   },
   {
-    title: "Limited School Retention",
-    tagline: "Early Boat Labor & Educational Dropouts",
-    description: "Coastal children often leave school in their early teens to assist on commercial trawlers and supplement family earnings, continuing the cycle of low literacy.",
-    details: "We establish community evening classrooms and digital spaces, offering first-generation learners mentorship, academic tutoring, and career coaching to keep them on secondary tracks.",
+    title: "Educational Incompatibility",
+    tagline: "Rigid Systems Ignoring Coastal Rhythms",
+    description: "A child from a fishing hamlet does not lack academic potential; they are excluded by rigid school systems and curricula that fail to align with the socio-economic rhythms and seasonal realities of coastal life.",
+    details: "We establish community evening classrooms and digital learning hubs, offering first-generation learners tailored academic support and career coaching designed to keep them on secondary tracks.",
     bg: "bg-[#FFF9E6]", // Soft amber/gold tint
     text: "text-amber-950",
     border: "border-amber-200"
   },
   {
-    title: "Gender & Credit Barriers",
-    tagline: "Marginalized Women & Credit Scarcity",
-    description: "Women in remote fishing villages carry the weight of household debt but have little access to modern vocational skills, financial resources, or independent banking.",
-    details: "We organize and finance women's Self Help Groups, training them in digital banking (UPI), micro-savings, shell crafts, and enterprise management to establish direct financial voices.",
+    title: "Institutional Credit Barriers",
+    tagline: "Systemic Exclusion from Financial Access",
+    description: "Women in remote hamlets carry the weight of household finance but are systematically excluded from formal credit channels and modern vocational training, leaving them vulnerable to local debt cycles.",
+    details: "We fund and organize women's Self Help Groups, training them in digital banking, micro-savings, and enterprise management to establish direct financial voices and bypass credit barriers.",
     bg: "bg-[#FFF2F2]", // Soft red tint
     text: "text-red-950",
     border: "border-red-200"
   },
   {
-    title: "Cultural & Lore Attrition",
-    tagline: "Decentering Coastal Identity",
-    description: "Centuries-old boatcraft techniques, unique maritime dialects, and traditional oceanic forecasting methods are fading as young generations migrate to overcrowded cities.",
-    details: "We document and integrate coastal maritime folklore into youth programs, connecting elders with students to preserve local pride, indigenous ecological knowledge, and shore identity.",
+    title: "Knowledge Displacement",
+    tagline: "Disregarding Indigenous Maritime Wisdom",
+    description: "Centuries-old ocean-reading, boatcraft, and traditional weather forecasting are not outdated; they are actively displaced by development paradigms that value mainland answers over coastal ecological wisdom.",
+    details: "We document and integrate coastal maritime folklore into youth programs, connecting elders with students to preserve shore identity and ensure local ecological knowledge isn't lost.",
     bg: "bg-[#F3F4F6]", // Soft slate gray
     text: "text-slate-900",
     border: "border-slate-300"
@@ -2070,14 +2070,14 @@ function HomePage() {
 
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-            Critical Realities
+            Systemic Realities
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            The Challenges We Tackle Head-On
+            The Problem is Not Theirs.
           </h2>
           <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-          <p className="text-stone-600 text-sm">
-            India's coastal margins are home to over 150 million people, facing unique structural challenges that require direct co-created solutions.
+          <p className="text-stone-600 text-sm leading-relaxed">
+            A child from a fishing hamlet isn't behind because they lack ability. A community isn't vulnerable because they lack resilience. The problems they face are systemic—built by policies, markets, and institutions that weren't designed with them in mind.
           </p>
         </div>
 
@@ -3273,7 +3273,7 @@ export default function App() {
             <h4 className="font-display font-semibold text-stone-200 text-sm">Focus Anchors</h4>
             <div className="grid gap-2 text-xs">
               <a href="#about" className="text-stone-400 hover:text-secondary transition-colors">Our Vision & Mission</a>
-              <a href="#reality" className="text-stone-400 hover:text-secondary transition-colors">Coastal Challenges</a>
+              <a href="#reality" className="text-stone-400 hover:text-secondary transition-colors">Systemic Realities</a>
               <a href="#programs" className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
               <a href="#team" className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
               <a href="#financials" className="text-stone-400 hover:text-secondary transition-colors">Funding Goals & Bank details</a>
