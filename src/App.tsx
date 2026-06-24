@@ -1951,15 +1951,15 @@ function HomePage({ setCurrentView }: HomePageProps) {
         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#FAF9F6]/10 to-transparent pointer-events-none z-1" />
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none z-1" />
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
-          <span className="inline-block text-[#2DD4BF] font-mono text-sm sm:text-base font-extrabold uppercase tracking-widest">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
+          <span className="inline-block text-[#2DD4BF] font-mono text-lg sm:text-2xl font-extrabold uppercase tracking-widest">
             Our Approach
           </span>
-          <h2 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-tight max-w-3xl mx-auto">
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-white tracking-tight leading-tight max-w-2xl mx-auto">
             Leveraging simultaneous environmental &amp; community benefits
           </h2>
-          <div className="w-20 h-1 bg-[#2DD4BF] mx-auto rounded-full" />
-          <p className="text-white/95 text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-sans max-w-3xl mx-auto font-normal">
+          <div className="w-12 h-1 bg-[#2DD4BF] mx-auto rounded-full" />
+          <p className="text-stone-100 text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-3xl mx-auto font-medium">
             Two-Thirds aims to secure local ecosystems and build community-wellbeing through integrated, grassroots-led models. We combine traditional marine wisdom with modern research to address environmental and livelihood concerns—working hand-in-hand with coastal panchayats, fishing families, and local youth to co-design active resilience.
           </p>
         </div>
