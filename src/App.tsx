@@ -1819,63 +1819,58 @@ function HomePage() {
             <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {/* Divided Editorial Rows */}
+          <div className="space-y-4 max-w-5xl mx-auto">
             
-            {/* Card 1: Who Are the Two-Thirds? */}
-            <div className="bg-white/85 backdrop-blur-md border-t-4 border-[#0A5F8F] border-x border-b border-stone-200/50 p-8 sm:p-10 rounded-3xl shadow-coastal hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="p-3 bg-[#E6FFFA] rounded-2xl w-fit text-[#0A5F8F]">
-                  <Compass className="w-6 h-6" />
-                </div>
-                <h3 className="font-display font-bold text-xl sm:text-2xl text-primary tracking-tight">
+            {/* Row 1: Who Are the Two-Thirds? */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 first:pt-0 border-b border-stone-200/50">
+              <div className="md:col-span-4 space-y-2">
+                <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Identity</span>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
                   Who Are the Two-Thirds?
                 </h3>
-                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
+              </div>
+              <div className="md:col-span-8 space-y-6">
+                <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
                   Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, sustain the coastline.
                 </p>
-              </div>
-              <div className="pt-4 border-t border-stone-100">
-                <p className="font-display font-bold text-base sm:text-lg text-[#0A5F8F] leading-snug">
+                <p className="font-display font-bold text-xl sm:text-2xl text-[#0A5F8F] leading-snug">
                   We work with these communities. Not for them.
                 </p>
               </div>
             </div>
 
-            {/* Card 2: What We Believe */}
-            <div className="bg-white/85 backdrop-blur-md border-t-4 border-secondary border-x border-b border-stone-200/50 p-8 sm:p-10 rounded-3xl shadow-coastal hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="p-3 bg-[#FFF5F2] rounded-2xl w-fit text-secondary">
-                  <LifeBuoy className="w-6 h-6" />
-                </div>
-                <h3 className="font-display font-bold text-xl sm:text-2xl text-primary tracking-tight">
+            {/* Row 2: What We Believe */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 border-b border-stone-200/50">
+              <div className="md:col-span-4 space-y-2">
+                <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">02 / Philosophy</span>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
                   What We Believe
                 </h3>
-                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
-                  A child from a fishing hamlet isn't behind because they lack ability. They're behind because the systems around them weren't built with them in mind.
-                </p>
               </div>
-              <div className="pt-4 border-t border-stone-100">
-                <p className="font-sans text-stone-700 text-xs sm:text-sm leading-relaxed font-medium">
-                  We don't bring outside solutions and hand them down. We start with what coastal communities already know and build from there.
+              <div className="md:col-span-8 space-y-6">
+                <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                  A child from a fishing hamlet isn't behind because they lack ability. They're behind because the systems around them weren't built with them in mind. We don't bring outside solutions and hand them down.
+                </p>
+                <p className="font-display font-bold text-xl sm:text-2xl text-secondary leading-snug">
+                  We start with what coastal communities already know and build from there.
                 </p>
               </div>
             </div>
 
-            {/* Card 3: What We Do */}
-            <div className="bg-white/85 backdrop-blur-md border-t-4 border-[#003B5C] border-x border-b border-stone-200/50 p-8 sm:p-10 rounded-3xl shadow-coastal hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col justify-between space-y-6">
-              <div className="space-y-4">
-                <div className="p-3 bg-stone-50 rounded-2xl w-fit text-primary">
-                  <Waves className="w-6 h-6" />
-                </div>
-                <h3 className="font-display font-bold text-xl sm:text-2xl text-primary tracking-tight">
+            {/* Row 3: What We Do */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-12 py-12 last:pb-0">
+              <div className="md:col-span-4 space-y-2">
+                <span className="text-xs font-mono font-bold text-primary uppercase tracking-widest block">03 / Action</span>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
                   What We Do
                 </h3>
-                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
+              </div>
+              <div className="md:col-span-8 space-y-6">
+                <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
                   We work across education, livelihoods, environment, and health — because these things aren't separate. A child's schooling is connected to their family's income, which is connected to the health of the coastline they depend on.
                 </p>
-              </div>
-              <div className="pt-4 border-t border-stone-100">
-                <p className="font-display font-bold text-base sm:text-lg text-primary leading-snug">
+                <p className="font-display font-bold text-xl sm:text-2xl text-primary leading-snug">
                   So we address all of it. Together. With the community.
                 </p>
               </div>
@@ -1884,7 +1879,7 @@ function HomePage() {
           </div>
 
           {/* Call-to-action button for full timeline story */}
-          <div className="text-center pt-16">
+          <div className="text-center pt-16 border-t border-stone-200/50 mt-12">
             <button
               onClick={() => setIsStoryModalOpen(true)}
               className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
