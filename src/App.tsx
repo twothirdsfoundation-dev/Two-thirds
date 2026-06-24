@@ -1811,10 +1811,10 @@ function HomePage() {
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              The Two-Thirds Story
+              About Us
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
-              Who We Are &amp; What We Stand For
+              About Two-Thirds
             </h2>
             <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
           </div>
@@ -3272,7 +3272,7 @@ export default function App() {
           <div className="md:col-span-3 space-y-3">
             <h4 className="font-display font-semibold text-stone-200 text-sm">Focus Anchors</h4>
             <div className="grid gap-2 text-xs">
-              <a href="#about" className="text-stone-400 hover:text-secondary transition-colors">Our Vision & Mission</a>
+              <a href="#about" className="text-stone-400 hover:text-secondary transition-colors">About Us</a>
               <a href="#reality" className="text-stone-400 hover:text-secondary transition-colors">Systemic Realities</a>
               <a href="#programs" className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
               <a href="#team" className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
