@@ -1923,7 +1923,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
           {/* Simple Manifesto Paragraph & Button */}
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed">
-              Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, and sustain the coastline. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
+              Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
             </p>
             <div className="pt-4">
               <a
