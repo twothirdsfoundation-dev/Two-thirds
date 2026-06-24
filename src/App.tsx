@@ -37,6 +37,9 @@ import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
+import parallaxSky from "./assets/parallax-sky.png";
+import parallaxBoats from "./assets/parallax-boats.png";
+import parallaxForeground from "./assets/parallax-foreground.png";
 import manifestoFish from "./assets/manifesto-fish.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
@@ -1395,7 +1398,29 @@ function HomePage() {
   const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
   const heroRef = useRef<HTMLElement>(null);
 
+  const [scrollTop, setScrollTop] = useState(0);
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollTop(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    setScrollTop(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const yBg = -80 + (scrollTop || 0) * 0.06;
+  const yMid = -40 + (scrollTop || 0) * 0.08;
+  const yText = -30 + (scrollTop || 0) * 0.75;
+  const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
   // Clipboard Copied States
   const [copiedAccount, setCopiedAccount] = useState(false);
@@ -1665,70 +1690,100 @@ function HomePage() {
       <section
         id="home"
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center bg-stone-950 overflow-hidden"
+        className="relative h-[140vh] md:h-[200vh] bg-[#E0F2FE]"
+        style={{ backgroundColor: '#E0F2FE' }}
       >
-        {/* Cinematic Aerial Background Image of Perumathura */}
-        <img
-          src={perumathuraVillage}
-          alt="Kerala coastline aerial view"
-          className="absolute inset-0 w-full h-full object-cover opacity-60 filter brightness-75 scale-105"
-        />
+        {/* Sticky viewport container */}
+        <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
-        {/* Ambient Dark Gradient Overlays for readability and contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-stone-900/60 to-bg-coastal" />
-
-        {/* Subtle top light ray */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_70%)] pointer-events-none z-1" />
-
-        {/* Main Content */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 py-20">
-          
-          {/* Foundation Badge */}
-          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-white/10">
-            <Anchor className="w-3.5 h-3.5 text-secondary" />
-            Two-Thirds Community Foundation
-          </span>
-
-          {/* Attention-grabbing Simplified Heading */}
-          <h1 className="font-display font-black text-5xl sm:text-7xl lg:text-8xl text-white tracking-tight leading-[1.1] max-w-4xl mx-auto">
-            For the <span className="text-secondary italic font-serif font-semibold">two-thirds</span> <br />
-            who deserve better.
-          </h1>
-
-          {/* Simple Supporting Paragraph */}
-          <p className="text-stone-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans font-medium">
-            Two-thirds of our world is ocean. We work directly on the shorelines of Kerala, partnership-led, building education, sustainable livelihoods, and climate resilience.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center pt-4">
-            <a
-              href="#contact"
-              className="bg-[#D05A3F] hover:bg-[#C04C32] text-white font-display font-semibold text-xs tracking-wider px-8 py-4 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+          {/* Parallax Layers */}
+          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+            {/* Sky Layer (Background) */}
+            <div
+              style={{ transform: `translateY(${yBg}px)` }}
+              className="absolute top-0 left-0 w-full h-[130%] will-change-transform"
             >
-              Get Involved
-            </a>
-            <a
-              href="#about"
-              className="bg-white/10 hover:bg-white/20 text-white font-display font-semibold text-xs tracking-wider px-8 py-4 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-white/20 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+              <img
+                src={parallaxSky}
+                alt="Kerala sunrise sky"
+                className="w-full h-full object-cover object-bottom"
+              />
+            </div>
+
+            {/* Boats Layer (Midground) */}
+            <div
+              style={{ transform: `translateY(${yMid}px)` }}
+              className="absolute top-0 left-0 w-full h-[130%] mix-blend-multiply will-change-transform"
             >
-              Explore Our Story
-            </a>
+              <img
+                src={parallaxBoats}
+                alt="Fishing boats silhouettes"
+                className="w-full h-full object-cover object-bottom"
+              />
+            </div>
+
+            {/* Heading Layer (Sandwiched in the middle!) */}
+            <div
+              style={{ 
+                transform: `translateY(${yText}px)`,
+                opacity: opacityText 
+              }}
+              className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
+            >
+              <h1
+                style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
+                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
+              >
+                For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
+                who deserve better.
+              </h1>
+
+              {/* Floating CTA Buttons inside parallax layer */}
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
+                <a
+                  href="#contact"
+                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+                >
+                  Get Involved
+                </a>
+                <a
+                  href="#about"
+                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                >
+                  Explore Manifesto
+                </a>
+              </div>
+            </div>
+
+            {/* Foreground Mangroves Layer (Static - no motion needed) */}
+            <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
+              <img
+                src={parallaxForeground}
+                alt="Mangrove foliage silhouettes"
+                className="w-full h-full object-cover object-bottom"
+              />
+            </div>
           </div>
 
-        </div>
+          {/* Subtle warm overlay beam */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
 
-        {/* Scroll Down Indicator */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
-          <motion.a
-            href="#about"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-300 hover:text-white transition-colors cursor-pointer"
-          >
-            <span>Scroll to Explore</span>
-            <ArrowDown className="w-4 h-4 text-[#D05A3F]" />
-          </motion.a>
+          {/* Feathered bottom transition gradient overlay */}
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-coastal to-transparent pointer-events-none z-20" />
+
+          {/* Bouncing scroll indicator */}
+          <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
+            <motion.a
+              href="#about"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+              className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-400 hover:text-primary transition-colors cursor-pointer"
+            >
+              <span>Scroll to Explore</span>
+              <ArrowDown className="w-4 h-4 text-secondary" />
+            </motion.a>
+          </div>
+
         </div>
       </section>
 
