@@ -1808,71 +1808,90 @@ function HomePage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              The Two-Thirds Story
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+              Who We Are &amp; What We Stand For
+            </h2>
+            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             
-            {/* Left side: Large Typographic Hook & CTA (Sticky on desktop) */}
-            <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
-              <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-                The Two-Thirds Story
-              </span>
-              <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-primary leading-tight">
-                Two-thirds of our world is salt and tide.
-              </h2>
-              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
-                For those who live where the waves break, the ocean is not a boundary, but an inheritance—a living history and a rhythm of survival woven into the shoreline.
-              </p>
-              
-              <div className="pt-4">
-                <button
-                  onClick={() => setIsStoryModalOpen(true)}
-                  className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
-                >
-                  Our Story
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </button>
+            {/* Card 1: Who Are the Two-Thirds? */}
+            <div className="bg-white/85 backdrop-blur-md border-t-4 border-[#0A5F8F] border-x border-b border-stone-200/50 p-8 sm:p-10 rounded-3xl shadow-coastal hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="p-3 bg-[#E6FFFA] rounded-2xl w-fit text-[#0A5F8F]">
+                  <Compass className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-primary tracking-tight">
+                  Who Are the Two-Thirds?
+                </h3>
+                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
+                  Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it — how to read the weather, manage the catch, sustain the coastline.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-stone-100">
+                <p className="font-display font-bold text-base sm:text-lg text-[#0A5F8F] leading-snug">
+                  We work with these communities. Not for them.
+                </p>
               </div>
             </div>
 
-            {/* Right side: Storyteller narrative details */}
-            <div className="lg:col-span-7 space-y-8">
-              
-              {/* Highlight card 1: Indigenous Knowledge */}
-              <div className="bg-secondary-container/40 border-l-4 border-secondary p-6 sm:p-8 rounded-r-2xl shadow-sm">
-                <p className="font-display font-medium text-lg sm:text-xl text-[#003B5C] leading-relaxed italic font-serif">
-                  "Elders who read the breath of the monsoon hours before it breaks, and mothers who navigate the currents that carry life—our shorelines hold a vast, unwritten library of ecological wisdom."
-                </p>
-              </div>
-
-              {/* Bold transition statement */}
-              <div className="py-2">
-                <p className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight leading-snug">
-                  This living memory is the depth we stand with when we say two-thirds.
-                </p>
-              </div>
-
-              {/* Copy block 2: Systems Critique */}
-              <div className="space-y-6 text-stone-700 text-base sm:text-lg leading-relaxed font-sans">
-                <p>
-                  Yet, policies and development schemes designed for coastal regions are often built far from the water, offering standardized solutions to complex local realities.
-                </p>
-                <p>
-                  To address this, our foundation chose a different path: to work directly on the shores, listening to the needs of the coastline and valuing local questions above mainland answers.
-                </p>
-              </div>
-
-              {/* Highlight card 2: Sajid & birth of foundation */}
-              <div className="bg-accent-cyan-bg/30 border border-accent-cyan/10 p-6 sm:p-8 rounded-2xl flex flex-col sm:flex-row items-start gap-4">
-                <div className="p-3 bg-[#E6FFFA] rounded-xl border border-accent-cyan/15 text-accent-cyan shrink-0">
-                  <Compass className="w-6 h-6 text-accent-cyan" />
+            {/* Card 2: What We Believe */}
+            <div className="bg-white/85 backdrop-blur-md border-t-4 border-secondary border-x border-b border-stone-200/50 p-8 sm:p-10 rounded-3xl shadow-coastal hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="p-3 bg-[#FFF5F2] rounded-2xl w-fit text-secondary">
+                  <LifeBuoy className="w-6 h-6" />
                 </div>
-                <div>
-                  <h4 className="font-display font-bold text-lg text-primary mb-1">Born of the Coast</h4>
-                  <p className="text-stone-600 text-sm leading-relaxed font-sans">
-                    Two-Thirds Community Foundation was created to build resilience from the sand up. We do not impose external models; instead, we co-create ecological, educational, and social solutions in partnership with coastal communities.
-                  </p>
-                </div>
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-primary tracking-tight">
+                  What We Believe
+                </h3>
+                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
+                  A child from a fishing hamlet isn't behind because they lack ability. They're behind because the systems around them weren't built with them in mind.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-stone-100">
+                <p className="font-sans text-stone-700 text-xs sm:text-sm leading-relaxed font-medium">
+                  We don't bring outside solutions and hand them down. We start with what coastal communities already know and build from there.
+                </p>
               </div>
             </div>
+
+            {/* Card 3: What We Do */}
+            <div className="bg-white/85 backdrop-blur-md border-t-4 border-[#003B5C] border-x border-b border-stone-200/50 p-8 sm:p-10 rounded-3xl shadow-coastal hover:shadow-xl hover:border-stone-300 transition-all duration-300 flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="p-3 bg-stone-50 rounded-2xl w-fit text-primary">
+                  <Waves className="w-6 h-6" />
+                </div>
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-primary tracking-tight">
+                  What We Do
+                </h3>
+                <p className="font-sans text-stone-600 text-sm sm:text-base leading-relaxed">
+                  We work across education, livelihoods, environment, and health — because these things aren't separate. A child's schooling is connected to their family's income, which is connected to the health of the coastline they depend on.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-stone-100">
+                <p className="font-display font-bold text-base sm:text-lg text-primary leading-snug">
+                  So we address all of it. Together. With the community.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Call-to-action button for full timeline story */}
+          <div className="text-center pt-16">
+            <button
+              onClick={() => setIsStoryModalOpen(true)}
+              className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+            >
+              Explore Our Timeline
+              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
           </div>
         </div>
       </section>
