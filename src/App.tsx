@@ -82,9 +82,9 @@ export const blogPosts: BlogPost[] = [
     id: "1",
     slug: "perumathura-days",
     title: "Perumathura Days: A Gram Fellow's Exploration of a Coastal Village in Kerala",
-    excerpt: "IIT Gandhinagar Gram Fellow Jaseemul Lukman explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
+    excerpt: "IIT Gandhinagar Gram Fellow Lukman explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
     date: "January 21, 2026",
-    author: "Jaseemul Lukman",
+    author: "Lukman",
     readTime: "7 min read",
     image: perumathuraVillage,
     category: "Field Diaries",
@@ -133,10 +133,10 @@ const teamMembers = [
     initials: "LL"
   },
   {
-    name: "Jaseemul Lukman",
+    name: "Jaseemul Farhan",
     role: "Co-founder",
     bio: "PhD Scholar at Jamia Millia Islamia, leading research and advocacy projects.",
-    initials: "JL"
+    initials: "JF"
   },
   {
     name: "Khaleel Hamadan",
@@ -1492,12 +1492,239 @@ function AboutUsPage() {
   );
 }
 
+function FinancialsPage() {
+  const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
+  const [copiedAccount, setCopiedAccount] = useState(false);
+  const [copiedIfsc, setCopiedIfsc] = useState(false);
+
+  const copyToClipboard = (text: string, type: "account" | "ifsc") => {
+    navigator.clipboard.writeText(text);
+    if (type === "account") {
+      setCopiedAccount(true);
+      setTimeout(() => setCopiedAccount(false), 2000);
+    } else {
+      setCopiedIfsc(true);
+      setTimeout(() => setCopiedIfsc(false), 2000);
+    }
+  };
+
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800">
+      {/* 1. Hero Banner */}
+      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        {/* Soft background glow */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/70 to-transparent" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <Landmark className="w-3.5 h-3.5 text-secondary" />
+            Transparency
+          </span>
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
+            Budgets &amp; Audits
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          <p className="text-stone-200 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-sans font-medium">
+            Review our expansion funding goals, financial transparency records, and audited campaigns.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. Main Content */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Decorative fish silhouettes on the sides */}
+        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.06] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
+        </div>
+        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.06] pointer-events-none select-none mix-blend-multiply z-0">
+          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
+        </div>
+
+        {/* Content */}
+        <div className="space-y-16 relative z-10">
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Budgets &amp; Audits
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              Expansion Funding Goals &amp; Transparency
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm">
+              We are registered under Section 8(1) of the Companies Act, 2013 (CIN U88900KL2026NPL100608). Track our campaign expansions below.
+            </p>
+          </div>
+
+          {/* Progress Bars & Bank Cards Grid */}
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            {/* Left: Goals */}
+            <div className="lg:col-span-7 space-y-8 text-left">
+              <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
+                Budget Goals Tracking
+              </h3>
+
+              <div className="space-y-6">
+                {growthGoals.map((goal) => {
+                  const percentage = Math.min(100, Math.round((goal.currentAmount / goal.targetAmount) * 100));
+                  return (
+                    <div key={goal.id} className="p-6 rounded-2xl bg-white shadow-coastal border border-stone-200/50 space-y-4">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <span className="px-2.5 py-0.5 rounded bg-primary-container text-primary text-[10px] font-mono font-bold uppercase">
+                            {goal.timeline}
+                          </span>
+                          <h4 className="font-display font-bold text-sm text-[#003B5C] mt-2">{goal.title}</h4>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[10px] text-stone-400 font-mono uppercase block">Goal Target</span>
+                          <span className="font-display font-bold text-sm text-secondary">₹{(goal.targetAmount / 100000).toFixed(0)} Lakhs</span>
+                        </div>
+                      </div>
+
+                      {/* Progress slider bar */}
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between text-xs text-stone-600 font-medium">
+                          <span>Audited Campaign</span>
+                          <span className="font-mono text-[#155E75]">{percentage}% Funded</span>
+                        </div>
+                        <div className="w-full bg-stone-100 h-3.5 rounded-full overflow-hidden border border-stone-200/40">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${percentage}%` }}
+                            transition={{ duration: 0.8 }}
+                            className="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                          />
+                        </div>
+                        <div className="flex justify-between font-mono text-[10px] text-stone-400">
+                          <span>Achieved: ₹{goal.currentAmount.toLocaleString("en-IN")}</span>
+                          <span>Total: ₹{goal.targetAmount.toLocaleString("en-IN")}</span>
+                        </div>
+                      </div>
+
+                      <div className="pt-3 border-t border-stone-100 space-y-1.5 text-xs text-stone-500">
+                        <span className="font-bold text-[#003B5C] block text-[10px] uppercase tracking-wider">Objectives:</span>
+                        <ul className="grid gap-1 pl-4 list-disc">
+                          {goal.objectives.map((obj, i) => (
+                            <li key={i}>{obj}</li>
+                          ))}
+                        </ul>
+                        <p className="text-[10px] italic pt-2 border-t border-dashed border-stone-100">{goal.details}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right: Bank Account Details Card */}
+            <div className="lg:col-span-5 space-y-6 text-left">
+              <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
+                Official Bank Registry
+              </h3>
+
+              <div className="p-8 rounded-2xl bg-primary text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
+                {/* Graphic ring underlay */}
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full border-4 border-white/5 pointer-events-none" />
+                <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-white/2 pointer-events-none" />
+
+                <div className="flex justify-between items-start">
+                  <div className="flex items-center gap-2">
+                    <Landmark className="w-6 h-6 text-secondary" />
+                    <span className="font-mono text-[10px] tracking-widest uppercase opacity-75">Nongovernmental Registry</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white font-bold">12A / 80G Credits</span>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <span className="text-[10px] text-white/50 font-mono uppercase block">Beneficiary Entity</span>
+                    <p className="font-display font-bold text-sm sm:text-base tracking-wide">
+                      TWO-THIRDS COMMUNITY FOUNDATION
+                    </p>
+                  </div>
+
+                  <div className="grid gap-3 font-mono text-xs">
+                    {/* Account number item */}
+                    <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
+                      <div>
+                        <span className="text-[9px] text-white/40 uppercase block font-sans">Account Number</span>
+                        <span className="font-bold tracking-wider text-sm">926020011506637</span>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard("926020011506637", "account")}
+                        className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
+                        title="Copy Account Number"
+                      >
+                        {copiedAccount ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+
+                    {/* IFSC Number item */}
+                    <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
+                      <div>
+                        <span className="text-[9px] text-white/40 uppercase block font-sans">IFSC Code</span>
+                        <span className="font-bold tracking-wider text-sm">UTIB0000028</span>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard("UTIB0000028", "ifsc")}
+                        className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
+                        title="Copy IFSC Code"
+                      >
+                        {copiedIfsc ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 text-xs font-sans">
+                    <div>
+                      <span className="text-[9px] text-white/50 font-mono uppercase block">Bank Name</span>
+                      <p className="font-semibold text-stone-100">Axis Bank Ltd</p>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-white/50 font-mono uppercase block">Branch Name</span>
+                      <p className="font-semibold text-stone-100">Trivandrum Main Branch</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/60">
+                  <div className="flex items-center gap-1">
+                    <ShieldCheck className="w-4 h-4 text-secondary" />
+                    <span>Axis Bank Verified</span>
+                  </div>
+                  <span>Secured transfers only</span>
+                </div>
+              </div>
+
+              {/* Meet Team Members */}
+              <div className="bg-white p-6 rounded-2xl border border-stone-200/50 space-y-4">
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">Board of Directors</h4>
+                <div className="grid gap-3">
+                  {teamMembers.map((member, i) => (
+                    <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 rounded-xl">
+                      <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-xs shrink-0">
+                        {member.initials}
+                      </div>
+                      <div>
+                        <h5 className="font-display font-bold text-xs text-primary">{member.name}</h5>
+                        <p className="text-[9px] text-stone-400 font-mono uppercase">{member.role}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 interface HomePageProps {
-  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us") => void;
+  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials") => void;
 }
 
 function HomePage({ setCurrentView }: HomePageProps) {
-  const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
   const heroRef = useRef<HTMLElement>(null);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -1523,9 +1750,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
   const yText = -30 + (scrollTop || 0) * 0.75;
   const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
-  // Clipboard Copied States
-  const [copiedAccount, setCopiedAccount] = useState(false);
-  const [copiedIfsc, setCopiedIfsc] = useState(false);
+
 
   // Contact Form States
   const [formName, setFormName] = useState("");
@@ -1758,17 +1983,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Clipboard copies
-  const copyToClipboard = (text: string, type: "account" | "ifsc") => {
-    navigator.clipboard.writeText(text);
-    if (type === "account") {
-      setCopiedAccount(true);
-      setTimeout(() => setCopiedAccount(false), 2000);
-    } else {
-      setCopiedIfsc(true);
-      setTimeout(() => setCopiedIfsc(false), 2000);
-    }
-  };
+
 
   // Contact Submit Handler
   const handleContactSubmit = (e: React.FormEvent) => {
@@ -2436,189 +2651,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
         </div>
       </section>
 
-      {/* 8. Involved/Financials Section (Budgets, Copy Board) */}
-      <section id="financials" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-            Budgets & Audits
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            Expansion Funding Goals & Transparency
-          </h2>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-          <p className="text-stone-600 text-sm">
-            We are registered under Section 8(1) of the Companies Act, 2013 (CIN U88900KL2026NPL100608). Track our campaign expansions below.
-          </p>
-        </div>
-
-        {/* Progress Bars & Bank Cards Grid */}
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-
-          {/* Left: Goals */}
-          <div className="lg:col-span-7 space-y-8 text-left">
-            <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
-              Budget Goals Tracking
-            </h3>
-
-            <div className="space-y-6">
-              {growthGoals.map((goal) => {
-                const percentage = Math.min(100, Math.round((goal.currentAmount / goal.targetAmount) * 100));
-                return (
-                  <div key={goal.id} className="p-6 rounded-2xl bg-white shadow-coastal border border-stone-200/50 space-y-4">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <span className="px-2.5 py-0.5 rounded bg-primary-container text-primary text-[10px] font-mono font-bold uppercase">
-                          {goal.timeline}
-                        </span>
-                        <h4 className="font-display font-bold text-sm text-[#003B5C] mt-2">{goal.title}</h4>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-[10px] text-stone-400 font-mono uppercase block">Goal Target</span>
-                        <span className="font-display font-bold text-sm text-secondary">₹{(goal.targetAmount / 100000).toFixed(0)} Lakhs</span>
-                      </div>
-                    </div>
-
-                    {/* Progress slider bar */}
-                    <div className="space-y-1.5">
-                      <div className="flex justify-between text-xs text-stone-600 font-medium">
-                        <span>Audited Campaign</span>
-                        <span className="font-mono text-[#155E75]">{percentage}% Funded</span>
-                      </div>
-                      <div className="w-full bg-stone-100 h-3.5 rounded-full overflow-hidden border border-stone-200/40">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${percentage}%` }}
-                          transition={{ duration: 0.8 }}
-                          className="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
-                        />
-                      </div>
-                      <div className="flex justify-between font-mono text-[10px] text-stone-400">
-                        <span>Achieved: ₹{goal.currentAmount.toLocaleString("en-IN")}</span>
-                        <span>Total: ₹{goal.targetAmount.toLocaleString("en-IN")}</span>
-                      </div>
-                    </div>
-
-                    <div className="pt-3 border-t border-stone-100 space-y-1.5 text-xs text-stone-500">
-                      <span className="font-bold text-[#003B5C] block text-[10px] uppercase tracking-wider">Objectives:</span>
-                      <ul className="grid gap-1 pl-4 list-disc">
-                        {goal.objectives.map((obj, i) => (
-                          <li key={i}>{obj}</li>
-                        ))}
-                      </ul>
-                      <p className="text-[10px] italic pt-2 border-t border-dashed border-stone-100">{goal.details}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right: Bank Account Details Card */}
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
-              Official Bank Registry
-            </h3>
-
-            <div className="p-8 rounded-2xl bg-primary text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
-              {/* Graphic ring underlay */}
-              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full border-4 border-white/5 pointer-events-none" />
-              <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-white/2 pointer-events-none" />
-
-              <div className="flex justify-between items-start">
-                <div className="flex items-center gap-2">
-                  <Landmark className="w-6 h-6 text-secondary" />
-                  <span className="font-mono text-[10px] tracking-widest uppercase opacity-75">Nongovernmental Registry</span>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white font-bold">12A / 80G Credits</span>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <span className="text-[10px] text-white/50 font-mono uppercase block">Beneficiary Entity</span>
-                  <p className="font-display font-bold text-sm sm:text-base tracking-wide">
-                    TWO-THIRDS COMMUNITY FOUNDATION
-                  </p>
-                </div>
-
-                <div className="grid gap-3 font-mono text-xs">
-
-                  {/* Account number item */}
-                  <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
-                    <div>
-                      <span className="text-[9px] text-white/40 uppercase block font-sans">Account Number</span>
-                      <span className="font-bold tracking-wider text-sm">926020011506637</span>
-                    </div>
-                    <button
-                      onClick={() => copyToClipboard("926020011506637", "account")}
-                      className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
-                      title="Copy Account Number"
-                    >
-                      {copiedAccount ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
-                  </div>
-
-                  {/* IFSC Number item */}
-                  <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
-                    <div>
-                      <span className="text-[9px] text-white/40 uppercase block font-sans">IFSC Code</span>
-                      <span className="font-bold tracking-wider text-sm">UTIB0000028</span>
-                    </div>
-                    <button
-                      onClick={() => copyToClipboard("UTIB0000028", "ifsc")}
-                      className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
-                      title="Copy IFSC Code"
-                    >
-                      {copiedIfsc ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
-                  </div>
-
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 text-xs font-sans">
-                  <div>
-                    <span className="text-[9px] text-white/50 font-mono uppercase block">Bank Name</span>
-                    <p className="font-semibold text-stone-100">Axis Bank Ltd</p>
-                  </div>
-                  <div>
-                    <span className="text-[9px] text-white/50 font-mono uppercase block">Branch Name</span>
-                    <p className="font-semibold text-stone-100">Trivandrum Main Branch</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/60">
-                <div className="flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-secondary" />
-                  <span>Axis Bank Verified</span>
-                </div>
-                <span>Secured transfers only</span>
-              </div>
-            </div>
-
-            {/* Meet Team Members */}
-            <div className="bg-white p-6 rounded-2xl border border-stone-200/50 space-y-4">
-              <h4 className="font-display font-bold text-sm text-[#003B5C]">Board of Directors</h4>
-              <div className="grid gap-3">
-                {teamMembers.map((member, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 rounded-xl">
-                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-xs shrink-0">
-                      {member.initials}
-                    </div>
-                    <div>
-                      <h5 className="font-display font-bold text-xs text-primary">{member.name}</h5>
-                      <p className="text-[9px] text-stone-400 font-mono uppercase">{member.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
 
       {/* 9. Contact & Get Involved Form */}
       <section id="contact" className="py-24 bg-primary text-white relative overflow-hidden border-t-8 border-secondary">
@@ -2863,8 +2896,8 @@ function BlogPostPage({ slug }: BlogPostPageProps) {
 }
 
 interface NavbarProps {
-  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us";
-  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us") => void;
+  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials";
+  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials") => void;
 }
 
 function Navbar({ currentView, setCurrentView }: NavbarProps) {
@@ -2941,6 +2974,14 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               className={`hover:text-secondary transition-colors font-bold ${currentView === "about-us" ? "text-secondary border-b-2 border-secondary" : ""}`}
             >
               About Us
+            </a>
+
+            <a
+              href="#financials"
+              onClick={() => setCurrentView("financials")}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "financials" ? "text-secondary border-b-2 border-secondary" : ""}`}
+            >
+              Budgets &amp; Audits
             </a>
             
             {/* Educare Dropdown Submenu */}
@@ -3041,6 +3082,14 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
                 About Us
               </a>
 
+              <a
+                href="#financials"
+                onClick={() => { setCurrentView("financials"); setIsMobileMenuOpen(false); }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "financials" ? "font-bold text-secondary" : ""}`}
+              >
+                Budgets &amp; Audits
+              </a>
+
               {/* Mobile Educare sub-menu */}
               <div className="flex flex-col border-b border-stone-100 py-2">
                 <span className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1.5">Educare Program</span>
@@ -3089,8 +3138,8 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
   );
 }
 
-export default function App() {
-  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us">("home");
+export default function App({ initialView = "home" }: { initialView?: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials" }) {
+  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials">(initialView);
   const [selectedBlogPostSlug, setSelectedBlogPostSlug] = useState<string>("");
 
   useEffect(() => {
@@ -3107,6 +3156,8 @@ export default function App() {
         setCurrentView("women-empowerment");
       } else if (hash === "#about-us" || path.includes("/about-us")) {
         setCurrentView("about-us");
+      } else if (hash === "#financials" || path.includes("/financials")) {
+        setCurrentView("financials");
       } else if (hash.startsWith("#blog/") || path.includes("/blog/")) {
         const slug = hash.startsWith("#blog/") ? hash.substring(6) : path.split("/blog/")[1]?.split("/")[0] || "";
         if (slug) {
@@ -3151,6 +3202,8 @@ export default function App() {
         <HomePage setCurrentView={setCurrentView} />
       ) : currentView === "about-us" ? (
         <AboutUsPage />
+      ) : currentView === "financials" ? (
+        <FinancialsPage />
       ) : currentView === "educare" ? (
         <EducarePage />
       ) : currentView === "environment" ? (
@@ -3194,11 +3247,11 @@ export default function App() {
           <div className="md:col-span-3 space-y-3">
             <h4 className="font-display font-semibold text-stone-200 text-sm">Focus Anchors</h4>
             <div className="grid gap-2 text-xs">
-              <a href="#about" className="text-stone-400 hover:text-secondary transition-colors">About Us</a>
+              <a href="#about-us" className="text-stone-400 hover:text-secondary transition-colors">About Us</a>
               <a href="#reality" className="text-stone-400 hover:text-secondary transition-colors">Systemic Realities</a>
               <a href="#programs" className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
               <a href="#team" className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
-              <a href="#financials" className="text-stone-400 hover:text-secondary transition-colors">Funding Goals & Bank details</a>
+              <a href="#financials" className="text-stone-400 hover:text-secondary transition-colors">Budgets &amp; Audits</a>
             </div>
           </div>
 

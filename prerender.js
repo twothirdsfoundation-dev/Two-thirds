@@ -19,54 +19,86 @@ async function run() {
     const module = await import(ssrBundlePath);
     const App = module.default;
 
-    console.log('Rendering App component to HTML string...');
-    const html = renderToString(React.createElement(App));
-    console.log(`Rendered HTML length: ${html.length} chars.`);
-
-    // Replace "/assets/" with "<?php echo get_template_directory_uri(); ?>/assets/" for WordPress compatibility
-    const wpAssetPathPrefix = '<?php echo get_template_directory_uri(); ?>/assets/';
-    let phpMarkup = html;
-    
-    // Replace absolute relative "/assets/" in HTML
-    phpMarkup = phpMarkup.split('"/assets/').join('"' + wpAssetPathPrefix);
-    phpMarkup = phpMarkup.split("'/assets/").join("'" + wpAssetPathPrefix);
-    phpMarkup = phpMarkup.split('url(/assets/').join('url(' + wpAssetPathPrefix);
-    phpMarkup = phpMarkup.split('url("/assets/').join('url("' + wpAssetPathPrefix);
-    phpMarkup = phpMarkup.split("url('/assets/").join("url('" + wpAssetPathPrefix);
-
-    // Read index.php from template
+    // Read index.php from template as the base markup
     const templateIndexPhpPath = path.join(templateDir, 'index.php');
     if (!fs.existsSync(templateIndexPhpPath)) {
       throw new Error(`Template index.php not found at ${templateIndexPhpPath}`);
     }
-    
-    let indexPhpContent = fs.readFileSync(templateIndexPhpPath, 'utf8');
-    
-    // Insert pre-rendered HTML into <div id="root"></div>
+    const indexPhpContent = fs.readFileSync(templateIndexPhpPath, 'utf8');
     const rootPlaceholder = '<div id="root"></div>';
     if (!indexPhpContent.includes(rootPlaceholder)) {
       throw new Error('Placeholder <div id="root"></div> not found in template index.php!');
     }
-    
-    const updatedIndexPhp = indexPhpContent.replace(
-      rootPlaceholder,
-      `<div id="root">${phpMarkup}</div>`
-    );
-    
-    // Write index.php directly to dist/index.php
-    const destIndexPhpPath = path.join(distDir, 'index.php');
-    fs.writeFileSync(destIndexPhpPath, updatedIndexPhp, 'utf8');
-    console.log(`Successfully injected SSR HTML into ${destIndexPhpPath}`);
 
-    // Update dist/index.html (static preview file) for completeness
+    // Define all the pages/templates we want to pre-render
+    const pages = [
+      { view: 'home', templateName: null, filename: 'index.php' },
+      { view: 'about-us', templateName: 'About Us Page', filename: 'page-about-us.php' },
+      { view: 'educare', templateName: 'Educare Page', filename: 'page-educare.php' },
+      { view: 'environment', templateName: 'Environment Page', filename: 'page-environment.php' },
+      { view: 'internships', templateName: 'Internships Page', filename: 'page-internships.php' },
+      { view: 'women-empowerment', templateName: 'Women\'s Empowerment Page', filename: 'page-women-empowerment.php' },
+      { view: 'financials', templateName: 'Budgets and Audits Page', filename: 'page-financials.php' },
+    ];
+
+    const wpAssetPathPrefix = '<?php echo get_template_directory_uri(); ?>/assets/';
+
+    for (const page of pages) {
+      console.log(`Rendering App component for view "${page.view}"...`);
+      const html = renderToString(React.createElement(App, { initialView: page.view }));
+      console.log(`Rendered HTML length for ${page.view}: ${html.length} chars.`);
+
+      // Replace absolute relative "/assets/" in HTML with WordPress dynamic theme paths
+      let phpMarkup = html;
+      phpMarkup = phpMarkup.split('"/assets/').join('"' + wpAssetPathPrefix);
+      phpMarkup = phpMarkup.split("'/assets/").join("'" + wpAssetPathPrefix);
+      phpMarkup = phpMarkup.split('url(/assets/').join('url(' + wpAssetPathPrefix);
+      phpMarkup = phpMarkup.split('url("/assets/').join('url("' + wpAssetPathPrefix);
+      phpMarkup = phpMarkup.split("url('/assets/").join("url('" + wpAssetPathPrefix);
+
+      // Insert pre-rendered HTML into base template markup
+      let fileContent = indexPhpContent.replace(
+        rootPlaceholder,
+        `<div id="root">${phpMarkup}</div>`
+      );
+
+      // If it is a custom page template, add the Template Name comment header at the top
+      if (page.templateName) {
+        const templateHeader = `<?php
+/**
+ * Template Name: ${page.templateName}
+ */
+?>
+`;
+        fileContent = templateHeader + fileContent;
+      }
+
+      const destPath = path.join(distDir, page.filename);
+      fs.writeFileSync(destPath, fileContent, 'utf8');
+      console.log(`Successfully generated template ${destPath}`);
+    }
+
+    // Also generate a generic page.php with empty root div so any other page created will render cleanly in React client
+    let genericPageContent = indexPhpContent;
+    genericPageContent = genericPageContent.split('"/assets/').join('"' + wpAssetPathPrefix);
+    genericPageContent = genericPageContent.split("'/assets/").join("'" + wpAssetPathPrefix);
+    genericPageContent = genericPageContent.split('url(/assets/').join('url(' + wpAssetPathPrefix);
+    genericPageContent = genericPageContent.split('url("/assets/').join('url("' + wpAssetPathPrefix);
+    genericPageContent = genericPageContent.split("url('/assets/").join("url('" + wpAssetPathPrefix);
+
+    const destPagePhpPath = path.join(distDir, 'page.php');
+    fs.writeFileSync(destPagePhpPath, genericPageContent, 'utf8');
+    console.log(`Successfully generated generic page.php template at ${destPagePhpPath}`);
+
+    // Update dist/index.html (static preview file) for completeness using the home view html
+    const homeHtml = renderToString(React.createElement(App, { initialView: 'home' }));
     const destIndexHtmlPath = path.join(distDir, 'index.html');
     if (fs.existsSync(destIndexHtmlPath)) {
       let indexHtmlContent = fs.readFileSync(destIndexHtmlPath, 'utf8');
       if (indexHtmlContent.includes(rootPlaceholder)) {
-        // In static HTML, absolute relative paths /assets/ are correct, so we inject raw html
         const updatedIndexHtml = indexHtmlContent.replace(
           rootPlaceholder,
-          `<div id="root">${html}</div>`
+          `<div id="root">${homeHtml}</div>`
         );
         fs.writeFileSync(destIndexHtmlPath, updatedIndexHtml, 'utf8');
         console.log(`Successfully injected SSR HTML into ${destIndexHtmlPath}`);
