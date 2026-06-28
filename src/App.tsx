@@ -68,6 +68,9 @@ export interface BlogPost {
   readTime: string;
   image: string;
   category: string;
+  quote?: string;
+  authorRole?: string;
+  avatarInitials?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -88,10 +91,70 @@ export const blogPosts: BlogPost[] = [
       "Additionally, I am interested in studying more about the Muslim fisherfolk community, which led me in search of a suitable field. As I hail from Malabar, I first thought of selecting a coastal village in North Kerala. However, the Fellowship committee suggested exploring beyond my familiar space, leading me to the southernmost district, Thiruvananthapuram, the heart of Kerala's coastal region with the largest fishing population. Following thorough digital surveying and inquiries, I chose Perumathura, a lush hamlet nestled between Kadinamkulam backwaters and the Arabian Sea, flourishing with fishing, coir production, and a significant Muslim heritage tied to the legendary Chera King Cheraman Perumal.",
       "Perumathura is situated as a serene coastal hamlet, resembling a peninsula, nestled between the Kadinamkulam backwaters in the east, the Arabian Sea in the west, Muthalappozhi estuary in the north, and Mariyanadu in the south. Despite not being officially recognized as a single administrative unit, the people of Perumathura identify themselves within these distinct boundaries, often referring to it as \"Akhila Perumathura\" (All Perumathura). The village is scattered across three local gram panchayats: Chirayinkeezh, Azhoor, and Kadinamkulam, dividing between Chirayinkeezh and Thiruvananthapuram taluks. With their headquarters located quite a distance away from the village, the need for proper decentralization has arisen, prompting discussions about establishing a separate panchayat for Perumathura to address common challenges. Due to the absence of a vehicle, most of my exploration was conducted on foot. Nevertheless, I thoroughly enjoyed strolling through the length and breadth of Perumathura, which consistently offered picturesque visuals, providing ample material for my phone camera."
     ]
+  },
+  {
+    id: "2",
+    slug: "fathimas-story",
+    title: "A New Light in the Classroom: How Educare Changed My Daughter's Future",
+    excerpt: "Fathima Beevi, a coir worker from Perumathura, speaks about the evening tuition center that helped her daughter excel in reading and arithmetic, changing her school path.",
+    date: "March 15, 2026",
+    author: "Fathima Beevi",
+    readTime: "4 min read",
+    image: educareClassroom,
+    category: "Impact Stories",
+    quote: "Before the evening study center started, my daughter struggled with reading. Now she is the first in her class, and she wants to become a teacher herself.",
+    authorRole: "Mother & Coir Worker",
+    avatarInitials: "FB",
+    content: [
+      "Living in a coastal hamlet like Perumathura, work options for women are mostly limited to coir spinning or household work. Daily wages are small, and after a long day at the coir unit, it was hard for me to sit down and teach my children. We did not have proper desks, books, or tutors who could help my daughter, Amina, with her school homework. She was falling behind in school, struggling to read simple words in Malayalam and English.",
+      "When the Two-Thirds Community Foundation opened the local evening Educare study center in our village, Amina started going there every evening. The center provided shepherded support, textbooks, study materials, and enthusiastic mentors who taught in a friendly way. The change was visible in a matter of months.",
+      "Amina started enjoying her classes. Her math and reading skills improved dramatically. Last week, she brought home her school report card and she had scored the highest marks in her division. Seeing her study with confidence has changed how we look at her future. She now talks about wanting to become a school teacher one day, and I know that with the support of the Educare center, she can actually do it."
+    ]
+  },
+  {
+    id: "3",
+    slug: "kunjumons-story",
+    title: "Navigating Safely: How the Safety Net Project Saved My Husband at Sea",
+    excerpt: "Traditional fisherman Kunjumon shares how the safety training and first-aid kits provided by the Safety Net Project helped his crew manage a mid-sea engine crisis.",
+    date: "April 2, 2026",
+    author: "Kunjumon",
+    readTime: "5 min read",
+    image: coastalLivelihoods,
+    category: "Impact Stories",
+    quote: "When our boat engine failed 5 miles out, the first-aid training and communication protocols we learned saved our lives. We knew exactly who to call.",
+    authorRole: "Traditional Fisherman",
+    avatarInitials: "KM",
+    content: [
+      "For traditional fishermen in Perumathura, going out to sea is a gamble we play every day. While modern trawlers have advanced navigation and backup systems, our small fiberglass boats rely entirely on outboard engines and local weather knowledge. When something goes wrong mid-sea, help is miles away and communication is extremely difficult.",
+      "A few months ago, the Two-Thirds Safety Net Project held a marine safety workshop in our ward. They distributed emergency first-aid kits and trained us in emergency protocols: how to administer CPR, handle minor injuries, signal for help, and coordinate rescue using simple mobile communication links.",
+      "Last week, our engine failed five miles off the coast during rough weather. Water was entering the boat, and panic started. Instead of losing our heads, we followed the exact protocol we learned. We secured the boat, used the emergency numbers provided to alert the coastal rescue team, and administered basic first aid to a crew member who cut his arm on the motor mount. Within an hour, a rescue boat reached us. The training saved our lives, and the Safety Net Project is truly a shield for the fishing families here."
+    ]
+  },
+  {
+    id: "4",
+    slug: "shajithas-story",
+    title: "From Housewife to Cooperative Leader: The Penma Empowerment Journey",
+    excerpt: "Shajitha explains the journey of Penma Self-Help Group, which enabled coastal women to build their own local dry-fish value-addition brand.",
+    date: "May 10, 2026",
+    author: "Shajitha",
+    readTime: "6 min read",
+    image: empowermentWomen,
+    category: "Impact Stories",
+    quote: "We never had our own savings. Today, through our value-addition center, 25 of us are financially independent and managing our own dry-fish brand.",
+    authorRole: "President, Penma SHG",
+    avatarInitials: "SJ",
+    content: [
+      "For generations, the women of Perumathura have been dependent on whatever income their husbands brought from the sea. When the catch was poor, families struggled to buy daily groceries. Coir weaving, our traditional livelihood, was declining, leaving almost no jobs for women in the village.",
+      "Through the Two-Thirds Women Empowerment initiative, we formed the Penma Self-Help Group. We began with basic savings circles and then started our own value-addition center for dry-fish production. Instead of selling the fish fresh at low market prices, we processed, dried, packaged, and branded the product ourselves.",
+      "The foundation provided us with modern solar dryers and packing machines, which keep the fish hygienic and improve shelf life. Today, our cooperative consists of 25 local women. We manage our own bank accounts, track sales, and split the profits. For the first time in our lives, we have financial independence and our children can go to better colleges. We are no longer bystanders; we are builders."
+    ]
   }
 ];
 
-
+// Allow WordPress to inject active posts dynamically via window.wpPosts
+export const activePosts: BlogPost[] = (typeof window !== "undefined" && (window as any).wpPosts) 
+  ? (window as any).wpPosts 
+  : blogPosts;
 
 
 // Data Definition
@@ -2274,8 +2337,76 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       </section>
 
 
+      {/* 7. Impact Stories Section */}
+      <section id="impact-stories" className="py-24 bg-stone-50 border-t border-stone-200/40 relative overflow-hidden">
+        {/* Soft marine glows */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.02),transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          
+          <div className="max-w-2xl mx-auto space-y-4">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#E6FFFA] text-[#155E75] font-mono text-[10px] font-bold uppercase tracking-wider">
+              Community Voices
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              Impact Stories
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm">
+              Real testimonials of transformation and empowerment along the shores of Perumathura.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto justify-center text-left">
+            {activePosts
+              .filter((post) => post.category === "Impact Stories" || post.category === "impact-stories")
+              .map((post) => (
+                <div
+                  key={post.id}
+                  onClick={() => {
+                    window.location.hash = "#blog/" + post.slug;
+                  }}
+                  className="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer group h-full relative"
+                >
+                  <div className="space-y-6">
+                    {/* Big double quote sign */}
+                    <span className="block font-serif text-5xl text-secondary leading-none -mb-4">“</span>
+                    <p className="text-stone-700 text-sm sm:text-base leading-relaxed italic font-medium font-sans">
+                      {post.quote}
+                    </p>
+                  </div>
+
+                  <div className="pt-8 border-t border-stone-100 flex items-center justify-between mt-6">
+                    <div className="flex items-center gap-3">
+                      {/* Avatar Initials Badge */}
+                      <div className="w-10 h-10 rounded-full bg-stone-50 border border-dashed border-[#155E75] flex items-center justify-center font-display font-bold text-xs text-[#003B5C]">
+                        {post.avatarInitials || "CO"}
+                      </div>
+                      <div className="text-left leading-none">
+                        <span className="block font-display font-bold text-xs text-primary mb-1">
+                          {post.author}
+                        </span>
+                        <span className="text-[10px] font-mono font-bold text-stone-400 uppercase tracking-wider">
+                          {post.authorRole}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Small dynamic chevron circle icon */}
+                    <div className="w-8 h-8 rounded-full bg-stone-50 text-stone-400 flex items-center justify-center transition-all group-hover:bg-primary group-hover:text-white shrink-0">
+                      <ChevronRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* 7.5. Field Diaries (Blog Section) */}
-      <section id="blog-preview" className="py-24 bg-stone-50 border-y border-stone-200/40 relative overflow-hidden">
+      <section id="blog-preview" className="py-24 bg-stone-100/50 border-t border-stone-200/40 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
 
           <div className="max-w-2xl mx-auto space-y-4">
@@ -2292,57 +2423,59 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto justify-center text-left">
-            {blogPosts.map((post) => (
-              <div
-                key={post.id}
-                className="bg-white rounded-3xl overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group h-full"
-              >
-                {/* Cover Image */}
-                <div className="relative h-48 overflow-hidden bg-stone-100 shrink-0">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur-sm text-white font-mono text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
-                    {post.category}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow space-y-4">
-                  {/* Metadata */}
-                  <div className="flex items-center gap-4 text-stone-400 text-[10px] font-mono">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5" />
-                      {post.readTime}
+            {activePosts
+              .filter((post) => post.category === "Field Diaries" || post.category === "field-notes")
+              .map((post) => (
+                <div
+                  key={post.id}
+                  className="bg-white rounded-3xl overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group h-full"
+                >
+                  {/* Cover Image */}
+                  <div className="relative h-48 overflow-hidden bg-stone-100 shrink-0">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur-sm text-white font-mono text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+                      {post.category}
                     </span>
                   </div>
 
-                  <h3 className="font-display font-bold text-lg text-primary leading-snug group-hover:text-secondary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow space-y-4">
+                    {/* Metadata */}
+                    <div className="flex items-center gap-4 text-stone-400 text-[10px] font-mono">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {post.date}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" />
+                        {post.readTime}
+                      </span>
+                    </div>
 
-                  <p className="text-stone-600 text-xs leading-relaxed font-sans line-clamp-3 flex-grow">
-                    {post.excerpt}
-                  </p>
+                    <h3 className="font-display font-bold text-lg text-primary leading-snug group-hover:text-secondary transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
 
-                  <div className="pt-2">
-                    <a
-                      href={"#blog/" + post.slug}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-secondary transition-colors uppercase tracking-wider cursor-pointer"
-                    >
-                      Read Story
-                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                    </a>
+                    <p className="text-stone-600 text-xs leading-relaxed font-sans line-clamp-3 flex-grow">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="pt-2">
+                      <a
+                        href={"#blog/" + post.slug}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-secondary transition-colors uppercase tracking-wider cursor-pointer"
+                      >
+                        Read Story
+                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
 
         </div>
@@ -2360,7 +2493,7 @@ interface BlogPostPageProps {
 }
 
 function BlogPostPage({ slug }: BlogPostPageProps) {
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = activePosts.find((p) => p.slug === slug);
 
   if (!post) {
     return (
