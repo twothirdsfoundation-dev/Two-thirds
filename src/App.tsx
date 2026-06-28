@@ -2358,26 +2358,33 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto justify-center text-left">
-            {activePosts
-              .filter((post) => post.category === "Impact Stories" || post.category === "impact-stories")
-              .map((post) => (
+          {/* Infinite Scrolling Ticker Wrapper */}
+          <div className="relative w-full overflow-hidden py-4 select-none">
+            {/* Overlay gradients to fade the edges (very premium visual effect!) */}
+            <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
+
+            <div className="animate-ticker gap-8 flex items-stretch">
+              {/* Duplicate the posts array to allow seamless scrolling loop */}
+              {Array(3).fill(
+                activePosts.filter((post) => post.category === "Impact Stories" || post.category === "impact-stories")
+              ).flat().map((post, idx) => (
                 <div
-                  key={post.id}
+                  key={`${post.id}-${idx}`}
                   onClick={() => {
                     window.location.hash = "#blog/" + post.slug;
                   }}
-                  className="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between cursor-pointer group h-full relative"
+                  className="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-sm hover:shadow-md hover:scale-[1.01] hover:border-stone-300 transition-all duration-300 flex flex-col justify-between cursor-pointer group h-[340px] w-[350px] md:w-[400px] shrink-0 relative"
                 >
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     {/* Big double quote sign */}
                     <span className="block font-serif text-5xl text-secondary leading-none -mb-4">“</span>
-                    <p className="text-stone-700 text-sm sm:text-base leading-relaxed italic font-medium font-sans">
+                    <p className="text-stone-700 text-xs sm:text-sm leading-relaxed italic font-medium font-sans line-clamp-6">
                       {post.quote}
                     </p>
                   </div>
 
-                  <div className="pt-8 border-t border-stone-100 flex items-center justify-between mt-6">
+                  <div className="pt-6 border-t border-stone-100 flex items-center justify-between mt-auto">
                     <div className="flex items-center gap-3">
                       {/* Avatar Initials Badge */}
                       <div className="w-10 h-10 rounded-full bg-stone-50 border border-dashed border-[#155E75] flex items-center justify-center font-display font-bold text-xs text-[#003B5C]">
@@ -2400,6 +2407,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                   </div>
                 </div>
               ))}
+            </div>
           </div>
 
         </div>
