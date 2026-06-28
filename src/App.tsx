@@ -2,15 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   ShieldCheck,
-  Mail,
-  Phone,
-  MapPin,
   Menu,
   X,
   Landmark,
   ChevronRight,
   ChevronLeft,
-  Info,
   ArrowDown,
   BookOpen,
   Anchor,
@@ -1585,12 +1581,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
 
 
-  // Contact Form States
-  const [formName, setFormName] = useState("");
-  const [formEmail, setFormEmail] = useState("");
-  const [formType, setFormType] = useState("General Query");
-  const [formMessage, setFormMessage] = useState("");
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   // Programs Carousel Synchronization Ref & States
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -1818,18 +1808,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
 
 
-  // Contact Submit Handler
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formName || !formEmail || !formMessage) return;
-    setIsFormSubmitted(true);
-    setTimeout(() => {
-      setIsFormSubmitted(false);
-      setFormName("");
-      setFormEmail("");
-      setFormMessage("");
-    }, 4000);
-  };
 
   const duplicatedAreas = [...areas, ...areas, ...areas];
 
@@ -2372,133 +2350,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
 
 
-      {/* 9. Contact & Get Involved Form */}
-      <section id="contact" className="py-24 bg-primary text-white relative overflow-hidden border-t-8 border-secondary">
-        {/* Soft marine graphics background */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-
-          {/* Left Column: Contact details */}
-          <div className="lg:col-span-5 space-y-8 text-left">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              Join the Movement
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#FAF9F6] leading-tight">
-              Get Involved With Our Shoreline Team
-            </h2>
-            <p className="text-[#E0F2FE]/80 text-sm leading-relaxed">
-              We recruit and onboard volunteers, coordinate academic partnerships, and handle CSR programs. Drop us a line and let's configure collaboration!
-            </p>
-
-            <div className="space-y-4 text-xs font-mono text-[#E0F2FE]/90">
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4.5 h-4.5 text-secondary shrink-0" />
-                <span>Trivandrum Coastline, Kerala, India</span>
-              </div>
-              <a href="tel:+919037518593" className="flex items-center gap-3 hover:text-white transition-colors">
-                <Phone className="w-4.5 h-4.5 text-secondary shrink-0" />
-                <span>+91 9037518593</span>
-              </a>
-              <a href="mailto:twothirdscommunityfoundation@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors break-all">
-                <Mail className="w-4.5 h-4.5 text-secondary shrink-0" />
-                <span>twothirdscommunityfoundation@gmail.com</span>
-              </a>
-            </div>
-
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
-              <Info className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-              <div className="text-stone-300 text-xs">
-                <span className="font-bold text-[#E0F2FE] block text-[10px] uppercase font-mono tracking-wider">Registration Code:</span>
-                U88900KL2026NPL100608. Under section 12A/80G tax claims.
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Form wrapper */}
-          <div className="lg:col-span-7 bg-white text-[#1A2D37] p-8 rounded-3xl shadow-2xl border border-white/20">
-            <h3 className="font-display font-bold text-lg text-primary mb-6 text-left">
-              Send an Inquiry Message
-            </h3>
-
-            <form onSubmit={handleContactSubmit} className="space-y-4 text-left">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Your Name</label>
-                  <input
-                    type="text"
-                    value={formName}
-                    onChange={(e) => setFormName(e.target.value)}
-                    placeholder="e.g. Bindu Sajeev"
-                    className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                    required
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Email Address</label>
-                  <input
-                    type="email"
-                    value={formEmail}
-                    onChange={(e) => setFormEmail(e.target.value)}
-                    placeholder="e.g. bindu@gmail.com"
-                    className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Inquiry Type</label>
-                <select
-                  value={formType}
-                  onChange={(e) => setFormType(e.target.value)}
-                  className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                >
-                  <option value="General Query">General Query / Question</option>
-                  <option value="Volunteer Opportunity">Volunteer Onboarding</option>
-                  <option value="Donation / CSR Grant">Donation & CSR Partnerships</option>
-                  <option value="Youth Mentorship">Youth Classroom Program</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-mono font-bold text-stone-400 uppercase">Message</label>
-                <textarea
-                  rows={4}
-                  value={formMessage}
-                  onChange={(e) => setFormMessage(e.target.value)}
-                  placeholder="How would you like to collaborate with us?"
-                  className="p-3 text-xs bg-stone-50 rounded-xl border border-stone-200 focus:outline-none focus:ring-1 focus:ring-primary text-primary"
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary-light text-white text-xs font-display font-semibold tracking-wider py-4 rounded-xl cursor-pointer shadow-md transition-colors active:scale-98 uppercase"
-              >
-                Send Message
-              </button>
-
-              <AnimatePresence>
-                {isFormSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="p-4 bg-[#E6FFFA] border border-teal-200 rounded-xl text-teal-800 text-xs font-semibold flex items-center justify-center gap-2 mt-4 animate-fade-in"
-                  >
-                    <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
-                    <span>Inquiry received! Our Trivandrum field officers will email you back within 24-48 hours.</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </form>
-          </div>
-
-        </div>
-      </section>
 
     </>
   );
