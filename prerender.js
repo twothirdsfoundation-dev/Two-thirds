@@ -38,7 +38,8 @@ async function run() {
       { view: 'environment', templateName: 'Environment Page', filename: 'page-environment.php' },
       { view: 'internships', templateName: 'Internships Page', filename: 'page-internships.php' },
       { view: 'women-empowerment', templateName: 'Women\'s Empowerment Page', filename: 'page-women-empowerment.php' },
-      { view: 'financials', templateName: 'Budgets and Audits Page', filename: 'page-financials.php' },
+      { view: 'livelihoods', templateName: 'Sustainable Livelihoods Page', filename: 'page-livelihoods.php' },
+      { view: 'health', templateName: 'Health & Nutrition Page', filename: 'page-health.php' },
     ];
 
     const wpAssetPathPrefix = '<?php echo get_template_directory_uri(); ?>/assets/';

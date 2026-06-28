@@ -5,14 +5,11 @@ import {
   Mail,
   Phone,
   MapPin,
-  Copy,
-  Check,
   Menu,
   X,
   Landmark,
   ChevronRight,
   ChevronLeft,
-  ChevronDown,
   Info,
   ArrowDown,
   BookOpen,
@@ -98,25 +95,8 @@ export const blogPosts: BlogPost[] = [
   }
 ];
 
-interface RealityCard {
-  title: string;
-  tagline: string;
-  description: string;
-  details: string;
-  bg: string;
-  text: string;
-  border: string;
-}
 
-interface GrowthGoal {
-  id: string;
-  title: string;
-  targetAmount: number;
-  currentAmount: number;
-  timeline: string;
-  objectives: string[];
-  details: string;
-}
+
 
 // Data Definition
 const teamMembers = [
@@ -146,130 +126,10 @@ const teamMembers = [
   }
 ];
 
-const focusAreas: FocusArea[] = [
-  {
-    id: "educare",
-    title: "Education Initiative",
-    icon: BookOpen,
-    tagline: "Reimagining learning and growth for coastal children",
-    description: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote coastal fishing villages. We combine academic tutoring with community engagement to transform learning spaces.",
-    accomplishments: "Empowered 350+ students with academic tutoring, anti-drug awareness, and scholastic awards.",
-    image: educareClassroom
-  },
-  {
-    id: "women-empowerment",
-    title: "Women’s Empowerment",
-    icon: Anchor,
-    tagline: "Skill training, SHGs, leadership, and financial literacy",
-    description: "Mobilizing local micro-savings Self-Help Groups (SHGs) to run fish value-addition facilities, craft circles, and local co-operatives. Providing direct digital financial training.",
-    accomplishments: "Empowered 120+ women in financial accounting and digital banking.",
-    image: empowermentWomen
-  },
-  {
-    id: "livelihoods",
-    title: "Sustainable Livelihoods",
-    icon: Fish,
-    tagline: "Beyond fishing: aquaculture, value addition, market links",
-    description: "Diversifying income streams via safe marine cage farming, seaweed cultivation, modern drying equipment, and direct market integration that eliminates predatory middlemen.",
-    accomplishments: "Established 3 cooperative fish-dryer micro-units.",
-    image: coastalLivelihoods
-  },
-  {
-    id: "environment",
-    title: "Environment Projects",
-    icon: Leaf,
-    tagline: "Nature tools, GINTL curriculum, Coastal Walks, Sea Voices",
-    description: "Helping coastal children engage deeply with local ecology through GINTL Climate Change Education, Sea Voices storytelling, and hands-on Coastal Walks.",
-    accomplishments: "Successfully conducted international climate exchanges (GINTL) and Climate Week Sea Voices workshops.",
-    image: mangroveRestoration
-  },
-  {
-    id: "health",
-    title: "Health & Nutrition",
-    icon: LifeBuoy,
-    tagline: "Supporting health access, nutrition, and sanitation",
-    description: "Organizing mobile health clinics, distributing fresh iron-fortified multi-nutrient food packets list, and creating hygienic community sanitation layouts in remote coastal hamlets.",
-    accomplishments: "Conducted 15+ remote check-up camps with expert pediatricians.",
-    image: healthNutrition
-  }
-];
 
-const realityCards: RealityCard[] = [
-  {
-    title: "Market & Credit Exclusion",
-    tagline: "Systemic Isolation from Catch Value",
-    description: "The community does not lack economic enterprise; rather, structural market designs and exploitative middleman rings intercept the true value of their catch, leaving fishers with high fuel overheads and seasonal precarity.",
-    details: "Our livelihood program creates direct-to-consumer micro-dryer cooperatives that bypass exploitative intermediaries and increase local value-retention by over 40%.",
-    bg: "bg-[#E0F2FE]", // Soft light sky blue
-    text: "text-[#003B5C]",
-    border: "border-sky-200"
-  },
-  {
-    title: "Ecological Neglect",
-    tagline: "Imposed Engineering vs. Nature's Shield",
-    description: "Severe beach loss and cyclonic surges are worsened by rigid, top-down concrete engineering that fails under pressure. Traditional knowledge of shoreline buffers is discarded in favor of mainland answers.",
-    details: "We champion nature-based solutions, restoring native mangrove buffers to stabilize coastal soils and shield fishers' homes, combining local wisdom with ecological science.",
-    bg: "bg-[#E6FFFA]", // Soft light teal/cyan
-    text: "text-[#155E75]",
-    border: "border-teal-200"
-  },
-  {
-    title: "Educational Incompatibility",
-    tagline: "Rigid Systems Ignoring Coastal Rhythms",
-    description: "A child from a fishing hamlet does not lack academic potential; they are excluded by rigid school systems and curricula that fail to align with the socio-economic rhythms and seasonal realities of coastal life.",
-    details: "We establish community evening classrooms and digital learning hubs, offering first-generation learners tailored academic support and career coaching designed to keep them on secondary tracks.",
-    bg: "bg-[#FFF9E6]", // Soft amber/gold tint
-    text: "text-amber-950",
-    border: "border-amber-200"
-  },
-  {
-    title: "Institutional Credit Barriers",
-    tagline: "Systemic Exclusion from Financial Access",
-    description: "Women in remote hamlets carry the weight of household finance but are systematically excluded from formal credit channels and modern vocational training, leaving them vulnerable to local debt cycles.",
-    details: "We fund and organize women's Self Help Groups, training them in digital banking, micro-savings, and enterprise management to establish direct financial voices and bypass credit barriers.",
-    bg: "bg-[#FFF2F2]", // Soft red tint
-    text: "text-red-950",
-    border: "border-red-200"
-  },
-  {
-    title: "Knowledge Displacement",
-    tagline: "Disregarding Indigenous Maritime Wisdom",
-    description: "Centuries-old ocean-reading, boatcraft, and traditional weather forecasting are not outdated; they are actively displaced by development paradigms that value mainland answers over coastal ecological wisdom.",
-    details: "We document and integrate coastal maritime folklore into youth programs, connecting elders with students to preserve shore identity and ensure local ecological knowledge isn't lost.",
-    bg: "bg-[#F3F4F6]", // Soft slate gray
-    text: "text-slate-900",
-    border: "border-slate-300"
-  }
-];
 
-const initialGrowthGoals: GrowthGoal[] = [
-  {
-    id: "goal-y1",
-    title: "Year 1 - Immediate Expansion Target",
-    targetAmount: 2000000, // ₹20 Lakhs
-    currentAmount: 1140000, // ~57% achieved
-    timeline: "2026 - 2027",
-    objectives: [
-      "Baseline survey of 500 family units across 5 vulnerable coastal areas",
-      "Setting up permanent Community Grassroots Office in Trivandrum Coastline",
-      "Launching pilot women's alternative livelihood initiative supporting 50 women directly"
-    ],
-    details: "Every rupee is fully audited, transparently reported on-site, and reaches coastal families directly. We provide comprehensive project development reports to all donors."
-  },
-  {
-    id: "goal-y2",
-    title: "Year 2 - Collaborative Scale-Up",
-    targetAmount: 5000000, // ₹50 Lakhs
-    currentAmount: 0,
-    timeline: "2027 - 2028",
-    objectives: [
-      "Scaling structured development programs to 5 major coastal villages across central Kerala",
-      "Onboarding 3-4 professional full-time community field officers",
-      "Expanding high-impact programs including supplementary education sessions and weekly medicine camps"
-    ],
-    details: "Focuses on deep regional integration, enabling community structures to manage livelihoods and prevent forced migration of high-school youth to crowded metropolitan zones."
-  }
-];
+
+
 
 // CountUp Component utilizing Framer Motion's useInView
 function CountUp({
@@ -1492,239 +1352,13 @@ function AboutUsPage() {
   );
 }
 
-function FinancialsPage() {
-  const [growthGoals] = useState<GrowthGoal[]>(initialGrowthGoals);
-  const [copiedAccount, setCopiedAccount] = useState(false);
-  const [copiedIfsc, setCopiedIfsc] = useState(false);
-
-  const copyToClipboard = (text: string, type: "account" | "ifsc") => {
-    navigator.clipboard.writeText(text);
-    if (type === "account") {
-      setCopiedAccount(true);
-      setTimeout(() => setCopiedAccount(false), 2000);
-    } else {
-      setCopiedIfsc(true);
-      setTimeout(() => setCopiedIfsc(false), 2000);
-    }
-  };
-
-  return (
-    <div className="bg-stone-50 min-h-screen text-stone-800">
-      {/* 1. Hero Banner */}
-      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
-        {/* Soft background glow */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/70 to-transparent" />
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
-          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
-            <Landmark className="w-3.5 h-3.5 text-secondary" />
-            Transparency
-          </span>
-          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
-            Budgets &amp; Audits
-          </h1>
-          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
-          <p className="text-stone-200 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-sans font-medium">
-            Review our expansion funding goals, financial transparency records, and audited campaigns.
-          </p>
-        </div>
-      </section>
-
-      {/* 2. Main Content */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Decorative fish silhouettes on the sides */}
-        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.06] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
-        </div>
-        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.06] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
-        </div>
-
-        {/* Content */}
-        <div className="space-y-16 relative z-10">
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              Budgets &amp; Audits
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              Expansion Funding Goals &amp; Transparency
-            </h2>
-            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              We are registered under Section 8(1) of the Companies Act, 2013 (CIN U88900KL2026NPL100608). Track our campaign expansions below.
-            </p>
-          </div>
-
-          {/* Progress Bars & Bank Cards Grid */}
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-            {/* Left: Goals */}
-            <div className="lg:col-span-7 space-y-8 text-left">
-              <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
-                Budget Goals Tracking
-              </h3>
-
-              <div className="space-y-6">
-                {growthGoals.map((goal) => {
-                  const percentage = Math.min(100, Math.round((goal.currentAmount / goal.targetAmount) * 100));
-                  return (
-                    <div key={goal.id} className="p-6 rounded-2xl bg-white shadow-coastal border border-stone-200/50 space-y-4">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <span className="px-2.5 py-0.5 rounded bg-primary-container text-primary text-[10px] font-mono font-bold uppercase">
-                            {goal.timeline}
-                          </span>
-                          <h4 className="font-display font-bold text-sm text-[#003B5C] mt-2">{goal.title}</h4>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-[10px] text-stone-400 font-mono uppercase block">Goal Target</span>
-                          <span className="font-display font-bold text-sm text-secondary">₹{(goal.targetAmount / 100000).toFixed(0)} Lakhs</span>
-                        </div>
-                      </div>
-
-                      {/* Progress slider bar */}
-                      <div className="space-y-1.5">
-                        <div className="flex justify-between text-xs text-stone-600 font-medium">
-                          <span>Audited Campaign</span>
-                          <span className="font-mono text-[#155E75]">{percentage}% Funded</span>
-                        </div>
-                        <div className="w-full bg-stone-100 h-3.5 rounded-full overflow-hidden border border-stone-200/40">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${percentage}%` }}
-                            transition={{ duration: 0.8 }}
-                            className="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
-                          />
-                        </div>
-                        <div className="flex justify-between font-mono text-[10px] text-stone-400">
-                          <span>Achieved: ₹{goal.currentAmount.toLocaleString("en-IN")}</span>
-                          <span>Total: ₹{goal.targetAmount.toLocaleString("en-IN")}</span>
-                        </div>
-                      </div>
-
-                      <div className="pt-3 border-t border-stone-100 space-y-1.5 text-xs text-stone-500">
-                        <span className="font-bold text-[#003B5C] block text-[10px] uppercase tracking-wider">Objectives:</span>
-                        <ul className="grid gap-1 pl-4 list-disc">
-                          {goal.objectives.map((obj, i) => (
-                            <li key={i}>{obj}</li>
-                          ))}
-                        </ul>
-                        <p className="text-[10px] italic pt-2 border-t border-dashed border-stone-100">{goal.details}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right: Bank Account Details Card */}
-            <div className="lg:col-span-5 space-y-6 text-left">
-              <h3 className="font-display font-bold text-xl text-[#003B5C] border-b border-stone-100 pb-3">
-                Official Bank Registry
-              </h3>
-
-              <div className="p-8 rounded-2xl bg-primary text-white shadow-2xl relative overflow-hidden border border-white/10 space-y-6">
-                {/* Graphic ring underlay */}
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full border-4 border-white/5 pointer-events-none" />
-                <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-white/2 pointer-events-none" />
-
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center gap-2">
-                    <Landmark className="w-6 h-6 text-secondary" />
-                    <span className="font-mono text-[10px] tracking-widest uppercase opacity-75">Nongovernmental Registry</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white font-bold">12A / 80G Credits</span>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <span className="text-[10px] text-white/50 font-mono uppercase block">Beneficiary Entity</span>
-                    <p className="font-display font-bold text-sm sm:text-base tracking-wide">
-                      TWO-THIRDS COMMUNITY FOUNDATION
-                    </p>
-                  </div>
-
-                  <div className="grid gap-3 font-mono text-xs">
-                    {/* Account number item */}
-                    <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
-                      <div>
-                        <span className="text-[9px] text-white/40 uppercase block font-sans">Account Number</span>
-                        <span className="font-bold tracking-wider text-sm">926020011506637</span>
-                      </div>
-                      <button
-                        onClick={() => copyToClipboard("926020011506637", "account")}
-                        className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
-                        title="Copy Account Number"
-                      >
-                        {copiedAccount ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
-                    </div>
-
-                    {/* IFSC Number item */}
-                    <div className="p-3 bg-white/5 rounded-xl flex justify-between items-center border border-white/5">
-                      <div>
-                        <span className="text-[9px] text-white/40 uppercase block font-sans">IFSC Code</span>
-                        <span className="font-bold tracking-wider text-sm">UTIB0000028</span>
-                      </div>
-                      <button
-                        onClick={() => copyToClipboard("UTIB0000028", "ifsc")}
-                        className="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors cursor-pointer"
-                        title="Copy IFSC Code"
-                      >
-                        {copiedIfsc ? <Check className="w-3.5 h-3.5 text-green-300" /> : <Copy className="w-3.5 h-3.5" />}
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 text-xs font-sans">
-                    <div>
-                      <span className="text-[9px] text-white/50 font-mono uppercase block">Bank Name</span>
-                      <p className="font-semibold text-stone-100">Axis Bank Ltd</p>
-                    </div>
-                    <div>
-                      <span className="text-[9px] text-white/50 font-mono uppercase block">Branch Name</span>
-                      <p className="font-semibold text-stone-100">Trivandrum Main Branch</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/60">
-                  <div className="flex items-center gap-1">
-                    <ShieldCheck className="w-4 h-4 text-secondary" />
-                    <span>Axis Bank Verified</span>
-                  </div>
-                  <span>Secured transfers only</span>
-                </div>
-              </div>
-
-              {/* Meet Team Members */}
-              <div className="bg-white p-6 rounded-2xl border border-stone-200/50 space-y-4">
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Board of Directors</h4>
-                <div className="grid gap-3">
-                  {teamMembers.map((member, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 bg-stone-50 rounded-xl">
-                      <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-display font-bold text-xs shrink-0">
-                        {member.initials}
-                      </div>
-                      <div>
-                        <h5 className="font-display font-bold text-xs text-primary">{member.name}</h5>
-                        <p className="text-[9px] text-stone-400 font-mono uppercase">{member.role}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
 interface HomePageProps {
-  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials") => void;
+  setCurrentView: (view: string) => void;
+  areas: FocusArea[];
+  onOpenAdmin: () => void;
 }
 
-function HomePage({ setCurrentView }: HomePageProps) {
+function HomePage({ setCurrentView, areas, onOpenAdmin }: HomePageProps) {
   const heroRef = useRef<HTMLElement>(null);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -1770,7 +1404,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
   const handlePillClick = (index: number) => {
     setActiveCardIndex(index);
     const container = scrollContainerRef.current;
-    const N = focusAreas.length;
+    const N = areas.length;
     const target = programRefs.current[N + index]; // Target the middle set for stability
     if (container && target) {
       isProgrammaticScrollRef.current = true;
@@ -1790,7 +1424,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
 
     const scrollLeft = container.scrollLeft;
     const clientWidth = container.clientWidth;
-    const N = focusAreas.length;
+    const N = areas.length;
 
     // Find the current physical closest index
     let closestIndex = N;
@@ -1850,7 +1484,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
 
     const scrollLeft = container.scrollLeft;
     const clientWidth = container.clientWidth;
-    const N = focusAreas.length;
+    const N = areas.length;
 
     // Find the current physical closest index
     let closestIndex = N;
@@ -1911,7 +1545,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
 
     const scrollLeft = container.scrollLeft;
     const clientWidth = container.clientWidth;
-    const N = focusAreas.length;
+    const N = areas.length;
 
     // Find the physical card closest to container center
     let closestIndex = N;
@@ -1970,7 +1604,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       const container = scrollContainerRef.current;
-      const N = focusAreas.length;
+      const N = areas.length;
       const target = programRefs.current[N]; // Index of middle first card
       if (container && target) {
         container.style.scrollBehavior = "auto";
@@ -1998,7 +1632,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
     }, 4000);
   };
 
-  const duplicatedAreas = [...focusAreas, ...focusAreas, ...focusAreas];
+  const duplicatedAreas = [...areas, ...areas, ...areas];
 
   return (
     <>
@@ -2328,67 +1962,6 @@ function HomePage({ setCurrentView }: HomePageProps) {
         </div>
       </section>
 
-      {/* 6. Reality Section (Sticky Stacking Deck) */}
-      <section id="reality" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-            Systemic Realities
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            The Problem is Not Theirs.
-          </h2>
-          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-          <p className="text-stone-600 text-sm leading-relaxed">
-            A child from a fishing hamlet isn't behind because they lack ability. A community isn't vulnerable because they lack resilience. The problems they face are systemic—built by policies, markets, and institutions that weren't designed with them in mind.
-          </p>
-        </div>
-
-        {/* Sticky Deck Wrapper */}
-        <div className="relative space-y-12 max-w-4xl mx-auto pb-12">
-          {realityCards.map((card, idx) => (
-            <div
-              key={idx}
-              className={`sticky w-full p-8 sm:p-10 rounded-2xl shadow-2xl ${card.bg} ${card.text} border ${card.border} flex flex-col justify-between h-[380px] sm:h-[360px]`}
-              style={{
-                top: `${110 + idx * 24}px`,
-                transform: `scale(${1 - (realityCards.length - idx) * 0.015})`,
-                zIndex: idx + 1
-              }}
-            >
-              <div className="space-y-4 text-left">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-display font-bold text-xl sm:text-2xl leading-none">
-                      {card.title}
-                    </h3>
-                    <p className="text-[10px] font-mono uppercase tracking-widest opacity-80 mt-1.5 font-bold">
-                      {card.tagline}
-                    </p>
-                  </div>
-                  <span className="text-stone-400 font-mono text-sm font-bold">0{idx + 1}</span>
-                </div>
-
-                <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic max-w-2xl">
-                  "{card.description}"
-                </p>
-              </div>
-
-              <div className="pt-6 border-t border-black/10 flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-left">
-                <p className="text-xs text-stone-600 leading-relaxed max-w-xl">
-                  <span className="font-bold uppercase text-[10px] block mb-0.5">Our Strategic Approach:</span>
-                  {card.details}
-                </p>
-                <div className="flex items-center gap-1 text-xs font-bold font-mono opacity-80 shrink-0">
-                  <span>Co-Designed</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-      </section>
 
       {/* 7. Programs Section (Scroll Synchronized Focus Areas) */}
       <section id="programs" className="py-24 bg-surface-low border-y border-stone-200/40">
@@ -2409,7 +1982,7 @@ function HomePage({ setCurrentView }: HomePageProps) {
 
           {/* Sync Indicators/Thumbnails Row */}
           <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
-            {focusAreas.map((area, idx) => (
+            {areas.map((area, idx) => (
               <button
                 key={area.id}
                 onClick={() => handlePillClick(idx)}
@@ -2422,6 +1995,14 @@ function HomePage({ setCurrentView }: HomePageProps) {
                 {area.title.split(" ")[0]}
               </button>
             ))}
+            <button
+              onClick={onOpenAdmin}
+              className="px-4 py-2 text-xs font-display font-bold rounded-full border border-dashed border-stone-300 text-stone-500 hover:bg-stone-50 hover:text-primary transition-all cursor-pointer flex items-center justify-center gap-1.5"
+              title="Manage Programs"
+            >
+              <Compass className="w-4 h-4 shrink-0 text-stone-400" />
+              Manage Programs
+            </button>
           </div>
 
           {/* Horizontal scroll container with snap */}
@@ -2457,13 +2038,9 @@ function HomePage({ setCurrentView }: HomePageProps) {
                           <div className="p-2.5 bg-stone-50 rounded-xl border border-stone-100/80 text-primary">
                             <area.icon className="w-6 h-6 text-primary" />
                           </div>
-                          {area.id === "educare" || area.id === "environment" || area.id === "women-empowerment" ? (
-                            <a href={`#${area.id}`} className="hover:text-secondary hover:underline transition-all">
-                              <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
-                            </a>
-                          ) : (
+                          <a href={`#${area.id}`} className="hover:text-secondary hover:underline transition-all">
                             <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
-                          )}
+                          </a>
                         </div>
                         <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase">
                           {area.tagline}
@@ -2478,17 +2055,15 @@ function HomePage({ setCurrentView }: HomePageProps) {
                         <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
                       </div>
 
-                      {(area.id === "educare" || area.id === "environment" || area.id === "women-empowerment") && (
-                        <div className="pt-1">
-                          <a
-                            href={`#${area.id}`}
-                            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
-                          >
-                            Explore Full Initiative
-                            <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                          </a>
-                        </div>
-                      )}
+                      <div className="pt-1">
+                        <a
+                          href={`#${area.id}`}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
+                        >
+                          Explore Full Initiative
+                          <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                        </a>
+                      </div>
                     </div>
 
                     {/* Right Column: Image */}
@@ -2896,8 +2471,8 @@ function BlogPostPage({ slug }: BlogPostPageProps) {
 }
 
 interface NavbarProps {
-  currentView: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials";
-  setCurrentView: (view: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials") => void;
+  currentView: string;
+  setCurrentView: (view: string) => void;
 }
 
 function Navbar({ currentView, setCurrentView }: NavbarProps) {
@@ -2977,44 +2552,20 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             </a>
 
             <a
-              href="#financials"
-              onClick={() => setCurrentView("financials")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "financials" ? "text-secondary border-b-2 border-secondary" : ""}`}
+              href="#educare"
+              onClick={() => setCurrentView("educare")}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "educare" ? "text-secondary border-b-2 border-secondary" : ""}`}
             >
-              Budgets &amp; Audits
+              Educare
             </a>
-            
-            {/* Educare Dropdown Submenu */}
-            <div className="relative group py-2">
-              <button
-                className={`hover:text-secondary transition-colors font-bold flex items-center gap-1 cursor-pointer ${
-                  currentView === "educare" || currentView === "internships" ? "text-secondary" : ""
-                }`}
-              >
-                Educare
-                <ChevronDown className="w-3.5 h-3.5" />
-              </button>
-              <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-stone-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <a
-                  href="#educare"
-                  onClick={() => setCurrentView("educare")}
-                  className={`block px-4 py-2 text-xs font-semibold hover:bg-stone-50 hover:text-secondary ${
-                    currentView === "educare" ? "text-secondary bg-stone-50" : "text-stone-700"
-                  }`}
-                >
-                  Educare Overview
-                </a>
-                <a
-                  href="#internships"
-                  onClick={() => setCurrentView("internships")}
-                  className={`block px-4 py-2 text-xs font-semibold hover:bg-stone-50 hover:text-secondary ${
-                    currentView === "internships" ? "text-secondary bg-stone-50" : "text-stone-700"
-                  }`}
-                >
-                  Internships
-                </a>
-              </div>
-            </div>
+
+            <a
+              href="#internships"
+              onClick={() => setCurrentView("internships")}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "internships" ? "text-secondary border-b-2 border-secondary" : ""}`}
+            >
+              Internships
+            </a>
 
             <a
               href="#environment"
@@ -3083,31 +2634,20 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               </a>
 
               <a
-                href="#financials"
-                onClick={() => { setCurrentView("financials"); setIsMobileMenuOpen(false); }}
-                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "financials" ? "font-bold text-secondary" : ""}`}
+                href="#educare"
+                onClick={() => { setCurrentView("educare"); setIsMobileMenuOpen(false); }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "educare" ? "font-bold text-secondary" : ""}`}
               >
-                Budgets &amp; Audits
+                Educare
               </a>
 
-              {/* Mobile Educare sub-menu */}
-              <div className="flex flex-col border-b border-stone-100 py-2">
-                <span className="text-xs font-bold text-stone-400 uppercase tracking-widest mb-1.5">Educare Program</span>
-                <a
-                  href="#educare"
-                  onClick={() => { setCurrentView("educare"); setIsMobileMenuOpen(false); }}
-                  className={`pl-3 py-1.5 text-sm hover:text-secondary ${currentView === "educare" ? "font-bold text-secondary" : ""}`}
-                >
-                  — Educare Overview
-                </a>
-                <a
-                  href="#internships"
-                  onClick={() => { setCurrentView("internships"); setIsMobileMenuOpen(false); }}
-                  className={`pl-3 py-1.5 text-sm hover:text-secondary ${currentView === "internships" ? "font-bold text-secondary" : ""}`}
-                >
-                  — Internships
-                </a>
-              </div>
+              <a
+                href="#internships"
+                onClick={() => { setCurrentView("internships"); setIsMobileMenuOpen(false); }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "internships" ? "font-bold text-secondary" : ""}`}
+              >
+                Internships
+              </a>
 
               <a
                 href="#environment"
@@ -3138,14 +2678,762 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
   );
 }
 
-export default function App({ initialView = "home" }: { initialView?: "home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials" }) {
-  const [currentView, setCurrentView] = useState<"home" | "educare" | "environment" | "internships" | "women-empowerment" | "blog" | "about-us" | "financials">(initialView);
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  BookOpen: BookOpen,
+  Anchor: Anchor,
+  Fish: Fish,
+  Leaf: Leaf,
+  LifeBuoy: LifeBuoy,
+  Compass: Compass,
+  Activity: Activity,
+  Landmark: Landmark
+};
+
+const imageMap: Record<string, string> = {
+  educareClassroom: educareClassroom,
+  empowermentWomen: empowermentWomen,
+  coastalLivelihoods: coastalLivelihoods,
+  mangroveRestoration: mangroveRestoration,
+  healthNutrition: healthNutrition,
+  coastalEducation: coastalEducation,
+  logo: logo,
+  perumathuraVillage: perumathuraVillage
+};
+
+interface RawFocusArea {
+  id: string;
+  title: string;
+  iconName: string;
+  tagline: string;
+  description: string;
+  accomplishments: string;
+  imageName: string;
+}
+
+const defaultProgramsData: RawFocusArea[] = [
+  {
+    id: "educare",
+    title: "Education Initiative",
+    iconName: "BookOpen",
+    tagline: "Reimagining learning and growth for coastal children",
+    description: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote coastal fishing villages. We combine academic tutoring with community engagement to transform learning spaces.",
+    accomplishments: "Empowered 350+ students with academic tutoring, anti-drug awareness, and scholastic awards.",
+    imageName: "educareClassroom"
+  },
+  {
+    id: "women-empowerment",
+    title: "Women’s Empowerment",
+    iconName: "Anchor",
+    tagline: "Skill training, SHGs, leadership, and financial literacy",
+    description: "Mobilizing local micro-savings Self-Help Groups (SHGs) to run fish value-addition facilities, craft circles, and local co-operatives. Providing direct digital financial training.",
+    accomplishments: "Empowered 120+ women in financial accounting and digital banking.",
+    imageName: "empowermentWomen"
+  },
+  {
+    id: "livelihoods",
+    title: "Sustainable Livelihoods",
+    iconName: "Fish",
+    tagline: "Beyond fishing: aquaculture, value addition, market links",
+    description: "Diversifying income streams via safe marine cage farming, seaweed cultivation, modern drying equipment, and direct market integration that eliminates predatory middlemen.",
+    accomplishments: "Established 3 cooperative fish-dryer micro-units.",
+    imageName: "coastalLivelihoods"
+  },
+  {
+    id: "environment",
+    title: "Environment Projects",
+    iconName: "Leaf",
+    tagline: "Nature tools, GINTL curriculum, Coastal Walks, Sea Voices",
+    description: "Helping coastal children engage deeply with local ecology through GINTL Climate Change Education, Sea Voices storytelling, and hands-on Coastal Walks.",
+    accomplishments: "Successfully conducted international climate exchanges (GINTL) and Climate Week Sea Voices workshops.",
+    imageName: "mangroveRestoration"
+  },
+  {
+    id: "health",
+    title: "Health & Nutrition",
+    iconName: "LifeBuoy",
+    tagline: "Supporting health access, nutrition, and sanitation",
+    description: "Organizing mobile health clinics, distributing fresh iron-fortified multi-nutrient food packets list, and creating hygienic community sanitation layouts in remote coastal hamlets.",
+    accomplishments: "Conducted 15+ remote check-up camps with expert pediatricians.",
+    imageName: "healthNutrition"
+  }
+];
+
+function resolveFocusArea(raw: RawFocusArea): FocusArea {
+  return {
+    id: raw.id,
+    title: raw.title,
+    icon: iconMap[raw.iconName] || Compass,
+    tagline: raw.tagline,
+    description: raw.description,
+    accomplishments: raw.accomplishments,
+    image: imageMap[raw.imageName] || raw.imageName || coastalApproachBg
+  };
+}
+
+function LivelihoodsPage() {
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        <img
+          src={coastalLivelihoods}
+          alt="Sustainable Livelihoods"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md"
+          >
+            <Fish className="w-3.5 h-3.5 text-secondary" />
+            Coastal Livelihoods
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase"
+          >
+            SUSTAINABLE LIVELIHOODS
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 bg-secondary mx-auto rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
+          >
+            Beyond traditional fishing: seaweed aquaculture, safe marine cages, and micro-drying units.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 2. Core Narrative Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:col-span-7 space-y-6 text-left"
+        >
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            Our Approach
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            Building Local Economic Power
+          </h2>
+          <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
+            "For traditional fishing communities, the ocean is both a home and a harvest. Yet, credit exclusion and predatory middlemen have historically separated fishers from the true value of their labor. We co-create alternate livelihood models that build local economic power."
+          </p>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            By introducing advanced marine technologies and building micro-cooperative business models, we empower coastal families to retain more catch value and build diverse income streams. Our programs are designed to fit the seasonal rhythms of the ocean while opening up new markets for sustainable aquaculture.
+          </p>
+        </motion.div>
+
+        {/* Stats Card */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6 text-left"
+        >
+          <h3 className="font-display font-bold text-lg text-primary border-b border-stone-100 pb-3">
+            Economic Milestones
+          </h3>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-secondary">
+                <CountUp target={40} suffix="%" />
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Income Increase</span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-[#155E75]">
+                <CountUp target={3} />
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Micro-Dryers Running</span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-[#155E75]">
+                <CountUp target={75} suffix="+" />
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Families Supported</span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-secondary">
+                ₹35k+
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Monthly Member Profit</span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 3. Action Programs */}
+      <section className="py-20 bg-stone-100/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          <div className="max-w-2xl mx-auto space-y-4">
+            <h2 className="font-display font-bold text-3xl text-[#003B5C]">Active Initiatives</h2>
+            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            {/* Marine Cage Farming */}
+            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
+              <div className="p-2.5 bg-sky-50 rounded-xl text-sky-700 w-fit">
+                <Waves className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Safe Marine Cage Farming</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                Cultivating high-value finfish inside secure floating cages situated in bays and backwaters. Managed directly by family self-help groups, this adds a predictable income stream that complements daily sea journeys.
+              </p>
+            </div>
+
+            {/* Seaweed Cultivation */}
+            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
+              <div className="p-2.5 bg-teal-50 rounded-xl text-teal-700 w-fit">
+                <Leaf className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Seaweed Farming</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                Providing women's groups with eco-friendly seaweed cultivation grids. This not only filters marine carbon and nitrogen, stabilizing the local shore ecosystem, but also supplies high-quality raw materials to pharmaceutical and food markets.
+              </p>
+            </div>
+
+            {/* Micro-Dryers */}
+            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
+              <div className="p-2.5 bg-amber-50 rounded-xl text-amber-700 w-fit">
+                <Fish className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Dryer Cooperatives</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                Establishing solar-hybrid dry fish facilities owned and operated by women. Bypassing middleman auctions, they pack and label premium dry fish products, yielding 40% higher profit retention than selling raw catch.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function HealthPage() {
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        <img
+          src={healthNutrition}
+          alt="Health & Nutrition"
+          className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md"
+          >
+            <LifeBuoy className="w-3.5 h-3.5 text-secondary" />
+            Coastal Health &amp; Nutrition
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase"
+          >
+            HEALTH &amp; NUTRITION
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 bg-secondary mx-auto rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
+          >
+            Providing mobile clinics, pediatric support, child nutrient kits, and clean village sanitation.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 2. Core Narrative Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:col-span-7 space-y-6 text-left"
+        >
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            Our Approach
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            Healthcare Built for the Sand
+          </h2>
+          <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
+            "In remote coastal hamlets, geographic isolation, lack of transport, and seasonal precarity create critical gaps in primary healthcare. We address these systemic health challenges directly on-site, focusing on children and young mothers."
+          </p>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            Instead of requiring vulnerable families to travel long distances, we organize weekly and monthly mobile medical centers in the heart of fishing villages. Our pediatric doctors supply specialized medical consultations, free medicine kits, and follow-up cards to monitor growth and development.
+          </p>
+        </motion.div>
+
+        {/* Stats Card */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6 text-left"
+        >
+          <h3 className="font-display font-bold text-lg text-primary border-b border-stone-100 pb-3">
+            Wellness Milestones
+          </h3>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-secondary">
+                <CountUp target={15} suffix="+" />
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Pediatric Camps</span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-[#155E75]">
+                <CountUp target={1200} suffix="+" />
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Children Checked</span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-[#155E75]">
+                <CountUp target={450} suffix="+" />
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Mothers Supported</span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-secondary">
+                100%
+              </span>
+              <span className="text-xs text-stone-500 font-sans font-medium">Free Medicine Kits</span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 3. Action Programs */}
+      <section className="py-20 bg-stone-100/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          <div className="max-w-2xl mx-auto space-y-4">
+            <h2 className="font-display font-bold text-3xl text-[#003B5C]">Active Initiatives</h2>
+            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            {/* Mobile Pediatric Camps */}
+            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
+              <div className="p-2.5 bg-sky-50 rounded-xl text-sky-700 w-fit">
+                <Activity className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Mobile Pediatric Camps</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                Bringing expert pediatricians, specialist doctors, and essential diagnostics straight to remote fishing settlements. Checking and prescribing free treatments for local children.
+              </p>
+            </div>
+
+            {/* Nutrition Support */}
+            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
+              <div className="p-2.5 bg-teal-50 rounded-xl text-teal-700 w-fit">
+                <LifeBuoy className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Iron &amp; Micronutrients</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                Distributing freshly packed, iron-fortified multi-nutrient food packets to young children, infants, and pregnant mothers to address systemic anemia and support physical growth.
+              </p>
+            </div>
+
+            {/* Hygiene Infrastructure */}
+            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
+              <div className="p-2.5 bg-amber-50 rounded-xl text-amber-700 w-fit">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-bold text-lg text-primary">Sanitation Improvement</h3>
+              <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                Rebuilding village drainage grids, setting up environment-friendly community rubbish dump sites, and repairing coastal toilet units to reduce seasonal cholera and waterborne infections.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+interface DynamicProgramPageProps {
+  area: FocusArea;
+}
+
+function DynamicProgramPage({ area }: DynamicProgramPageProps) {
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        <img
+          src={area.image}
+          alt={area.title}
+          className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md"
+          >
+            <area.icon className="w-3.5 h-3.5 text-secondary" />
+            Strategic Initiative
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase"
+          >
+            {area.title}
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 bg-secondary mx-auto rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
+          >
+            {area.tagline}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 2. Core Narrative Section */}
+      <section className="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+        <div className="mb-10">
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-stone-500 hover:text-primary transition-colors text-xs font-bold uppercase tracking-wider group"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            Back to Home
+          </a>
+        </div>
+
+        <div className="space-y-8">
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            Programme Overview
+          </span>
+          <h2 className="font-display font-bold text-3xl text-primary leading-tight">
+            Nurturing Grassroots Potential
+          </h2>
+          <p className="text-stone-700 text-base sm:text-lg leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
+            {area.description}
+          </p>
+          <div className="bg-primary/5 p-8 rounded-2xl border border-primary/15 space-y-3">
+            <span className="font-mono text-xs font-bold text-secondary uppercase tracking-widest block">
+              Recent Accomplishments
+            </span>
+            <p className="text-stone-700 text-base sm:text-lg leading-relaxed font-sans font-medium">
+              {area.accomplishments}
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+interface AdminDrawerProps {
+  isOpen: boolean;
+  onClose: () => void;
+  areas: RawFocusArea[];
+  onAddArea: (newArea: RawFocusArea) => void;
+  onDeleteArea: (id: string) => void;
+  onReset: () => void;
+}
+
+function AdminDrawer({ isOpen, onClose, areas, onAddArea, onDeleteArea, onReset }: AdminDrawerProps) {
+  const [title, setTitle] = useState("");
+  const [tagline, setTagline] = useState("");
+  const [description, setDescription] = useState("");
+  const [accomplishments, setAccomplishments] = useState("");
+  const [iconName, setIconName] = useState("Compass");
+  const [imageName, setImageName] = useState("coastalEducation");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!title || !tagline || !description || !accomplishments) return;
+    const id = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    onAddArea({
+      id,
+      title,
+      tagline,
+      description,
+      accomplishments,
+      iconName,
+      imageName
+    });
+    setTitle("");
+    setTagline("");
+    setDescription("");
+    setAccomplishments("");
+    setIconName("Compass");
+    setImageName("coastalEducation");
+    onClose();
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-[100]"
+          />
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white shadow-2xl border-l border-stone-200 z-[101] flex flex-col text-left font-sans"
+          >
+            <div className="p-6 border-b border-stone-100 flex items-center justify-between">
+              <h3 className="font-display font-bold text-lg text-primary">Manage Programmes</h3>
+              <button onClick={onClose} className="p-2 hover:bg-stone-50 rounded-xl transition-all cursor-pointer">
+                <X className="w-5 h-5 text-stone-500" />
+              </button>
+            </div>
+
+            <div className="flex-grow overflow-y-auto p-6 space-y-8">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-sans font-bold text-xs uppercase tracking-widest text-stone-400">Current Initiatives</h4>
+                  <button 
+                    type="button"
+                    onClick={onReset}
+                    className="text-xs font-bold text-secondary hover:underline cursor-pointer"
+                  >
+                    Reset to Defaults
+                  </button>
+                </div>
+                <div className="grid gap-3">
+                  {areas.map((area) => {
+                    const IconComp = iconMap[area.iconName] || Compass;
+                    return (
+                      <div key={area.id} className="flex items-center justify-between p-3 rounded-xl border border-stone-100 bg-stone-50/50">
+                        <div className="flex items-center gap-3">
+                          <div className="p-1.5 bg-white rounded-lg border border-stone-100 text-primary">
+                            <IconComp className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <p className="font-sans font-bold text-xs text-primary">{area.title}</p>
+                            <p className="font-mono text-[8px] text-stone-400">#{area.id}</p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => onDeleteArea(area.id)}
+                          className="p-1.5 hover:bg-red-50 text-stone-400 hover:text-red-600 rounded-lg transition-all cursor-pointer"
+                          title="Delete Programme"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4 pt-6 border-t border-stone-100">
+                <h4 className="font-sans font-bold text-xs uppercase tracking-widest text-stone-400">Add New Programme</h4>
+                
+                <div className="space-y-3 text-xs">
+                  <div>
+                    <label className="block font-bold text-stone-700 mb-1">Title</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Youth Leadership"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-stone-700 mb-1">Tagline</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Empowering the next generation"
+                      value={tagline}
+                      onChange={(e) => setTagline(e.target.value)}
+                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-stone-700 mb-1">Description</label>
+                    <textarea
+                      required
+                      rows={3}
+                      placeholder="Explain the focus area..."
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50 resize-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold text-stone-700 mb-1">Accomplishments</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Trained 100 youth coordinators"
+                      value={accomplishments}
+                      onChange={(e) => setAccomplishments(e.target.value)}
+                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block font-bold text-stone-700 mb-1">Icon</label>
+                      <select
+                        value={iconName}
+                        onChange={(e) => setIconName(e.target.value)}
+                        className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50 font-sans"
+                      >
+                        <option value="Compass">Compass</option>
+                        <option value="BookOpen">Book Open</option>
+                        <option value="Anchor">Anchor</option>
+                        <option value="Fish">Fish</option>
+                        <option value="Leaf">Leaf</option>
+                        <option value="LifeBuoy">Life Buoy</option>
+                        <option value="Activity">Activity</option>
+                        <option value="Landmark">Landmark</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block font-bold text-stone-700 mb-1">Image Theme</label>
+                      <select
+                        value={imageName}
+                        onChange={(e) => setImageName(e.target.value)}
+                        className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50 font-sans"
+                      >
+                        <option value="coastalEducation">Education</option>
+                        <option value="empowermentWomen">Women Empowerment</option>
+                        <option value="coastalLivelihoods">Livelihoods</option>
+                        <option value="mangroveRestoration">Environment</option>
+                        <option value="healthNutrition">Health</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider py-3.5 rounded-xl transition-all shadow-md uppercase cursor-pointer mt-4"
+                >
+                  Create Programme Card
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}
+
+export default function App({ initialView = "home" }: { initialView?: string }) {
+  const [currentView, setCurrentView] = useState<string>(initialView);
   const [selectedBlogPostSlug, setSelectedBlogPostSlug] = useState<string>("");
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [areasData, setAreasData] = useState<RawFocusArea[]>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("two-thirds-programmes");
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch (e) {
+          console.error("Failed to parse stored programmes", e);
+        }
+      }
+    }
+    return defaultProgramsData;
+  });
+
+  const areas = areasData.map(resolveFocusArea);
+
+  const handleAddArea = (newArea: RawFocusArea) => {
+    setAreasData((prev) => {
+      const updated = [...prev, newArea];
+      if (typeof window !== "undefined") {
+        localStorage.setItem("two-thirds-programmes", JSON.stringify(updated));
+      }
+      return updated;
+    });
+  };
+
+  const handleDeleteArea = (id: string) => {
+    setAreasData((prev) => {
+      const updated = prev.filter((a) => a.id !== id);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("two-thirds-programmes", JSON.stringify(updated));
+      }
+      return updated;
+    });
+  };
+
+  const handleResetAreas = () => {
+    setAreasData(defaultProgramsData);
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("two-thirds-programmes");
+    }
+  };
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
       const path = window.location.pathname;
+      const cleanPath = path.replace(/^\/|\/$/g, '');
+      const defaultRoutes = ["educare", "environment", "internships", "women-empowerment", "about-us", "livelihoods", "health"];
+
       if (hash === "#educare" || path.includes("/educare")) {
         setCurrentView("educare");
       } else if (hash === "#environment" || path.includes("/environment")) {
@@ -3154,15 +3442,30 @@ export default function App({ initialView = "home" }: { initialView?: "home" | "
         setCurrentView("internships");
       } else if (hash === "#women-empowerment" || path.includes("/women-empowerment")) {
         setCurrentView("women-empowerment");
+      } else if (hash === "#livelihoods" || path.includes("/livelihoods")) {
+        setCurrentView("livelihoods");
+      } else if (hash === "#health" || path.includes("/health")) {
+        setCurrentView("health");
       } else if (hash === "#about-us" || path.includes("/about-us")) {
         setCurrentView("about-us");
-      } else if (hash === "#financials" || path.includes("/financials")) {
-        setCurrentView("financials");
       } else if (hash.startsWith("#blog/") || path.includes("/blog/")) {
         const slug = hash.startsWith("#blog/") ? hash.substring(6) : path.split("/blog/")[1]?.split("/")[0] || "";
         if (slug) {
           setSelectedBlogPostSlug(slug);
           setCurrentView("blog");
+        } else {
+          setCurrentView("home");
+        }
+      } else if (cleanPath !== "" && !defaultRoutes.includes(cleanPath)) {
+        if (areasData.some((a) => a.id === cleanPath)) {
+          setCurrentView(cleanPath);
+        } else {
+          setCurrentView("home");
+        }
+      } else if (hash !== "") {
+        const customId = hash.slice(1);
+        if (areasData.some((a) => a.id === customId)) {
+          setCurrentView(customId);
         } else {
           setCurrentView("home");
         }
@@ -3173,7 +3476,7 @@ export default function App({ initialView = "home" }: { initialView?: "home" | "
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [areasData]);
 
   useEffect(() => {
     if (currentView === "home") {
@@ -3199,11 +3502,9 @@ export default function App({ initialView = "home" }: { initialView?: "home" | "
       <Navbar currentView={currentView} setCurrentView={setCurrentView} />
 
       {currentView === "home" ? (
-        <HomePage setCurrentView={setCurrentView} />
+        <HomePage setCurrentView={setCurrentView} areas={areas} onOpenAdmin={() => setIsAdminOpen(true)} />
       ) : currentView === "about-us" ? (
         <AboutUsPage />
-      ) : currentView === "financials" ? (
-        <FinancialsPage />
       ) : currentView === "educare" ? (
         <EducarePage />
       ) : currentView === "environment" ? (
@@ -3212,11 +3513,28 @@ export default function App({ initialView = "home" }: { initialView?: "home" | "
         <InternshipsPage />
       ) : currentView === "women-empowerment" ? (
         <WomenEmpowermentPage />
+      ) : currentView === "livelihoods" ? (
+        <LivelihoodsPage />
+      ) : currentView === "health" ? (
+        <HealthPage />
       ) : currentView === "blog" ? (
         <BlogPostPage slug={selectedBlogPostSlug} />
-      ) : (
-        <HomePage setCurrentView={setCurrentView} />
-      )}
+      ) : (() => {
+        const customArea = areas.find((a) => a.id === currentView);
+        if (customArea) {
+          return <DynamicProgramPage area={customArea} />;
+        }
+        return <HomePage setCurrentView={setCurrentView} areas={areas} onOpenAdmin={() => setIsAdminOpen(true)} />;
+      })()}
+
+      <AdminDrawer
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        areas={areasData}
+        onAddArea={handleAddArea}
+        onDeleteArea={handleDeleteArea}
+        onReset={handleResetAreas}
+      />
 
       {/* 10. Footer */}
       <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
@@ -3251,7 +3569,6 @@ export default function App({ initialView = "home" }: { initialView?: "home" | "
               <a href="#reality" className="text-stone-400 hover:text-secondary transition-colors">Systemic Realities</a>
               <a href="#programs" className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
               <a href="#team" className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
-              <a href="#financials" className="text-stone-400 hover:text-secondary transition-colors">Budgets &amp; Audits</a>
             </div>
           </div>
 
