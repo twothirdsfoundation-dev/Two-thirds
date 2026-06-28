@@ -1673,10 +1673,9 @@ function AboutUsPage() {
 interface HomePageProps {
   setCurrentView: (view: string) => void;
   areas: FocusArea[];
-  onOpenAdmin: () => void;
 }
 
-function HomePage({ setCurrentView, areas, onOpenAdmin }: HomePageProps) {
+function HomePage({ setCurrentView, areas }: HomePageProps) {
   const heroRef = useRef<HTMLElement>(null);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -2313,14 +2312,7 @@ function HomePage({ setCurrentView, areas, onOpenAdmin }: HomePageProps) {
                 {area.title.split(" ")[0]}
               </button>
             ))}
-            <button
-              onClick={onOpenAdmin}
-              className="px-4 py-2 text-xs font-display font-bold rounded-full border border-dashed border-stone-300 text-stone-500 hover:bg-stone-50 hover:text-primary transition-all cursor-pointer flex items-center justify-center gap-1.5"
-              title="Manage Programs"
-            >
-              <Compass className="w-4 h-4 shrink-0 text-stone-400" />
-              Manage Programs
-            </button>
+
           </div>
 
           {/* Horizontal scroll container with snap */}
@@ -3491,259 +3483,11 @@ function DynamicProgramPage({ area }: DynamicProgramPageProps) {
   );
 }
 
-interface AdminDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-  areas: RawFocusArea[];
-  onAddArea: (newArea: RawFocusArea) => void;
-  onDeleteArea: (id: string) => void;
-  onReset: () => void;
-}
-
-function AdminDrawer({ isOpen, onClose, areas, onAddArea, onDeleteArea, onReset }: AdminDrawerProps) {
-  const [title, setTitle] = useState("");
-  const [tagline, setTagline] = useState("");
-  const [description, setDescription] = useState("");
-  const [accomplishments, setAccomplishments] = useState("");
-  const [iconName, setIconName] = useState("Compass");
-  const [imageName, setImageName] = useState("coastalEducation");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!title || !tagline || !description || !accomplishments) return;
-    const id = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    onAddArea({
-      id,
-      title,
-      tagline,
-      description,
-      accomplishments,
-      iconName,
-      imageName
-    });
-    setTitle("");
-    setTagline("");
-    setDescription("");
-    setAccomplishments("");
-    setIconName("Compass");
-    setImageName("coastalEducation");
-    onClose();
-  };
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-[100]"
-          />
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-white shadow-2xl border-l border-stone-200 z-[101] flex flex-col text-left font-sans"
-          >
-            <div className="p-6 border-b border-stone-100 flex items-center justify-between">
-              <h3 className="font-display font-bold text-lg text-primary">Manage Programmes</h3>
-              <button onClick={onClose} className="p-2 hover:bg-stone-50 rounded-xl transition-all cursor-pointer">
-                <X className="w-5 h-5 text-stone-500" />
-              </button>
-            </div>
-
-            <div className="flex-grow overflow-y-auto p-6 space-y-8">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-sans font-bold text-xs uppercase tracking-widest text-stone-400">Current Initiatives</h4>
-                  <button 
-                    type="button"
-                    onClick={onReset}
-                    className="text-xs font-bold text-secondary hover:underline cursor-pointer"
-                  >
-                    Reset to Defaults
-                  </button>
-                </div>
-                <div className="grid gap-3">
-                  {areas.map((area) => {
-                    const IconComp = iconMap[area.iconName] || Compass;
-                    return (
-                      <div key={area.id} className="flex items-center justify-between p-3 rounded-xl border border-stone-100 bg-stone-50/50">
-                        <div className="flex items-center gap-3">
-                          <div className="p-1.5 bg-white rounded-lg border border-stone-100 text-primary">
-                            <IconComp className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <p className="font-sans font-bold text-xs text-primary">{area.title}</p>
-                            <p className="font-mono text-[8px] text-stone-400">#{area.id}</p>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => onDeleteArea(area.id)}
-                          className="p-1.5 hover:bg-red-50 text-stone-400 hover:text-red-600 rounded-lg transition-all cursor-pointer"
-                          title="Delete Programme"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4 pt-6 border-t border-stone-100">
-                <h4 className="font-sans font-bold text-xs uppercase tracking-widest text-stone-400">Add New Programme</h4>
-                
-                <div className="space-y-3 text-xs">
-                  <div>
-                    <label className="block font-bold text-stone-700 mb-1">Title</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Youth Leadership"
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-bold text-stone-700 mb-1">Tagline</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Empowering the next generation"
-                      value={tagline}
-                      onChange={(e) => setTagline(e.target.value)}
-                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-bold text-stone-700 mb-1">Description</label>
-                    <textarea
-                      required
-                      rows={3}
-                      placeholder="Explain the focus area..."
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50 resize-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-bold text-stone-700 mb-1">Accomplishments</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Trained 100 youth coordinators"
-                      value={accomplishments}
-                      onChange={(e) => setAccomplishments(e.target.value)}
-                      className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block font-bold text-stone-700 mb-1">Icon</label>
-                      <select
-                        value={iconName}
-                        onChange={(e) => setIconName(e.target.value)}
-                        className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50 font-sans"
-                      >
-                        <option value="Compass">Compass</option>
-                        <option value="BookOpen">Book Open</option>
-                        <option value="Anchor">Anchor</option>
-                        <option value="Fish">Fish</option>
-                        <option value="Leaf">Leaf</option>
-                        <option value="LifeBuoy">Life Buoy</option>
-                        <option value="Activity">Activity</option>
-                        <option value="Landmark">Landmark</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block font-bold text-stone-700 mb-1">Image Theme</label>
-                      <select
-                        value={imageName}
-                        onChange={(e) => setImageName(e.target.value)}
-                        className="w-full p-3 rounded-xl border border-stone-200 focus:outline-none focus:border-primary bg-stone-50 font-sans"
-                      >
-                        <option value="coastalEducation">Education</option>
-                        <option value="empowermentWomen">Women Empowerment</option>
-                        <option value="coastalLivelihoods">Livelihoods</option>
-                        <option value="mangroveRestoration">Environment</option>
-                        <option value="healthNutrition">Health</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider py-3.5 rounded-xl transition-all shadow-md uppercase cursor-pointer mt-4"
-                >
-                  Create Programme Card
-                </button>
-              </form>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
-}
-
 export default function App({ initialView = "home" }: { initialView?: string }) {
   const [currentView, setCurrentView] = useState<string>(initialView);
   const [selectedBlogPostSlug, setSelectedBlogPostSlug] = useState<string>("");
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [areasData, setAreasData] = useState<RawFocusArea[]>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("two-thirds-programmes");
-      if (stored) {
-        try {
-          return JSON.parse(stored);
-        } catch (e) {
-          console.error("Failed to parse stored programmes", e);
-        }
-      }
-    }
-    return defaultProgramsData;
-  });
 
-  const areas = areasData.map(resolveFocusArea);
-
-  const handleAddArea = (newArea: RawFocusArea) => {
-    setAreasData((prev) => {
-      const updated = [...prev, newArea];
-      if (typeof window !== "undefined") {
-        localStorage.setItem("two-thirds-programmes", JSON.stringify(updated));
-      }
-      return updated;
-    });
-  };
-
-  const handleDeleteArea = (id: string) => {
-    setAreasData((prev) => {
-      const updated = prev.filter((a) => a.id !== id);
-      if (typeof window !== "undefined") {
-        localStorage.setItem("two-thirds-programmes", JSON.stringify(updated));
-      }
-      return updated;
-    });
-  };
-
-  const handleResetAreas = () => {
-    setAreasData(defaultProgramsData);
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("two-thirds-programmes");
-    }
-  };
+  const areas = defaultProgramsData.map(resolveFocusArea);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -3775,14 +3519,14 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
           setCurrentView("home");
         }
       } else if (cleanPath !== "" && !defaultRoutes.includes(cleanPath)) {
-        if (areasData.some((a) => a.id === cleanPath)) {
+        if (areas.some((a) => a.id === cleanPath)) {
           setCurrentView(cleanPath);
         } else {
           setCurrentView("home");
         }
       } else if (hash !== "") {
         const customId = hash.slice(1);
-        if (areasData.some((a) => a.id === customId)) {
+        if (areas.some((a) => a.id === customId)) {
           setCurrentView(customId);
         } else {
           setCurrentView("home");
@@ -3794,7 +3538,7 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
     handleHashChange();
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [areasData]);
+  }, []);
 
   useEffect(() => {
     if (currentView === "home") {
@@ -3820,7 +3564,7 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
       <Navbar currentView={currentView} setCurrentView={setCurrentView} />
 
       {currentView === "home" ? (
-        <HomePage setCurrentView={setCurrentView} areas={areas} onOpenAdmin={() => setIsAdminOpen(true)} />
+        <HomePage setCurrentView={setCurrentView} areas={areas} />
       ) : currentView === "about-us" ? (
         <AboutUsPage />
       ) : currentView === "educare" ? (
@@ -3842,17 +3586,8 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
         if (customArea) {
           return <DynamicProgramPage area={customArea} />;
         }
-        return <HomePage setCurrentView={setCurrentView} areas={areas} onOpenAdmin={() => setIsAdminOpen(true)} />;
+        return <HomePage setCurrentView={setCurrentView} areas={areas} />;
       })()}
-
-      <AdminDrawer
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-        areas={areasData}
-        onAddArea={handleAddArea}
-        onDeleteArea={handleDeleteArea}
-        onReset={handleResetAreas}
-      />
 
       {/* 10. Footer */}
       <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
