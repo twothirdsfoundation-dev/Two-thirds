@@ -560,7 +560,7 @@ function EnvironmentPage() {
 
             <div className="space-y-1 text-left">
               <span className="block text-3xl sm:text-4xl font-display font-bold text-[#0A3D2A]">
-                <CountUp target={120} suffix="+" />
+                <CountUp target={200} suffix="+" />
               </span>
               <span className="block text-[10px] font-mono font-bold text-stone-400 uppercase leading-snug">
                 Storytelling Youth & Elders
@@ -657,7 +657,7 @@ function EnvironmentPage() {
 
           {/* Bento Grid Gallery */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             {/* Col 1: Spans 2 rows */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -1159,7 +1159,7 @@ function WomenEmpowermentPage() {
           </p>
         </div>
       </section>
- 
+
       {/* Main Content */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         {/* Intro */}
@@ -1250,6 +1250,7 @@ function WomenEmpowermentPage() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }
@@ -1276,47 +1277,35 @@ function AboutUsPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
             <Anchor className="w-3.5 h-3.5 text-secondary" />
-            Our Story
+            Our Identity
           </span>
           <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
             About Us
           </h1>
           <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
           <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
-            How a small group of volunteers spent eight years working on the Kerala coast, and how we got to where we are today.
+            Why we are called Two-Thirds, and the journey that brought us here.
           </p>
         </div>
       </section>
 
-      {/* 2. Genesis & Journey Section */}
+      {/* 2. Why Two-Thirds? Section */}
       <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-8 relative z-10">
         <div className="space-y-4">
-          <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / The Journey</span>
+          <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Our Name</span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
-            How It All Started
+            Why Two-Thirds?
           </h2>
           <div className="w-12 h-1 bg-[#0A5F8F] rounded-full" />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          <div className="md:col-span-8 space-y-6 text-stone-600 text-sm sm:text-base leading-relaxed">
-            <p>
-              We didn't start this foundation overnight. Back in **2018**, our founder began spending time in the fishing villages of Chirayinkeezhu, Azhoor, and Kadinamkulam. He saw firsthand how kids from fishing families were dropping out of school or falling behind because the standard school system didn't fit their seasonal lives.
-            </p>
-            <p>
-              So, he and a few local volunteers started sitting down with these kids in the evenings, helping them study for board exams, and checking in on their families. For **eight years**, this was just informal, voluntary work. We ran study groups, guided teenagers on career choices, and helped families navigate the pandemic.
-            </p>
-            <p>
-              Now, in **2026**, we’ve registered as a Section 8 non-profit company. We did this because we wanted a structured way to keep this work going, build more permanent learning centers, and handle funds transparently. The foundation is simply an extension of the trust we built on these shores over nearly a decade.
-            </p>
-          </div>
-          
-          <div className="md:col-span-4 bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm text-center space-y-2">
-            <span className="block text-4xl font-display font-black text-secondary">8+</span>
-            <span className="block text-xs font-mono font-extrabold uppercase text-stone-400 tracking-wider">Years of Voluntary Action</span>
-            <div className="h-[1px] bg-stone-100 my-3" />
-            <span className="block text-stone-500 text-xs">Helping coastal families and students in Trivandrum since 2018.</span>
-          </div>
+        <div className="space-y-6 text-stone-600 text-sm sm:text-base leading-relaxed">
+          <p>
+            Two-thirds of our planet is covered by oceans. The communities living along the coastlines of Kerala are at the frontlines of this massive marine environment. They have built centuries of knowledge about it — reading the weather, managing the catch, and sustaining the shores.
+          </p>
+          <p>
+            But their lives are also shaped by the unique vulnerabilities of living on these edges. We chose the name **Two-Thirds** to represent our commitment to these coastal communities. We don't bring top-down, outside solutions. We start by listening to the villagers, building on their existing coastal wisdom, and working alongside them to address the challenges they face.
+          </p>
         </div>
       </section>
 
@@ -1366,6 +1355,43 @@ function AboutUsPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 5. Founder's Note Section */}
+      <section className="py-20 bg-stone-900 text-white border-t-8 border-primary">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-8">
+          <div className="space-y-4 text-center">
+            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              From the Founder
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
+              Founder's Note
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+          </div>
+
+          <div className="bg-white/5 p-8 rounded-3xl border border-white/5 space-y-6 text-stone-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              This initiative started very simply back in **2018**. I began visiting the coastal wards of Chirayinkeezhu, Azhoor, and Kadinamkulam, and noticed how many kids from fishing families were dropping out of school because the standard educational system didn't fit their seasonal lives. 
+            </p>
+            <p>
+              Together with a small team of local volunteers, we started sitting down with these kids in the evenings, helping them study for public exams, and talking to their parents. For eight years, we did this voluntarily, running study groups, guidance camps, and supporting households through the pandemic.
+            </p>
+            <p>
+              In **2026**, we incorporated as a Section 8 non-profit company. This isn't a new direction—it's just a formal way to protect the trust we've built, establish permanent learning centers, and expand our work to more shores. Two-Thirds is, and always will be, a community-first initiative built from the ground up.
+            </p>
+
+            <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <span className="block font-bold text-white text-sm">Adil</span>
+                <span className="block text-xs text-stone-400">Founder, Two-Thirds Community Foundation</span>
+              </div>
+              <span className="bg-secondary/20 text-secondary text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Est. 2018 • Incorporated 2026
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1694,9 +1720,9 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
             {/* Heading Layer (Sandwiched in the middle!) */}
             <div
-              style={{ 
+              style={{
                 transform: `translateY(${yText}px)`,
-                opacity: opacityText 
+                opacity: opacityText
               }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
             >
@@ -1809,13 +1835,13 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       </section>
 
       {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
-      <section 
+      <section
         className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{ backgroundImage: `url(${coastalApproachBg})` }}
       >
         {/* Dark overlay for text contrast */}
         <div className="absolute inset-0 bg-[#1A2D37]/75 mix-blend-multiply z-0" />
-        
+
         {/* Subtle decorative top and bottom gradients */}
         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#FAF9F6]/10 to-transparent pointer-events-none z-1" />
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none z-1" />
@@ -1851,9 +1877,9 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
             <div className="space-y-1">
               <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                ₹<CountUp target={50} suffix="L" />
+                ₹<CountUp target={10} suffix="+" />
               </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Target Campaign Budgets</p>
+              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Collaborations</p>
             </div>
 
             <div className="space-y-1">
@@ -1873,7 +1899,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             <div className="grid col-span-2 md:col-span-1 place-content-center pt-2 md:pt-0">
               <div className="space-y-1">
                 <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#14B8A6]">
-                  <CountUp target={240} suffix="+" />
+                  <CountUp target={600} suffix="+" />
                 </h3>
                 <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Students Guided</p>
               </div>
@@ -2007,8 +2033,8 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 key={area.id}
                 onClick={() => handlePillClick(idx)}
                 className={`px-4 py-2 text-xs font-display font-bold rounded-full border transition-all cursor-pointer flex items-center justify-center ${activeCardIndex === idx
-                    ? "bg-primary border-primary text-white shadow-md"
-                    : "bg-white border-stone-200 text-[#003B5C] hover:bg-stone-50"
+                  ? "bg-primary border-primary text-white shadow-md"
+                  : "bg-white border-stone-200 text-[#003B5C] hover:bg-stone-50"
                   }`}
               >
                 <area.icon className="w-4 h-4 mr-1.5 inline-block shrink-0" />
@@ -2168,7 +2194,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       {/* 7.5. Field Diaries (Blog Section) */}
       <section id="blog-preview" className="py-24 bg-stone-50 border-y border-stone-200/40 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          
+
           <div className="max-w-2xl mx-auto space-y-4">
             <span className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0369A1] font-mono text-[10px] font-bold uppercase tracking-wider">
               Field Notes
@@ -2184,15 +2210,15 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto justify-center text-left">
             {blogPosts.map((post) => (
-              <div 
+              <div
                 key={post.id}
                 className="bg-white rounded-3xl overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group h-full"
               >
                 {/* Cover Image */}
                 <div className="relative h-48 overflow-hidden bg-stone-100 shrink-0">
-                  <img 
-                    src={post.image} 
-                    alt={post.title} 
+                  <img
+                    src={post.image}
+                    alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur-sm text-white font-mono text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
@@ -2223,7 +2249,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                   </p>
 
                   <div className="pt-2">
-                    <a 
+                    <a
                       href={"#blog/" + post.slug}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:text-secondary transition-colors uppercase tracking-wider cursor-pointer"
                     >
@@ -2415,7 +2441,7 @@ function BlogPostPage({ slug }: BlogPostPageProps) {
             {post.title}
           </h1>
           <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
-          
+
           {/* Metadata */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-stone-300 text-xs sm:text-sm font-sans font-medium">
             <span className="flex items-center gap-1.5">
@@ -2510,8 +2536,8 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-[background-color,border-color,box-shadow] duration-300 ${isScrolled
-        ? "bg-white/95 border-b border-stone-200/80 shadow-sm"
-        : "bg-transparent border-b border-transparent shadow-none"
+      ? "bg-white/95 border-b border-stone-200/80 shadow-sm"
+      : "bg-transparent border-b border-transparent shadow-none"
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
@@ -2588,7 +2614,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             >
               Environment
             </a>
-            
+
             <a
               href="#women-empowerment"
               onClick={() => setCurrentView("women-empowerment")}
