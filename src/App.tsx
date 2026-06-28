@@ -982,7 +982,7 @@ function EnvironmentPage() {
   );
 }
 
-function InternshipsPage() {
+function GetInvolvedPage() {
   const internships = [
     {
       title: "Data Analyst Intern",
@@ -1035,74 +1035,227 @@ function InternshipsPage() {
   ];
 
   return (
-    <div className="bg-stone-50 min-h-screen text-stone-800">
-      {/* Hero Banner */}
-      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden bg-[#0A3B5C]">
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24 font-sans selection:bg-primary-container selection:text-primary">
+      
+      {/* 1. Hero Banner */}
+      <section className="relative h-[45vh] sm:h-[55vh] flex items-center justify-center overflow-hidden bg-[#0A3B5C]">
         <img
           src={coastalEducation}
-          alt="Coastal Mentorship Kerala"
+          alt="Get Involved Kerala coast"
           className="absolute inset-0 w-full h-full object-cover opacity-20 filter brightness-95"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#0A3B5C]/75 to-transparent" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
-            <GraduationCap className="w-3.5 h-3.5 text-secondary" />
-            Scholarly Opportunities
+            <LifeBuoy className="w-3.5 h-3.5 text-secondary" />
+            Support Our Work
           </span>
-          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight">
-            INTERNSHIPS
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
+            Get Involved
           </h1>
           <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
           <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
-            Bridging the gap between academic learning and practical application, fostering the next generation of scholars and practitioners committed to social impact.
+            Join hands with us to build resilient, educated, and empowered coastal communities.
           </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
-          <h2 className="font-display font-bold text-2xl sm:text-3xl text-primary">
-            Research &amp; Implementation Opportunities
-          </h2>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-            We are seeking qualified interns to join our multidisciplinary research and implementation team. This program provides a scholarly platform to investigate critical issues in community welfare and empowerment. Interns will employ different methodologies to contribute to specialized projects across six focal areas.
-          </p>
+      {/* 2. Three Modes of Engagement */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+        
+        {/* Mode 1: Partnerships */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
+          <div className="lg:col-span-7 space-y-6">
+            <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Collaboration</span>
+            <h2 className="font-display font-bold text-3xl text-primary leading-tight">
+              Institutional Partnerships
+            </h2>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+              We collaborate with healthcare institutions, CSR programs, research centers, and local Panchayats to implement community development models. A prime example is our long-term collaboration with **KIMS Health**, which has powered our digital literacy, webinars, and diagnostic infrastructure.
+            </p>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+              If your organization is looking to partner on evidence-based programs in education, public health, women's cooperatives, or coastal resilience, we'd love to hear from you.
+            </p>
+            <div className="pt-2">
+              <a
+                href="mailto:twothirdsfoundation@gmail.com?subject=Institutional%20Partnership%20Inquiry"
+                className="inline-block bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 uppercase"
+              >
+                Partner With Us
+              </a>
+            </div>
+          </div>
+          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4">
+            <h4 className="font-display font-bold text-[#0A5F8F] text-sm uppercase tracking-wider">How we partner:</h4>
+            <ul className="space-y-3 text-xs text-stone-600 font-medium">
+              <li className="flex items-start gap-2">
+                <span className="text-[#0A5F8F] font-bold">•</span>
+                <span>**CSR Funding Linkages**: Aligning corporate social responsibility initiatives with actual, verified grassroots needs.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#0A5F8F] font-bold">•</span>
+                <span>**Knowledge & Research**: Collaborating with universities to gather household survey data and socio-economic evidence.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#0A5F8F] font-bold">•</span>
+                <span>**Resource Mobilization**: Co-developing infrastructure like local study centers, primary clinics, and digital libraries.</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {internships.map((intern, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className={`bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm flex flex-col justify-between hover:shadow-md hover:scale-[1.01] transition-all duration-300 ${intern.color}`}
-            >
-              <div className="space-y-4">
-                <div className={`p-3 rounded-2xl w-fit ${intern.iconBg}`}>
-                  <intern.icon className="w-6 h-6" />
+        <hr className="border-stone-200/60" />
+
+        {/* Mode 2: Volunteer */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
+          <div className="lg:col-span-5 bg-[#003B5C] text-white p-8 rounded-3xl shadow-xl space-y-6 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-bl-full pointer-events-none" />
+            <h4 className="font-display font-bold text-secondary text-sm uppercase tracking-wider">Volunteer Opportunities:</h4>
+            <div className="space-y-4 text-xs text-stone-200">
+              <div>
+                <span className="block font-bold text-white mb-1">🎓 Evening Tutor</span>
+                <p>Support primary and middle school students in our village Educare centers with foundational literacy and math.</p>
+              </div>
+              <div>
+                <span className="block font-bold text-white mb-1">🌱 Climate & Coast Steward</span>
+                <p>Help lead shoreline nature-immersive workshops and local mangrove planting drives for kids.</p>
+              </div>
+              <div>
+                <span className="block font-bold text-white mb-1">👩 SHG Mobilizer</span>
+                <p>Assist in digital banking literacy drives and cooperative value-addition facilities for women.</p>
+              </div>
+            </div>
+          </div>
+          <div className="lg:col-span-7 space-y-6">
+            <span className="text-xs font-mono font-bold text-[#E07A5F] uppercase tracking-widest block">02 / Grassroots Action</span>
+            <h2 className="font-display font-bold text-3xl text-primary leading-tight">
+              Become a Volunteer
+            </h2>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+              We started as a small, informal volunteer group in 2018. Over the years, it is the dedication of community members that has driven our educational and welfare support.
+            </p>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+              Whether you can contribute a few hours a week to tutor children, support our diagnostic camps, or offer design, translation, or digital expertise, your presence counts.
+            </p>
+            <div className="pt-2">
+              <a
+                href="mailto:twothirdsfoundation@gmail.com?subject=Volunteer%20Registration"
+                className="inline-block bg-[#E07A5F] hover:bg-[#E07A5F]/95 text-white font-display font-semibold text-xs tracking-wider px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 uppercase"
+              >
+                Sign Up as a Volunteer
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <hr className="border-stone-200/60" />
+
+        {/* Mode 3: Internships */}
+        <div className="space-y-12 text-left">
+          <div className="space-y-4">
+            <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">03 / Scholarly Action</span>
+            <h2 className="font-display font-bold text-3xl text-primary leading-tight">
+              Research &amp; Implementation Internships
+            </h2>
+            <p className="text-stone-600 text-sm sm:text-base leading-relaxed max-w-4xl">
+              We offer structured research and implementation internships for qualified students and graduates. This program provides a platform to employ different methodologies to investigate critical issues in coastal welfare, data-driven analysis, and social impact.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {internships.map((intern, idx) => (
+              <div
+                key={idx}
+                className={`bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm flex flex-col justify-between hover:shadow-md hover:scale-[1.01] transition-all duration-300 ${intern.color}`}
+              >
+                <div className="space-y-4">
+                  <div className={`p-3 rounded-2xl w-fit ${intern.iconBg}`}>
+                    <intern.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-primary">{intern.title}</h3>
+                  <p className="text-stone-600 text-xs leading-relaxed font-sans">
+                    {intern.description}
+                  </p>
                 </div>
-                <h3 className="font-display font-bold text-lg text-primary">{intern.title}</h3>
-                <p className="text-stone-600 text-xs leading-relaxed font-sans">
-                  {intern.description}
-                </p>
+                <div className="pt-6">
+                  <a
+                    href={intern.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full text-center inline-block bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider py-3 rounded-xl transition-all shadow-sm active:scale-95 uppercase"
+                  >
+                    Apply for Internship
+                  </a>
+                </div>
               </div>
-              <div className="pt-6">
-                <a
-                  href={intern.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center inline-block bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider py-3 rounded-xl transition-all shadow-sm active:scale-95 uppercase"
-                >
-                  Learn More &amp; Apply
-                </a>
+            ))}
+          </div>
+        </div>
+
+      </section>
+    </div>
+  );
+}
+
+function TeamPage() {
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24 font-sans selection:bg-primary-container selection:text-primary">
+      
+      {/* Hero Banner */}
+      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        <img
+          src={coastalApproachBg}
+          alt="Two-Thirds Team Horizon"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-[#003B5C]/75 to-transparent" />
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            <User className="w-3.5 h-3.5 text-secondary" />
+            Our People
+          </span>
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
+            Meet the Team
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
+            Dedicated social workers, professionals, and researchers working to guide resources straight to community ideas.
+          </p>
+        </div>
+      </section>
+
+      {/* Team Grid */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
+          {teamMembers.map((member, i) => (
+            <div
+              key={i}
+              className="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-sm flex flex-col items-center text-center space-y-4 hover:shadow-md hover:border-stone-300 transition-all duration-300 group"
+            >
+              {/* Initials badge */}
+              <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#155E75] flex items-center justify-center bg-stone-50 transition-transform duration-300 group-hover:scale-105 shrink-0">
+                <span className="font-display font-bold text-xl text-[#003B5C]">
+                  {member.initials}
+                </span>
               </div>
-            </motion.div>
+
+              <div className="space-y-1">
+                <h3 className="font-display font-bold text-base text-primary">
+                  {member.name}
+                </h3>
+                <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider block">
+                  {member.role}
+                </span>
+              </div>
+
+              <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                {member.bio}
+              </p>
+            </div>
           ))}
         </div>
       </section>
+
     </div>
   );
 }
@@ -1265,7 +1418,7 @@ function AboutUsPage() {
 
   return (
     <div className="bg-stone-50 min-h-screen text-stone-800 pb-24 font-sans selection:bg-primary-container selection:text-primary">
-      
+
       {/* 1. Hero Banner */}
       <section className="relative h-[45vh] sm:h-[55vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
         <img
@@ -1298,7 +1451,7 @@ function AboutUsPage() {
           </h2>
           <div className="w-12 h-1 bg-[#0A5F8F] rounded-full" />
         </div>
-        
+
         <div className="space-y-6 text-stone-600 text-sm sm:text-base leading-relaxed">
           <p>
             Two-thirds of our planet is covered by oceans. The communities living along the coastlines of Kerala are at the frontlines of this massive marine environment. They have built centuries of knowledge about it — reading the weather, managing the catch, and sustaining the shores.
@@ -1373,7 +1526,7 @@ function AboutUsPage() {
 
           <div className="bg-white/5 p-8 rounded-3xl border border-white/5 space-y-6 text-stone-300 text-sm sm:text-base leading-relaxed">
             <p>
-              This initiative started very simply back in **2018**. I began visiting the coastal wards of Chirayinkeezhu, Azhoor, and Kadinamkulam, and noticed how many kids from fishing families were dropping out of school because the standard educational system didn't fit their seasonal lives. 
+              This initiative started very simply back in **2018**. I began visiting the coastal wards of Chirayinkeezhu, Azhoor, and Kadinamkulam, and noticed how many kids from fishing families were dropping out of school because the standard educational system didn't fit their seasonal lives.
             </p>
             <p>
               Together with a small team of local volunteers, we started sitting down with these kids in the evenings, helping them study for public exams, and talking to their parents. For eight years, we did this voluntarily, running study groups, guidance camps, and supporting households through the pandemic.
@@ -1877,7 +2030,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
             <div className="space-y-1">
               <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                ₹<CountUp target={10} suffix="+" />
+                <CountUp target={10} suffix="+" />
               </h3>
               <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Collaborations</p>
             </div>
@@ -2142,54 +2295,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* Meet the Team Section */}
-      <section id="team" className="py-24 bg-stone-50 border-y border-stone-200/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-
-          <div className="max-w-2xl mx-auto space-y-4">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#E6FFFA] text-[#155E75] font-mono text-[10px] font-bold uppercase tracking-wider">
-              Meet the Team
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              The Faces Behind the Foundation
-            </h2>
-            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              A group of dedicated social workers, professionals, and researchers working to guide resources straight to community ideas.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
-            {teamMembers.map((member, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-2xl shadow-coastal border border-stone-200/50 flex flex-col items-center text-center space-y-4 hover:shadow-xl hover:border-stone-300 transition-all duration-300 group"
-              >
-                {/* Avatar circle with dotted border */}
-                <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#155E75] flex items-center justify-center bg-stone-50 transition-transform duration-300 group-hover:scale-105 shrink-0">
-                  <span className="font-display font-bold text-xl text-[#003B5C]">
-                    {member.initials}
-                  </span>
-                </div>
-
-                <div className="space-y-1">
-                  <h3 className="font-display font-bold text-base text-primary">
-                    {member.name}
-                  </h3>
-                  <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider block">
-                    {member.role}
-                  </span>
-                </div>
-
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  {member.bio}
-                </p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
 
       {/* 7.5. Field Diaries (Blog Section) */}
       <section id="blog-preview" className="py-24 bg-stone-50 border-y border-stone-200/40 relative overflow-hidden">
@@ -2517,6 +2622,8 @@ interface NavbarProps {
 function Navbar({ currentView, setCurrentView }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isProgDropdownOpen, setIsProgDropdownOpen] = useState(false);
+  const [isMobileProgOpen, setIsMobileProgOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -2590,43 +2697,74 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               About Us
             </a>
 
-            <a
-              href="#educare"
-              onClick={() => setCurrentView("educare")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "educare" ? "text-secondary border-b-2 border-secondary" : ""}`}
+            {/* Programmes Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsProgDropdownOpen(true)}
+              onMouseLeave={() => setIsProgDropdownOpen(false)}
             >
-              Educare
+              <button
+                className={`hover:text-secondary transition-colors font-bold flex items-center gap-1.5 pb-2 pt-2 cursor-pointer ${["educare", "women-empowerment", "environment", "health"].includes(currentView) ? "text-secondary border-b-2 border-secondary" : ""}`}
+              >
+                Programmes
+                <svg className="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: isProgDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {isProgDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute left-0 mt-1 w-56 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 z-50 text-left"
+                  >
+                    <a
+                      href="#educare"
+                      onClick={(e) => { e.preventDefault(); setCurrentView("educare"); setIsProgDropdownOpen(false); }}
+                      className={`block px-5 py-2.5 hover:bg-stone-50 hover:text-secondary transition-colors font-semibold ${currentView === "educare" ? "text-secondary font-bold" : "text-stone-700"}`}
+                    >
+                      Educare
+                    </a>
+                    <a
+                      href="#women-empowerment"
+                      onClick={(e) => { e.preventDefault(); setCurrentView("women-empowerment"); setIsProgDropdownOpen(false); }}
+                      className={`block px-5 py-2.5 hover:bg-stone-50 hover:text-secondary transition-colors font-semibold ${currentView === "women-empowerment" ? "text-secondary font-bold" : "text-stone-700"}`}
+                    >
+                      Woman Empowerment
+                    </a>
+                    <a
+                      href="#environment"
+                      onClick={(e) => { e.preventDefault(); setCurrentView("environment"); setIsProgDropdownOpen(false); }}
+                      className={`block px-5 py-2.5 hover:bg-stone-50 hover:text-secondary transition-colors font-semibold ${currentView === "environment" ? "text-secondary font-bold" : "text-stone-700"}`}
+                    >
+                      Environment
+                    </a>
+                    <a
+                      href="#health"
+                      onClick={(e) => { e.preventDefault(); setCurrentView("health"); setIsProgDropdownOpen(false); }}
+                      className={`block px-5 py-2.5 hover:bg-stone-50 hover:text-secondary transition-colors font-semibold ${currentView === "health" ? "text-secondary font-bold" : "text-stone-700"}`}
+                    >
+                      Health
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <a
+              href="#team"
+              onClick={() => setCurrentView("team")}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "team" ? "text-secondary border-b-2 border-secondary" : ""}`}
+            >
+              Our Team
             </a>
 
             <a
-              href="#internships"
-              onClick={() => setCurrentView("internships")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "internships" ? "text-secondary border-b-2 border-secondary" : ""}`}
-            >
-              Internships
-            </a>
-
-            <a
-              href="#environment"
-              onClick={() => setCurrentView("environment")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "environment" ? "text-secondary border-b-2 border-secondary" : ""
-                }`}
-            >
-              Environment
-            </a>
-
-            <a
-              href="#women-empowerment"
-              onClick={() => setCurrentView("women-empowerment")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "women-empowerment" ? "text-secondary border-b-2 border-secondary" : ""
-                }`}
-            >
-              Women's Empowerment
-            </a>
-
-            <a
-              href="#contact"
-              onClick={() => setCurrentView("home")}
+              href="#get-involved"
+              onClick={() => setCurrentView("get-involved")}
               className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-md active:scale-95 uppercase"
             >
               Get Involved
@@ -2672,39 +2810,63 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
                 About Us
               </a>
 
+              {/* Collapsible Programmes for Mobile */}
+              <div className="flex flex-col border-b border-stone-100 py-2">
+                <button
+                  onClick={() => setIsMobileProgOpen(!isMobileProgOpen)}
+                  className="hover:text-secondary flex justify-between items-center text-left w-full font-semibold text-[#003B5C]"
+                >
+                  <span>Programmes</span>
+                  <svg className={`w-4 h-4 transition-transform duration-200 ${isMobileProgOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {isMobileProgOpen && (
+                  <div className="pl-4 pt-2 pb-1 space-y-2 flex flex-col text-stone-500 font-semibold text-xs">
+                    <a
+                      href="#educare"
+                      onClick={() => { setCurrentView("educare"); setIsMobileMenuOpen(false); }}
+                      className={`hover:text-secondary py-1 ${currentView === "educare" ? "text-secondary font-bold" : ""}`}
+                    >
+                      Educare
+                    </a>
+                    <a
+                      href="#women-empowerment"
+                      onClick={() => { setCurrentView("women-empowerment"); setIsMobileMenuOpen(false); }}
+                      className={`hover:text-secondary py-1 ${currentView === "women-empowerment" ? "text-secondary font-bold" : ""}`}
+                    >
+                      Woman Empowerment
+                    </a>
+                    <a
+                      href="#environment"
+                      onClick={() => { setCurrentView("environment"); setIsMobileMenuOpen(false); }}
+                      className={`hover:text-secondary py-1 ${currentView === "environment" ? "text-secondary font-bold" : ""}`}
+                    >
+                      Environment
+                    </a>
+                    <a
+                      href="#health"
+                      onClick={() => { setCurrentView("health"); setIsMobileMenuOpen(false); }}
+                      className={`hover:text-secondary py-1 ${currentView === "health" ? "text-secondary font-bold" : ""}`}
+                    >
+                      Health
+                    </a>
+                  </div>
+                )}
+              </div>
+
               <a
-                href="#educare"
-                onClick={() => { setCurrentView("educare"); setIsMobileMenuOpen(false); }}
-                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "educare" ? "font-bold text-secondary" : ""}`}
+                href="#team"
+                onClick={() => { setCurrentView("team"); setIsMobileMenuOpen(false); }}
+                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "team" ? "font-bold text-secondary" : ""}`}
               >
-                Educare
+                Our Team
               </a>
 
               <a
-                href="#internships"
-                onClick={() => { setCurrentView("internships"); setIsMobileMenuOpen(false); }}
-                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "internships" ? "font-bold text-secondary" : ""}`}
-              >
-                Internships
-              </a>
-
-              <a
-                href="#environment"
-                onClick={() => { setCurrentView("environment"); setIsMobileMenuOpen(false); }}
-                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "environment" ? "font-bold text-secondary" : ""}`}
-              >
-                Environment
-              </a>
-              <a
-                href="#women-empowerment"
-                onClick={() => { setCurrentView("women-empowerment"); setIsMobileMenuOpen(false); }}
-                className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "women-empowerment" ? "font-bold text-secondary" : ""}`}
-              >
-                Women's Empowerment
-              </a>
-              <a
-                href="#contact"
-                onClick={() => { setCurrentView("home"); setIsMobileMenuOpen(false); }}
+                href="#get-involved"
+                onClick={() => { setCurrentView("get-involved"); setIsMobileMenuOpen(false); }}
                 className="bg-primary text-white text-center py-3 rounded-xl hover:bg-primary-light transition-all shadow-md uppercase text-xs font-bold tracking-wider"
               >
                 Get Involved
@@ -2968,159 +3130,143 @@ function LivelihoodsPage() {
 }
 
 function HealthPage() {
+  const projects = [
+    {
+      title: "Project One: Participatory Health Mapping",
+      desc: "This project empowers coastal communities to become co-researchers, transforming their local knowledge into actionable data. Through collaborative mapping and analysis, residents visually diagnose environmental health triggers and create tools to predict public health vulnerabilities."
+    },
+    {
+      title: "Project Two: The Safety Net Project",
+      desc: "This initiative seeks to protect the lives of Perumathura’s fishing communities by providing life-saving first-aid training and safety kits for emergencies at sea, and establishing a dedicated support desk to help families access entitled government health coverage schemes."
+    }
+  ];
+
+  const services = [
+    { title: "Integrated Medical Services", desc: "Access to consulting doctors, a basic diagnostic lab, and a subsidized pharmacy right in the community." },
+    { title: "Proactive Wellness", desc: "Organizing healthy living workshops, a community garden, and regular yoga classes for stress relief." },
+    { title: "Creative Health Education", desc: "Hosting engaging wellness festivals and digital literacy drives to promote preventative care." }
+  ];
+
+  const milestones = [
+    { title: "70+ Expert webinars", desc: "Organized over 70 public webinars in partnership with KIMS Health doctors to teach symptom recognition and prevention." },
+    { title: "Counselling Centre", desc: "Inaugurated in 2018 by KIMS Health Chairman Dr. Sahadulla, providing continuous guidance and mental wellness support." },
+    { title: "PHC Renovation", desc: "Donated air conditioners to the renovated laboratory at Perumathura Primary Health Center to improve diagnostics." },
+    { title: "1,000+ Vaccines", desc: "Successfully administered over 1,000 free COVID-19 vaccinations and provided direct cash aid to 175 families." }
+  ];
+
   return (
-    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24">
-      {/* 1. Immersive Hero Banner */}
-      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24 font-sans selection:bg-primary-container selection:text-primary">
+      
+      {/* 1. Hero Section */}
+      <section className="relative h-[45vh] sm:h-[55vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
         <img
           src={healthNutrition}
-          alt="Health & Nutrition"
-          className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
+          alt="Community health event in Perumathura"
+          className="absolute inset-0 w-full h-full object-cover opacity-25 filter brightness-95"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
-
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-[#003B5C]/75 to-transparent" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
-          <motion.span
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md"
-          >
+          <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
             <LifeBuoy className="w-3.5 h-3.5 text-secondary" />
-            Coastal Health &amp; Nutrition
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase"
-          >
-            HEALTH &amp; NUTRITION
-          </motion.h1>
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: 80 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="h-1 bg-secondary mx-auto rounded-full"
-          />
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
-          >
-            Providing mobile clinics, pediatric support, child nutrient kits, and clean village sanitation.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* 2. Core Narrative Section */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="md:col-span-7 space-y-6 text-left"
-        >
-          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
-            Our Approach
+            Healthcare Initiatives
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            Healthcare Built for the Sand
-          </h2>
-          <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
-            "In remote coastal hamlets, geographic isolation, lack of transport, and seasonal precarity create critical gaps in primary healthcare. We address these systemic health challenges directly on-site, focusing on children and young mothers."
+          <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
+            Health & Wellness
+          </h1>
+          <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
+          <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
+            Building a healthier, stronger Perumathura through partnerships, preventative wellness, and local healthcare support.
           </p>
-          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-            Instead of requiring vulnerable families to travel long distances, we organize weekly and monthly mobile medical centers in the heart of fishing villages. Our pediatric doctors supply specialized medical consultations, free medicine kits, and follow-up cards to monitor growth and development.
-          </p>
-        </motion.div>
-
-        {/* Stats Card */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6 text-left"
-        >
-          <h3 className="font-display font-bold text-lg text-primary border-b border-stone-100 pb-3">
-            Wellness Milestones
-          </h3>
-          <div className="grid grid-cols-2 gap-6">
-            <div>
-              <span className="block font-display font-extrabold text-3xl text-secondary">
-                <CountUp target={15} suffix="+" />
-              </span>
-              <span className="text-xs text-stone-500 font-sans font-medium">Pediatric Camps</span>
-            </div>
-            <div>
-              <span className="block font-display font-extrabold text-3xl text-[#155E75]">
-                <CountUp target={1200} suffix="+" />
-              </span>
-              <span className="text-xs text-stone-500 font-sans font-medium">Children Checked</span>
-            </div>
-            <div>
-              <span className="block font-display font-extrabold text-3xl text-[#155E75]">
-                <CountUp target={450} suffix="+" />
-              </span>
-              <span className="text-xs text-stone-500 font-sans font-medium">Mothers Supported</span>
-            </div>
-            <div>
-              <span className="block font-display font-extrabold text-3xl text-secondary">
-                100%
-              </span>
-              <span className="text-xs text-stone-500 font-sans font-medium">Free Medicine Kits</span>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 3. Action Programs */}
-      <section className="py-20 bg-stone-100/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          <div className="max-w-2xl mx-auto space-y-4">
-            <h2 className="font-display font-bold text-3xl text-[#003B5C]">Active Initiatives</h2>
-            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 text-left">
-            {/* Mobile Pediatric Camps */}
-            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
-              <div className="p-2.5 bg-sky-50 rounded-xl text-sky-700 w-fit">
-                <Activity className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-primary">Mobile Pediatric Camps</h3>
-              <p className="text-stone-600 text-xs leading-relaxed font-sans">
-                Bringing expert pediatricians, specialist doctors, and essential diagnostics straight to remote fishing settlements. Checking and prescribing free treatments for local children.
-              </p>
-            </div>
-
-            {/* Nutrition Support */}
-            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
-              <div className="p-2.5 bg-teal-50 rounded-xl text-teal-700 w-fit">
-                <LifeBuoy className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-primary">Iron &amp; Micronutrients</h3>
-              <p className="text-stone-600 text-xs leading-relaxed font-sans">
-                Distributing freshly packed, iron-fortified multi-nutrient food packets to young children, infants, and pregnant mothers to address systemic anemia and support physical growth.
-              </p>
-            </div>
-
-            {/* Hygiene Infrastructure */}
-            <div className="bg-white p-8 rounded-2xl border border-stone-200/40 shadow-sm space-y-4">
-              <div className="p-2.5 bg-amber-50 rounded-xl text-amber-700 w-fit">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <h3 className="font-display font-bold text-lg text-primary">Sanitation Improvement</h3>
-              <p className="text-stone-600 text-xs leading-relaxed font-sans">
-                Rebuilding village drainage grids, setting up environment-friendly community rubbish dump sites, and repairing coastal toilet units to reduce seasonal cholera and waterborne infections.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
+
+      {/* 2. Core Vision & KIMS Partnership */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-8 relative z-10">
+        <div className="space-y-4">
+          <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Collaboration</span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
+            Building a Healthier Perumathura
+          </h2>
+          <div className="w-12 h-1 bg-[#0A5F8F] rounded-full" />
+        </div>
+        
+        <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
+          Our health initiatives focus on empowering the community with knowledge to make informed healthy life choices. We do this through two modes: providing accessible healthcare services and counselling, and through infrastructure development of local healthcare facilities. 
+        </p>
+        <p className="text-stone-600 text-base leading-relaxed">
+          Through our cornerstone partnership with **KIMS Health**, we offer expert-led guidance, webinars, and mental health counselling, bringing high-quality professional support directly to Perumathura.
+        </p>
+      </section>
+
+      {/* 3. The Community Health Centre Subpage Block */}
+      <section className="py-20 bg-stone-100 border-y border-stone-200/50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Infrastructure Project
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary">
+              The Community Health Centre
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm">
+              We are building a dedicated health centre to provide continuous, comprehensive care for the coastal community. Moving beyond crisis response, the centre will transform wellness with a space designed for holistic care.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            {services.map((svc, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-2xl border border-stone-200/40 shadow-sm space-y-3">
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">{svc.title}</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">{svc.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Launch Projects */}
+          <div className="bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm text-left space-y-6">
+            <h3 className="font-display font-bold text-lg text-primary border-b border-stone-100 pb-3">
+              Upcoming Launch Projects
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {projects.map((proj, idx) => (
+                <div key={idx} className="space-y-2">
+                  <h4 className="font-display font-bold text-sm text-secondary">{proj.title}</h4>
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans">{proj.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. Flagship Program Impact */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-12">
+        <div className="space-y-4">
+          <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">02 / Key Initiatives &amp; Impact</span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
+            Arogyatheeram Flagship Programs
+          </h2>
+          <div className="w-12 h-1 bg-secondary rounded-full" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {milestones.map((item, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-2xl border border-stone-200/40 shadow-sm flex gap-4 items-start">
+              <div className="w-8 h-8 rounded-lg bg-stone-50 flex items-center justify-center font-mono text-xs font-bold text-[#0A5F8F] shrink-0">
+                0{idx + 1}
+              </div>
+              <div className="space-y-1.5">
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">{item.title}</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </div>
   );
 }
@@ -3223,14 +3369,16 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
       const hash = window.location.hash;
       const path = window.location.pathname;
       const cleanPath = path.replace(/^\/|\/$/g, '');
-      const defaultRoutes = ["educare", "environment", "internships", "women-empowerment", "about-us", "livelihoods", "health"];
+      const defaultRoutes = ["educare", "environment", "get-involved", "team", "women-empowerment", "about-us", "livelihoods", "health"];
 
       if (hash === "#educare" || path.includes("/educare")) {
         setCurrentView("educare");
       } else if (hash === "#environment" || path.includes("/environment")) {
         setCurrentView("environment");
-      } else if (hash === "#internships" || path.includes("/internships")) {
-        setCurrentView("internships");
+      } else if (hash === "#get-involved" || path.includes("/get-involved") || hash === "#internships" || path.includes("/internships")) {
+        setCurrentView("get-involved");
+      } else if (hash === "#team" || path.includes("/team")) {
+        setCurrentView("team");
       } else if (hash === "#women-empowerment" || path.includes("/women-empowerment")) {
         setCurrentView("women-empowerment");
       } else if (hash === "#livelihoods" || path.includes("/livelihoods")) {
@@ -3300,8 +3448,10 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
         <EducarePage />
       ) : currentView === "environment" ? (
         <EnvironmentPage />
-      ) : currentView === "internships" ? (
-        <InternshipsPage />
+      ) : currentView === "get-involved" ? (
+        <GetInvolvedPage />
+      ) : currentView === "team" ? (
+        <TeamPage />
       ) : currentView === "women-empowerment" ? (
         <WomenEmpowermentPage />
       ) : currentView === "livelihoods" ? (
@@ -3348,7 +3498,7 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
             <h4 className="font-display font-semibold text-stone-200 text-sm">Focus Anchors</h4>
             <div className="grid gap-2 text-xs">
               <a href="#about-us" className="text-stone-400 hover:text-secondary transition-colors">About Us</a>
-              <a href="#reality" className="text-stone-400 hover:text-secondary transition-colors">Systemic Realities</a>
+              <a href="#get-involved" className="text-stone-400 hover:text-secondary transition-colors">Get Involved</a>
               <a href="#programs" className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
               <a href="#team" className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
             </div>
