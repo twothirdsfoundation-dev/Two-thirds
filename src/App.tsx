@@ -1255,88 +1255,18 @@ function WomenEmpowermentPage() {
 }
 
 function AboutUsPage() {
-  const objectives = [
-    { title: "Promotion of Education", desc: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote villages." },
-    { title: "Advancement of Social Welfare", desc: "Supporting vulnerable households and creating local security nets for coastal communities." },
-    { title: "Community Development", desc: "Collaboratively building local capacity and leadership to manage sustainable shore initiatives." },
-    { title: "Youth Leadership Development", desc: "Training youth representatives in constitutional values, social responsibility, and civic action." },
-    { title: "Women’s Empowerment", desc: "Mobilizing women's micro-savings Self-Help Groups (SHGs) to run co-operatives and value-addition units." },
-    { title: "Skill Development", desc: "Providing vocational training, digital banking literacy, and technical expertise to diversify incomes." },
-    { title: "Research & Evidence", desc: "Conducting household surveys and community diagnostics to plan and build evidence-based programs." },
-    { title: "Equitable Opportunities", desc: "Bridging systemic divides in access to high-quality education, healthcare, and credit systems." }
-  ];
-
-  const voluntaryPrograms = [
-    {
-      period: "2018 – 2020",
-      title: "Educational Support for Dropouts",
-      desc: "Launched to address school absenteeism and examination failure. Focused on SSLC and Higher Secondary students at risk of discontinuing education.",
-      achievements: [
-        "Mentored and supported 100+ SSLC students directly",
-        "Conducted academic classes, career orientation, and motivational sessions",
-        "Helped students clear public exams to continue their academic paths"
-      ]
-    },
-    {
-      period: "2020 – 2023",
-      title: "Strengthening Educational Aspirations",
-      desc: "Expanded scope to foster long-term higher education goals for adolescents. Provided continuous guidance and support during the COVID-19 pandemic.",
-      achievements: [
-        "Conducted residential learning camps, goal-setting workshops, and exposure visits",
-        "Adapted remote learning assistance and mentoring during COVID lockdowns",
-        "Supported deserving students to join residential schools with welfare assistance"
-      ]
-    },
-    {
-      period: "2020 – 2026",
-      title: "Community & Parent Support",
-      desc: "Focused on building strong ties with parents and families, recognizing that student success is deeply tied to household environments.",
-      achievements: [
-        "Organized regular parent counselling sessions and household visits",
-        "Addressed barriers to school attendance and identified highly vulnerable families",
-        "Established deep grassroots trust between the community and the program team"
-      ]
-    },
-    {
-      period: "2023 – Feb 2026",
-      title: "The Educare Programme",
-      desc: "Launched following pandemic-induced learning gaps to support Lower and Upper Primary children with foundational learning and life skills.",
-      achievements: [
-        "Engaged approximately 600 families across vulnerable coastal areas",
-        "Strengthened foundational literacy, numeracy, and life-skills through creative play",
-        "Many former participants returned as volunteers and leaders within the program"
-      ]
-    }
-  ];
-
-  const recentActivities = [
-    {
-      title: "Baseline Household Survey",
-      details: "Conducted a detailed survey covering 735 households in Chirayinkeezhu Panchayath to analyze socio-economic status, education levels, and public service access. The data serves as a blueprint for program planning."
-    },
-    {
-      title: "Focus Group Discussions with Women",
-      details: "Organized structured consultations with women from fishing-dependent families to map livelihood barriers. Identified priorities in skill training, flexible jobs, and micro-savings."
-    },
-    {
-      title: "Youth Leadership Programme",
-      details: "Conducted a residential leadership camp for coastal youth, focusing on constitutional values, active citizenship, and community volunteering for local programs."
-    }
-  ];
-
-  const futurePlans = [
-    "Scale the Educare program model to additional vulnerable coastal communities across Kerala",
-    "Establish higher education scholarships and continuous mentoring circles for youth",
-    "Launch women-focused skill development and micro-cooperative livelihood initiatives",
-    "Strengthen research and data-driven program designs to improve local shoreline resilience",
-    "Collaborate with local Panchayats, educational institutions, and government bodies"
+  const pillars = [
+    { title: "Inclusive Education", desc: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote coastal fishing villages." },
+    { title: "Women's Empowerment", desc: "Mobilizing women's Self-Help Groups (SHGs) to run fish value-addition facilities, craft circles, and local co-operatives." },
+    { title: "Sustainable Livelihoods", desc: "Diversifying income streams via marine cage farming, seaweed cultivation, and direct market links." },
+    { title: "Environmental Conservation", desc: "Helping coastal children engage deeply with local ecology through GINTL climate education and coastal walks." }
   ];
 
   return (
     <div className="bg-stone-50 min-h-screen text-stone-800 pb-24 font-sans selection:bg-primary-container selection:text-primary">
       
       {/* 1. Hero Banner */}
-      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+      <section className="relative h-[45vh] sm:h-[55vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
         <img
           src={coastalApproachBg}
           alt="Coastal Kerala Horizon"
@@ -1346,70 +1276,56 @@ function AboutUsPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
           <span className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
             <Anchor className="w-3.5 h-3.5 text-secondary" />
-            Institutional Profile
+            Our Story
           </span>
           <h1 className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase">
-            Two-Thirds Community Foundation
+            About Us
           </h1>
           <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
           <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
-            A Section 8 Company incorporated under the Companies Act, 2013 (Registration No: 100608). Committed to transparency, community participation, and grassroots action.
+            An institutional extension of 8 years of voluntary grassroots work on the Kerala coast.
           </p>
         </div>
       </section>
 
-      {/* 2. Overview & Vision Section */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: About & Legal status */}
-          <div className="lg:col-span-6 space-y-8 text-left">
-            <div className="space-y-4">
-              <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / Foundation Overview</span>
-              <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
-                About the Organisation
-              </h2>
-              <div className="w-12 h-1 bg-[#0A5F8F] rounded-full" />
-            </div>
-            
+      {/* 2. Genesis & Journey Section */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-8 relative z-10">
+        <div className="space-y-4">
+          <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / The Journey</span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
+            Built on Years of Trust
+          </h2>
+          <div className="w-12 h-1 bg-[#0A5F8F] rounded-full" />
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          <div className="md:col-span-8 space-y-6">
             <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-              Two-Thirds Community Foundation is a registered Section 8 not-for-profit company incorporated on **03 February 2026**. Established to advance the welfare of vulnerable coastal fishing-dependent communities in Kerala, India.
+              The work of **Two-Thirds Community Foundation** did not start in a boardroom. It began on the shorelines of Chirayinkeezhu, Azhoor, and Kadinamkulam in **2018**.
             </p>
-            <p className="text-stone-600 text-base leading-relaxed">
-              We focus primarily on fishing communities where socio-economic challenges limit access to quality education, credit access, and sustainable livelihood streams. We believe long-term transformation is unlocked when you combine academic mentoring with grassroots community leadership.
+            <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
+              For **eight years**, our founder and a dedicated team of local volunteers worked hand-in-hand with fishing-dependent families. We organized informal evening classrooms, set up career guidance camps, supported dropout students preparing for board exams, and stood beside families during the disruptions of the COVID-19 pandemic.
             </p>
-            
-            {/* Legal Details Box */}
-            <div className="bg-white p-6 rounded-2xl border border-stone-200/60 shadow-sm space-y-3">
-              <h4 className="font-display font-bold text-stone-700 text-sm flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#4C9F38]" />
-                Compliance & Registration Status
-              </h4>
-              <div className="grid grid-cols-2 gap-4 text-xs font-sans text-stone-500 pt-2 border-t border-stone-100">
-                <div>
-                  <span className="block font-bold text-stone-400 uppercase tracking-wider text-[9px]">Legal Entity</span>
-                  <span className="text-stone-700 font-semibold">Section 8 (Not-For-Profit)</span>
-                </div>
-                <div>
-                  <span className="block font-bold text-stone-400 uppercase tracking-wider text-[9px]">Registration No</span>
-                  <span className="text-stone-700 font-semibold">100608 (KL)</span>
-                </div>
-                <div>
-                  <span className="block font-bold text-stone-400 uppercase tracking-wider text-[9px]">Date of Incorporation</span>
-                  <span className="text-stone-700 font-semibold">03 February 2026</span>
-                </div>
-                <div>
-                  <span className="block font-bold text-stone-400 uppercase tracking-wider text-[9px]">Registered Office</span>
-                  <span className="text-stone-700 font-semibold leading-tight block">No. 2, UV Tower, Chirayinkeezhu, Trivandrum</span>
-                </div>
-              </div>
-            </div>
+            <p className="text-[#003B5C] font-display font-bold text-lg sm:text-xl leading-relaxed italic border-l-4 border-secondary pl-4">
+              "This Section 8 foundation is the formal, institutional extension of those 8 years of voluntary grassroots trust, built to ensure continuity and scale for our coastal communities."
+            </p>
           </div>
+          
+          <div className="md:col-span-4 bg-white border border-stone-200/80 p-6 rounded-2xl shadow-sm text-center space-y-2">
+            <span className="block text-4xl font-display font-black text-secondary">8+</span>
+            <span className="block text-xs font-mono font-extrabold uppercase text-stone-400 tracking-wider">Years of Voluntary Action</span>
+            <div className="h-[1px] bg-stone-100 my-3" />
+            <span className="block text-stone-500 text-xs">Serving coastal fishing hamlets in Trivandrum, Kerala, since 2018.</span>
+          </div>
+        </div>
+      </section>
 
-          {/* Right Column: Vision & Mission Cards */}
-          <div className="lg:col-span-6 space-y-6 text-left">
+      {/* 3. Vision & Mission Section */}
+      <section className="py-20 bg-stone-100 border-y border-stone-200/50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
             <div className="bg-[#003B5C] text-white p-8 rounded-3xl shadow-xl space-y-4 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-bl-full pointer-events-none" />
               <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">Core Vision</span>
               <h3 className="font-display font-bold text-2xl">Our Vision</h3>
               <p className="text-stone-200 text-sm sm:text-base leading-relaxed font-serif italic">
@@ -1428,241 +1344,28 @@ function AboutUsPage() {
         </div>
       </section>
 
-      {/* 3. Charitable Objectives Tag-Cloud Grid */}
-      <section className="py-20 bg-stone-100 border-y border-stone-200/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-[#0A5F8F] font-mono text-xs font-bold uppercase tracking-wider">
-              Statutory Mandate
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary">
-              Charitable Objectives
-            </h2>
-            <div className="w-16 h-1 bg-[#0A5F8F] mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              We operate exclusively for public benefit under eight core charitable mandates enqueued in our incorporation documents:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-            {objectives.map((obj, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-2xl border border-stone-200/40 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-                <div className="space-y-3">
-                  <div className="w-8 h-8 rounded-lg bg-stone-50 flex items-center justify-center font-mono text-xs font-bold text-[#0A5F8F]">
-                    0{idx + 1}
-                  </div>
-                  <h4 className="font-display font-bold text-sm text-[#003B5C]">{obj.title}</h4>
-                  <p className="text-xs text-stone-500 leading-relaxed font-sans">{obj.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Background & Challenges */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 space-y-6">
-            <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">02 / Genesis & Background</span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary">
-              Origins of the Initiative
-            </h2>
-            <div className="w-12 h-1 bg-secondary rounded-full" />
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-              The foundation's work evolved organically from several years of voluntary community work in the coastal wards of **Chirayinkeezhu**, **Azhoor**, and **Kadinamkulam** Panchayats. 
-            </p>
-            <p className="text-stone-600 text-sm leading-relaxed">
-              Faced with massive educational disadvantages, post-pandemic learning gaps, and extreme livelihood precarity, our founding team set out to organize evening tutoring and youth support networks. As these programs grew, incorporating as a Section 8 company ensured transparency, institutional accountability, and long-term continuity.
-            </p>
-          </div>
-
-          <div className="lg:col-span-7 bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-6">
-            <h3 className="font-display font-bold text-xl text-primary border-b border-stone-100 pb-3 flex items-center gap-2">
-              <Info className="w-5 h-5 text-secondary" />
-              Socio-Economic Challenges Addressed
-            </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-red-50/50 border border-red-100/60 space-y-2">
-                <span className="font-bold text-[#E07A5F] text-xs font-mono uppercase tracking-wider block">Educational Gaps</span>
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  High school absenteeism, post-COVID learning loss in primary classes, and early dropouts due to structural exclusion.
-                </p>
-              </div>
-              <div className="p-4 rounded-xl bg-sky-50/50 border border-sky-100/60 space-y-2">
-                <span className="font-bold text-[#0A5F8F] text-xs font-mono uppercase tracking-wider block">Livelihood Insecurity</span>
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  Extreme economic reliance on marine capture, high fuel overheads, and lack of alternative craft/aquaculture skills for women.
-                </p>
-              </div>
-              <div className="p-4 rounded-xl bg-[#FFF9E6]/50 border border-amber-100/60 space-y-2">
-                <span className="font-bold text-amber-800 text-xs font-mono uppercase tracking-wider block">Pandemic Disruption</span>
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  Severe learning deficits in children from poor coastal hamlets, with no digital access during online schooling phases.
-                </p>
-              </div>
-              <div className="p-4 rounded-xl bg-teal-50/50 border border-teal-100/60 space-y-2">
-                <span className="font-bold text-[#155E75] text-xs font-mono uppercase tracking-wider block">Credit Barriers</span>
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  Women are systematically locked out of formal credit channels and bank linkages, exposing households to local predatory debt.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Timeline: Pre-Incorporation voluntary years (2018 - 2026) */}
-      <section className="py-20 bg-stone-100 border-y border-stone-200/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              Voluntary Phase
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary">
-              Pre-Incorporation Activities (2018 – 2026)
-            </h2>
-            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              Before taking form as an institutional Section 8 nonprofit, our work was carried out by community volunteers and voluntary contributions:
-            </p>
-          </div>
-
-          {/* Interactive Timeline Layout */}
-          <div className="max-w-5xl mx-auto relative border-l-2 border-stone-200 text-left pl-6 sm:pl-10 space-y-12">
-            {voluntaryPrograms.map((prog, idx) => (
-              <div key={idx} className="relative space-y-4">
-                
-                {/* Timeline Dot */}
-                <div className="absolute -left-[35px] sm:-left-[51px] w-6 h-6 rounded-full bg-white border-4 border-secondary flex items-center justify-center z-20">
-                  <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                </div>
-
-                <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4">
-                  <div className="flex flex-wrap justify-between items-center gap-3 border-b border-stone-100 pb-3">
-                    <div>
-                      <span className="text-[#E07A5F] font-mono text-xs font-bold uppercase tracking-wider block mb-1">
-                        Programme {idx + 1}
-                      </span>
-                      <h3 className="font-display font-bold text-lg sm:text-xl text-primary">
-                        {prog.title}
-                      </h3>
-                    </div>
-                    <span className="bg-secondary/10 text-secondary text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                      {prog.period}
-                    </span>
-                  </div>
-
-                  <p className="text-stone-500 text-xs sm:text-sm leading-relaxed">
-                    {prog.desc}
-                  </p>
-
-                  <div className="space-y-2">
-                    <span className="text-[10px] font-mono font-bold uppercase text-stone-400 block tracking-wider">
-                      Key Outcomes:
-                    </span>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-stone-600 font-medium">
-                      {prog.achievements.map((ach, aIdx) => (
-                        <li key={aIdx} className="flex items-start gap-2">
-                          <span className="text-secondary font-bold select-none shrink-0">•</span>
-                          <span className="leading-relaxed">{ach}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Post-Incorporation Milestones (March - May 2026) */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="inline-block text-[#0A5F8F] font-mono text-xs font-bold uppercase tracking-wider">
-            Institutional Phase
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary">
-            Recent Milestones (March – May 2026)
+      {/* 4. Focus Pillars Section */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-12">
+        <div className="space-y-4">
+          <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">02 / What We Do</span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
+            Strategic Focus Areas
           </h2>
-          <div className="w-16 h-1 bg-[#0A5F8F] mx-auto rounded-full" />
-          <p className="text-stone-600 text-sm">
-            Following official incorporation in February 2026, the Foundation commenced structured project deployments with institutional rigor:
-          </p>
+          <div className="w-12 h-1 bg-secondary rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {recentActivities.map((act, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl border border-stone-200/60 shadow-sm space-y-4 hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
-              <div className="space-y-4">
-                <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-wider block">
-                  Action 0{idx + 1}
-                </span>
-                <h4 className="font-display font-bold text-lg text-primary">{act.title}</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">{act.details}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {pillars.map((pillar, idx) => (
+            <div key={idx} className="bg-white p-6 rounded-2xl border border-stone-200/40 shadow-sm flex gap-4 items-start">
+              <div className="w-8 h-8 rounded-lg bg-stone-50 flex items-center justify-center font-mono text-xs font-bold text-[#0A5F8F] shrink-0">
+                0{idx + 1}
               </div>
-              <div className="pt-6 border-t border-stone-100 mt-6 flex items-center gap-1.5 text-[10px] font-mono text-stone-400 uppercase font-bold tracking-wider">
-                <Clock className="w-3.5 h-3.5" />
-                Completed Q1 2026
+              <div className="space-y-1.5">
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">{pillar.title}</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">{pillar.desc}</p>
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* 7. Future Plan & Vision forward */}
-      <section className="py-20 bg-stone-900 text-white border-y-8 border-primary">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-left">
-          
-          <div className="space-y-4 text-center max-w-2xl mx-auto">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              Strategic Blueprint
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
-              Future Programme Plan
-            </h2>
-            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-            <p className="text-stone-400 text-xs sm:text-sm">
-              Moving forward, the foundation is focused on expanding outreach, scaling educational centers, and mobilizing alternative credit structures for women:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="font-display font-bold text-xl text-stone-200">Expansion Roadmap</h3>
-              <div className="space-y-3">
-                {futurePlans.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <span className="font-mono text-secondary text-xs font-bold mt-0.5">0{idx + 1}</span>
-                    <p className="text-xs text-stone-300 leading-relaxed">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white/5 p-8 rounded-3xl border border-white/5 space-y-6 flex flex-col justify-between">
-              <div className="space-y-4">
-                <h3 className="font-display font-bold text-xl text-stone-200">Governance & Transparency</h3>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  Managed by a professional Board of Directors, we operate in strict compliance with the statutory norms of the Companies Act, 2013. 
-                </p>
-                <p className="text-xs text-stone-400 leading-relaxed">
-                  We maintain thorough digital logs of all program activities, conduct annual statutory audits, and guarantee that resources directly benefit local shoreline beneficiaries.
-                </p>
-              </div>
-
-              <div className="pt-6 border-t border-white/10 space-y-2">
-                <span className="text-[9px] font-mono text-stone-500 uppercase tracking-widest block font-bold">Authorized Declaration:</span>
-                <p className="text-[10px] text-stone-400 italic leading-relaxed">
-                  The pre-incorporation voluntary works are verified and declared by the founding committee. All subsequent programs are backed by baseline surveys.
-                </p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
