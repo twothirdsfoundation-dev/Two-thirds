@@ -1256,10 +1256,10 @@ function WomenEmpowermentPage() {
 
 function AboutUsPage() {
   const pillars = [
-    { title: "Inclusive Education", desc: "Setting up supplementary study centres, evening tutor groups, and digital libraries across remote coastal fishing villages." },
-    { title: "Women's Empowerment", desc: "Mobilizing women's Self-Help Groups (SHGs) to run fish value-addition facilities, craft circles, and local co-operatives." },
-    { title: "Sustainable Livelihoods", desc: "Diversifying income streams via marine cage farming, seaweed cultivation, and direct market links." },
-    { title: "Environmental Conservation", desc: "Helping coastal children engage deeply with local ecology through GINTL climate education and coastal walks." }
+    { title: "Education Support", desc: "We set up evening study centres and digital libraries in remote fishing hamlets so kids have a quiet, supportive place to learn and study for board exams." },
+    { title: "Women's Micro-Savings", desc: "We help women form self-help groups to start micro-businesses, learn digital banking, and get fair credit without getting trapped by local loan sharks." },
+    { title: "Alternative Livelihoods", desc: "We help fishers diversify their income through seaweed farming, cage culture, and modern fish dryers so they don't rely only on unpredictable daily catches." },
+    { title: "Ecology & Climate Action", desc: "We teach coastal kids about their local ecosystem, restore mangrove buffers, and help them understand climate changes affecting their shores." }
   ];
 
   return (
@@ -1283,7 +1283,7 @@ function AboutUsPage() {
           </h1>
           <div className="h-1 bg-secondary mx-auto rounded-full w-20" />
           <p className="text-stone-200 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-sans font-medium">
-            An institutional extension of 8 years of voluntary grassroots work on the Kerala coast.
+            How a small group of volunteers spent eight years working on the Kerala coast, and how we got to where we are today.
           </p>
         </div>
       </section>
@@ -1293,21 +1293,21 @@ function AboutUsPage() {
         <div className="space-y-4">
           <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">01 / The Journey</span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-primary leading-tight">
-            Built on Years of Trust
+            How It All Started
           </h2>
           <div className="w-12 h-1 bg-[#0A5F8F] rounded-full" />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          <div className="md:col-span-8 space-y-6">
-            <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-              The work of **Two-Thirds Community Foundation** did not start in a boardroom. It began on the shorelines of Chirayinkeezhu, Azhoor, and Kadinamkulam in **2018**.
+          <div className="md:col-span-8 space-y-6 text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p>
+              We didn't start this foundation overnight. Back in **2018**, our founder began spending time in the fishing villages of Chirayinkeezhu, Azhoor, and Kadinamkulam. He saw firsthand how kids from fishing families were dropping out of school or falling behind because the standard school system didn't fit their seasonal lives.
             </p>
-            <p className="text-stone-600 text-base sm:text-lg leading-relaxed">
-              For **eight years**, our founder and a dedicated team of local volunteers worked hand-in-hand with fishing-dependent families. We organized informal evening classrooms, set up career guidance camps, supported dropout students preparing for board exams, and stood beside families during the disruptions of the COVID-19 pandemic.
+            <p>
+              So, he and a few local volunteers started sitting down with these kids in the evenings, helping them study for board exams, and checking in on their families. For **eight years**, this was just informal, voluntary work. We ran study groups, guided teenagers on career choices, and helped families navigate the pandemic.
             </p>
-            <p className="text-[#003B5C] font-display font-bold text-lg sm:text-xl leading-relaxed italic border-l-4 border-secondary pl-4">
-              "This Section 8 foundation is the formal, institutional extension of those 8 years of voluntary grassroots trust, built to ensure continuity and scale for our coastal communities."
+            <p>
+              Now, in **2026**, we’ve registered as a Section 8 non-profit company. We did this because we wanted a structured way to keep this work going, build more permanent learning centers, and handle funds transparently. The foundation is simply an extension of the trust we built on these shores over nearly a decade.
             </p>
           </div>
           
@@ -1315,7 +1315,7 @@ function AboutUsPage() {
             <span className="block text-4xl font-display font-black text-secondary">8+</span>
             <span className="block text-xs font-mono font-extrabold uppercase text-stone-400 tracking-wider">Years of Voluntary Action</span>
             <div className="h-[1px] bg-stone-100 my-3" />
-            <span className="block text-stone-500 text-xs">Serving coastal fishing hamlets in Trivandrum, Kerala, since 2018.</span>
+            <span className="block text-stone-500 text-xs">Helping coastal families and students in Trivandrum since 2018.</span>
           </div>
         </div>
       </section>
@@ -1329,7 +1329,7 @@ function AboutUsPage() {
               <span className="text-xs font-mono font-bold text-secondary uppercase tracking-widest block">Core Vision</span>
               <h3 className="font-display font-bold text-2xl">Our Vision</h3>
               <p className="text-stone-200 text-sm sm:text-base leading-relaxed font-serif italic">
-                "To build resilient, educated, and empowered coastal communities where every child, youth, and family has the opportunity to achieve their full potential."
+                "We want to see coastal fishing villages where kids get a fair shot at a great education, families have stable, alternative ways to earn a living, and youth are confident enough to lead their communities."
               </p>
             </div>
 
@@ -1337,7 +1337,7 @@ function AboutUsPage() {
               <span className="text-xs font-mono font-bold text-[#0A5F8F] uppercase tracking-widest block">Action Mission</span>
               <h3 className="font-display font-bold text-2xl text-primary">Our Mission</h3>
               <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-                To promote inclusive education, strengthen community capacities, empower women and youth, and facilitate sustainable development through participatory community-based interventions.
+                To work directly with villagers to set up community study centers, help women start micro-cooperatives, diversify income streams for fishers, and protect local shorelines—all by building on what the community already knows.
               </p>
             </div>
           </div>
