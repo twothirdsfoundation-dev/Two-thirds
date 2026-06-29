@@ -30,9 +30,8 @@ import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
-import parallaxSky from "./assets/parallax-sky.png";
-import parallaxBoats from "./assets/parallax-boats.png";
-import parallaxForeground from "./assets/parallax-foreground.png";
+import parallaxBackground2 from "./assets/Parallax background-2.png";
+import parallaxImageFront from "./assets/Parallax image front.png";
 import manifestoFish from "./assets/manifesto-fish.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
@@ -1637,10 +1636,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const yBg = -80 + (scrollTop || 0) * 0.06;
-  const yMid = -40 + (scrollTop || 0) * 0.08;
-  const yText = -30 + (scrollTop || 0) * 0.75;
-  const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
+  const yBg = (scrollTop || 0) * 0.15;
+  const yText = (scrollTop || 0) * 0.45;
+  const yFront = (scrollTop || 0) * 0.05;
+  const opacityText = Math.max(0, 1 - (scrollTop || 0) / 600);
 
 
 
@@ -1880,35 +1879,23 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       <section
         id="home"
         ref={heroRef}
-        className="relative h-[140vh] md:h-[200vh] bg-[#E0F2FE]"
-        style={{ backgroundColor: '#E0F2FE' }}
+        className="relative h-[140vh] md:h-[200vh] bg-[#02101e]"
+        style={{ backgroundColor: '#02101e' }}
       >
         {/* Sticky viewport container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
           {/* Parallax Layers */}
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
-            {/* Sky Layer (Background) */}
+            {/* Background Layer */}
             <div
               style={{ transform: `translateY(${yBg}px)` }}
-              className="absolute top-0 left-0 w-full h-[130%] will-change-transform"
+              className="absolute top-0 left-0 w-full h-[120%] will-change-transform"
             >
               <img
-                src={parallaxSky}
-                alt="Kerala sunrise sky"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
-
-            {/* Boats Layer (Midground) */}
-            <div
-              style={{ transform: `translateY(${yMid}px)` }}
-              className="absolute top-0 left-0 w-full h-[130%] mix-blend-multiply will-change-transform"
-            >
-              <img
-                src={parallaxBoats}
-                alt="Fishing boats silhouettes"
-                className="w-full h-full object-cover object-bottom"
+                src={parallaxBackground2}
+                alt="Deep ocean waves background"
+                className="w-full h-full object-cover object-center"
               />
             </div>
 
@@ -1921,35 +1908,46 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
             >
               <h1
-                style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
+                style={{ textShadow: "0 2px 15px rgba(2, 16, 30, 0.6)" }}
+                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.15] max-w-4xl"
               >
-                For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
+                For the <span className="text-[#E07A5F] italic font-serif font-semibold">two-thirds</span> <br />
                 who deserve better.
               </h1>
 
+              <p className="mt-6 text-stone-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+                We empower communities, create opportunities, and build a more equitable tomorrow.
+              </p>
+
               {/* Floating CTA Buttons inside parallax layer */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
+              <div className="mt-8 flex flex-col sm:flex-row gap-6 items-center justify-center pointer-events-auto">
                 <a
                   href="#contact"
-                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+                  className="bg-secondary hover:bg-secondary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-full transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase flex items-center gap-2"
                 >
                   Get Involved
+                  <span className="text-sm">➔</span>
                 </a>
                 <a
-                  href="#about"
-                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                  href="#blog-preview"
+                  className="group flex items-center gap-3 text-white font-display font-semibold text-xs tracking-wider transition-all uppercase cursor-pointer"
                 >
-                  Explore Manifesto
+                  <span className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center transition-all group-hover:border-white group-hover:bg-white/10">
+                    <span className="text-[10px] ml-0.5">▶</span>
+                  </span>
+                  See Our Impact
                 </a>
               </div>
             </div>
 
-            {/* Foreground Mangroves Layer (Static - no motion needed) */}
-            <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
+            {/* Foreground Layer */}
+            <div
+              style={{ transform: `translateY(${yFront}px)` }}
+              className="absolute inset-0 w-full h-[110%] z-20 will-change-transform pointer-events-none"
+            >
               <img
-                src={parallaxForeground}
-                alt="Mangrove foliage silhouettes"
+                src={parallaxImageFront}
+                alt="Wave splashes foreground"
                 className="w-full h-full object-cover object-bottom"
               />
             </div>
