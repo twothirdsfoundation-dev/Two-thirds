@@ -1637,6 +1637,23 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Mouse Move Parallax Handler
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      
+      const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      
+      hero.style.setProperty('--mouse-x', x.toString());
+      hero.style.setProperty('--mouse-y', y.toString());
+    };
+    
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const yBg = -80 + (scrollTop || 0) * 0.06;
   const yMid = -40 + (scrollTop || 0) * 0.08;
   const yText = -30 + (scrollTop || 0) * 0.75;
@@ -1890,7 +1907,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
             {/* Sky Layer (Background) */}
             <div
-              style={{ transform: `translateY(${yBg}px)` }}
+              style={{
+                transform: `translateY(${yBg}px) translate(calc(var(--mouse-x, 0) * 12px), calc(var(--mouse-y, 0) * 8px))`,
+                transition: "transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)"
+              }}
               className="absolute top-0 left-0 w-full h-[130%] will-change-transform"
             >
               <img
@@ -1902,7 +1922,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
             {/* Boats Layer (Midground) */}
             <div
-              style={{ transform: `translateY(${yMid}px)` }}
+              style={{
+                transform: `translateY(${yMid}px) translate(calc(var(--mouse-x, 0) * -18px), calc(var(--mouse-y, 0) * -12px))`,
+                transition: "transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)"
+              }}
               className="absolute top-0 left-0 w-full h-[130%] mix-blend-multiply will-change-transform"
             >
               <img
@@ -1915,8 +1938,9 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             {/* Heading Layer (Sandwiched in the middle!) */}
             <div
               style={{
-                transform: `translateY(${yText}px)`,
-                opacity: opacityText
+                transform: `translateY(${yText}px) translate(calc(var(--mouse-x, 0) * 30px), calc(var(--mouse-y, 0) * 20px))`,
+                opacity: opacityText,
+                transition: "transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)"
               }}
               className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
             >
@@ -1945,8 +1969,14 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
               </div>
             </div>
 
-            {/* Foreground Mangroves Layer (Static - no motion needed) */}
-            <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
+            {/* Foreground Mangroves Layer (Static scroll, but moves with mouse) */}
+            <div
+              style={{
+                transform: `translate(calc(var(--mouse-x, 0) * -45px), calc(var(--mouse-y, 0) * -25px))`,
+                transition: "transform 0.25s cubic-bezier(0.25, 1, 0.5, 1)"
+              }}
+              className="absolute inset-0 w-full h-full mix-blend-multiply z-20 will-change-transform"
+            >
               <img
                 src={parallaxForeground}
                 alt="Mangrove foliage silhouettes"
