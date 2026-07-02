@@ -473,7 +473,7 @@ function EducarePage() {
               icon: Activity
             }
           ].map((pillar, i) => {
-            let initialAnim = {};
+            let initialAnim;
             if (i % 3 === 0) {
               initialAnim = { opacity: 0, x: -50 };
             } else if (i % 3 === 1) {
@@ -1639,7 +1639,7 @@ interface HomePageProps {
 function HomePage({ setCurrentView, areas }: HomePageProps) {
   const heroRef = useRef<HTMLElement>(null);
 
-  const [scrollTop, setScrollTop] = useState(0);
+  const [scrollTop, setScrollTop] = useState(() => typeof window !== "undefined" ? window.scrollY : 0);
 
   useEffect(() => {
     let ticking = false;
@@ -1652,7 +1652,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         ticking = true;
       }
     };
-    setScrollTop(window.scrollY);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
