@@ -85,10 +85,75 @@ function twothirds_register_team_cpt() {
         'hierarchical'       => false,
         'menu_position'      => 26,
         'menu_icon'          => 'dashicons-groups',
-        'supports'           => array( 'title', 'thumbnail' )
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
     );
 
     register_post_type( 'team_member', $args );
 }
 add_action( 'init', 'twothirds_register_team_cpt' );
+
+/**
+ * Add Meta Boxes for Team Members Details
+ */
+function twothirds_team_member_meta_boxes() {
+    add_meta_box(
+        'team_member_details',
+        __( 'Team Member Details' ),
+        'twothirds_team_member_meta_box_callback',
+        'team_member',
+        'normal',
+        'high'
+    );
+}
+add_action( 'add_meta_boxes', 'twothirds_team_member_meta_boxes' );
+
+// Callback function to render the meta box form in WP dashboard
+function twothirds_team_member_meta_box_callback( $post ) {
+    wp_nonce_field( 'twothirds_save_team_member_meta', 'twothirds_team_member_meta_nonce' );
+
+    $role = get_post_meta( $post->ID, 'member_role', true );
+    $bio = get_post_meta( $post->ID, 'member_bio', true );
+    $initials = get_post_meta( $post->ID, 'member_initials', true );
+
+    echo '<table class="form-table">';
+    echo '<tr>';
+    echo '<th><label for="member_role">' . __( 'Role / Designation' ) . '</label></th>';
+    echo '<td><input type="text" id="member_role" name="member_role" value="' . esc_attr( $role ) . '" class="regular-text" placeholder="e.g. Founder & Director" /></td>';
+    echo '</tr>';
+    echo '<tr>';
+    echo '<th><label for="member_initials">' . __( 'Initials Badge' ) . '</label></th>';
+    echo '<td><input type="text" id="member_initials" name="member_initials" value="' . esc_attr( $initials ) . '" class="small-text" maxlength="2" placeholder="e.g. AS" /></td>';
+    echo '</tr>';
+    echo '<tr>';
+    echo '<th><label for="member_bio">' . __( 'Biography' ) . '</label></th>';
+    echo '<td><textarea id="member_bio" name="member_bio" rows="4" style="width: 100%;" placeholder="Short bio about the member...">' . esc_textarea( $bio ) . '</textarea></td>';
+    echo '</tr>';
+    echo '</table>';
+}
+
+// Save the meta box values when the post is saved
+function twothirds_save_team_member_meta( $post_id ) {
+    if ( ! isset( $_POST['twothirds_team_member_meta_nonce'] ) || ! wp_verify_nonce( $_POST['twothirds_team_member_meta_nonce'], 'twothirds_save_team_member_meta' ) ) {
+        return;
+    }
+
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['member_role'] ) ) {
+        update_post_meta( $post_id, 'member_role', sanitize_text_field( $_POST['member_role'] ) );
+    }
+    if ( isset( $_POST['member_initials'] ) ) {
+        update_post_meta( $post_id, 'member_initials', sanitize_text_field( $_POST['member_initials'] ) );
+    }
+    if ( isset( $_POST['member_bio'] ) ) {
+        update_post_meta( $post_id, 'member_bio', sanitize_textarea_field( $_POST['member_bio'] ) );
+    }
+}
+add_action( 'save_post', 'twothirds_save_team_member_meta' );
 ?>
