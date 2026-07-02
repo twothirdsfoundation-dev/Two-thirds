@@ -54,6 +54,30 @@
         endif;
         ?>
     ];
+    
+    window.wpTeamMembers = [
+        <?php
+        $args = array('post_type' => 'team_member', 'posts_per_page' => -1);
+        $query = new WP_Query($args);
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $role = get_post_meta(get_the_ID(), 'member_role', true) ?: 'Team Member';
+                $bio = get_post_meta(get_the_ID(), 'member_bio', true) ?: '';
+                $initials = get_post_meta(get_the_ID(), 'member_initials', true) ?: substr(get_the_title(), 0, 2);
+                
+                $member_data = array(
+                    'name' => get_the_title(),
+                    'role' => $role,
+                    'bio' => $bio,
+                    'initials' => $initials,
+                    'image' => get_the_post_thumbnail_url(get_the_ID(), 'full') ?: ''
+                );
+                echo json_encode($member_data) . ',';
+            endwhile;
+            wp_reset_postdata();
+        endif;
+        ?>
+    ];
     </script>
 
     <div id="root"></div>

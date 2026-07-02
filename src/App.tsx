@@ -185,6 +185,18 @@ const teamMembers = [
   }
 ];
 
+export interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+  image?: string;
+}
+
+export const activeTeamMembers: TeamMember[] = (typeof window !== "undefined" && (window as any).wpTeamMembers) 
+  ? (window as any).wpTeamMembers 
+  : teamMembers;
+
 
 
 
@@ -1286,16 +1298,24 @@ function TeamPage() {
       {/* Team Grid */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 items-stretch">
-          {teamMembers.map((member, i) => (
+          {activeTeamMembers.map((member, i) => (
             <div
               key={i}
               className="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-sm flex flex-col items-center text-center space-y-4 hover:shadow-md hover:border-stone-300 transition-all duration-300 group"
             >
-              {/* Initials badge */}
-              <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#155E75] flex items-center justify-center bg-stone-50 transition-transform duration-300 group-hover:scale-105 shrink-0">
-                <span className="font-display font-bold text-xl text-[#003B5C]">
-                  {member.initials}
-                </span>
+              {/* Member Headshot / Initials badge */}
+              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-dashed border-[#155E75] flex items-center justify-center bg-stone-50 transition-transform duration-300 group-hover:scale-105 shrink-0 relative">
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="font-display font-bold text-xl text-[#003B5C]">
+                    {member.initials}
+                  </span>
+                )}
               </div>
 
               <div className="space-y-1">

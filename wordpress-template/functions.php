@@ -51,4 +51,44 @@ function twothirds_add_module_to_script( $tag, $handle, $src ) {
     return $tag;
 }
 add_filter( 'script_loader_tag', 'twothirds_add_module_to_script', 10, 3 );
+
+/**
+ * Register Team Members Custom Post Type
+ */
+function twothirds_register_team_cpt() {
+    $labels = array(
+        'name'               => _x( 'Our Team', 'post type general name' ),
+        'singular_name'      => _x( 'Team Member', 'post type singular name' ),
+        'menu_name'          => _x( 'Our Team', 'admin menu' ),
+        'name_admin_bar'     => _x( 'Team Member', 'add new on admin bar' ),
+        'add_new'            => _x( 'Add New', 'team member' ),
+        'add_new_item'       => __( 'Add New Team Member' ),
+        'new_item'           => __( 'New Team Member' ),
+        'edit_item'          => __( 'Edit Team Member' ),
+        'view_item'          => __( 'View Team Member' ),
+        'all_items'          => __( 'All Team Members' ),
+        'search_items'       => __( 'Search Team Members' ),
+        'not_found'          => __( 'No team members found.' ),
+        'not_found_in_trash' => __( 'No team members found in Trash.' )
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'team-member' ),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 26,
+        'menu_icon'          => 'dashicons-groups',
+        'supports'           => array( 'title', 'thumbnail' )
+    );
+
+    register_post_type( 'team_member', $args );
+}
+add_action( 'init', 'twothirds_register_team_cpt' );
 ?>
