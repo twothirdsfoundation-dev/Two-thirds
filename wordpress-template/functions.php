@@ -156,4 +156,64 @@ function twothirds_save_team_member_meta( $post_id ) {
     }
 }
 add_action( 'save_post', 'twothirds_save_team_member_meta' );
+
+/**
+ * Automatically insert default team members if they don't exist
+ */
+function twothirds_insert_default_team_members() {
+    $default_members = array(
+        array(
+            'name'     => 'Ahmed Sajid',
+            'role'     => 'Founder & Director',
+            'bio'      => 'Professional Social Worker with years of field experience in coastal community organizing.',
+            'initials' => 'AS'
+        ),
+        array(
+            'name'     => 'Lijin Lowrence',
+            'role'     => 'Director',
+            'bio'      => 'Global technology professional based in the USA, managing international partnerships.',
+            'initials' => 'LL'
+        ),
+        array(
+            'name'     => 'Jaseemul Farhan',
+            'role'     => 'Co-founder',
+            'bio'      => 'PhD Scholar at Jamia Millia Islamia, leading research and advocacy projects.',
+            'initials' => 'JF'
+        ),
+        array(
+            'name'     => 'Khaleel Hamadan',
+            'role'     => 'Member',
+            'bio'      => 'Architect based in Turkey, advising on eco-friendly community infrastructure projects.',
+            'initials' => 'KH'
+        )
+    );
+
+    foreach ( $default_members as $member ) {
+        // Query to check if a team member with this title already exists
+        $query_args = array(
+            'post_type'   => 'team_member',
+            'title'       => $member['name'],
+            'post_status' => 'any', // Checks draft, published, etc.
+            'posts_per_page' => 1
+        );
+        $query = new WP_Query( $query_args );
+        
+        if ( ! $query->have_posts() ) {
+            // Insert the post
+            $post_id = wp_insert_post( array(
+                'post_title'  => $member['name'],
+                'post_status' => 'publish',
+                'post_type'   => 'team_member'
+            ) );
+            
+            if ( $post_id && ! is_wp_error( $post_id ) ) {
+                update_post_meta( $post_id, 'member_role', $member['role'] );
+                update_post_meta( $post_id, 'member_bio', $member['bio'] );
+                update_post_meta( $post_id, 'member_initials', $member['initials'] );
+            }
+        }
+        wp_reset_postdata();
+    }
+}
+add_action( 'init', 'twothirds_insert_default_team_members', 30 );
 ?>
