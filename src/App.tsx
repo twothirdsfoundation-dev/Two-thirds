@@ -31,10 +31,9 @@ import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
-import parallaxSky from "./assets/parallax-sky.png";
-import parallaxBoats from "./assets/parallax-boats.png";
-import parallaxForeground from "./assets/parallax-foreground.png";
-import manifestoFish from "./assets/manifesto-fish.png";
+import keralaBoatsBeach from "./assets/kerala-boats-beach.jpg";
+import marineEcosystemDiagram from "./assets/marine-ecosystem-diagram.png";
+import mangrovePlanting from "./assets/mangrove-planting.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -1658,7 +1657,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
   }, []);
 
   const yBg = -80 + (scrollTop || 0) * 0.06;
-  const yMid = -40 + (scrollTop || 0) * 0.08;
   const yText = -30 + (scrollTop || 0) * 0.75;
   const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
@@ -1670,6 +1668,9 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
   const programRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
+  const [selectedVisualizerYear, setSelectedVisualizerYear] = useState("2026");
+  const [mangroveCount, setMangroveCount] = useState(1280);
+  const [isPlanted, setIsPlanted] = useState(false);
   const isProgrammaticScrollRef = useRef(false);
 
   // Custom pill navigation click
@@ -1900,149 +1901,544 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       <section
         id="home"
         ref={heroRef}
-        className="relative h-[140vh] md:h-[200vh] bg-[#E0F2FE]"
-        style={{ backgroundColor: '#E0F2FE' }}
+        className="relative h-[140vh] md:h-[180vh] bg-[#FAF9F6] z-10"
       >
         {/* Sticky viewport container */}
         <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
 
-          {/* Parallax Layers */}
-          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
-            {/* Sky Layer (Background) */}
-            <div
-              style={{ transform: `translateY(${yBg}px)` }}
-              className="absolute top-0 left-0 w-full h-[130%] will-change-transform"
-            >
-              <img
-                src={parallaxSky}
-                alt="Kerala sunrise sky"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
+          {/* Background Layer with Parallax */}
+          <div
+            style={{ transform: `translateY(${yBg * 0.5}px)` }}
+            className="absolute inset-0 w-full h-[120%] pointer-events-none select-none z-0 will-change-transform"
+          >
+            <img
+              src={keralaBoatsBeach}
+              alt="Kerala coastal wooden boats beach"
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Subtle soft white gradient overlay from the left & bottom to blend text and transition */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FAF9F6] to-transparent" />
+          </div>
 
-            {/* Boats Layer (Midground) */}
-            <div
-              style={{ transform: `translateY(${yMid}px)` }}
-              className="absolute top-0 left-0 w-full h-[130%] mix-blend-multiply will-change-transform"
-            >
-              <img
-                src={parallaxBoats}
-                alt="Fishing boats silhouettes"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
-
-            {/* Heading Layer (Sandwiched in the middle!) */}
-            <div
-              style={{
-                transform: `translateY(${yText}px)`,
-                opacity: opacityText
-              }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
-            >
+          {/* Heading Layer (Translates upward and fades on scroll) */}
+          <div
+            style={{
+              transform: `translateY(${yText * 0.8}px)`,
+              opacity: opacityText
+            }}
+            className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-start justify-center h-full text-left will-change-transform mt-8"
+          >
+            <div className="max-w-2xl space-y-6">
               <h1
-                style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
+                style={{ textShadow: "0 0 40px rgba(255, 255, 255, 0.95), 0 0 15px rgba(255, 255, 255, 0.7)" }}
+                className="font-display font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tight text-[#003B5C] leading-[1.05]"
               >
-                For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
+                ‘For the Two-thirds <br />
                 who deserve better.
               </h1>
+              
+              <p
+                style={{ textShadow: "0 0 25px rgba(255, 255, 255, 0.95), 0 0 5px rgba(255, 255, 255, 0.5)" }}
+                className="text-stone-700 text-sm sm:text-base md:text-lg max-w-xl leading-relaxed font-sans font-medium"
+              >
+                Empowering coastal communities through education, sustainable livelihoods, and climate action across Kerala, India.
+              </p>
 
-              {/* Floating CTA Buttons inside parallax layer */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
+              {/* CTA Buttons */}
+              <div className="pt-2 flex flex-row gap-4 items-center justify-start pointer-events-auto">
                 <a
                   href="#contact"
-                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
+                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-8 py-4 rounded-xl transition-all shadow-md active:scale-95 uppercase w-44 sm:w-auto text-center cursor-pointer"
                 >
                   Get Involved
                 </a>
                 <a
                   href="#about"
-                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
+                  className="border-2 border-primary/25 hover:border-primary text-primary font-display font-semibold text-xs tracking-wider px-8 py-3.5 rounded-xl transition-all active:scale-95 uppercase w-44 sm:w-auto text-center cursor-pointer bg-white/20 backdrop-blur-sm"
                 >
-                  Explore Manifesto
+                  Our Manifesto
                 </a>
               </div>
             </div>
-
-            {/* Foreground Mangroves Layer (Static - no motion needed) */}
-            <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
-              <img
-                src={parallaxForeground}
-                alt="Mangrove foliage silhouettes"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
           </div>
 
-          {/* Subtle warm overlay beam */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
-
-          {/* Feathered bottom transition gradient overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-coastal to-transparent pointer-events-none z-20" />
-
           {/* Bouncing scroll indicator */}
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
+          <div 
+            style={{ opacity: opacityText }}
+            className="absolute bottom-8 left-0 right-0 flex justify-center z-10 pointer-events-none will-change-transform"
+          >
             <motion.a
               href="#about"
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-400 hover:text-primary transition-colors cursor-pointer"
+              className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-500 hover:text-primary transition-colors cursor-pointer pointer-events-auto"
             >
               <span>Scroll to Explore</span>
               <ArrowDown className="w-4 h-4 text-secondary" />
             </motion.a>
           </div>
+        </div>
+      </section>
 
+      {/* Stats & Achievements Section */}
+      <section className="relative py-20 bg-white border-b border-stone-200/30 z-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-12">
+            OUR IMPACT & ACHIEVEMENTS
+          </span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {[
+              { stat: "8+ Yrs", label: "Local Trust", desc: "Legacy of voluntary community work since 2018" },
+              { stat: "120+", label: "Women Mentored", desc: "Empowered through micro-livelihoods & training" },
+              { stat: "600+", label: "Students Guided", desc: "Supported via Educare learning centers" },
+              { stat: "10+", label: "Collaborations", desc: "Active institutional & healthcare partners" }
+            ].map((item, i) => (
+              <div key={i} className="space-y-2 flex flex-col items-center">
+                <h3 className="font-display font-bold text-4xl sm:text-5xl text-primary">{item.stat}</h3>
+                <span className="font-sans font-semibold text-xs text-stone-800 uppercase tracking-wider block">{item.label}</span>
+                <p className="text-[11px] text-stone-500 max-w-[200px] leading-relaxed font-sans">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* 4. About Section */}
-      <section id="about" className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden">
-        {/* Soft morning ambient glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.04),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
+      <section id="about" className="py-24 bg-bg-coastal relative overflow-hidden z-10">
+        {/* Soft ambient glows */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.03),transparent_70%)] pointer-events-none" />
 
-        {/* Decorative fish silhouettes on the sides */}
-        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
-        </div>
-        <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
-        </div>
-        <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-45" />
-        </div>
-        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              About Us
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block text-secondary font-mono text-[10px] font-bold uppercase tracking-widest mb-2">
+              OUR ABOUT SECTION
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
-              About Two-Thirds
+            <h2 className="font-display font-bold text-4xl sm:text-5xl text-primary tracking-tight">
+              About
             </h2>
-            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
+            <div className="w-12 h-1 bg-secondary mx-auto mt-4 rounded-full" />
           </div>
 
-          {/* Simple Manifesto Paragraph & Button */}
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed">
-              Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
+          {/* Double Column Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left Column: Narrative */}
+            <div className="space-y-6 text-left">
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
+              </p>
+              <div className="pt-4">
+                <a
+                  href="#about-us"
+                  onClick={() => setCurrentView("about-us")}
+                  className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+                >
+                  Read Our Full Story
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Quote */}
+            <div className="relative p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/40 shadow-sm text-left flex flex-col justify-center min-h-[250px]">
+              <span className="absolute top-6 left-6 text-6xl font-serif text-secondary/15 select-none pointer-events-none">“</span>
+              <p className="font-serif italic text-xl sm:text-2xl text-secondary leading-relaxed relative z-10 pl-6 pr-4">
+                We do not bring outside solutions; we start with what they already know and build from there.
+              </p>
+              <span className="absolute bottom-6 right-6 text-6xl font-serif text-secondary/15 select-none pointer-events-none">”</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Beautiful bottom curved wave vector shape transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none select-none z-10">
+          <svg className="w-full h-full fill-white" viewBox="0 0 1440 74" preserveAspectRatio="none">
+            <path d="M0,32L80,37.3C160,43,320,53,480,53.3C640,53,800,43,960,37.3C1120,32,1280,32,1360,32L1440,32L1440,74L1360,74C1280,74,1120,74,960,74C800,74,640,74,480,74C320,74,160,74,80,74L0,74Z"></path>
+          </svg>
+        </div>
+      </section>
+
+      {/* 4.1. Dynamic Diagram Section */}
+      <section className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
+            INTEGRAL COASTAL ECOSYSTEM
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+            How Our Pillars Connect
+          </h2>
+          <p className="mt-4 text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans">
+            Sustaining coastal communities requires an interconnected approach. Each focus area directly supports local livelihoods and ecosystems.
+          </p>
+
+          {/* Interactive Circle Diagram */}
+          <div className="relative w-full max-w-2xl mx-auto h-[400px] sm:h-[450px] flex items-center justify-center mt-16 mb-8">
+            {/* Circular Graphic Center */}
+            <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full border-4 border-secondary/20 p-2 bg-white shadow-lg overflow-hidden group hover:scale-105 transition-transform z-10 animate-fade-in">
+              <img
+                src={marineEcosystemDiagram}
+                alt="Marine Ecosystem lagoon illustration"
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+
+            {/* Pointers Grid (Floating Nodes) */}
+            {/* Node 1: Top-Left (Educare) */}
+            <div className="absolute top-10 left-4 sm:left-12 flex flex-col items-end text-right max-w-[160px] sm:max-w-[200px] z-20">
+              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
+                1
+              </div>
+              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Educare Program</span>
+              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Afterschool tutoring and child well-being centers.</p>
+            </div>
+
+            {/* Node 2: Top-Right (Livelihoods) */}
+            <div className="absolute top-10 right-4 sm:right-12 flex flex-col items-start text-left max-w-[160px] sm:max-w-[200px] z-20">
+              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
+                2
+              </div>
+              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Coir & Livelihoods</span>
+              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Sustaining shell harvesters & coir spinning families.</p>
+            </div>
+
+            {/* Node 3: Bottom-Left (Environment) */}
+            <div className="absolute bottom-10 left-4 sm:left-12 flex flex-col items-end text-right max-w-[160px] sm:max-w-[200px] z-20">
+              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
+                3
+              </div>
+              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Environment</span>
+              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Estuary cleaning, plastic traps, and mangrove planting.</p>
+            </div>
+
+            {/* Node 4: Bottom-Right (Health) */}
+            <div className="absolute bottom-10 right-4 sm:right-12 flex flex-col items-start text-left max-w-[160px] sm:max-w-[200px] z-20">
+              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
+                4
+              </div>
+              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Healthcare Aid</span>
+              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Primary health clinic support & diagnostic lab access.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4.2. Timeline Section */}
+      <section className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
+            OUR TIMELINE & LEGACY
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+            Our Journey Since 2018
+          </h2>
+
+          {/* Timeline slider container */}
+          <div className="relative mt-16 max-w-4xl mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-stone-200 -translate-y-1/2 z-0" />
+
+            {/* Timeline Milestones Grid */}
+            <div className="relative z-10 grid grid-cols-5 gap-2">
+              {[
+                { year: "2018", title: "Local Origins", desc: "Voluntary classes for coastal kids" },
+                { year: "2020", title: "Safety Net", desc: "COVID medicine & food drives" },
+                { year: "2022", title: "Educare Center", desc: "Formal afterschool learning rooms" },
+                { year: "2024", title: "Mangroves", desc: "Planting nurseries at Perumathura" },
+                { year: "2026", title: "Interactive", desc: "Dynamic coastal data mapping" }
+              ].map((milestone, idx) => (
+                <div key={idx} className="flex flex-col items-center group cursor-pointer">
+                  {/* Circle Indicator */}
+                  <div className="w-10 h-10 rounded-full bg-white border-4 border-[#003B5C] group-hover:bg-[#003B5C] group-hover:scale-110 transition-all flex items-center justify-center shadow-md">
+                    <span className="text-[10px] font-bold text-[#003B5C] group-hover:text-white font-mono">{milestone.year}</span>
+                  </div>
+                  {/* Labels */}
+                  <span className="mt-4 font-display font-bold text-[11px] sm:text-xs text-primary uppercase block">{milestone.title}</span>
+                  <p className="mt-1 text-[9px] sm:text-[10px] text-stone-500 max-w-[120px] leading-relaxed hidden sm:block font-sans">{milestone.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4.3. Interactive Visualizer Section */}
+      <section className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-16">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
+              CLIMATE TIMELINES & VISUALIZERS
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+              Interactive Coastal Model
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Visualizer Panel Dashboard (Left) */}
+            <div className="p-8 rounded-3xl bg-[#002237] text-white shadow-xl space-y-6 flex flex-col justify-between min-h-[400px] border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.1),transparent_70%)] pointer-events-none" />
+              
+              {/* Dashboard Header */}
+              <div className="flex justify-between items-center relative z-10">
+                <span className="text-[10px] font-mono font-bold tracking-widest text-[#00B4D8] uppercase">MANGROVE CANOPY MODEL</span>
+                <span className="text-xs font-mono px-2 py-1 rounded bg-[#00B4D8]/20 text-[#00B4D8]">LIVE STATUS</span>
+              </div>
+
+              {/* Climate Model Mock Map Graphic */}
+              <div className="h-44 rounded-2xl bg-[#001726] border border-white/5 flex flex-col items-center justify-center p-4 relative z-10">
+                <div className="w-full flex justify-between text-[10px] font-mono text-stone-500 mb-2">
+                  <span>LAT: 8.6415° N (Perumathura)</span>
+                  <span>LNG: 76.8197° E</span>
+                </div>
+                
+                {/* Dynamic graph display based on selected year */}
+                <div className="w-full flex items-end gap-3 h-24 justify-center">
+                  {[
+                    { year: "2018", height: "h-8", color: "bg-emerald-500/40" },
+                    { year: "2020", height: "h-12", color: "bg-emerald-500/60" },
+                    { year: "2022", height: "h-16", color: "bg-emerald-500/70" },
+                    { year: "2024", height: "h-20", color: "bg-emerald-500/80" },
+                    { year: "2026", height: "h-24", color: "bg-emerald-500" }
+                  ].map((bar, i) => (
+                    <div 
+                      key={i} 
+                      className={`w-12 transition-all duration-500 rounded-t-lg relative flex flex-col items-center ${
+                        selectedVisualizerYear === bar.year ? `${bar.height} ${bar.color} ring-2 ring-emerald-400` : "h-6 bg-stone-700/50"
+                      }`}
+                    >
+                      <span className="absolute -top-5 text-[9px] font-mono font-bold">
+                        {selectedVisualizerYear === bar.year ? (
+                          bar.year === "2018" ? "500" :
+                          bar.year === "2020" ? "2,500" :
+                          bar.year === "2022" ? "6,000" :
+                          bar.year === "2024" ? "10,000" : "15,000"
+                        ) : ""}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="w-full flex justify-between text-[9px] font-mono text-stone-500 mt-2 px-1">
+                  <span>2018</span>
+                  <span>2020</span>
+                  <span>2022</span>
+                  <span>2024</span>
+                  <span>2026</span>
+                </div>
+              </div>
+
+              {/* Interactive buttons row */}
+              <div className="flex gap-2 justify-center relative z-10">
+                {["2018", "2020", "2022", "2024", "2026"].map((y) => (
+                  <button
+                    key={y}
+                    onClick={() => setSelectedVisualizerYear(y)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors ${
+                      selectedVisualizerYear === y ? "bg-[#00B4D8] text-[#002237]" : "bg-[#001726] hover:bg-stone-800 text-stone-300 border border-white/5"
+                    }`}
+                  >
+                    {y}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Explanatory Content Card (Right) */}
+            <div className="space-y-6 text-left">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block">
+                INTERACTIVE ECOSYSTEM MAPPING
+              </span>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
+                Simulating Climate Impact & Restoration Metrics
+              </h3>
+              <p className="font-sans text-stone-600 text-base leading-relaxed">
+                By measuring tree canopy density, carbon capture capacity, and estuary cleanliness metrics across our active project sites, our database showcases the true environmental footprint of community-driven restoration.
+              </p>
+              <div className="grid grid-cols-2 gap-6 pt-4">
+                <div className="border-l-4 border-[#00B4D8] pl-4">
+                  <span className="text-2xl font-bold text-primary font-display block font-mono">
+                    {selectedVisualizerYear === "2018" ? "2 Tons" :
+                     selectedVisualizerYear === "2020" ? "10 Tons" :
+                     selectedVisualizerYear === "2022" ? "24 Tons" :
+                     selectedVisualizerYear === "2024" ? "40 Tons" : "60 Tons"}
+                  </span>
+                  <span className="text-[10px] text-stone-500 font-mono tracking-wider block uppercase">CO₂ CAPTURED / YR</span>
+                </div>
+                <div className="border-l-4 border-emerald-500 pl-4">
+                  <span className="text-2xl font-bold text-primary font-display block font-mono">
+                    {selectedVisualizerYear === "2018" ? "92%" :
+                     selectedVisualizerYear === "2020" ? "94%" :
+                     selectedVisualizerYear === "2022" ? "96%" :
+                     selectedVisualizerYear === "2024" ? "98%" : "99.2%"}
+                  </span>
+                  <span className="text-[10px] text-stone-500 font-mono tracking-wider block uppercase">ESTUARY HEALTH RATE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4.4. Virtual Mangrove Section */}
+      <section className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block">
+              SUPPORT MANGROVE CANOPIES
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+              Virtually Plant a Mangrove
+            </h2>
+            <p className="text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans">
+              Tap the nursery card below to virtually plant a mangrove sapling and grow our community conservation counter.
             </p>
-            <div className="pt-4">
-              <a
-                href="#about-us"
-                onClick={() => setCurrentView("about-us")}
-                className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+
+            {/* Interactive Planting Card */}
+            <div className="mt-12 max-w-md mx-auto p-8 rounded-3xl bg-white border border-stone-200/40 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center space-y-6 relative overflow-hidden">
+              {/* Mangrove Illustration Center */}
+              <div className="w-56 h-56 rounded-2xl overflow-hidden p-1 relative">
+                <img
+                  src={mangrovePlanting}
+                  alt="Mangrove exposed roots illustration"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              {/* Plant Stats & Counter */}
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono text-stone-500 uppercase tracking-widest block">COMMUNITY NURSERY COUNT</span>
+                <span className="text-4xl font-display font-bold text-primary block font-mono">{mangroveCount.toLocaleString()}</span>
+                <span className="text-[10px] text-stone-500 font-sans block">Saplings supported by site visitors</span>
+              </div>
+
+              {/* Action Button */}
+              <button
+                onClick={() => {
+                  setMangroveCount(prev => prev + 1);
+                  setIsPlanted(true);
+                  setTimeout(() => setIsPlanted(false), 2000);
+                }}
+                className={`w-full py-4 rounded-xl font-display font-bold text-xs tracking-wider uppercase transition-all active:scale-95 cursor-pointer shadow-md ${
+                  isPlanted ? "bg-emerald-500 text-white" : "bg-primary hover:bg-primary-light text-white"
+                }`}
               >
-                Read Our Full Story
-                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </a>
+                {isPlanted ? "🌿 Sapling Added! Thank You!" : "Virtually Support Sapling"}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4.5. Dynamic Connection Map Section */}
+      <section className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-16">
+            <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
+              DYNAMIC COMMUNITY CONNECTION WIDGETS
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+              Our Project Coordinate Hub
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Project Locations sidebar (Left 5 Columns) */}
+            <div className="lg:col-span-5 flex flex-col space-y-4 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
+              {[
+                {
+                  loc: "Perumathura Hub",
+                  time: "2 hours ago",
+                  title: "Teacher home visits completed",
+                  desc: "Educare mentors visited 45 student households for weekly progress alignment."
+                },
+                {
+                  loc: "Estuary restoration zone",
+                  time: "1 day ago",
+                  title: "Estuary cleaned & saplings added",
+                  desc: "Volunteers cleared plastic traps and introduced 500 new mangrove saplings."
+                },
+                {
+                  loc: "Partner Diagnostic Clinic",
+                  time: "3 days ago",
+                  title: "Healthcare diagnostic camp held",
+                  desc: "Free diagnostic lab panels completed for 30 coastal shell harvesting families."
+                }
+              ].map((update, i) => (
+                <div 
+                  key={i} 
+                  className="p-6 rounded-2xl border border-stone-200/40 bg-bg-coastal/30 hover:bg-bg-coastal hover:border-primary/20 transition-all text-left space-y-2 cursor-pointer shadow-sm"
+                >
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wide">{update.loc}</span>
+                    <span className="text-[9px] font-mono text-stone-500">{update.time}</span>
+                  </div>
+                  <h4 className="font-display font-bold text-sm text-primary">{update.title}</h4>
+                  <p className="text-[11px] text-stone-600 leading-relaxed font-sans">{update.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Glowing Map Mockup (Right 7 Columns) */}
+            <div className="lg:col-span-7 rounded-3xl bg-[#001726] border border-white/5 p-6 flex flex-col justify-between relative overflow-hidden min-h-[350px]">
+              {/* Map background grid overlay */}
+              <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+              
+              {/* Mock Kerala coastline outline drawing using SVG */}
+              <div className="absolute inset-0 flex items-center justify-center p-8 z-0">
+                <svg className="w-full h-full stroke-emerald-500/20 stroke-2 fill-none" viewBox="0 0 400 300">
+                  {/* Estuary line */}
+                  <path d="M50,250 C100,220 150,180 180,140 C210,100 240,60 350,50" />
+                  <path d="M60,260 C110,230 160,190 190,150" />
+                </svg>
+              </div>
+
+              <div className="flex justify-between items-center relative z-10">
+                <span className="text-[9px] font-mono text-[#00B4D8] uppercase tracking-widest">COASTAL RESTORATION COORDINATES</span>
+                <span className="text-[9px] font-mono text-stone-500 font-mono">SCALE: 1:25,000</span>
+              </div>
+
+              {/* Glowing Pulse Nodes placed absolute */}
+              {/* Pin 1: Perumathura Hub */}
+              <div className="absolute top-[60%] left-[45%] flex items-center gap-3 z-10 group">
+                <div className="relative flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B4D8] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-[#00B4D8]"></span>
+                </div>
+                <div className="bg-[#002237]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg text-left opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <span className="text-[9px] font-mono font-bold text-[#00B4D8] uppercase block">Perumathura Hub</span>
+                  <span className="text-[8px] text-stone-400 font-sans block">Learning & Coir Centers</span>
+                </div>
+              </div>
+
+              {/* Pin 2: Estuary Zone */}
+              <div className="absolute top-[40%] left-[55%] flex items-center gap-3 z-10 group">
+                <div className="relative flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+                </div>
+                <div className="bg-[#002237]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg text-left opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <span className="text-[9px] font-mono font-bold text-emerald-400 uppercase block">Estuary restoration zone</span>
+                  <span className="text-[8px] text-stone-400 font-sans block">Mangrove Planting Zone</span>
+                </div>
+              </div>
+
+              {/* Pin 3: Partner Clinic */}
+              <div className="absolute top-[20%] left-[75%] flex items-center gap-3 z-10 group">
+                <div className="relative flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
+                </div>
+                <div className="bg-[#002237]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg text-left opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <span className="text-[9px] font-mono font-bold text-amber-400 uppercase block">Partner Diagnostic Clinic</span>
+                  <span className="text-[8px] text-stone-400 font-sans block">Healthcare Diagnostic Lab</span>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center text-[9px] font-mono text-stone-500 relative z-10">
+                <span>COORD: 8°38'29" N, 76°49'10" E</span>
+                <span>CHANNELS OK</span>
+              </div>
             </div>
           </div>
         </div>
@@ -2050,7 +2446,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
       {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
       <section
-        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
+        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed z-10"
         style={{ backgroundImage: `url(${coastalApproachBg})` }}
       >
         {/* Dark overlay for text contrast */}
@@ -2071,55 +2467,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           <p className="text-stone-100 text-sm sm:text-base md:text-lg leading-relaxed font-sans max-w-3xl mx-auto font-medium">
             Two-Thirds aims to secure local ecosystems and build community-wellbeing through integrated, grassroots-led models. We combine traditional marine wisdom with modern research to address environmental and livelihood concerns—working hand-in-hand with coastal panchayats, fishing families, and local youth to co-design active resilience.
           </p>
-        </div>
-      </section>
-
-      {/* 3. Stats Section (Impact Section) */}
-      <section className="bg-primary text-white py-16 relative overflow-hidden">
-        {/* Abstract waves backdrop */}
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={8} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Years of Local trust</p>
-            </div>
-
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={10} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Collaborations</p>
-            </div>
-
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={5} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Hamlets Co-Created</p>
-            </div>
-
-            <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
-                <CountUp target={120} suffix="+" />
-              </h3>
-              <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Women Mentored</p>
-            </div>
-
-            <div className="grid col-span-2 md:col-span-1 place-content-center pt-2 md:pt-0">
-              <div className="space-y-1">
-                <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#14B8A6]">
-                  <CountUp target={600} suffix="+" />
-                </h3>
-                <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Students Guided</p>
-              </div>
-            </div>
-
-          </div>
         </div>
       </section>
 
