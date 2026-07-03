@@ -2029,7 +2029,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       </section>
 
       {/* 4. About Section */}
-      <section id="about" className="pt-24 pb-40 bg-bg-coastal relative overflow-hidden z-10">
+      <section id="about" className="pt-24 pb-40 bg-bg-coastal relative z-10">
         {/* Soft ambient glows */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.03),transparent_70%)] pointer-events-none" />
 
@@ -2100,9 +2100,9 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
         </div>
 
-        {/* Beautiful custom multi-layered SVG wave divider transitioning About section to the next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-[100px] sm:h-[140px] overflow-hidden pointer-events-none z-20 select-none">
-          <svg className="relative block w-full h-full" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        {/* Beautiful custom multi-layered SVG wave divider overflowing into the top of the next section */}
+        <div className="absolute bottom-[-60px] sm:bottom-[-80px] left-0 right-0 h-[140px] sm:h-[180px] overflow-visible pointer-events-none z-20 select-none">
+          <svg className="relative block w-full h-full overflow-visible" viewBox="0 0 1440 200" preserveAspectRatio="none">
             <defs>
               <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.35"/>
@@ -2110,7 +2110,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 <stop offset="100%" stopColor="#03045E" stopOpacity="0.45"/>
               </linearGradient>
               <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.85"/>
+                <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.8"/>
                 <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.45"/>
               </linearGradient>
             </defs>
@@ -2120,8 +2120,8 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             {/* Mid Layer 2 (Light blue/turquoise wave) */}
             <path d="M0,120 C240,70 480,150 720,110 C960,70 1200,160 1440,120 L1440,200 L0,200 Z" fill="url(#wave-gradient-2)"></path>
             
-            {/* Front Layer 3 (Solid White wave to merge into the next section's white background) */}
-            <path d="M0,150 C400,210 800,110 1200,170 C1320,180 1380,165 1440,160 L1440,200 L0,200 Z" fill="#ffffff"></path>
+            {/* Front Layer 3 (Semi-transparent White wave to overlap top of the next white section beautifully) */}
+            <path d="M0,150 C400,210 800,110 1200,170 C1320,180 1380,165 1440,160 L1440,200 L0,200 Z" fill="#ffffff" fillOpacity="0.9"></path>
             
             {/* Decorative Wave lines */}
             <path d="M0,80 Q360,150 720,90 T1440,100" fill="none" stroke="#FAF9F6" strokeWidth="1.5" opacity="0.6"></path>
