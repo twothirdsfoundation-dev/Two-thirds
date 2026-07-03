@@ -34,7 +34,6 @@ import healthNutrition from "./assets/health-nutrition.png";
 import keralaBoatsBeach from "./assets/kerala-boats-beach.jpg";
 import marineEcosystemDiagram from "./assets/marine-ecosystem-diagram.png";
 import mangrovePlanting from "./assets/mangrove-planting.png";
-import aboutSectionWaves from "./assets/about-section-waves.jpg";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -2101,13 +2100,33 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
         </div>
 
-        {/* Glossy glassy layered wave image background at the bottom of About */}
-        <div className="absolute bottom-0 left-0 right-0 h-[120px] sm:h-[160px] overflow-hidden pointer-events-none z-10 select-none">
-          <img
-            src={aboutSectionWaves}
-            alt="Glossy layered waves"
-            className="w-full h-full object-cover object-center opacity-95 mix-blend-multiply"
-          />
+        {/* Beautiful custom multi-layered SVG wave divider transitioning About section to the next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-[100px] sm:h-[140px] overflow-hidden pointer-events-none z-20 select-none">
+          <svg className="relative block w-full h-full" viewBox="0 0 1440 200" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.35"/>
+                <stop offset="50%" stopColor="#0077B6" stopOpacity="0.55"/>
+                <stop offset="100%" stopColor="#03045E" stopOpacity="0.45"/>
+              </linearGradient>
+              <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.85"/>
+                <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.45"/>
+              </linearGradient>
+            </defs>
+            {/* Background Layer 1 (Darker blue wave) */}
+            <path d="M0,90 C360,160 720,80 1080,140 C1260,160 1350,140 1440,110 L1440,200 L0,200 Z" fill="url(#wave-gradient-1)"></path>
+            
+            {/* Mid Layer 2 (Light blue/turquoise wave) */}
+            <path d="M0,120 C240,70 480,150 720,110 C960,70 1200,160 1440,120 L1440,200 L0,200 Z" fill="url(#wave-gradient-2)"></path>
+            
+            {/* Front Layer 3 (Solid White wave to merge into the next section's white background) */}
+            <path d="M0,150 C400,210 800,110 1200,170 C1320,180 1380,165 1440,160 L1440,200 L0,200 Z" fill="#ffffff"></path>
+            
+            {/* Decorative Wave lines */}
+            <path d="M0,80 Q360,150 720,90 T1440,100" fill="none" stroke="#FAF9F6" strokeWidth="1.5" opacity="0.6"></path>
+            <path d="M0,105 Q400,135 800,75 T1440,115" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.4"></path>
+          </svg>
         </div>
       </section>
 
