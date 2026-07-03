@@ -1,3 +1,4 @@
+// Trigger Vercel rebuild for reverted layout
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
