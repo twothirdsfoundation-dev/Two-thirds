@@ -2105,27 +2105,27 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           <svg className="relative block w-full h-full overflow-visible" viewBox="0 0 1440 200" preserveAspectRatio="none">
             <defs>
               <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.35"/>
-                <stop offset="50%" stopColor="#0077B6" stopOpacity="0.55"/>
-                <stop offset="100%" stopColor="#03045E" stopOpacity="0.45"/>
+                <stop offset="0%" stopColor="#00B4D8" stopOpacity="0.45"/>
+                <stop offset="50%" stopColor="#0077B6" stopOpacity="0.65"/>
+                <stop offset="100%" stopColor="#03045E" stopOpacity="0.55"/>
               </linearGradient>
               <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.8"/>
-                <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.45"/>
+                <stop offset="0%" stopColor="#E0F2FE" stopOpacity="0.85"/>
+                <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.55"/>
               </linearGradient>
             </defs>
-            {/* Background Layer 1 (Darker blue wave) */}
-            <path d="M0,90 C360,160 720,80 1080,140 C1260,160 1350,140 1440,110 L1440,200 L0,200 Z" fill="url(#wave-gradient-1)"></path>
+            {/* Background Layer 1 (Darker blue wave - peaks highest) */}
+            <path d="M0,30 C360,110 720,10 1080,90 C1260,110 1350,90 1440,60 L1440,200 L0,200 Z" fill="url(#wave-gradient-1)"></path>
             
-            {/* Mid Layer 2 (Light blue/turquoise wave) */}
-            <path d="M0,120 C240,70 480,150 720,110 C960,70 1200,160 1440,120 L1440,200 L0,200 Z" fill="url(#wave-gradient-2)"></path>
+            {/* Mid Layer 2 (Light blue/turquoise wave - peaks mid-high) */}
+            <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,120 1440,80 L1440,200 L0,200 Z" fill="url(#wave-gradient-2)"></path>
             
             {/* Front Layer 3 (Semi-transparent White wave to overlap top of the next white section beautifully) */}
-            <path d="M0,150 C400,210 800,110 1200,170 C1320,180 1380,165 1440,160 L1440,200 L0,200 Z" fill="#ffffff" fillOpacity="0.9"></path>
+            <path d="M0,100 C400,150 800,70 1200,130 C1320,140 1380,125 1440,120 L1440,200 L0,200 Z" fill="#ffffff" fillOpacity="0.85"></path>
             
             {/* Decorative Wave lines */}
-            <path d="M0,80 Q360,150 720,90 T1440,100" fill="none" stroke="#FAF9F6" strokeWidth="1.5" opacity="0.6"></path>
-            <path d="M0,105 Q400,135 800,75 T1440,115" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.4"></path>
+            <path d="M0,20 Q360,90 720,30 T1440,40" fill="none" stroke="#FAF9F6" strokeWidth="1.5" opacity="0.6"></path>
+            <path d="M0,45 Q400,75 800,25 T1440,55" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.4"></path>
           </svg>
         </div>
       </section>
