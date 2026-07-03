@@ -2106,7 +2106,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           <img
             src={aboutSectionWaves}
             alt="Glossy layered waves"
-            className="w-full h-full object-cover object-top opacity-95 mix-blend-multiply"
+            className="w-full h-full object-cover object-center opacity-95 mix-blend-multiply"
           />
         </div>
       </section>
