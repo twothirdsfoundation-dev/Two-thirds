@@ -1979,11 +1979,35 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </motion.a>
           </div>
         </div>
+
+        {/* Beautiful multi-layered flowing transparent ocean waves at the bottom of Hero */}
+        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
+          <svg className="relative block w-full h-[70px] sm:h-[100px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,40 C300,100 500,50 800,90 C1100,130 1150,60 1200,40 L1200,120 L0,120 Z" fill="#ffffff" opacity="0.25"></path>
+            <path d="M0,60 C200,120 400,80 700,110 C1000,140 1100,90 1200,80 L1200,120 L0,120 Z" fill="#ffffff" opacity="0.55"></path>
+            <path d="M0,80 C300,130 600,90 900,120 C1100,140 1150,100 1200,95 L1200,120 L0,120 Z" fill="#ffffff"></path>
+          </svg>
+        </div>
       </section>
 
       {/* Stats & Achievements Section */}
-      <section className="relative py-20 bg-white border-b border-stone-200/30 z-20">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <section className="relative py-20 bg-white border-b border-stone-200/30 z-20 overflow-hidden">
+        {/* Subtle background wind/contour wave line */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
+          <svg className="w-full h-full stroke-primary stroke-[1.5] fill-none" viewBox="0 0 1440 200">
+            <path d="M0,100 Q360,50 720,150 T1440,100" />
+            <path d="M0,130 Q360,80 720,180 T1440,130" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
+          {/* Mini Wave SVG Decoration */}
+          <div className="flex justify-center mb-3">
+            <svg className="w-8 h-3 text-secondary" viewBox="0 0 40 12" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M0,6 Q5,0 10,6 T20,6 T30,6 T40,6" />
+              <path d="M0,10 Q5,4 10,10 T20,10 T30,10 T40,10" opacity="0.4" />
+            </svg>
+          </div>
           <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-12">
             OUR IMPACT & ACHIEVEMENTS
           </span>
@@ -2009,9 +2033,25 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         {/* Soft ambient glows */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.03),transparent_70%)] pointer-events-none" />
 
+        {/* Flying birds silhouette SVGs */}
+        <div className="absolute right-[10%] top-[8%] flex flex-col gap-3 opacity-25 select-none pointer-events-none z-0">
+          <svg className="w-8 h-4 text-primary fill-current" viewBox="0 0 24 12">
+            <path d="M0,6 Q6,-2 12,4 Q18,-2 24,6 Q18,2 12,0 Q6,2 0,6 Z" />
+          </svg>
+          <svg className="w-5 h-2.5 text-primary fill-current ml-6" viewBox="0 0 24 12">
+            <path d="M0,6 Q6,-2 12,4 Q18,-2 24,6 Q18,2 12,0 Q6,2 0,6 Z" />
+          </svg>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="flex justify-center mb-3">
+              <svg className="w-8 h-3 text-secondary" viewBox="0 0 40 12" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M0,6 Q5,0 10,6 T20,6 T30,6 T40,6" />
+                <path d="M0,10 Q5,4 10,10 T20,10 T30,10 T40,10" opacity="0.4" />
+              </svg>
+            </div>
             <span className="inline-block text-secondary font-mono text-[10px] font-bold uppercase tracking-widest mb-2">
               OUR ABOUT SECTION
             </span>
@@ -2041,7 +2081,16 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </div>
 
             {/* Right Column: Quote */}
-            <div className="relative p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/40 shadow-sm text-left flex flex-col justify-center min-h-[250px]">
+            <div className="relative p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/40 shadow-sm text-left flex flex-col justify-center min-h-[250px] overflow-hidden">
+              {/* Subtle topographical contour background lines in the quote card */}
+              <div className="absolute inset-0 opacity-[0.06] pointer-events-none select-none z-0">
+                <svg className="w-full h-full stroke-primary stroke-[1.2] fill-none" viewBox="0 0 400 250">
+                  <path d="M-50,60 Q100,120 250,50 T500,80" />
+                  <path d="M-50,90 Q100,150 250,80 T500,110" />
+                  <path d="M-50,120 Q100,180 250,110 T500,140" />
+                </svg>
+              </div>
+
               <span className="absolute top-6 left-6 text-6xl font-serif text-secondary/15 select-none pointer-events-none">“</span>
               <p className="font-serif italic text-xl sm:text-2xl text-secondary leading-relaxed relative z-10 pl-6 pr-4">
                 We do not bring outside solutions; we start with what they already know and build from there.
@@ -2051,10 +2100,18 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
         </div>
 
-        {/* Beautiful bottom curved wave vector shape transition */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none select-none z-10">
-          <svg className="w-full h-full fill-white" viewBox="0 0 1440 74" preserveAspectRatio="none">
-            <path d="M0,32L80,37.3C160,43,320,53,480,53.3C640,53,800,43,960,37.3C1120,32,1280,32,1360,32L1440,32L1440,74L1360,74C1280,74,1120,74,960,74C800,74,640,74,480,74C320,74,160,74,80,74L0,74Z"></path>
+        {/* Beautiful multi-layered organic flowing waves at the bottom of About */}
+        <div className="absolute bottom-0 left-0 right-0 h-[100px] sm:h-[130px] overflow-hidden pointer-events-none z-10">
+          <svg className="relative block w-full h-full" viewBox="0 0 1440 200" preserveAspectRatio="none">
+            {/* Layer 1 wave */}
+            <path d="M0,96 C240,140 480,180 720,128 C960,76 1200,96 1440,128 L1440,200 L0,200 Z" fill="#ffffff" opacity="0.3"></path>
+            {/* Layer 2 wave */}
+            <path d="M0,120 C360,180 720,100 1080,140 C1260,160 1350,150 1440,130 L1440,200 L0,200 Z" fill="#ffffff" opacity="0.65"></path>
+            {/* Layer 3 wave */}
+            <path d="M0,140 C400,210 800,110 1200,160 C1320,170 1380,165 1440,150 L1440,200 L0,200 Z" fill="#ffffff"></path>
+            {/* Contour lines styling over the waves */}
+            <path d="M0,80 Q360,160 720,100 T1440,110" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.5"></path>
+            <path d="M0,100 Q400,140 800,80 T1440,130" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.3"></path>
           </svg>
         </div>
       </section>
@@ -3828,8 +3885,28 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
       })()}
 
       {/* 10. Footer */}
-      <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-12 pb-12 border-b border-white/5 text-left">
+      <footer className="bg-[#001726] text-stone-300 pt-24 pb-8 relative overflow-hidden z-10 border-t border-white/5">
+        {/* Top organic wave SVG transition to separate content sections */}
+        <div className="absolute top-0 left-0 right-0 h-16 overflow-hidden leading-none pointer-events-none z-0">
+          <svg className="relative block w-full h-full fill-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C300,80 600,0 900,40 C1050,60 1125,60 1200,40 L1200,0 L0,0 Z"></path>
+          </svg>
+        </div>
+
+        {/* Seaweed SVG Silhouettes floating at the bottom background */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none select-none z-0 opacity-[0.05] flex justify-between px-12 items-end">
+          <svg className="w-16 h-36 text-secondary fill-current" viewBox="0 0 60 120">
+            <path d="M30,120 Q15,80 30,40 T25,0 Q35,40 20,80 T30,120 Z" />
+          </svg>
+          <svg className="w-12 h-24 text-secondary fill-current" viewBox="0 0 60 120">
+            <path d="M30,120 Q40,90 25,60 T35,0 Q20,60 35,90 T30,120 Z" />
+          </svg>
+          <svg className="w-20 h-44 text-secondary fill-current" viewBox="0 0 60 120">
+            <path d="M30,120 Q10,65 30,25 T20,0 Q35,25 15,65 T30,120 Z" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-12 pb-12 border-b border-white/5 text-left relative z-10">
 
           {/* Logo & description */}
           <div className="md:col-span-5 space-y-4">
@@ -3878,17 +3955,17 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
 
             {/* Custom Brand SVG Icons (lucide does not contain brands) */}
             <div className="flex items-center gap-4 pt-2">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="Instagram">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800/80 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="Instagram">
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="LinkedIn">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800/80 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="LinkedIn">
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="Twitter">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-stone-800/80 hover:bg-stone-700 flex items-center justify-center transition-colors text-white" aria-label="Twitter">
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                 </svg>
@@ -3898,7 +3975,7 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
 
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-stone-500 font-mono">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-stone-500 font-mono relative z-10">
           <p>© {new Date().getFullYear()} Two-Thirds Community Foundation. All rights reserved.</p>
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4 text-secondary" />
