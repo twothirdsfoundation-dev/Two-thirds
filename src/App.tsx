@@ -34,6 +34,7 @@ import healthNutrition from "./assets/health-nutrition.png";
 import keralaBoatsBeach from "./assets/kerala-boats-beach.jpg";
 import marineEcosystemDiagram from "./assets/marine-ecosystem-diagram.png";
 import mangrovePlanting from "./assets/mangrove-planting.png";
+import aboutSectionWaves from "./assets/about-section-waves.jpg";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -2029,7 +2030,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       </section>
 
       {/* 4. About Section */}
-      <section id="about" className="py-24 bg-bg-coastal relative overflow-hidden z-10">
+      <section id="about" className="pt-24 pb-40 bg-bg-coastal relative overflow-hidden z-10">
         {/* Soft ambient glows */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.03),transparent_70%)] pointer-events-none" />
 
@@ -2100,19 +2101,13 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
         </div>
 
-        {/* Beautiful multi-layered organic flowing waves at the bottom of About */}
-        <div className="absolute bottom-0 left-0 right-0 h-[100px] sm:h-[130px] overflow-hidden pointer-events-none z-10">
-          <svg className="relative block w-full h-full" viewBox="0 0 1440 200" preserveAspectRatio="none">
-            {/* Layer 1 wave */}
-            <path d="M0,96 C240,140 480,180 720,128 C960,76 1200,96 1440,128 L1440,200 L0,200 Z" fill="#ffffff" opacity="0.3"></path>
-            {/* Layer 2 wave */}
-            <path d="M0,120 C360,180 720,100 1080,140 C1260,160 1350,150 1440,130 L1440,200 L0,200 Z" fill="#ffffff" opacity="0.65"></path>
-            {/* Layer 3 wave */}
-            <path d="M0,140 C400,210 800,110 1200,160 C1320,170 1380,165 1440,150 L1440,200 L0,200 Z" fill="#ffffff"></path>
-            {/* Contour lines styling over the waves */}
-            <path d="M0,80 Q360,160 720,100 T1440,110" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.5"></path>
-            <path d="M0,100 Q400,140 800,80 T1440,130" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.3"></path>
-          </svg>
+        {/* Glossy glassy layered wave image background at the bottom of About */}
+        <div className="absolute bottom-0 left-0 right-0 h-[120px] sm:h-[160px] overflow-hidden pointer-events-none z-10 select-none">
+          <img
+            src={aboutSectionWaves}
+            alt="Glossy layered waves"
+            className="w-full h-full object-cover object-top opacity-95 mix-blend-multiply"
+          />
         </div>
       </section>
 
