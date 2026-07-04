@@ -33,7 +33,6 @@ import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
 import keralaBoatsBeach from "./assets/kerala-boats-beach.jpg";
 import marineEcosystemDiagram from "./assets/marine-ecosystem-diagram.png";
-import mangrovePlanting from "./assets/mangrove-planting.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -1990,113 +1989,78 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* Stats & Achievements Section */}
-      <section className="relative py-20 bg-white border-b border-stone-200/30 z-20 overflow-hidden">
-        {/* Subtle background wind/contour wave line */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
-          <svg className="w-full h-full stroke-primary stroke-[1.5] fill-none" viewBox="0 0 1440 200">
-            <path d="M0,100 Q360,50 720,150 T1440,100" />
-            <path d="M0,130 Q360,80 720,180 T1440,130" />
-          </svg>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
-          {/* Mini Wave SVG Decoration */}
-          <div className="flex justify-center mb-3">
-            <svg className="w-8 h-3 text-secondary" viewBox="0 0 40 12" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M0,6 Q5,0 10,6 T20,6 T30,6 T40,6" />
-              <path d="M0,10 Q5,4 10,10 T20,10 T30,10 T40,10" opacity="0.4" />
-            </svg>
-          </div>
-          <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-12">
-            OUR IMPACT & ACHIEVEMENTS
-          </span>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { stat: "8+ Yrs", label: "Local Trust", desc: "Legacy of voluntary community work since 2018" },
-              { stat: "120+", label: "Women Mentored", desc: "Empowered through micro-livelihoods & training" },
-              { stat: "600+", label: "Students Guided", desc: "Supported via Educare learning centers" },
-              { stat: "10+", label: "Collaborations", desc: "Active institutional & healthcare partners" }
-            ].map((item, i) => (
-              <div key={i} className="space-y-2 flex flex-col items-center">
-                <h3 className="font-display font-bold text-4xl sm:text-5xl text-primary">{item.stat}</h3>
-                <span className="font-sans font-semibold text-xs text-stone-800 uppercase tracking-wider block">{item.label}</span>
-                <p className="text-[11px] text-stone-500 max-w-[200px] leading-relaxed font-sans">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 4. About Section */}
-      <section id="about" className="pt-24 pb-40 bg-bg-coastal relative z-10">
+      <section id="about" className="relative pt-24 pb-48 bg-bg-coastal z-20 overflow-visible">
         {/* Soft ambient glows */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.03),transparent_70%)] pointer-events-none" />
 
-        {/* Flying birds silhouette SVGs */}
-        <div className="absolute right-[10%] top-[8%] flex flex-col gap-3 opacity-25 select-none pointer-events-none z-0">
+        {/* Flying birds silhouette SVGs (mockup right-side birds) */}
+        <div className="absolute right-[12%] top-[10%] flex flex-col gap-4 opacity-[0.25] select-none pointer-events-none z-0">
           <svg className="w-8 h-4 text-primary fill-current" viewBox="0 0 24 12">
             <path d="M0,6 Q6,-2 12,4 Q18,-2 24,6 Q18,2 12,0 Q6,2 0,6 Z" />
           </svg>
           <svg className="w-5 h-2.5 text-primary fill-current ml-6" viewBox="0 0 24 12">
             <path d="M0,6 Q6,-2 12,4 Q18,-2 24,6 Q18,2 12,0 Q6,2 0,6 Z" />
           </svg>
+          <svg className="w-6 h-3 text-primary fill-current -ml-4" viewBox="0 0 24 12">
+            <path d="M0,6 Q6,-2 12,4 Q18,-2 24,6 Q18,2 12,0 Q6,2 0,6 Z" />
+          </svg>
+        </div>
+
+        {/* Fine thin gold/bronze contour wind lines flowing on the right side */}
+        <div className="absolute right-[5%] top-[14%] w-[320px] h-[180px] opacity-15 pointer-events-none select-none z-0">
+          <svg className="w-full h-full stroke-[#D05A3F] stroke-[1.2] fill-none" viewBox="0 0 300 180">
+            <path d="M0,40 Q100,90 200,30 T300,50" />
+            <path d="M0,65 Q100,115 200,55 T300,75" />
+            <path d="M0,90 Q100,140 200,80 T300,100" />
+          </svg>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="flex justify-center mb-3">
-              <svg className="w-8 h-3 text-secondary" viewBox="0 0 40 12" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M0,6 Q5,0 10,6 T20,6 T30,6 T40,6" />
-                <path d="M0,10 Q5,4 10,10 T20,10 T30,10 T40,10" opacity="0.4" />
-              </svg>
-            </div>
-            <span className="inline-block text-secondary font-mono text-[10px] font-bold uppercase tracking-widest mb-2">
-              OUR ABOUT SECTION
-            </span>
-            <h2 className="font-display font-bold text-4xl sm:text-5xl text-primary tracking-tight">
-              About
-            </h2>
-            <div className="w-12 h-1 bg-secondary mx-auto mt-4 rounded-full" />
-          </div>
-
-          {/* Double Column Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Narrative */}
-            <div className="space-y-6 text-left">
-              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Narrative Content & Stats */}
+            <div className="lg:col-span-8 space-y-6 text-left">
+              <span className="inline-block text-secondary font-mono text-[10px] font-bold uppercase tracking-widest">
+                OUR IMPACT & ACHIEVEMENTS
+              </span>
+              <h2 className="font-display font-bold text-5xl sm:text-6xl text-primary tracking-tight leading-none">
+                About
+              </h2>
+              <h4 className="text-[#003B5C] text-lg font-bold font-sans">
+                Text our on-scroll effects
+              </h4>
+              <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed max-w-3xl">
                 Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
               </p>
+              
+              {/* Clean inline flex row for the Achievements / stats to integrate them elegantly */}
+              <div className="flex flex-wrap gap-8 pt-4 border-t border-stone-200/50">
+                {[
+                  { stat: "8+ Yrs", label: "Local Trust" },
+                  { stat: "120+", label: "Women Mentored" },
+                  { stat: "600+", label: "Students Guided" },
+                  { stat: "10+", label: "Collaborations" }
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="font-display font-bold text-2xl sm:text-3xl text-primary leading-none">{item.stat}</span>
+                    <span className="text-[10px] font-semibold text-stone-500 uppercase tracking-wider mt-1">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+
               <div className="pt-4">
                 <a
                   href="#about-us"
                   onClick={() => setCurrentView("about-us")}
                   className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
                 >
-                  Read Our Full Story
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  LEARN MORE <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
             </div>
 
-            {/* Right Column: Quote */}
-            <div className="relative p-8 sm:p-12 rounded-3xl bg-white border border-stone-200/40 shadow-sm text-left flex flex-col justify-center min-h-[250px] overflow-hidden">
-              {/* Subtle topographical contour background lines in the quote card */}
-              <div className="absolute inset-0 opacity-[0.06] pointer-events-none select-none z-0">
-                <svg className="w-full h-full stroke-primary stroke-[1.2] fill-none" viewBox="0 0 400 250">
-                  <path d="M-50,60 Q100,120 250,50 T500,80" />
-                  <path d="M-50,90 Q100,150 250,80 T500,110" />
-                  <path d="M-50,120 Q100,180 250,110 T500,140" />
-                </svg>
-              </div>
-
-              <span className="absolute top-6 left-6 text-6xl font-serif text-secondary/15 select-none pointer-events-none">“</span>
-              <p className="font-serif italic text-xl sm:text-2xl text-secondary leading-relaxed relative z-10 pl-6 pr-4">
-                We do not bring outside solutions; we start with what they already know and build from there.
-              </p>
-              <span className="absolute bottom-6 right-6 text-6xl font-serif text-secondary/15 select-none pointer-events-none">”</span>
-            </div>
+            {/* Right Column: Spacing for mockup visual balance */}
+            <div className="hidden lg:block lg:col-span-4" />
           </div>
         </div>
 
@@ -2114,16 +2078,9 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 <stop offset="100%" stopColor="#00B4D8" stopOpacity="0.55"/>
               </linearGradient>
             </defs>
-            {/* Background Layer 1 (Darker blue wave - peaks highest) */}
             <path d="M0,30 C360,110 720,10 1080,90 C1260,110 1350,90 1440,60 L1440,200 L0,200 Z" fill="url(#wave-gradient-1)"></path>
-            
-            {/* Mid Layer 2 (Light blue/turquoise wave - peaks mid-high) */}
             <path d="M0,60 C240,20 480,100 720,60 C960,20 1200,120 1440,80 L1440,200 L0,200 Z" fill="url(#wave-gradient-2)"></path>
-            
-            {/* Front Layer 3 (Semi-transparent White wave to overlap top of the next white section beautifully) */}
             <path d="M0,100 C400,150 800,70 1200,130 C1320,140 1380,125 1440,120 L1440,200 L0,200 Z" fill="#ffffff" fillOpacity="0.85"></path>
-            
-            {/* Decorative Wave lines */}
             <path d="M0,20 Q360,90 720,30 T1440,40" fill="none" stroke="#FAF9F6" strokeWidth="1.5" opacity="0.6"></path>
             <path d="M0,45 Q400,75 800,25 T1440,55" fill="none" stroke="#FAF9F6" strokeWidth="1" opacity="0.4"></path>
           </svg>
@@ -2131,10 +2088,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       </section>
 
       {/* 4.1. Dynamic Diagram Section */}
-      <section className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
+      <section id="diagram" className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
-            INTEGRAL COASTAL ECOSYSTEM
+            INTEGRAIS DYNAMIC DIAGRAMS
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
             How Our Pillars Connect
@@ -2143,10 +2100,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             Sustaining coastal communities requires an interconnected approach. Each focus area directly supports local livelihoods and ecosystems.
           </p>
 
-          {/* Interactive Circle Diagram */}
-          <div className="relative w-full max-w-2xl mx-auto h-[400px] sm:h-[450px] flex items-center justify-center mt-16 mb-8">
-            {/* Circular Graphic Center */}
-            <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full border-4 border-secondary/20 p-2 bg-white shadow-lg overflow-hidden group hover:scale-105 transition-transform z-10 animate-fade-in">
+          {/* Centered Circular Diagram with Clockwise looper */}
+          <div className="relative w-full max-w-3xl mx-auto h-[550px] sm:h-[600px] flex items-center justify-center mt-12 mb-8">
+            {/* Central Lagoon Illustration */}
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full border-4 border-secondary/20 p-2 bg-white shadow-xl overflow-hidden z-10 group hover:scale-[1.03] transition-transform duration-300">
               <img
                 src={marineEcosystemDiagram}
                 alt="Marine Ecosystem lagoon illustration"
@@ -2154,143 +2111,125 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
               />
             </div>
 
-            {/* Pointers Grid (Floating Nodes) */}
-            {/* Node 1: Top-Left (Educare) */}
-            <div className="absolute top-10 left-4 sm:left-12 flex flex-col items-end text-right max-w-[160px] sm:max-w-[200px] z-20">
-              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
-                1
+            {/* SVG Looping Circular Dashed Arrows around center image */}
+            <svg className="absolute w-[290px] h-[290px] sm:w-[380px] sm:h-[380px] pointer-events-none z-0" viewBox="0 0 300 300">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 2 L 10 5 L 0 8 z" fill="#00B4D8" />
+                </marker>
+              </defs>
+              <circle cx="150" cy="150" r="130" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="6 6" fill="none" />
+              {/* Animated/Interactive indicator arrow */}
+              <path d="M 280 150 A 130 130 0 1 1 20 150" stroke="#00B4D8" strokeWidth="2" fill="none" markerEnd="url(#arrow)" />
+            </svg>
+
+            {/* 5 Outer Connection Nodes */}
+            {/* Node 1: Top-Left (~10:00) - Educare */}
+            <div className="absolute top-[10%] left-[2%] sm:left-[6%] flex items-center gap-3 z-20 group">
+              <div className="text-right max-w-[130px] sm:max-w-[170px]">
+                <span className="font-display font-extrabold text-[11px] sm:text-xs text-primary uppercase block">Educare Program</span>
+                <span className="text-[9px] text-stone-500 font-sans block mt-0.5 leading-tight">Afterschool tutoring and well-being.</span>
               </div>
-              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Educare Program</span>
-              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Afterschool tutoring and child well-being centers.</p>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#003B5C] hover:bg-secondary text-white flex items-center justify-center shadow-md transition-colors cursor-pointer shrink-0">
+                <BookOpen className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
             </div>
 
-            {/* Node 2: Top-Right (Livelihoods) */}
-            <div className="absolute top-10 right-4 sm:right-12 flex flex-col items-start text-left max-w-[160px] sm:max-w-[200px] z-20">
-              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
-                2
+            {/* Node 2: Middle-Left (~8:00) - Sustainable Livelihoods */}
+            <div className="absolute bottom-[25%] left-[2%] sm:left-[6%] flex items-center gap-3 z-20 group">
+              <div className="text-right max-w-[130px] sm:max-w-[170px]">
+                <span className="font-display font-extrabold text-[11px] sm:text-xs text-primary uppercase block">Coir & Livelihoods</span>
+                <span className="text-[9px] text-stone-500 font-sans block mt-0.5 leading-tight">Coir spinning & shell harvesting.</span>
               </div>
-              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Coir & Livelihoods</span>
-              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Sustaining shell harvesters & coir spinning families.</p>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#003B5C] hover:bg-secondary text-white flex items-center justify-center shadow-md transition-colors cursor-pointer shrink-0">
+                <Fish className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
             </div>
 
-            {/* Node 3: Bottom-Left (Environment) */}
-            <div className="absolute bottom-10 left-4 sm:left-12 flex flex-col items-end text-right max-w-[160px] sm:max-w-[200px] z-20">
-              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
-                3
+            {/* Node 3: Top-Right (~2:00) - Environment */}
+            <div className="absolute top-[10%] right-[2%] sm:right-[6%] flex flex-row-reverse items-center gap-3 z-20 group">
+              <div className="text-left max-w-[130px] sm:max-w-[170px]">
+                <span className="font-display font-extrabold text-[11px] sm:text-xs text-primary uppercase block">Environment</span>
+                <span className="text-[9px] text-stone-500 font-sans block mt-0.5 leading-tight">Estuary cleaning & mangrove nurseries.</span>
               </div>
-              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Environment</span>
-              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Estuary cleaning, plastic traps, and mangrove planting.</p>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#003B5C] hover:bg-secondary text-white flex items-center justify-center shadow-md transition-colors cursor-pointer shrink-0">
+                <Leaf className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
             </div>
 
-            {/* Node 4: Bottom-Right (Health) */}
-            <div className="absolute bottom-10 right-4 sm:right-12 flex flex-col items-start text-left max-w-[160px] sm:max-w-[200px] z-20">
-              <div className="w-8 h-8 rounded-full bg-[#003B5C] text-white flex items-center justify-center font-bold shadow-md cursor-pointer hover:bg-secondary transition-colors mb-2 font-mono">
-                4
+            {/* Node 4: Middle-Right (~4:00) - Health */}
+            <div className="absolute bottom-[25%] right-[2%] sm:right-[6%] flex flex-row-reverse items-center gap-3 z-20 group">
+              <div className="text-left max-w-[130px] sm:max-w-[170px]">
+                <span className="font-display font-extrabold text-[11px] sm:text-xs text-primary uppercase block">Healthcare Aid</span>
+                <span className="text-[9px] text-stone-500 font-sans block mt-0.5 leading-tight">Diagnostic clinics & healthcare.</span>
               </div>
-              <span className="font-display font-bold text-xs sm:text-sm text-primary uppercase">Healthcare Aid</span>
-              <p className="text-[10px] text-stone-500 mt-1 leading-relaxed font-sans">Primary health clinic support & diagnostic lab access.</p>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#003B5C] hover:bg-secondary text-white flex items-center justify-center shadow-md transition-colors cursor-pointer shrink-0">
+                <LifeBuoy className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
+            </div>
+
+            {/* Node 5: Bottom Center (~6:00) - Community Trust */}
+            <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 group">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#003B5C] hover:bg-secondary text-white flex items-center justify-center shadow-md transition-colors cursor-pointer shrink-0">
+                <Anchor className="w-5 h-5 sm:w-6 sm:h-6" />
+              </div>
+              <div className="text-center max-w-[160px] sm:max-w-[200px]">
+                <span className="font-display font-extrabold text-[11px] sm:text-xs text-primary uppercase block">Community Trust</span>
+                <span className="text-[9px] text-stone-500 font-sans block mt-0.5 leading-tight">8+ year grassroots local trust.</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4.2. Timeline Section */}
-      <section className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden z-10">
+      {/* 4.2. Timeline & Commitment Section */}
+      <section id="timeline" className="relative py-24 bg-gradient-to-b from-white via-[#E0F2FE]/20 to-[#0A5F8F]/10 z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
-            OUR TIMELINE & LEGACY
+            OUR COMMITMENT TIMELINES
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
             Our Journey Since 2018
           </h2>
 
-          {/* Timeline slider container */}
-          <div className="relative mt-16 max-w-4xl mx-auto">
-            {/* Timeline Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-stone-200 -translate-y-1/2 z-0" />
-
-            {/* Timeline Milestones Grid */}
-            <div className="relative z-10 grid grid-cols-5 gap-2">
-              {[
-                { year: "2018", title: "Local Origins", desc: "Voluntary classes for coastal kids" },
-                { year: "2020", title: "Safety Net", desc: "COVID medicine & food drives" },
-                { year: "2022", title: "Educare Center", desc: "Formal afterschool learning rooms" },
-                { year: "2024", title: "Mangroves", desc: "Planting nurseries at Perumathura" },
-                { year: "2026", title: "Interactive", desc: "Dynamic coastal data mapping" }
-              ].map((milestone, idx) => (
-                <div key={idx} className="flex flex-col items-center group cursor-pointer">
-                  {/* Circle Indicator */}
-                  <div className="w-10 h-10 rounded-full bg-white border-4 border-[#003B5C] group-hover:bg-[#003B5C] group-hover:scale-110 transition-all flex items-center justify-center shadow-md">
-                    <span className="text-[10px] font-bold text-[#003B5C] group-hover:text-white font-mono">{milestone.year}</span>
-                  </div>
-                  {/* Labels */}
-                  <span className="mt-4 font-display font-bold text-[11px] sm:text-xs text-primary uppercase block">{milestone.title}</span>
-                  <p className="mt-1 text-[9px] sm:text-[10px] text-stone-500 max-w-[120px] leading-relaxed hidden sm:block font-sans">{milestone.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4.3. Interactive Visualizer Section */}
-      <section className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
-              CLIMATE TIMELINES & VISUALIZERS
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
-              Interactive Coastal Model
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Visualizer Panel Dashboard (Left) */}
-            <div className="p-8 rounded-3xl bg-[#002237] text-white shadow-xl space-y-6 flex flex-col justify-between min-h-[400px] border border-white/5 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.1),transparent_70%)] pointer-events-none" />
-              
-              {/* Dashboard Header */}
+          {/* Interactive cards side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-12 mb-16">
+            
+            {/* Card 1: Climate model visualizers (Mangrove Nursery) */}
+            <div className="p-8 rounded-3xl bg-[#002237] text-white shadow-xl space-y-6 flex flex-col justify-between min-h-[380px] border border-white/5 relative overflow-hidden transition-all hover:scale-[1.01]">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.08),transparent_70%)] pointer-events-none" />
               <div className="flex justify-between items-center relative z-10">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-[#00B4D8] uppercase">MANGROVE CANOPY MODEL</span>
-                <span className="text-xs font-mono px-2 py-1 rounded bg-[#00B4D8]/20 text-[#00B4D8]">LIVE STATUS</span>
+                <span className="text-[9px] font-mono font-bold tracking-widest text-[#00B4D8] uppercase">MANGROVE CANOPY MODEL</span>
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">ACTIVE NURSERY</span>
               </div>
-
-              {/* Climate Model Mock Map Graphic */}
-              <div className="h-44 rounded-2xl bg-[#001726] border border-white/5 flex flex-col items-center justify-center p-4 relative z-10">
-                <div className="w-full flex justify-between text-[10px] font-mono text-stone-500 mb-2">
+              
+              {/* Graphic showing dynamic tree graph based on timeline select */}
+              <div className="h-36 rounded-2xl bg-[#001726]/80 border border-white/5 flex flex-col items-center justify-center p-4 relative z-10">
+                <div className="w-full flex justify-between text-[9px] font-mono text-stone-500 mb-1">
                   <span>LAT: 8.6415° N (Perumathura)</span>
-                  <span>LNG: 76.8197° E</span>
+                  <span>CANOPY MAP</span>
                 </div>
-                
-                {/* Dynamic graph display based on selected year */}
-                <div className="w-full flex items-end gap-3 h-24 justify-center">
+                <div className="w-full flex items-end gap-3 h-20 justify-center">
                   {[
-                    { year: "2018", height: "h-8", color: "bg-emerald-500/40" },
-                    { year: "2020", height: "h-12", color: "bg-emerald-500/60" },
-                    { year: "2022", height: "h-16", color: "bg-emerald-500/70" },
-                    { year: "2024", height: "h-20", color: "bg-emerald-500/80" },
-                    { year: "2026", height: "h-24", color: "bg-emerald-500" }
+                    { yr: "2018", val: "500", h: "h-6" },
+                    { yr: "2020", val: "2.5K", h: "h-10" },
+                    { yr: "2022", val: "6K", h: "h-14" },
+                    { yr: "2024", val: "10K", h: "h-16" },
+                    { yr: "2026", val: "15K", h: "h-20" }
                   ].map((bar, i) => (
                     <div 
                       key={i} 
-                      className={`w-12 transition-all duration-500 rounded-t-lg relative flex flex-col items-center ${
-                        selectedVisualizerYear === bar.year ? `${bar.height} ${bar.color} ring-2 ring-emerald-400` : "h-6 bg-stone-700/50"
+                      className={`w-10 transition-all duration-500 rounded-t-lg relative flex flex-col items-center ${
+                        selectedVisualizerYear === bar.yr ? `${bar.h} bg-emerald-500 ring-2 ring-emerald-400` : "h-5 bg-stone-700/50"
                       }`}
                     >
-                      <span className="absolute -top-5 text-[9px] font-mono font-bold">
-                        {selectedVisualizerYear === bar.year ? (
-                          bar.year === "2018" ? "500" :
-                          bar.year === "2020" ? "2,500" :
-                          bar.year === "2022" ? "6,000" :
-                          bar.year === "2024" ? "10,000" : "15,000"
-                        ) : ""}
+                      <span className="absolute -top-4 text-[8px] font-mono font-bold">
+                        {selectedVisualizerYear === bar.yr ? bar.val : ""}
                       </span>
                     </div>
                   ))}
                 </div>
-
-                <div className="w-full flex justify-between text-[9px] font-mono text-stone-500 mt-2 px-1">
+                <div className="w-full flex justify-between text-[8px] font-mono text-stone-600 mt-2 px-1">
                   <span>2018</span>
                   <span>2020</span>
                   <span>2022</span>
@@ -2299,219 +2238,181 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 </div>
               </div>
 
-              {/* Interactive buttons row */}
-              <div className="flex gap-2 justify-center relative z-10">
-                {["2018", "2020", "2022", "2024", "2026"].map((y) => (
-                  <button
-                    key={y}
-                    onClick={() => setSelectedVisualizerYear(y)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-colors ${
-                      selectedVisualizerYear === y ? "bg-[#00B4D8] text-[#002237]" : "bg-[#001726] hover:bg-stone-800 text-stone-300 border border-white/5"
-                    }`}
-                  >
-                    {y}
-                  </button>
-                ))}
+              {/* Dynamic counter and button */}
+              <div className="space-y-3 relative z-10 text-left">
+                <div className="flex justify-between items-baseline">
+                  <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider">TOTAL PLANTINGS</span>
+                  <span className="text-3xl font-display font-bold text-primary-light font-mono text-[#00B4D8]">
+                    {mangroveCount.toLocaleString()}
+                  </span>
+                </div>
+                <button 
+                  onClick={() => {
+                    if (!isPlanted) {
+                      setMangroveCount(prev => prev + 1);
+                      setIsPlanted(true);
+                    }
+                  }}
+                  className={`w-full py-3.5 rounded-xl font-display font-bold text-xs tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer ${
+                    isPlanted ? "bg-emerald-600 text-white" : "bg-primary hover:bg-primary-light text-white"
+                  }`}
+                >
+                  {isPlanted ? "SAPLING SUPPORTED! THANK YOU" : "Virtually Support Sapling"}
+                </button>
               </div>
             </div>
 
-            {/* Explanatory Content Card (Right) */}
-            <div className="space-y-6 text-left">
-              <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block">
-                INTERACTIVE ECOSYSTEM MAPPING
-              </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-primary leading-tight">
-                Simulating Climate Impact & Restoration Metrics
-              </h3>
-              <p className="font-sans text-stone-600 text-base leading-relaxed">
-                By measuring tree canopy density, carbon capture capacity, and estuary cleanliness metrics across our active project sites, our database showcases the true environmental footprint of community-driven restoration.
+            {/* Card 2: Animated timeline of restoration projects */}
+            <div className="p-8 rounded-3xl bg-[#002237] text-white shadow-xl space-y-6 flex flex-col justify-between min-h-[380px] border border-white/5 relative overflow-hidden transition-all hover:scale-[1.01]">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.08),transparent_70%)] pointer-events-none" />
+              <div className="flex justify-between items-center relative z-10">
+                <span className="text-[9px] font-mono font-bold tracking-widest text-[#00B4D8] uppercase">RESTORATION METRICS</span>
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 uppercase">Year {selectedVisualizerYear}</span>
+              </div>
+
+              {/* Metrics Progress bars */}
+              <div className="space-y-4 relative z-10 text-left">
+                <div>
+                  <div className="flex justify-between text-xs mb-1 font-mono text-stone-300">
+                    <span>CO₂ CAPTURE CAPACITY</span>
+                    <span>
+                      {selectedVisualizerYear === "2018" ? "2 Tons/yr" :
+                       selectedVisualizerYear === "2020" ? "10 Tons/yr" :
+                       selectedVisualizerYear === "2022" ? "24 Tons/yr" :
+                       selectedVisualizerYear === "2024" ? "40 Tons/yr" : "60 Tons/yr"}
+                    </span>
+                  </div>
+                  <div className="w-full bg-[#001726] h-2 rounded-full overflow-hidden">
+                    <div 
+                      className="bg-emerald-500 h-full transition-all duration-700" 
+                      style={{ 
+                        width: selectedVisualizerYear === "2018" ? "5%" :
+                               selectedVisualizerYear === "2020" ? "20%" :
+                               selectedVisualizerYear === "2022" ? "45%" :
+                               selectedVisualizerYear === "2024" ? "75%" : "100%" 
+                      }} 
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-xs mb-1 font-mono text-stone-300">
+                    <span>ESTUARY HEALTH INDEX</span>
+                    <span>
+                      {selectedVisualizerYear === "2018" ? "65%" :
+                       selectedVisualizerYear === "2020" ? "72%" :
+                       selectedVisualizerYear === "2022" ? "85%" :
+                       selectedVisualizerYear === "2024" ? "94%" : "99.2%"}
+                    </span>
+                  </div>
+                  <div className="w-full bg-[#001726] h-2 rounded-full overflow-hidden">
+                    <div 
+                      className="bg-[#00B4D8] h-full transition-all duration-700" 
+                      style={{ 
+                        width: selectedVisualizerYear === "2018" ? "65%" :
+                               selectedVisualizerYear === "2020" ? "72%" :
+                               selectedVisualizerYear === "2022" ? "85%" :
+                               selectedVisualizerYear === "2024" ? "94%" : "99.2%" 
+                      }} 
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between text-xs mb-1 font-mono text-stone-300">
+                    <span>COIR Livelihoods Supported</span>
+                    <span>
+                      {selectedVisualizerYear === "2018" ? "10 families" :
+                       selectedVisualizerYear === "2020" ? "30 families" :
+                       selectedVisualizerYear === "2022" ? "65 families" :
+                       selectedVisualizerYear === "2024" ? "90 families" : "120+ families"}
+                    </span>
+                  </div>
+                  <div className="w-full bg-[#001726] h-2 rounded-full overflow-hidden">
+                    <div 
+                      className="bg-amber-400 h-full transition-all duration-700" 
+                      style={{ 
+                        width: selectedVisualizerYear === "2018" ? "10%" :
+                               selectedVisualizerYear === "2020" ? "25%" :
+                               selectedVisualizerYear === "2022" ? "55%" :
+                               selectedVisualizerYear === "2024" ? "75%" : "100%" 
+                      }} 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-[10px] text-stone-400 font-sans italic text-left leading-relaxed relative z-10 border-t border-white/5 pt-3">
+                Restoration metrics correspond to active project counts across local panchayats. Select milestones below to animate.
               </p>
-              <div className="grid grid-cols-2 gap-6 pt-4">
-                <div className="border-l-4 border-[#00B4D8] pl-4">
-                  <span className="text-2xl font-bold text-primary font-display block font-mono">
-                    {selectedVisualizerYear === "2018" ? "2 Tons" :
-                     selectedVisualizerYear === "2020" ? "10 Tons" :
-                     selectedVisualizerYear === "2022" ? "24 Tons" :
-                     selectedVisualizerYear === "2024" ? "40 Tons" : "60 Tons"}
-                  </span>
-                  <span className="text-[10px] text-stone-500 font-mono tracking-wider block uppercase">CO₂ CAPTURED / YR</span>
-                </div>
-                <div className="border-l-4 border-emerald-500 pl-4">
-                  <span className="text-2xl font-bold text-primary font-display block font-mono">
-                    {selectedVisualizerYear === "2018" ? "92%" :
-                     selectedVisualizerYear === "2020" ? "94%" :
-                     selectedVisualizerYear === "2022" ? "96%" :
-                     selectedVisualizerYear === "2024" ? "98%" : "99.2%"}
-                  </span>
-                  <span className="text-[10px] text-stone-500 font-mono tracking-wider block uppercase">ESTUARY HEALTH RATE</span>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* 4.4. Virtual Mangrove Section */}
-      <section className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block">
-              SUPPORT MANGROVE CANOPIES
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
-              Virtually Plant a Mangrove
-            </h2>
-            <p className="text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans">
-              Tap the nursery card below to virtually plant a mangrove sapling and grow our community conservation counter.
-            </p>
-
-            {/* Interactive Planting Card */}
-            <div className="mt-12 max-w-md mx-auto p-8 rounded-3xl bg-white border border-stone-200/40 shadow-md hover:shadow-lg transition-shadow flex flex-col items-center space-y-6 relative overflow-hidden">
-              {/* Mangrove Illustration Center */}
-              <div className="w-56 h-56 rounded-2xl overflow-hidden p-1 relative">
-                <img
-                  src={mangrovePlanting}
-                  alt="Mangrove exposed roots illustration"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-              {/* Plant Stats & Counter */}
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono text-stone-500 uppercase tracking-widest block">COMMUNITY NURSERY COUNT</span>
-                <span className="text-4xl font-display font-bold text-primary block font-mono">{mangroveCount.toLocaleString()}</span>
-                <span className="text-[10px] text-stone-500 font-sans block">Saplings supported by site visitors</span>
-              </div>
-
-              {/* Action Button */}
-              <button
-                onClick={() => {
-                  setMangroveCount(prev => prev + 1);
-                  setIsPlanted(true);
-                  setTimeout(() => setIsPlanted(false), 2000);
-                }}
-                className={`w-full py-4 rounded-xl font-display font-bold text-xs tracking-wider uppercase transition-all active:scale-95 cursor-pointer shadow-md ${
-                  isPlanted ? "bg-emerald-500 text-white" : "bg-primary hover:bg-primary-light text-white"
-                }`}
-              >
-                {isPlanted ? "🌿 Sapling Added! Thank You!" : "Virtually Support Sapling"}
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4.5. Dynamic Connection Map Section */}
-      <section className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-mono font-bold tracking-widest text-secondary uppercase block mb-2">
-              DYNAMIC COMMUNITY CONNECTION WIDGETS
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
-              Our Project Coordinate Hub
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            {/* Project Locations sidebar (Left 5 Columns) */}
-            <div className="lg:col-span-5 flex flex-col space-y-4 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
+          {/* Horizontal Timeline Axis */}
+          <div className="relative max-w-4xl mx-auto px-4 pt-12 pb-12">
+            {/* Main Axis Line */}
+            <div className="absolute top-[48px] left-[5%] right-[5%] h-[2px] bg-[#0A5F8F]/15 z-0" />
+            
+            {/* 4 Interactive Milestones */}
+            <div className="relative z-10 grid grid-cols-4 gap-4">
               {[
-                {
-                  loc: "Perumathura Hub",
-                  time: "2 hours ago",
-                  title: "Teacher home visits completed",
-                  desc: "Educare mentors visited 45 student households for weekly progress alignment."
-                },
-                {
-                  loc: "Estuary restoration zone",
-                  time: "1 day ago",
-                  title: "Estuary cleaned & saplings added",
-                  desc: "Volunteers cleared plastic traps and introduced 500 new mangrove saplings."
-                },
-                {
-                  loc: "Partner Diagnostic Clinic",
-                  time: "3 days ago",
-                  title: "Healthcare diagnostic camp held",
-                  desc: "Free diagnostic lab panels completed for 30 coastal shell harvesting families."
-                }
-              ].map((update, i) => (
+                { year: "2018", heading: "2018 Origin", desc: "Voluntary kid classes", targetYr: "2018" },
+                { year: "2020", heading: "2020 Relief", desc: "Safety Net food drives", targetYr: "2020" },
+                { year: "2022", heading: "2022 Educare", desc: "Afterschool study center", targetYr: "2022" },
+                { year: "2024", heading: "2024 Climate", desc: "Mangrove nursery launch", targetYr: "2024" }
+              ].map((m, i) => (
                 <div 
                   key={i} 
-                  className="p-6 rounded-2xl border border-stone-200/40 bg-bg-coastal/30 hover:bg-bg-coastal hover:border-primary/20 transition-all text-left space-y-2 cursor-pointer shadow-sm"
+                  onClick={() => setSelectedVisualizerYear(m.targetYr)}
+                  className="flex flex-col items-center group cursor-pointer"
                 >
-                  <div className="flex justify-between items-center">
-                    <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wide">{update.loc}</span>
-                    <span className="text-[9px] font-mono text-stone-500">{update.time}</span>
+                  {/* Glowing Node Button */}
+                  <div className={`w-8 h-8 rounded-full border-4 flex items-center justify-center transition-all duration-300 shadow-sm ${
+                    selectedVisualizerYear === m.targetYr
+                      ? "bg-[#003B5C] border-primary-light ring-4 ring-[#00B4D8]/20 scale-110" 
+                      : "bg-white border-[#0A5F8F]/20 group-hover:border-[#003B5C]"
+                  }`}>
+                    <span className={`text-[8px] font-bold font-mono ${
+                      selectedVisualizerYear === m.targetYr ? "text-white" : "text-[#003B5C]"
+                    }`}>
+                      {m.year}
+                    </span>
                   </div>
-                  <h4 className="font-display font-bold text-sm text-primary">{update.title}</h4>
-                  <p className="text-[11px] text-stone-600 leading-relaxed font-sans">{update.desc}</p>
+                  <span className={`mt-3 font-display font-extrabold text-[10px] sm:text-xs uppercase tracking-wide block ${
+                    selectedVisualizerYear === m.targetYr ? "text-secondary" : "text-primary"
+                  }`}>
+                    {m.heading}
+                  </span>
+                  <p className="mt-1 text-[9px] text-stone-500 max-w-[110px] leading-tight hidden sm:block font-sans">
+                    {m.desc}
+                  </p>
                 </div>
               ))}
             </div>
-
-            {/* Glowing Map Mockup (Right 7 Columns) */}
-            <div className="lg:col-span-7 rounded-3xl bg-[#001726] border border-white/5 p-6 flex flex-col justify-between relative overflow-hidden min-h-[350px]">
-              {/* Map background grid overlay */}
-              <div className="absolute inset-0 opacity-[0.08] pointer-events-none select-none" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-              
-              {/* Mock Kerala coastline outline drawing using SVG */}
-              <div className="absolute inset-0 flex items-center justify-center p-8 z-0">
-                <svg className="w-full h-full stroke-emerald-500/20 stroke-2 fill-none" viewBox="0 0 400 300">
-                  {/* Estuary line */}
-                  <path d="M50,250 C100,220 150,180 180,140 C210,100 240,60 350,50" />
-                  <path d="M60,260 C110,230 160,190 190,150" />
-                </svg>
-              </div>
-
-              <div className="flex justify-between items-center relative z-10">
-                <span className="text-[9px] font-mono text-[#00B4D8] uppercase tracking-widest">COASTAL RESTORATION COORDINATES</span>
-                <span className="text-[9px] font-mono text-stone-500 font-mono">SCALE: 1:25,000</span>
-              </div>
-
-              {/* Glowing Pulse Nodes placed absolute */}
-              {/* Pin 1: Perumathura Hub */}
-              <div className="absolute top-[60%] left-[45%] flex items-center gap-3 z-10 group">
-                <div className="relative flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B4D8] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-[#00B4D8]"></span>
-                </div>
-                <div className="bg-[#002237]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg text-left opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <span className="text-[9px] font-mono font-bold text-[#00B4D8] uppercase block">Perumathura Hub</span>
-                  <span className="text-[8px] text-stone-400 font-sans block">Learning & Coir Centers</span>
-                </div>
-              </div>
-
-              {/* Pin 2: Estuary Zone */}
-              <div className="absolute top-[40%] left-[55%] flex items-center gap-3 z-10 group">
-                <div className="relative flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
-                </div>
-                <div className="bg-[#002237]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg text-left opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <span className="text-[9px] font-mono font-bold text-emerald-400 uppercase block">Estuary restoration zone</span>
-                  <span className="text-[8px] text-stone-400 font-sans block">Mangrove Planting Zone</span>
-                </div>
-              </div>
-
-              {/* Pin 3: Partner Clinic */}
-              <div className="absolute top-[20%] left-[75%] flex items-center gap-3 z-10 group">
-                <div className="relative flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
-                </div>
-                <div className="bg-[#002237]/90 backdrop-blur-sm border border-white/10 px-3 py-1.5 rounded-lg text-left opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  <span className="text-[9px] font-mono font-bold text-amber-400 uppercase block">Partner Diagnostic Clinic</span>
-                  <span className="text-[8px] text-stone-400 font-sans block">Healthcare Diagnostic Lab</span>
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center text-[9px] font-mono text-stone-500 relative z-10">
-                <span>COORD: 8°38'29" N, 76°49'10" E</span>
-                <span>CHANNELS OK</span>
-              </div>
-            </div>
           </div>
+
+          {/* Center Pill Button */}
+          <div className="flex justify-center mt-6">
+            <button className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-8 py-3.5 rounded-full transition-all shadow-md active:scale-95 uppercase">
+              LEARN HERE
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom Right Floating SVG Kelp/Sea Plant silhouettes */}
+        <div className="absolute right-0 bottom-0 w-36 h-36 opacity-[0.08] pointer-events-none select-none text-[#003B5C]">
+          <svg className="w-full h-full fill-current" viewBox="0 0 100 100">
+            <path d="M90,100 C80,80 85,50 80,30 C75,10 70,5 68,0 C65,10 70,30 75,50 C80,70 70,80 80,100 Z" />
+            <path d="M80,100 C70,75 75,45 70,25 C65,5 60,0 58,0 C55,10 60,25 65,45 C70,65 60,75 70,100 Z" />
+            <path d="M100,100 C92,85 96,65 92,45 C88,25 82,10 80,0 C77,10 82,25 86,45 C90,65 84,80 92,100 Z" />
+          </svg>
+        </div>
+
+        {/* Sandy dune wave transition at the very bottom */}
+        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 pointer-events-none">
+          <svg className="relative block w-full h-[50px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,60 C300,100 600,40 900,80 C1100,100 1150,80 1200,60 L1200,120 L0,120 Z" fill="#FAF9F6"></path>
+          </svg>
         </div>
       </section>
 
