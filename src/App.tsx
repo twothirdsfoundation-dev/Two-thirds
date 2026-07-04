@@ -2590,67 +2590,79 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 px-[15vw] md:px-[20vw] scrollbar-none"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 px-[25vw] md:px-[20vw] scrollbar-none"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
-              {duplicatedAreas.map((area, idx) => (
-                <div
-                  key={`${area.id}-${idx}`}
-                  ref={(el) => {
-                    programRefs.current[idx] = el;
-                  }}
-                  className="w-[70vw] md:w-[60vw] max-w-[750px] shrink-0 snap-center"
-                >
-                  <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden grid md:grid-cols-12 h-auto md:h-[380px]">
+              {duplicatedAreas.map((area, idx) => {
+                const isActive = activeCardIndex === (idx % areas.length);
+                return (
+                  <div
+                    key={`${area.id}-${idx}`}
+                    ref={(el) => {
+                      programRefs.current[idx] = el;
+                    }}
+                    className={`w-[50vw] md:w-[60vw] max-w-[750px] shrink-0 snap-center transition-all duration-500 ease-out transform origin-center ${
+                      isActive ? "scale-105 opacity-100 z-10" : "scale-90 opacity-40 z-0"
+                    }`}
+                  >
+                    <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden grid md:grid-cols-12 h-auto md:h-[380px]">
 
-                    {/* Left Column: Details */}
-                    <div className="p-8 md:col-span-7 flex flex-col justify-between text-left space-y-6">
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2.5 bg-stone-50 rounded-xl border border-stone-100/80 text-primary">
-                            <area.icon className="w-6 h-6 text-primary" />
+                      {/* Left Column: Details */}
+                      <div className="p-6 sm:p-8 md:col-span-7 flex flex-col justify-between text-left space-y-4">
+                        <div>
+                          <div className="flex items-center gap-3">
+                            <div className="p-2 sm:p-2.5 bg-stone-50 rounded-xl border border-stone-100/80 text-primary shrink-0">
+                              <area.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                            </div>
+                            <a href={`#${area.id}`} className="hover:text-secondary hover:underline transition-all">
+                              <h4 className="font-display font-bold text-base sm:text-lg text-[#003B5C]">{area.title}</h4>
+                            </a>
                           </div>
-                          <a href={`#${area.id}`} className="hover:text-secondary hover:underline transition-all">
-                            <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
+                          
+                          {/* Collapsible/Expandable Details container */}
+                          <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                            isActive ? "max-h-[350px] opacity-100 mt-3 sm:mt-4" : "max-h-0 opacity-0"
+                          }`}>
+                            <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase mb-2">
+                              {area.tagline}
+                            </p>
+                            <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                              {area.description}
+                            </p>
+                            
+                            <div className="p-3 sm:p-4 rounded-xl bg-[#E0F2FE]/40 border-l-4 border-primary mt-3 sm:mt-4">
+                              <span className="font-mono font-bold text-[9px] uppercase text-primary tracking-wider block">Accomplished status:</span>
+                              <p className="text-[11px] sm:text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Explore link is always visible/accessible inside the card when active */}
+                        <div className={`pt-1 transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-30"}`}>
+                          <a
+                            href={`#${area.id}`}
+                            className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
+                          >
+                            Explore Full Initiative
+                            <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                           </a>
                         </div>
-                        <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase">
-                          {area.tagline}
-                        </p>
-                        <p className="text-xs text-stone-600 leading-relaxed font-sans">
-                          {area.description}
-                        </p>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-[#E0F2FE]/40 border-l-4 border-primary">
-                        <span className="font-mono font-bold text-[9px] uppercase text-primary tracking-wider block">Accomplished status:</span>
-                        <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
+                      {/* Right Column: Image */}
+                      <div className="bg-stone-100 md:col-span-5 relative h-48 md:h-full">
+                        <img
+                          src={area.image}
+                          alt={area.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-transparent to-transparent pointer-events-none" />
                       </div>
 
-                      <div className="pt-1">
-                        <a
-                          href={`#${area.id}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
-                        >
-                          Explore Full Initiative
-                          <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                        </a>
-                      </div>
                     </div>
-
-                    {/* Right Column: Image */}
-                    <div className="bg-stone-100 md:col-span-5 relative h-48 md:h-full">
-                      <img
-                        src={area.image}
-                        alt={area.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-transparent to-transparent pointer-events-none" />
-                    </div>
-
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Carousel navigation arrows */}
