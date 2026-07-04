@@ -2123,106 +2123,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* 5. SDG Alignment Grid */}
-      <section id="sdg" className="py-24 bg-[#E0F2FE]/15 border-y border-stone-200/40 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-
-          <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-[#155E75] font-mono text-xs font-bold uppercase tracking-wider">
-              Global Standards Integration
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              Strategic Alignment with UN SDGs
-            </h2>
-            <div className="w-16 h-1 bg-[#155E75] mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              We align our local projects with United Nations Sustainable Development Goals (SDGs) to coordinate regional impact.
-            </p>
-          </div>
-
-          {/* SDG Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#0A97D9] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  14
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Life Below Water</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Supporting marine ecology, restoring coastal biodiversity, and preventing shoreline plastics dump.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#0A97D9] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#FF3A21] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  5
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Gender Equality</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Fostering women SHG banking, credit resources, and vocational trade groups.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#FF3A21] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#4C9F38] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  4
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Quality Education</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Evening classrooms, digital study packs, and student mentorship libraries.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#4C9F38] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#3F7E44] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  13
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Climate Action</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Local mangrove nurseries, storm-surge buffers, and sea erosion defenses.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#3F7E44] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-              <div className="space-y-4">
-                <div className="w-12 h-12 bg-[#A21942] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
-                  8
-                </div>
-                <h4 className="font-display font-bold text-sm text-[#003B5C]">Decent Work</h4>
-                <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Aquaculture systems, modern dry fish equipment, and market link integrations.
-                </p>
-              </div>
-              <div className="pt-4 text-[10px] text-[#A21942] font-mono font-bold uppercase border-t border-stone-100 mt-4">
-                Active Anchor
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
       {/* 7. Programs Section (Scroll Synchronized Focus Areas) */}
       <section id="programs" className="py-24 bg-surface-low border-y border-stone-200/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -2353,6 +2253,105 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* 5. SDG Alignment Grid */}
+      <section id="sdg" className="py-24 bg-[#E0F2FE]/15 border-y border-stone-200/40 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="inline-block text-[#155E75] font-mono text-xs font-bold uppercase tracking-wider">
+              Global Standards Integration
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              Strategic Alignment with UN SDGs
+            </h2>
+            <div className="w-16 h-1 bg-[#155E75] mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm">
+              We align our local projects with United Nations Sustainable Development Goals (SDGs) to coordinate regional impact.
+            </p>
+          </div>
+
+          {/* SDG Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#0A97D9] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                  14
+                </div>
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">Life Below Water</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Supporting marine ecology, restoring coastal biodiversity, and preventing shoreline plastics dump.
+                </p>
+              </div>
+              <div className="pt-4 text-[10px] text-[#0A97D9] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                Active Anchor
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#FF3A21] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                  5
+                </div>
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">Gender Equality</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Fostering women SHG banking, credit resources, and vocational trade groups.
+                </p>
+              </div>
+              <div className="pt-4 text-[10px] text-[#FF3A21] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                Active Anchor
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#4C9F38] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                  4
+                </div>
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">Quality Education</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Evening classrooms, digital study packs, and student mentorship libraries.
+                </p>
+              </div>
+              <div className="pt-4 text-[10px] text-[#4C9F38] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                Active Anchor
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#3F7E44] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                  13
+                </div>
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">Climate Action</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Local mangrove nurseries, storm-surge buffers, and sea erosion defenses.
+                </p>
+              </div>
+              <div className="pt-4 text-[10px] text-[#3F7E44] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                Active Anchor
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div className="space-y-4">
+                <div className="w-12 h-12 bg-[#A21942] text-white flex items-center justify-center rounded-xl font-display font-bold text-lg">
+                  8
+                </div>
+                <h4 className="font-display font-bold text-sm text-[#003B5C]">Decent Work</h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Aquaculture systems, modern dry fish equipment, and market link integrations.
+                </p>
+              </div>
+              <div className="pt-4 text-[10px] text-[#A21942] font-mono font-bold uppercase border-t border-stone-100 mt-4">
+                Active Anchor
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
