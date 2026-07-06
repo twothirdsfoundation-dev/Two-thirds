@@ -8,7 +8,6 @@ import {
   Landmark,
   ChevronRight,
   ChevronLeft,
-  ArrowDown,
   BookOpen,
   Anchor,
   Fish,
@@ -31,10 +30,7 @@ import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
-import parallaxSky from "./assets/parallax-sky.png";
-import parallaxBoats from "./assets/parallax-boats.png";
-import parallaxForeground from "./assets/parallax-foreground.png";
-import manifestoFish from "./assets/manifesto-fish.png";
+import coastalCommunityHero from "./assets/coastal-community-hero.jpg";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -1640,27 +1636,7 @@ interface HomePageProps {
 function HomePage({ setCurrentView, areas }: HomePageProps) {
   const heroRef = useRef<HTMLElement>(null);
 
-  const [scrollTop, setScrollTop] = useState(() => typeof window !== "undefined" ? window.scrollY : 0);
 
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollTop(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const yBg = -80 + (scrollTop || 0) * 0.06;
-  const yMid = -40 + (scrollTop || 0) * 0.08;
-  const yText = -30 + (scrollTop || 0) * 0.75;
-  const opacityText = Math.max(0, 1 - (scrollTop || 0) / 500);
 
 
 
@@ -1900,148 +1876,178 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       <section
         id="home"
         ref={heroRef}
-        className="relative h-[140vh] md:h-[200vh] bg-[#E0F2FE]"
-        style={{ backgroundColor: '#E0F2FE' }}
+        className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0d1f2d]"
       >
-        {/* Sticky viewport container */}
-        <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+        {/* Background Image */}
+        <img
+          src={coastalCommunityHero}
+          alt="Kerala coastal fishing village golden sunrise"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Soft dark blue gradient overlay to improve text readability & keep image visible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-white/5 to-[#0d1f2d]/75 z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_30%,rgba(13,31,45,0.55)_100%)] z-10" />
 
-          {/* Parallax Layers */}
-          <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
-            {/* Sky Layer (Background) */}
-            <div
-              style={{ transform: `translateY(${yBg}px)` }}
-              className="absolute top-0 left-0 w-full h-[130%] will-change-transform"
+        {/* Foreground Depth: Dark tropical palm leaves framing left and right edges */}
+        {/* Left framing palm leaf SVG */}
+        <div className="absolute left-0 top-0 bottom-0 w-[24%] max-w-[280px] opacity-90 pointer-events-none select-none z-15 flex items-center">
+          <svg className="w-full h-auto fill-[#09151e]" viewBox="0 0 100 200">
+            <path d="M0,0 Q35,45 15,100 T0,200 L0,200 Z" />
+            <path d="M0,15 Q65,35 25,55" stroke="#09151e" strokeWidth="3" fill="none" />
+            <path d="M0,45 Q80,65 35,85" stroke="#09151e" strokeWidth="4" fill="none" />
+            <path d="M0,75 Q90,105 40,125" stroke="#09151e" strokeWidth="4" fill="none" />
+            <path d="M0,105 Q95,135 45,160" stroke="#09151e" strokeWidth="4" fill="none" />
+            <path d="M0,135 Q85,165 35,190" stroke="#09151e" strokeWidth="3" fill="none" />
+          </svg>
+        </div>
+        
+        {/* Right framing palm leaf SVG */}
+        <div className="absolute right-0 top-0 bottom-0 w-[24%] max-w-[280px] opacity-90 pointer-events-none select-none z-15 flex items-center justify-end">
+          <svg className="w-full h-auto fill-[#09151e] transform scale-x-[-1]" viewBox="0 0 100 200">
+            <path d="M0,0 Q35,45 15,100 T0,200 L0,200 Z" />
+            <path d="M0,15 Q65,35 25,55" stroke="#09151e" strokeWidth="3" fill="none" />
+            <path d="M0,45 Q80,65 35,85" stroke="#09151e" strokeWidth="4" fill="none" />
+            <path d="M0,75 Q90,105 40,125" stroke="#09151e" strokeWidth="4" fill="none" />
+            <path d="M0,105 Q95,135 45,160" stroke="#09151e" strokeWidth="4" fill="none" />
+            <path d="M0,135 Q85,165 35,190" stroke="#09151e" strokeWidth="3" fill="none" />
+          </svg>
+        </div>
+
+        {/* Hero Content Container */}
+        <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest bg-white/40 px-3.5 py-1.5 rounded-full backdrop-blur-sm">
+            Kerala Shoreline Initiative
+          </span>
+          <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15]">
+            For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
+            who deserve better.
+          </h1>
+          
+          <p className="text-stone-700 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-semibold">
+            Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
+          </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <a
+              href="#contact"
+              className="bg-[#1e6f9f] hover:bg-[#155377] text-white font-display font-semibold text-xs tracking-wider px-8 py-3.5 transition-all uppercase rounded-none border-none cursor-pointer w-48 sm:w-auto text-center shadow-md hover:shadow-lg active:scale-95"
             >
-              <img
-                src={parallaxSky}
-                alt="Kerala sunrise sky"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
-
-            {/* Boats Layer (Midground) */}
-            <div
-              style={{ transform: `translateY(${yMid}px)` }}
-              className="absolute top-0 left-0 w-full h-[130%] mix-blend-multiply will-change-transform"
-            >
-              <img
-                src={parallaxBoats}
-                alt="Fishing boats silhouettes"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
-
-            {/* Heading Layer (Sandwiched in the middle!) */}
-            <div
-              style={{
-                transform: `translateY(${yText}px)`,
-                opacity: opacityText
-              }}
-              className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-10 will-change-transform"
-            >
-              <h1
-                style={{ textShadow: "0 0 35px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.5)" }}
-                className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15] max-w-4xl"
-              >
-                For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
-                who deserve better.
-              </h1>
-
-              {/* Floating CTA Buttons inside parallax layer */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
-                <a
-                  href="#contact"
-                  className="bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-lg hover:shadow-xl active:scale-95 uppercase w-48 sm:w-auto text-center"
-                >
-                  Get Involved
-                </a>
-                <a
-                  href="#about"
-                  className="bg-white/85 hover:bg-white text-primary font-display font-semibold text-xs tracking-wider px-7 py-3 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95 border border-primary/10 uppercase w-48 sm:w-auto text-center backdrop-blur-sm"
-                >
-                  Explore Manifesto
-                </a>
-              </div>
-            </div>
-
-            {/* Foreground Mangroves Layer (Static - no motion needed) */}
-            <div className="absolute inset-0 w-full h-full mix-blend-multiply z-20">
-              <img
-                src={parallaxForeground}
-                alt="Mangrove foliage silhouettes"
-                className="w-full h-full object-cover object-bottom"
-              />
-            </div>
-          </div>
-
-          {/* Subtle warm overlay beam */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] pointer-events-none z-1" />
-
-          {/* Feathered bottom transition gradient overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-bg-coastal to-transparent pointer-events-none z-20" />
-
-          {/* Bouncing scroll indicator */}
-          <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
-            <motion.a
+              Get Involved
+            </a>
+            <a
               href="#about"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="flex flex-col items-center gap-1.5 text-xs font-mono text-stone-400 hover:text-primary transition-colors cursor-pointer"
+              className="bg-white/20 hover:bg-white/30 text-[#003B5C] font-display font-semibold text-xs tracking-wider px-8 py-3.5 transition-all border border-[#003B5C]/30 uppercase w-48 sm:w-auto text-center backdrop-blur-md rounded-none shadow-sm active:scale-95"
             >
-              <span>Scroll to Explore</span>
-              <ArrowDown className="w-4 h-4 text-secondary" />
-            </motion.a>
+              Explore Our Work
+            </a>
           </div>
+        </div>
 
+        {/* White foam / wave splash transition divider at the bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-28 overflow-visible pointer-events-none z-20 select-none">
+          <svg className="w-full h-full block fill-white" viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,90 C120,80 200,105 320,85 C440,65 520,110 640,95 C760,80 840,115 960,95 C1080,75 1160,110 1280,95 C1360,85 1400,95 1440,90 L1440,120 L0,120 Z" />
+            <path d="M0,95 C150,90 240,110 350,90 C460,70 550,115 670,100 C790,85 870,120 990,100 C1110,80 1190,115 1310,100 C1390,90 1420,95 1440,95 L1440,120 L0,120 Z" opacity="0.4" />
+            <circle cx="120" cy="65" r="4" opacity="0.9" fill="white" />
+            <circle cx="280" cy="50" r="3" opacity="0.8" fill="white" />
+            <circle cx="450" cy="70" r="4.5" opacity="0.9" fill="white" />
+            <circle cx="620" cy="55" r="3" opacity="0.85" fill="white" />
+            <circle cx="790" cy="62" r="5" opacity="0.95" fill="white" />
+            <circle cx="940" cy="50" r="3.5" opacity="0.8" fill="white" />
+            <circle cx="1110" cy="72" r="4" opacity="0.9" fill="white" />
+            <circle cx="1280" cy="58" r="3" opacity="0.85" fill="white" />
+          </svg>
         </div>
       </section>
 
       {/* 4. About Section */}
-      <section id="about" className="py-24 bg-bg-coastal border-b border-stone-200/30 relative overflow-hidden">
-        {/* Soft morning ambient glows */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.04),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
+      <section id="about" className="py-24 bg-[#FAF7F2] border-b border-stone-200/30 relative overflow-hidden">
+        {/* Decorative fish-school illustrations in the background edges */}
+        <div className="absolute top-10 left-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
+          <svg className="w-full h-full fill-current" viewBox="0 0 200 200">
+            <g transform="translate(10, 40) rotate(-15) scale(0.7)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(30, 32) rotate(-10) scale(0.8)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(55, 30) rotate(-5) scale(0.9)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(82, 35) rotate(5) scale(1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(108, 48) rotate(15) scale(1.1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(130, 68) rotate(25) scale(1.1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(148, 92) rotate(35) scale(1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(20, 62) rotate(-12) scale(0.7)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(42, 55) rotate(-7) scale(0.8)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(68, 55) rotate(0) scale(0.9)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(92, 62) rotate(10) scale(1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(115, 78) rotate(20) scale(1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+          </svg>
+        </div>
 
-        {/* Decorative fish silhouettes on the sides */}
-        <div className="absolute top-16 -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-12" />
-        </div>
-        <div className="absolute top-[28%] -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-12 scale-x-[-1]" />
-        </div>
-        <div className="absolute top-[55%] -left-12 w-48 h-48 md:w-80 md:h-80 md:-left-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain -rotate-45" />
-        </div>
-        <div className="absolute bottom-16 -right-12 w-48 h-48 md:w-80 md:h-80 md:-right-20 opacity-[0.16] pointer-events-none select-none mix-blend-multiply z-0">
-          <img src={manifestoFish} alt="" className="w-full h-full object-contain rotate-45 scale-x-[-1]" />
+        <div className="absolute bottom-10 right-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
+          <svg className="w-full h-full fill-current transform scale-x-[-1]" viewBox="0 0 200 200">
+            <g transform="translate(15, 45) rotate(-20) scale(0.7)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(38, 38) rotate(-15) scale(0.8)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(62, 38) rotate(-5) scale(0.9)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(88, 45) rotate(8) scale(1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(112, 60) rotate(22) scale(1)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+            <g transform="translate(132, 82) rotate(32) scale(0.9)">
+              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+            </g>
+          </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-            <span className="inline-block text-secondary font-mono text-xs font-bold uppercase tracking-wider">
-              About Us
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-10">
+          <div className="space-y-6 max-w-3xl mx-auto">
+            <span className="font-mono text-xs font-bold tracking-widest text-[#e8935a] uppercase block">
+              ABOUT US
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl text-primary tracking-tight">
+            <h2 className="font-display font-light text-4xl sm:text-5xl text-[#003B5C] tracking-tight">
               About Two-Thirds
             </h2>
-            <div className="w-12 h-1 bg-secondary mx-auto rounded-full" />
-          </div>
-
-          {/* Simple Manifesto Paragraph & Button */}
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed">
+            <div className="w-12 h-[1px] bg-[#003B5C]/20 mx-auto" />
+            
+            <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed py-4">
               Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
             </p>
+
             <div className="pt-4">
               <a
                 href="#about-us"
                 onClick={() => setCurrentView("about-us")}
-                className="group inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-display font-semibold text-xs tracking-wider px-7 py-3.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+                className="group inline-flex items-center gap-2 text-[#003B5C] font-mono tracking-widest text-xs font-bold border-b border-[#003B5C]/20 pb-1.5 hover:border-[#003B5C] transition-all uppercase cursor-pointer"
               >
-                Read Our Full Story
-                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                READ OUR FULL STORY →
               </a>
             </div>
           </div>
