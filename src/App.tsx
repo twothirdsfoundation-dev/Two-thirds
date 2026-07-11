@@ -1939,7 +1939,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
 
         {/* 4. About Section */}
-        <section id="about" className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-20">
+        <section id="about" className="pt-24 pb-0 bg-white border-b border-stone-200/30 relative overflow-hidden z-20">
           {/* Decorative fish-school illustrations in the background edges */}
           <div className="absolute top-10 left-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
             <svg className="w-full h-full fill-current" viewBox="0 0 200 200">
