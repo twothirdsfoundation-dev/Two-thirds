@@ -3461,7 +3461,7 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
       })()}
 
       {/* 10. Footer */}
-      <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
+      <footer className="relative z-10 bg-stone-900 text-stone-300 pt-16 pb-8 border-t-8 border-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 md:grid-cols-12 pb-12 border-b border-white/5 text-left">
 
           {/* Logo & description */}
