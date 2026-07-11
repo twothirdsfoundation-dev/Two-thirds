@@ -1694,6 +1694,69 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
   // Programs Split-Showcase State
   const [activeCardIndex, setActiveCardIndex] = useState(0);
 
+  // Events state for dynamic local addition
+  const [events, setEvents] = useState<FoundationEvent[]>(activeEvents);
+
+  // Slack Mockup State
+  const [slackMessages, setSlackMessages] = useState<any[]>([
+    {
+      id: "initial",
+      time: "10:14 AM",
+      sender: "Two-Thirds Bot",
+      isBot: true,
+      text: "🔌 Slack webhook simulation channel is online. System version 2.0 (Author: Adil). Try creating an event on the left to see the instant live webhook block notification!"
+    }
+  ]);
+
+  // Form Inputs
+  const [simTitle, setSimTitle] = useState("");
+  const [simDate, setSimDate] = useState("");
+  const [simLocation, setSimLocation] = useState("");
+  const [simTime, setSimTime] = useState("");
+  const [simDesc, setSimDesc] = useState("");
+
+  const handleSimulateEvent = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!simTitle || !simDate || !simLocation) return;
+
+    const newEvent: FoundationEvent = {
+      id: `sim-${Date.now()}`,
+      title: simTitle,
+      date: simDate,
+      time: simTime || "Flexible Hours",
+      location: simLocation,
+      description: simDesc || "Simulated community gathering and interactive workshop.",
+      link: "#"
+    };
+
+    // Update website list
+    setEvents([newEvent, ...events]);
+
+    // Send mock notification to Slack
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const newSlackMsg = {
+      id: `slack-${Date.now()}`,
+      time: timeStr,
+      sender: "Two-Thirds Bot",
+      isBot: true,
+      title: newEvent.title,
+      date: newEvent.date,
+      eventTime: newEvent.time,
+      location: newEvent.location,
+      description: newEvent.description
+    };
+
+    setSlackMessages(prev => [...prev, newSlackMsg]);
+
+    // Clear inputs
+    setSimTitle("");
+    setSimDate("");
+    setSimLocation("");
+    setSimTime("");
+    setSimDesc("");
+  };
+
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -2377,28 +2440,179 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* 7.8. Events Section (Upcoming Events & Campaigns) */}
+      {/* 7.8. Events Section (Upcoming Events & Campaigns with Live Slack Simulator) */}
       <section id="events" className="py-24 bg-gradient-to-b from-[#0A2637] to-[#021B2A] border-t border-stone-900/60 relative overflow-hidden z-20 text-white">
         <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none z-0" />
         <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full bg-primary-light/5 blur-3xl pointer-events-none z-0" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
           
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="inline-block text-accent-cyan font-mono text-xs font-bold uppercase tracking-wider">
-              Get Involved
+              Sandbox Playground
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
-              Upcoming Events &amp; Campaigns
+              Slack Integration Sandbox
             </h2>
             <div className="w-16 h-1 bg-accent-cyan mx-auto rounded-full" />
             <p className="text-stone-300 text-sm">
-              Participate in our field drives, workshops, and interactive sessions along the shores of Kerala.
+              Experience the power of our real-time Slack integration. Use the sandbox below to publish an event and see the automated webhook alert trigger in our Slack simulator instantly!
+            </p>
+          </div>
+
+          {/* Interactive Simulator Grid */}
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch max-w-6xl mx-auto">
+            {/* Left: Input Form */}
+            <div className="lg:col-span-5 bg-[#0c2333]/85 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col justify-between space-y-6 text-left">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 pb-2 border-b border-white/10">
+                  <div className="w-2.5 h-2.5 rounded-full bg-accent-cyan animate-pulse" />
+                  <span className="font-mono text-[10px] font-extrabold uppercase tracking-widest text-accent-cyan">Event Dispatcher</span>
+                </div>
+                
+                <form onSubmit={handleSimulateEvent} className="space-y-4">
+                  <div className="space-y-1">
+                    <label className="block text-[10px] font-mono font-bold text-stone-400 uppercase">Event Title *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Mangrove Planting Campaign"
+                      value={simTitle}
+                      onChange={(e) => setSimTitle(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-accent-cyan/50 transition-colors"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="block text-[10px] font-mono font-bold text-stone-400 uppercase">Date *</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. July 24, 2026"
+                        value={simDate}
+                        onChange={(e) => setSimDate(e.target.value)}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-accent-cyan/50 transition-colors"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="block text-[10px] font-mono font-bold text-stone-400 uppercase">Time</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. 08:00 AM - 12:00 PM"
+                        value={simTime}
+                        onChange={(e) => setSimTime(e.target.value)}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-accent-cyan/50 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[10px] font-mono font-bold text-stone-400 uppercase">Location *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Perumathura Shoreline"
+                      value={simLocation}
+                      onChange={(e) => setSimLocation(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-accent-cyan/50 transition-colors"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="block text-[10px] font-mono font-bold text-stone-400 uppercase">Description</label>
+                    <textarea
+                      rows={3}
+                      placeholder="Enter event details here..."
+                      value={simDesc}
+                      onChange={(e) => setSimDesc(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white placeholder-stone-500 focus:outline-none focus:border-accent-cyan/50 transition-colors resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-accent-cyan hover:bg-accent-cyan/90 text-primary-dark font-display font-bold text-xs py-3.5 px-4 rounded-xl uppercase tracking-wider transition-all duration-300 shadow-lg shadow-accent-cyan/20 cursor-pointer active:scale-95 text-center block"
+                  >
+                    Publish to Website &amp; Slack
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            {/* Right: Slack App Mockup Screen */}
+            <div className="lg:col-span-7 bg-[#121016] text-[#D1D2D3] rounded-3xl border border-stone-800 shadow-2xl flex flex-col justify-between overflow-hidden h-[460px] text-left">
+              {/* Slack Header */}
+              <div className="bg-[#19171D] border-b border-stone-800 px-5 py-3.5 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="font-extrabold text-white text-base">#</span>
+                  <span className="font-bold text-white text-sm">event-alerts</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 ml-1" />
+                </div>
+                <div className="flex items-center gap-4 text-stone-500 text-xs">
+                  <span className="font-mono bg-white/5 px-2 py-0.5 rounded text-[10px] text-[#A3A3A6] border border-white/5">Bot Active</span>
+                </div>
+              </div>
+
+              {/* Chat messages */}
+              <div className="flex-1 overflow-y-auto p-5 space-y-5 scrollbar-none flex flex-col justify-end">
+                {slackMessages.map((msg) => (
+                  <div key={msg.id} className="flex items-start gap-3 text-left">
+                    {/* Bot avatar */}
+                    <div className="w-9 h-9 rounded bg-[#1A85FF] flex items-center justify-center font-bold text-white text-sm shrink-0">
+                      TT
+                    </div>
+                    {/* Message details */}
+                    <div className="flex-1 min-w-0 space-y-1.5">
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-extrabold text-white text-xs sm:text-sm">{msg.sender}</span>
+                        <span className="bg-[#E0E0E0]/15 text-[#D1D2D3] text-[8px] font-bold uppercase px-1 py-0.5 rounded leading-none shrink-0">APP</span>
+                        <span className="text-stone-500 text-[10px] font-mono">{msg.time}</span>
+                      </div>
+                      
+                      {msg.text ? (
+                        <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">{msg.text}</p>
+                      ) : (
+                        /* Block Kit Attachment Card Mockup */
+                        <div className="border-l-4 border-accent-cyan bg-white/5 rounded-r-lg p-4 space-y-3 max-w-lg mt-1">
+                          <div className="space-y-0.5">
+                            <span className="text-[10px] font-mono font-bold text-stone-400 block tracking-wider uppercase">📢 New Two-Thirds Event Published!</span>
+                            <h4 className="font-bold text-white text-sm sm:text-base leading-snug">{msg.title}</h4>
+                          </div>
+
+                          <div className="text-[11px] text-stone-300 space-y-1 font-mono">
+                            <div><span className="text-stone-500">Date &amp; Time:</span> {msg.date} {msg.eventTime && `| ${msg.eventTime}`}</div>
+                            <div><span className="text-stone-500">Location:</span> {msg.location}</div>
+                          </div>
+
+                          <p className="text-xs text-stone-300 leading-relaxed font-sans">{msg.description}</p>
+
+                          <div className="pt-1">
+                            <div className="inline-block bg-[#007A5A] hover:bg-[#148567] text-white font-extrabold text-xs px-4 py-2 rounded font-sans border border-[#007A5A] cursor-pointer">
+                              View / RSVP
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Website Event Feed header */}
+          <div className="text-center pt-8 max-w-2xl mx-auto space-y-2">
+            <h3 className="font-display font-bold text-2xl text-white uppercase tracking-wider">
+              Live Events Feed
+            </h3>
+            <p className="text-stone-400 text-xs">
+              This grid shows the events live on the website, updated dynamically from the sandbox simulation.
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-center text-left">
-            {activeEvents.map((event) => (
+            {events.map((event) => (
               <div
                 key={event.id}
                 className="bg-[#0c2333]/90 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 shadow-lg hover:border-accent-cyan/30 hover:shadow-2xl hover:shadow-accent-cyan/5 transition-all duration-300 flex flex-col h-full group"
