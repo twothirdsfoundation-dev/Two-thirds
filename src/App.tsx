@@ -30,7 +30,7 @@ import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
-import coastalCommunityHero from "./assets/coastal-community-hero.jpg";
+import beachBackground from "./assets/Gemini_Generated_Image_sgbtqwsgbtqwsgbt.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -1634,12 +1634,25 @@ interface HomePageProps {
 }
 
 function HomePage({ setCurrentView, areas }: HomePageProps) {
-  const heroRef = useRef<HTMLElement>(null);
+  const [scrollTop, setScrollTop] = useState(() => typeof window !== "undefined" ? window.scrollY : 0);
 
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollTop(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-
-
-
+  const yTextParallax = (scrollTop || 0) * -0.4;
+  const textOpacityParallax = Math.max(0, 1 - (scrollTop || 0) / 400);
 
   // Programs Carousel Synchronization Ref & States
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -1872,21 +1885,17 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
   return (
     <>
-      {/* 2. Hero Section */}
-      <section
-        id="home"
-        ref={heroRef}
-        className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0d1f2d]"
-      >
+      {/* 2. Fixed Hero Banner (Fixed viewport container behind the scrollable content) */}
+      <div className="fixed top-0 left-0 w-full h-screen overflow-hidden z-0 bg-[#0d1f2d]">
         {/* Background Image */}
         <img
-          src={coastalCommunityHero}
-          alt="Kerala coastal fishing village golden sunrise"
+          src={beachBackground}
+          alt="Kerala beach loungers"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Soft dark blue gradient overlay to improve text readability & keep image visible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-white/5 to-[#0d1f2d]/75 z-10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_30%,rgba(13,31,45,0.55)_100%)] z-10" />
+        {/* Soft dark blue overlay to improve text readability & keep image visible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-white/5 to-[#0d1f2d]/70 z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_30%,rgba(13,31,45,0.45)_100%)] z-10" />
 
         {/* Foreground Depth: Dark tropical palm leaves framing left and right edges */}
         {/* Left framing palm leaf SVG */}
@@ -1913,9 +1922,12 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </svg>
         </div>
 
-        {/* Hero Content Container */}
-        <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest bg-white/40 px-3.5 py-1.5 rounded-full backdrop-blur-sm">
+        {/* Hero Content Layer (Centred and fixed in viewport) */}
+        <div 
+          style={{ transform: `translateY(${yTextParallax}px)`, opacity: textOpacityParallax }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform"
+        >
+          <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest bg-white/40 px-3.5 py-1.5 rounded-full backdrop-blur-sm mb-4">
             Kerala Shoreline Initiative
           </span>
           <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15]">
@@ -1923,7 +1935,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             who deserve better.
           </h1>
           
-          <p className="text-stone-700 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-semibold">
+          <p className="text-stone-700 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-semibold mt-4">
             Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
           </p>
 
@@ -1942,117 +1954,149 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </a>
           </div>
         </div>
+      </div>
 
-        {/* White foam / wave splash transition divider at the bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 overflow-visible pointer-events-none z-20 select-none">
-          <svg className="w-full h-full block fill-white" viewBox="0 0 1440 120" preserveAspectRatio="none">
-            <path d="M0,90 C120,80 200,105 320,85 C440,65 520,110 640,95 C760,80 840,115 960,95 C1080,75 1160,110 1280,95 C1360,85 1400,95 1440,90 L1440,120 L0,120 Z" />
-            <path d="M0,95 C150,90 240,110 350,90 C460,70 550,115 670,100 C790,85 870,120 990,100 C1110,80 1190,115 1310,100 C1390,90 1420,95 1440,95 L1440,120 L0,120 Z" opacity="0.4" />
-            <circle cx="120" cy="65" r="4" opacity="0.9" fill="white" />
-            <circle cx="280" cy="50" r="3" opacity="0.8" fill="white" />
-            <circle cx="450" cy="70" r="4.5" opacity="0.9" fill="white" />
-            <circle cx="620" cy="55" r="3" opacity="0.85" fill="white" />
-            <circle cx="790" cy="62" r="5" opacity="0.95" fill="white" />
-            <circle cx="940" cy="50" r="3.5" opacity="0.8" fill="white" />
-            <circle cx="1110" cy="72" r="4" opacity="0.9" fill="white" />
-            <circle cx="1280" cy="58" r="3" opacity="0.85" fill="white" />
-          </svg>
-        </div>
-      </section>
+      {/* Scrollable container on top of the fixed hero background */}
+      <div className="relative z-10 w-full">
+        {/* Invisible spacer allowing hero to remain fully visible on initial load */}
+        <div className="h-screen pointer-events-none" />
 
-      {/* 4. About Section */}
-      <section id="about" className="py-24 bg-[#FAF7F2] border-b border-stone-200/30 relative overflow-hidden">
-        {/* Decorative fish-school illustrations in the background edges */}
-        <div className="absolute top-10 left-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
-          <svg className="w-full h-full fill-current" viewBox="0 0 200 200">
-            <g transform="translate(10, 40) rotate(-15) scale(0.7)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(30, 32) rotate(-10) scale(0.8)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(55, 30) rotate(-5) scale(0.9)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(82, 35) rotate(5) scale(1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(108, 48) rotate(15) scale(1.1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(130, 68) rotate(25) scale(1.1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(148, 92) rotate(35) scale(1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(20, 62) rotate(-12) scale(0.7)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(42, 55) rotate(-7) scale(0.8)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(68, 55) rotate(0) scale(0.9)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(92, 62) rotate(10) scale(1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(115, 78) rotate(20) scale(1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-          </svg>
-        </div>
-
-        <div className="absolute bottom-10 right-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
-          <svg className="w-full h-full fill-current transform scale-x-[-1]" viewBox="0 0 200 200">
-            <g transform="translate(15, 45) rotate(-20) scale(0.7)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(38, 38) rotate(-15) scale(0.8)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(62, 38) rotate(-5) scale(0.9)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(88, 45) rotate(8) scale(1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(112, 60) rotate(22) scale(1)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-            <g transform="translate(132, 82) rotate(32) scale(0.9)">
-              <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
-            </g>
-          </svg>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-10">
-          <div className="space-y-6 max-w-3xl mx-auto">
-            <span className="font-mono text-xs font-bold tracking-widest text-[#e8935a] uppercase block">
-              ABOUT US
-            </span>
-            <h2 className="font-display font-light text-4xl sm:text-5xl text-[#003B5C] tracking-tight">
-              About Two-Thirds
-            </h2>
-            <div className="w-12 h-[1px] bg-[#003B5C]/20 mx-auto" />
+        {/* Wave Splash Transition Divider (Sitting exactly at the top of About section, covering fixed content behind) */}
+        <div className="relative w-full h-32 overflow-visible pointer-events-none z-30 select-none bg-transparent">
+          <svg 
+            className="absolute bottom-0 left-0 w-full h-full block fill-[#FAF7F2]" 
+            viewBox="0 0 1440 250" 
+            preserveAspectRatio="none"
+            style={{ filter: "drop-shadow(0px -10px 15px rgba(250,247,242,0.5))" }}
+          >
+            {/* Soft background wave splash depth */}
+            <path d="M0,130 C180,100 360,200 540,140 C720,80 900,240 1080,150 C1260,80 1350,140 1440,130 L1440,250 L0,250 Z" opacity="0.4" />
             
-            <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed py-4">
-              Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
-            </p>
+            {/* Main foreground wave splash */}
+            <path d="M0,170 C150,130 280,200 420,170 C560,140 680,220 820,180 C960,140 1100,210 1240,160 C1340,120 1400,170 1440,160 L1440,250 L0,250 Z" />
+            
+            {/* Detailed spray droplets */}
+            <circle cx="80" cy="110" r="4.5" />
+            <circle cx="110" cy="90" r="3" />
+            <circle cx="140" cy="120" r="5" />
+            <circle cx="170" cy="105" r="3.5" />
+            <circle cx="210" cy="130" r="4" />
+            <circle cx="300" cy="100" r="5.5" />
+            <circle cx="330" cy="80" r="3" />
+            <circle cx="360" cy="110" r="4.5" />
+            <circle cx="390" cy="95" r="3.5" />
+            <circle cx="550" cy="120" r="5" />
+            <circle cx="580" cy="100" r="3.5" />
+            <circle cx="610" cy="130" r="4" />
+            <circle cx="640" cy="115" r="3" />
+            <circle cx="680" cy="140" r="4.5" />
+            <circle cx="850" cy="110" r="6" />
+            <circle cx="880" cy="85" r="4" />
+            <circle cx="910" cy="120" r="5" />
+            <circle cx="940" cy="100" r="3.5" />
+            <circle cx="1120" cy="100" r="5" />
+            <circle cx="1150" cy="80" r="3" />
+            <circle cx="1180" cy="110" r="4.5" />
+            <circle cx="1210" cy="90" r="3.5" />
+            <circle cx="1260" cy="120" r="4" />
+            <circle cx="1320" cy="105" r="5.5" />
+            <circle cx="1350" cy="85" r="3" />
+          </svg>
+        </div>
 
-            <div className="pt-4">
-              <a
-                href="#about-us"
-                onClick={() => setCurrentView("about-us")}
-                className="group inline-flex items-center gap-2 text-[#003B5C] font-mono tracking-widest text-xs font-bold border-b border-[#003B5C]/20 pb-1.5 hover:border-[#003B5C] transition-all uppercase cursor-pointer"
-              >
-                READ OUR FULL STORY →
-              </a>
+        {/* 4. About Section */}
+        <section id="about" className="py-24 bg-[#FAF7F2] border-b border-stone-200/30 relative overflow-hidden z-20">
+          {/* Decorative fish-school illustrations in the background edges */}
+          <div className="absolute top-10 left-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
+            <svg className="w-full h-full fill-current" viewBox="0 0 200 200">
+              <g transform="translate(10, 40) rotate(-15) scale(0.7)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(30, 32) rotate(-10) scale(0.8)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(55, 30) rotate(-5) scale(0.9)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(82, 35) rotate(5) scale(1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(108, 48) rotate(15) scale(1.1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(130, 68) rotate(25) scale(1.1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(148, 92) rotate(35) scale(1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(20, 62) rotate(-12) scale(0.7)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(42, 55) rotate(-7) scale(0.8)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(68, 55) rotate(0) scale(0.9)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(92, 62) rotate(10) scale(1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(115, 78) rotate(20) scale(1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+            </svg>
+          </div>
+
+          <div className="absolute bottom-10 right-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
+            <svg className="w-full h-full fill-current transform scale-x-[-1]" viewBox="0 0 200 200">
+              <g transform="translate(15, 45) rotate(-20) scale(0.7)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(38, 38) rotate(-15) scale(0.8)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(62, 38) rotate(-5) scale(0.9)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(88, 45) rotate(8) scale(1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(112, 60) rotate(22) scale(1)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+              <g transform="translate(132, 82) rotate(32) scale(0.9)">
+                <path d="M0,5 C3,2 8,2 10,5 C8,8 3,8 0,5 Z M10,5 L13,3 L13,7 Z" />
+              </g>
+            </svg>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-10">
+            <div className="space-y-6 max-w-3xl mx-auto">
+              <span className="font-mono text-xs font-bold tracking-widest text-[#e8935a] uppercase block">
+                ABOUT US
+              </span>
+              <h2 className="font-display font-light text-4xl sm:text-5xl text-[#003B5C] tracking-tight">
+                About Two-Thirds
+              </h2>
+              <div className="w-12 h-[1px] bg-[#003B5C]/20 mx-auto" />
+              
+              <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed py-4">
+                Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
+              </p>
+
+              <div className="pt-4">
+                <a
+                  href="#about-us"
+                  onClick={() => setCurrentView("about-us")}
+                  className="group inline-flex items-center gap-2 text-[#003B5C] font-mono tracking-widest text-xs font-bold border-b border-[#003B5C]/20 pb-1.5 hover:border-[#003B5C] transition-all uppercase cursor-pointer"
+                >
+                  READ OUR FULL STORY →
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
       <section
@@ -2514,8 +2558,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-
-
+      </div>
 
     </>
   );
