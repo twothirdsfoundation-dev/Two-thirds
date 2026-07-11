@@ -204,7 +204,7 @@ export const activeTeamMembers: TeamMember[] = (typeof window !== "undefined" &&
 function CountUp({
   target,
   suffix = "",
-  duration = 1.5
+  duration = 1.2
 }: {
   target: number;
   suffix?: string;
@@ -221,22 +221,30 @@ function CountUp({
 
   useEffect(() => {
     if (!isInView) return;
-    let start = 0;
+    let startTime: number | null = null;
     const end = target;
-    if (start === end) return;
+    const totalDuration = duration * 1000;
+    let animationFrameId: number;
 
-    const totalMiliseconds = duration * 1000;
-    const incrementTime = Math.max(12, Math.floor(totalMiliseconds / end));
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percentage = Math.min(progress / totalDuration, 1);
 
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) {
-        clearInterval(timer);
+      // easeOutQuad curve for a smooth deceleration effect
+      const easeProgress = percentage * (2 - percentage);
+
+      setCount(Math.floor(easeProgress * end));
+
+      if (progress < totalDuration) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(end);
       }
-    }, incrementTime);
+    };
 
-    return () => clearInterval(timer);
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
   }, [isInView, target, duration]);
 
   return <span ref={ref} suppressHydrationWarning={true}>{count}{suffix}</span>;
