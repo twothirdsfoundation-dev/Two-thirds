@@ -333,6 +333,111 @@ add_action( 'save_post', 'twothirds_save_event_meta' );
 
 
 /**
+ * Register Slack Webhook Settings Field in Settings -> General
+ */
+function twothirds_register_slack_settings() {
+    register_setting( 'general', 'twothirds_slack_webhook_url', array(
+        'type' => 'string',
+        'sanitize_callback' => 'esc_url_raw',
+        'default' => ''
+    ) );
+    
+    add_settings_field(
+        'twothirds_slack_webhook_url',
+        'Slack Webhook URL for Events',
+        'twothirds_slack_webhook_field_callback',
+        'general',
+        'default'
+    );
+}
+add_action( 'admin_init', 'twothirds_register_slack_settings' );
+
+function twothirds_slack_webhook_field_callback() {
+    $url = get_option( 'twothirds_slack_webhook_url', '' );
+    echo '<input type="url" name="twothirds_slack_webhook_url" value="' . esc_attr( $url ) . '" class="regular-text" placeholder="https://hooks.slack.com/services/..." />';
+    echo '<p class="description">Newly published events in WordPress will automatically be announced to this Slack channel.</p>';
+}
+
+/**
+ * Send Slack Announcement on Event Publish
+ */
+function twothirds_announce_event_to_slack( $new_status, $old_status, $post ) {
+    if ( 'event' !== $post->post_type ) {
+        return;
+    }
+    
+    if ( 'publish' === $new_status && 'publish' !== $old_status ) {
+        $date = get_post_meta( $post->ID, 'event_date', true );
+        $time = get_post_meta( $post->ID, 'event_time', true );
+        $location = get_post_meta( $post->ID, 'event_location', true );
+        $link = get_post_meta( $post->ID, 'event_link', true );
+        if ( empty( $link ) ) {
+            $link = get_permalink( $post->ID );
+        }
+        
+        $slack_webhook_url = get_option( 'twothirds_slack_webhook_url', '' );
+        
+        if ( ! empty( $slack_webhook_url ) && filter_var( $slack_webhook_url, FILTER_VALIDATE_URL ) ) {
+            $title = $post->post_title;
+            $excerpt = wp_strip_all_tags( $post->post_content );
+            if ( strlen( $excerpt ) > 150 ) {
+                $excerpt = substr( $excerpt, 0, 147 ) . '...';
+            }
+            
+            $payload = array(
+                'blocks' => array(
+                    array(
+                        'type' => 'header',
+                        'text' => array(
+                            'type' => 'plain_text',
+                            'text' => '📢 New Two-Thirds Event Published!',
+                            'emoji' => true
+                        )
+                    ),
+                    array(
+                        'type' => 'section',
+                        'text' => array(
+                            'type' => 'mrkdwn',
+                            'text' => "*Title:* {$title}\n*Date & Time:* " . ( $date ? $date : 'TBD' ) . " | " . ( $time ? $time : 'TBD' ) . "\n*Location:* " . ( $location ? $location : 'TBD' )
+                        )
+                    ),
+                    array(
+                        'type' => 'section',
+                        'text' => array(
+                            'type' => 'mrkdwn',
+                            'text' => $excerpt ? $excerpt : '_No description provided._'
+                        )
+                    ),
+                    array(
+                        'type' => 'actions',
+                        'elements' => array(
+                            array(
+                                'type' => 'button',
+                                'text' => array(
+                                    'type' => 'plain_text',
+                                    'text' => 'View / RSVP',
+                                    'emoji' => true
+                                ),
+                                'url' => $link,
+                                'action_id' => 'button-action'
+                            )
+                        )
+                    )
+                )
+            );
+            
+            wp_remote_post( $slack_webhook_url, array(
+                'headers'     => array( 'Content-Type' => 'application/json' ),
+                'body'        => wp_json_encode( $payload ),
+                'method'      => 'POST',
+                'data_format' => 'body'
+            ) );
+        }
+    }
+}
+add_action( 'transition_post_status', 'twothirds_announce_event_to_slack', 10, 3 );
+
+/**
  * Automatically insert default events on activation if they don't exist
  */
 function twothirds_insert_default_events() {
