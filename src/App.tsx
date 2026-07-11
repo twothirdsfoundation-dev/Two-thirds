@@ -150,10 +150,18 @@ export const blogPosts: BlogPost[] = [
   }
 ];
 
-// Allow WordPress to inject active posts dynamically via window.wpPosts
-export const activePosts: BlogPost[] = (typeof window !== "undefined" && (window as any).wpPosts) 
+// Allow WordPress to inject active posts dynamically via window.wpPosts (Field Notes)
+export const activeFieldNotes: BlogPost[] = (typeof window !== "undefined" && (window as any).wpPosts) 
   ? (window as any).wpPosts 
-  : blogPosts;
+  : blogPosts.filter(p => p.category === "Field Diaries" || p.category === "field-notes");
+
+// Allow WordPress to inject active impact stories dynamically via window.wpImpactStories
+export const activeImpactStories: BlogPost[] = (typeof window !== "undefined" && (window as any).wpImpactStories) 
+  ? (window as any).wpImpactStories 
+  : blogPosts.filter(p => p.category === "Impact Stories" || p.category === "impact-stories");
+
+// Retain activePosts for compatibility with page routing lookups
+export const activePosts: BlogPost[] = [...activeFieldNotes, ...activeImpactStories];
 
 
 // Data Definition
@@ -2256,9 +2264,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
             <div className="animate-ticker gap-8 flex items-stretch">
               {/* Duplicate the posts array to allow seamless scrolling loop */}
-              {Array(3).fill(
-                activePosts.filter((post) => post.category === "Impact Stories" || post.category === "impact-stories")
-              ).flat().map((post, idx) => (
+              {Array(3).fill(activeImpactStories).flat().map((post, idx) => (
                 <div
                   key={`${post.id}-${idx}`}
                   onClick={() => {
@@ -2321,9 +2327,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto justify-center text-left">
-            {activePosts
-              .filter((post) => post.category === "Field Diaries" || post.category === "field-notes")
-              .map((post) => (
+            {activeFieldNotes.map((post) => (
                 <div
                   key={post.id}
                   className="bg-white rounded-3xl overflow-hidden border border-stone-200/60 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group h-full"

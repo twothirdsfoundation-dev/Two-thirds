@@ -16,23 +16,10 @@
     <script>
     window.wpPosts = [
         <?php
-        $args = array('post_type' => 'post', 'posts_per_page' => -1);
+        $args = array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish');
         $query = new WP_Query($args);
         if ($query->have_posts()) :
             while ($query->have_posts()) : $query->the_post();
-                $categories = wp_get_post_categories(get_the_ID(), array('fields' => 'names'));
-                $cat_name = "Field Diaries";
-                foreach ($categories as $cat) {
-                    if (strcasecmp($cat, 'Impact Stories') == 0 || strcasecmp($cat, 'impact-stories') == 0) {
-                        $cat_name = "Impact Stories";
-                        break;
-                    }
-                }
-                
-                $quote = get_post_meta(get_the_ID(), 'impact_quote', true) ?: get_the_excerpt();
-                $author_role = get_post_meta(get_the_ID(), 'author_role', true) ?: 'Community Member';
-                $avatar_initials = get_post_meta(get_the_ID(), 'avatar_initials', true) ?: substr(get_the_author(), 0, 2);
-                
                 $post_data = array(
                     'id' => strval(get_the_ID()),
                     'slug' => basename(get_permalink()),
@@ -43,12 +30,41 @@
                     'author' => get_the_author(),
                     'readTime' => '5 min read',
                     'image' => get_the_post_thumbnail_url(get_the_ID(), 'full') ?: '',
-                    'category' => $cat_name,
+                    'category' => 'Field Diaries'
+                );
+                echo json_encode($post_data) . ',';
+            endwhile;
+            wp_reset_postdata();
+        endif;
+        ?>
+    ];
+
+    window.wpImpactStories = [
+        <?php
+        $args = array('post_type' => 'impact_story', 'posts_per_page' => -1, 'post_status' => 'publish');
+        $query = new WP_Query($args);
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $quote = get_post_meta(get_the_ID(), 'impact_quote', true) ?: get_the_excerpt();
+                $author_role = get_post_meta(get_the_ID(), 'author_role', true) ?: 'Community Member';
+                $avatar_initials = get_post_meta(get_the_ID(), 'avatar_initials', true) ?: substr(get_the_title(), 0, 2);
+                
+                $story_data = array(
+                    'id' => strval(get_the_ID()),
+                    'slug' => basename(get_permalink()),
+                    'title' => get_the_title(),
+                    'excerpt' => get_the_excerpt(),
+                    'content' => array(wp_strip_all_tags(get_the_content())),
+                    'date' => get_the_date('M j, Y'),
+                    'author' => get_the_title(),
+                    'readTime' => '5 min read',
+                    'image' => get_the_post_thumbnail_url(get_the_ID(), 'full') ?: '',
+                    'category' => 'Impact Stories',
                     'quote' => $quote,
                     'authorRole' => $author_role,
                     'avatarInitials' => $avatar_initials
                 );
-                echo json_encode($post_data) . ',';
+                echo json_encode($story_data) . ',';
             endwhile;
             wp_reset_postdata();
         endif;

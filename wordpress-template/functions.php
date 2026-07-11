@@ -498,60 +498,100 @@ function twothirds_insert_default_events() {
 add_action( 'init', 'twothirds_insert_default_events', 30 );
 
 /**
- * Rename default "Posts" CPT to "Blog"
+ * Rename default "Posts" CPT to "Field Notes"
  */
-function twothirds_rename_posts_to_blog() {
+function twothirds_rename_posts_to_field_notes() {
     global $menu;
     global $submenu;
-    $menu[5][0] = 'Blog'; // Rename "Posts" to "Blog" in sidebar
+    $menu[5][0] = 'Field Notes'; // Rename "Posts" to "Field Notes" in sidebar
     if ( isset( $submenu['edit.php'] ) ) {
-        $submenu['edit.php'][5][0]  = 'All Blog Posts';
-        $submenu['edit.php'][10][0] = 'Add New Post';
+        $submenu['edit.php'][5][0]  = 'All Field Notes';
+        $submenu['edit.php'][10][0] = 'Add New';
     }
 }
-add_action( 'admin_menu', 'twothirds_rename_posts_to_blog' );
+add_action( 'admin_menu', 'twothirds_rename_posts_to_field_notes' );
 
 function twothirds_change_post_object_labels() {
     global $wp_post_types;
     if ( isset( $wp_post_types['post'] ) ) {
         $labels = &$wp_post_types['post']->labels;
-        $labels->name               = 'Blog';
-        $labels->singular_name      = 'Blog Post';
+        $labels->name               = 'Field Notes';
+        $labels->singular_name      = 'Field Note';
         $labels->add_new            = 'Add New';
-        $labels->add_new_item       = 'Add New Blog Post';
-        $labels->edit_item          = 'Edit Blog Post';
-        $labels->new_item           = 'New Blog Post';
-        $labels->view_item          = 'View Blog Post';
-        $labels->search_items       = 'Search Blog Posts';
-        $labels->not_found          = 'No blog posts found';
-        $labels->not_found_in_trash = 'No blog posts found in Trash';
-        $labels->all_items          = 'All Blog Posts';
-        $labels->menu_name          = 'Blog';
-        $labels->name_admin_bar     = 'Blog Post';
+        $labels->add_new_item       = 'Add New Field Note';
+        $labels->edit_item          = 'Edit Field Note';
+        $labels->new_item           = 'New Field Note';
+        $labels->view_item          = 'View Field Note';
+        $labels->search_items       = 'Search Field Notes';
+        $labels->not_found          = 'No field notes found';
+        $labels->not_found_in_trash = 'No field notes found in Trash';
+        $labels->all_items          = 'All Field Notes';
+        $labels->menu_name          = 'Field Notes';
+        $labels->name_admin_bar     = 'Field Note';
     }
 }
 add_action( 'init', 'twothirds_change_post_object_labels' );
 
 /**
- * Set Permalink structure prefix to /blog/%postname%/
+ * Set Permalink structure prefix to /field-notes/%postname%/
  */
 function twothirds_set_blog_permalink_structure() {
-    if ( get_option( 'permalink_structure' ) !== '/blog/%postname%/' ) {
-        update_option( 'permalink_structure', '/blog/%postname%/' );
+    if ( get_option( 'permalink_structure' ) !== '/field-notes/%postname%/' ) {
+        update_option( 'permalink_structure', '/field-notes/%postname%/' );
     }
     flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'twothirds_set_blog_permalink_structure' );
 
 /**
- * Add Meta Box for Blog Post Details
+ * Register Impact Stories Custom Post Type
+ */
+function twothirds_register_impact_stories_cpt() {
+    $labels = array(
+        'name'               => _x( 'Impact Stories', 'post type general name' ),
+        'singular_name'      => _x( 'Impact Story', 'post type singular name' ),
+        'menu_name'          => _x( 'Impact Stories', 'admin menu' ),
+        'name_admin_bar'     => _x( 'Impact Story', 'add new on admin bar' ),
+        'add_new'            => _x( 'Add New', 'impact_story' ),
+        'add_new_item'       => __( 'Add New Impact Story' ),
+        'new_item'           => __( 'New Impact Story' ),
+        'edit_item'          => __( 'Edit Impact Story' ),
+        'view_item'          => __( 'View Impact Story' ),
+        'all_items'          => __( 'All Impact Stories' ),
+        'search_items'       => __( 'Search Impact Stories' ),
+        'not_found'          => __( 'No impact stories found.' ),
+        'not_found_in_trash' => __( 'No impact stories found in Trash.' )
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'impact-story' ),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 28,
+        'menu_icon'          => 'dashicons-format-quote',
+        'supports'           => array( 'title', 'editor', 'thumbnail', 'custom-fields' )
+    );
+
+    register_post_type( 'impact_story', $args );
+}
+add_action( 'init', 'twothirds_register_impact_stories_cpt' );
+
+/**
+ * Add Meta Box for Impact Story Details (Testimonials, designation, initials)
  */
 function twothirds_post_details_meta_boxes() {
     add_meta_box(
         'post_details',
-        __( 'Blog Post Details / Metadata' ),
+        __( 'Impact Story Details / Metadata' ),
         'twothirds_post_details_meta_box_callback',
-        'post', // Target default posts
+        'impact_story', // Target impact stories instead of post
         'normal',
         'high'
     );
@@ -627,38 +667,53 @@ function twothirds_get_or_create_category( $name ) {
 
 /**
  * Automatically insert default blog posts on activation if they don't exist
- */
-function twothirds_insert_default_posts() {
-    // Create categories safely
+ function twothirds_insert_default_posts() {
+    // Create category safely for Field Notes
     $field_diaries_cat = twothirds_get_or_create_category( 'Field Diaries' );
-    $impact_stories_cat = twothirds_get_or_create_category( 'Impact Stories' );
 
-    $default_posts = array(
-        array(
-            'title'        => "Perumathura Days: A Gram Fellow's Exploration of a Coastal Village in Kerala",
-            'name'         => 'perumathura-days',
-            'excerpt'      => "IIT Gandhinagar Gram Fellow Lukman explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
-            'category_id'  => $field_diaries_cat,
-            'quote'        => "Understanding the shore means listening to those who live by its tides.",
-            'author_role'  => "Gram Fellow",
-            'avatar_initials' => "LM",
-            'content'      => "The last three weeks of 2023 marked a profoundly memorable period in my life, providing a remarkable conclusion to the year. As a Gram Fellow from IIT Gandhinagar, I had the privilege of residing in the enchanting coastal village of Perumathura, nestled in the Thiruvananthapuram district of Kerala, located 340 km away from my hometown during the winter break. While initially disheartened about missing out on spending the vacation with my family while my friends did, my time in Perumathura was so fulfilling that it mitigated the longing for my home and village. As an M.A. Society and Culture research student, I am particularly grateful for the invaluable ethnographic experience gained during this stint, made possible through the generosity of the remarkable individuals in this coastal haven. This blog recounts my journey, capturing the essence of my experiences during these weeks in Perumathura."
-        ),
+    // 1. Insert Lukman's Field Note (standard post type)
+    $field_note = array(
+        'title'        => "Perumathura Days: A Gram Fellow's Exploration of a Coastal Village in Kerala",
+        'name'         => 'perumathura-days',
+        'excerpt'      => "IIT Gandhinagar Gram Fellow Lukman explores the peninsula of Perumathura, delving into coastal resilience, community networks, and the fisherfolk's place in the Kerala model of development.",
+        'category_id'  => $field_diaries_cat,
+        'content'      => "The last three weeks of 2023 marked a profoundly memorable period in my life, providing a remarkable conclusion to the year. As a Gram Fellow from IIT Gandhinagar, I had the privilege of residing in the enchanting coastal village of Perumathura, nestled in the Thiruvananthapuram district of Kerala, located 340 km away from my hometown during the winter break. While initially disheartened about missing out on spending the vacation with my family while my friends did, my time in Perumathura was so fulfilling that it mitigated the longing for my home and village. As an M.A. Society and Culture research student, I am particularly grateful for the invaluable ethnographic experience gained during this stint, made possible through the generosity of the remarkable individuals in this coastal haven. This blog recounts my journey, capturing the essence of my experiences during these weeks in Perumathura."
+    );
+
+    $fn_query = new WP_Query( array(
+        'name'        => $field_note['name'],
+        'post_type'   => 'post',
+        'post_status' => 'any',
+        'posts_per_page' => 1
+    ) );
+    if ( ! $fn_query->have_posts() ) {
+        wp_insert_post( array(
+            'post_title'   => $field_note['title'],
+            'post_name'    => $field_note['name'],
+            'post_content' => $field_note['content'],
+            'post_excerpt' => $field_note['excerpt'],
+            'post_status'  => 'publish',
+            'post_type'    => 'post',
+            'post_category' => array( $field_note['category_id'] )
+        ) );
+    }
+    wp_reset_postdata();
+
+    // 2. Insert Impact Stories (CPT 'impact_story')
+    $default_stories = array(
         array(
             'title'        => "A New Light in the Classroom: How Educare Changed My Daughter's Future",
             'name'         => 'fathimas-story',
             'excerpt'      => "Fathima Beevi, a coir worker from Perumathura, speaks about the evening tuition center that helped her daughter excel in reading and arithmetic, changing her school path.",
-            'category_id'  => $impact_stories_cat,
             'quote'        => "Before the evening study center started, my daughter struggled with reading. Now she is the first in her class, and she wants to become a teacher herself.",
             'author_role'  => "Mother & Coir Worker",
             'avatar_initials' => "FB",
-            'content'      => "Living in a coastal hamlet like Perumathura, work options for women are mostly limited to coir spinning or household work. Daily wages are small, and after a long day at the coir unit, it was hard for me to sit down and teach my children. We did not have proper desks, books, or tutors who could help my daughter, Amina, with her school homework. She was falling behind in school, struggling to read simple words in Malayalam and English.\n\nWhen the Two-Thirds Community Foundation opened the local evening Educare study center in our village, Amina started going there every evening. The center provided shepherded support, textbooks, study materials, and enthusiastic mentors who taught in a friendly way. The change was visible in a matter of months."
+            'content'      => "Living in a coastal hamlet like Perumathura, work options for women are mostly limited to coir spinning or household work. Daily wages are small, and after a long day at the coir unit, it was hard for me to sit down and teach my children. We did not have proper desks, books, or tutors who could help my daughter, Amina, with her school homework. She was falling behind in school, struggling to read simple words in Malayalam and English.\n\nWhen the Two-Thirds Community Foundation opened the local evening Educare study center in our village, Amina started going every evening. The center provided shepherded support, textbooks, study materials, and enthusiastic mentors who taught in a friendly way. The change was visible in a matter of months."
         ),
         array(
             'title'        => "Navigating Safely: How the Safety Net Project Saved My Husband at Sea",
             'name'         => 'kunjumons-story',
             'excerpt'      => "Traditional fisherman Kunjumon shares how the safety training and first-aid kits provided by the Safety Net Project helped his crew manage a mid-sea engine crisis.",
-            'category_id'  => $impact_stories_cat,
             'quote'        => "When our boat engine failed 5 miles out, the first-aid training and communication protocols we learned saved our lives. We knew exactly who to call.",
             'author_role'  => "Traditional Fisherman",
             'avatar_initials' => "KM",
@@ -668,7 +723,6 @@ function twothirds_insert_default_posts() {
             'title'        => "From Housewife to Cooperative Leader: The Penma Empowerment Journey",
             'name'         => 'shajithas-story',
             'excerpt'      => "Shajitha explains the journey of Penma Self-Help Group, which enabled coastal women to build their own local dry-fish value-addition brand.",
-            'category_id'  => $impact_stories_cat,
             'quote'        => "We never had our own savings. Today, through our value-addition center, 25 of us are financially independent and managing our own dry-fish brand.",
             'author_role'  => "President, Penma SHG",
             'avatar_initials' => "SJ",
@@ -676,32 +730,28 @@ function twothirds_insert_default_posts() {
         )
     );
 
-    foreach ( $default_posts as $p ) {
-        // Query to check if a post with this slug (post_name) already exists
-        $query_args = array(
-            'name'        => $p['name'],
-            'post_type'   => 'post',
+    foreach ( $default_stories as $story ) {
+        $story_query = new WP_Query( array(
+            'name'        => $story['name'],
+            'post_type'   => 'impact_story',
             'post_status' => 'any',
             'posts_per_page' => 1
-        );
-        $query = new WP_Query( $query_args );
+        ) );
         
-        if ( ! $query->have_posts() ) {
-            // Insert the post
+        if ( ! $story_query->have_posts() ) {
             $post_id = wp_insert_post( array(
-                'post_title'   => $p['title'],
-                'post_name'    => $p['name'],
-                'post_content' => $p['content'],
-                'post_excerpt' => $p['excerpt'],
+                'post_title'   => $story['title'],
+                'post_name'    => $story['name'],
+                'post_content' => $story['content'],
+                'post_excerpt' => $story['excerpt'],
                 'post_status'  => 'publish',
-                'post_type'    => 'post',
-                'post_category' => array( $p['category_id'] )
+                'post_type'    => 'impact_story'
             ) );
             
             if ( $post_id && ! is_wp_error( $post_id ) ) {
-                update_post_meta( $post_id, 'impact_quote', $p['quote'] );
-                update_post_meta( $post_id, 'author_role', $p['author_role'] );
-                update_post_meta( $post_id, 'avatar_initials', $p['avatar_initials'] );
+                update_post_meta( $post_id, 'impact_quote', $story['quote'] );
+                update_post_meta( $post_id, 'author_role', $story['author_role'] );
+                update_post_meta( $post_id, 'avatar_initials', $story['avatar_initials'] );
             }
         }
         wp_reset_postdata();
