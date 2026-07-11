@@ -1847,28 +1847,28 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
 
             <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#2DD4BF]">
                 <CountUp target={8} suffix="+" />
               </h3>
               <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Years of Local trust</p>
             </div>
 
             <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#2DD4BF]">
                 <CountUp target={10} suffix="+" />
               </h3>
               <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Collaborations</p>
             </div>
 
             <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#2DD4BF]">
                 <CountUp target={5} suffix="+" />
               </h3>
               <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Hamlets Co-Created</p>
             </div>
 
             <div className="space-y-1">
-              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-secondary">
+              <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#2DD4BF]">
                 <CountUp target={120} suffix="+" />
               </h3>
               <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Women Mentored</p>
@@ -1876,7 +1876,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
             <div className="grid col-span-2 md:col-span-1 place-content-center pt-2 md:pt-0">
               <div className="space-y-1">
-                <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#14B8A6]">
+                <h3 className="font-display font-extrabold text-3xl sm:text-5xl text-[#2DD4BF]">
                   <CountUp target={600} suffix="+" />
                 </h3>
                 <p className="text-[10px] uppercase font-mono tracking-widest text-[#E0F2FE]/80">Students Guided</p>
