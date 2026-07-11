@@ -1927,7 +1927,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         <div className="h-screen pointer-events-none" />
 
         {/* Wave Splash Transition Divider (Sitting exactly at the bottom of Hero / top of About section, covering fixed content behind) */}
-        <div className="relative w-full h-[120px] sm:h-[180px] -mt-[120px] sm:-mt-[180px] overflow-visible pointer-events-none z-30 select-none bg-transparent">
+        <div className="relative w-full h-[160px] sm:h-[240px] -mt-[200px] sm:-mt-[300px] overflow-visible pointer-events-none z-30 select-none bg-transparent">
           <img
             src={waveSplash}
             alt="Wave Splash Foam Divider"
@@ -2657,10 +2657,10 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               className="w-12 h-12 object-contain rounded-xl border border-stone-200/80 bg-white p-1 transition-transform group-hover:scale-105 shadow-sm"
             />
             <div className="flex flex-col">
-              <span className="font-display font-black text-xl tracking-tight bg-gradient-to-r from-primary via-[#0A5F8F] to-[#D05A3F] bg-clip-text text-transparent leading-none drop-shadow-sm group-hover:from-[#0A5F8F] group-hover:to-secondary transition-all duration-300">
+              <span className={`font-display font-black text-xl tracking-tight bg-gradient-to-r ${isScrolled ? "from-primary via-[#0A5F8F] to-[#D05A3F]" : "from-white via-[#FFB076] to-white/95"} bg-clip-text text-transparent leading-none drop-shadow-sm group-hover:opacity-85 transition-all duration-300`}>
                 Two-Thirds
               </span>
-              <span className="text-[8px] sm:text-[9px] font-sans font-extrabold tracking-[0.2em] text-secondary uppercase leading-none mt-1 flex items-center gap-1">
+              <span className={`text-[8px] sm:text-[9px] font-sans font-extrabold tracking-[0.2em] uppercase leading-none mt-1 flex items-center gap-1 transition-colors duration-300 ${isScrolled ? "text-secondary" : "text-white/80"}`}>
                 Community Foundation
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan inline-block animate-pulse"></span>
               </span>
@@ -2668,7 +2668,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-8 font-sans font-medium text-sm text-[#003B5C]">
+          <div className={`hidden md:flex items-center gap-8 font-sans font-medium text-sm transition-colors duration-300 ${isScrolled ? "text-[#003B5C]" : "text-white"}`}>
             <a
               href="#"
               onClick={(e) => {
@@ -2676,7 +2676,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
                 setCurrentView("home");
                 window.location.hash = "";
               }}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "home" ? "text-secondary border-b-2 border-secondary" : ""}`}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "home" ? (isScrolled ? "text-secondary border-b-2 border-secondary" : "text-[#FFB076] border-b-2 border-[#FFB076]") : ""}`}
             >
               Home
             </a>
@@ -2684,7 +2684,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             <a
               href="#about-us"
               onClick={() => setCurrentView("about-us")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "about-us" ? "text-secondary border-b-2 border-secondary" : ""}`}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "about-us" ? (isScrolled ? "text-secondary border-b-2 border-secondary" : "text-[#FFB076] border-b-2 border-[#FFB076]") : ""}`}
             >
               About Us
             </a>
@@ -2696,7 +2696,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               onMouseLeave={() => setIsProgDropdownOpen(false)}
             >
               <button
-                className={`hover:text-secondary transition-colors font-bold flex items-center gap-1.5 pb-2 pt-2 cursor-pointer ${["educare", "women-empowerment", "environment", "health"].includes(currentView) ? "text-secondary border-b-2 border-secondary" : ""}`}
+                className={`hover:text-secondary transition-colors font-bold flex items-center gap-1.5 pb-2 pt-2 cursor-pointer ${["educare", "women-empowerment", "environment", "health"].includes(currentView) ? (isScrolled ? "text-secondary border-b-2 border-secondary" : "text-[#FFB076] border-b-2 border-[#FFB076]") : ""}`}
               >
                 Programmes
                 <svg className="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ transform: isProgDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
@@ -2749,7 +2749,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
             <a
               href="#team"
               onClick={() => setCurrentView("team")}
-              className={`hover:text-secondary transition-colors font-bold ${currentView === "team" ? "text-secondary border-b-2 border-secondary" : ""}`}
+              className={`hover:text-secondary transition-colors font-bold ${currentView === "team" ? (isScrolled ? "text-secondary border-b-2 border-secondary" : "text-[#FFB076] border-b-2 border-[#FFB076]") : ""}`}
             >
               Our Team
             </a>
@@ -2767,7 +2767,7 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
           <div className="flex md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-primary hover:text-secondary focus:outline-none"
+              className={`transition-colors duration-300 ${isScrolled ? "text-primary" : "text-white"} hover:text-secondary focus:outline-none`}
               aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
