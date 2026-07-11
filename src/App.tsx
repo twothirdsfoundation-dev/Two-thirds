@@ -2114,19 +2114,23 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* 7. Programs Section (Scroll Synchronized Focus Areas) */}
-      <section id="programs" className="py-24 bg-surface-low border-y border-stone-200/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {/* 7. Programs Section (Scroll Synchronized Focus Areas - Redesigned to Immersive Deep Ocean Theme) */}
+      <section id="programs" className="py-24 bg-gradient-to-b from-[#021B2A] via-[#05324E] to-[#0A2637] border-y border-stone-900/60 relative overflow-hidden z-20 text-white">
+        {/* Ambient underwater floating lights */}
+        <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none z-0" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 rounded-full bg-primary-light/10 blur-3xl pointer-events-none z-0" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
 
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-primary font-mono text-xs font-bold uppercase tracking-wider">
+            <span className="inline-block text-accent-cyan font-mono text-xs font-bold uppercase tracking-wider">
               Operational Focus
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
               Strategic Focus Areas
             </h2>
-            <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
+            <div className="w-16 h-1 bg-accent-cyan mx-auto rounded-full" />
+            <p className="text-stone-300 text-sm">
               Hover over the carousel to pause cycling. Tap on indicators to skip, or swipe the cards directly.
             </p>
           </div>
@@ -2138,15 +2142,14 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 key={area.id}
                 onClick={() => handlePillClick(idx)}
                 className={`px-4 py-2 text-xs font-display font-bold rounded-full border transition-all cursor-pointer flex items-center justify-center ${activeCardIndex === idx
-                  ? "bg-primary border-primary text-white shadow-md"
-                  : "bg-white border-stone-200 text-[#003B5C] hover:bg-stone-50"
+                  ? "bg-accent-cyan border-accent-cyan text-[#00263C] shadow-lg shadow-accent-cyan/20 font-bold"
+                  : "bg-white/5 border-white/10 text-white/80 hover:bg-white/10"
                   }`}
               >
-                <area.icon className="w-4 h-4 mr-1.5 inline-block shrink-0" />
+                <area.icon className={`w-4 h-4 mr-1.5 inline-block shrink-0 ${activeCardIndex === idx ? "text-[#00263C]" : "text-white/60"}`} />
                 {area.title.split(" ")[0]}
               </button>
             ))}
-
           </div>
 
           {/* Horizontal scroll container with snap */}
@@ -2173,36 +2176,36 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                   }}
                   className="w-[70vw] md:w-[60vw] max-w-[750px] shrink-0 snap-center"
                 >
-                  <div className="bg-white rounded-3xl shadow-lg border border-stone-100 overflow-hidden grid md:grid-cols-12 h-auto md:h-[380px]">
+                  <div className="bg-[#0c2333]/85 backdrop-blur-xl rounded-3xl shadow-xl border border-white/10 overflow-hidden grid md:grid-cols-12 h-auto md:h-[400px] text-white transition-all duration-300 hover:border-accent-cyan/30 hover:shadow-2xl hover:shadow-accent-cyan/5">
 
                     {/* Left Column: Details */}
-                    <div className="p-8 md:col-span-7 flex flex-col justify-between text-left space-y-6">
+                    <div className="p-8 md:col-span-7 flex flex-col justify-between text-left space-y-6 relative z-10">
                       <div className="space-y-3">
                         <div className="flex items-center gap-3">
-                          <div className="p-2.5 bg-stone-50 rounded-xl border border-stone-100/80 text-primary">
-                            <area.icon className="w-6 h-6 text-primary" />
+                          <div className="p-2.5 bg-white/5 rounded-xl border border-white/10 text-accent-cyan">
+                            <area.icon className="w-6 h-6 text-accent-cyan" />
                           </div>
-                          <a href={`#${area.id}`} className="hover:text-secondary hover:underline transition-all">
-                            <h4 className="font-display font-bold text-lg text-[#003B5C]">{area.title}</h4>
+                          <a href={`#${area.id}`} className="hover:text-accent-cyan transition-all">
+                            <h4 className="font-display font-bold text-lg text-white">{area.title}</h4>
                           </a>
                         </div>
-                        <p className="text-[10px] font-mono tracking-wider font-bold text-secondary uppercase">
+                        <p className="text-[10px] font-mono tracking-wider font-bold text-accent-cyan uppercase">
                           {area.tagline}
                         </p>
-                        <p className="text-xs text-stone-600 leading-relaxed font-sans">
+                        <p className="text-xs text-stone-300 leading-relaxed font-sans">
                           {area.description}
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-[#E0F2FE]/40 border-l-4 border-primary">
-                        <span className="font-mono font-bold text-[9px] uppercase text-primary tracking-wider block">Accomplished status:</span>
-                        <p className="text-xs font-semibold text-stone-800 mt-1">{area.accomplishments}</p>
+                      <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan">
+                        <span className="font-mono font-bold text-[9px] uppercase text-accent-cyan tracking-wider block">Accomplished status:</span>
+                        <p className="text-xs font-semibold text-stone-200 mt-1">{area.accomplishments}</p>
                       </div>
 
                       <div className="pt-1">
                         <a
                           href={`#${area.id}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary group transition-colors uppercase tracking-wider font-display"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-accent-cyan hover:text-white group transition-colors uppercase tracking-wider font-display"
                         >
                           Explore Full Initiative
                           <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -2211,13 +2214,13 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                     </div>
 
                     {/* Right Column: Image */}
-                    <div className="bg-stone-100 md:col-span-5 relative h-48 md:h-full">
+                    <div className="bg-stone-950 md:col-span-5 relative h-48 md:h-full">
                       <img
                         src={area.image}
                         alt={area.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover opacity-90"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0c2333] via-[#0c2333]/30 to-transparent pointer-events-none" />
                     </div>
 
                   </div>
@@ -2229,14 +2232,14 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 hidden md:flex justify-between px-2 pointer-events-none">
               <button
                 onClick={() => scrollPrev()}
-                className="w-10 h-10 rounded-full bg-white shadow-md border border-stone-200 flex items-center justify-center text-primary hover:text-secondary cursor-pointer pointer-events-auto active:scale-90 transition-transform"
+                className="w-10 h-10 rounded-full bg-[#0c2333]/90 border border-white/10 flex items-center justify-center text-white hover:text-accent-cyan hover:border-accent-cyan/30 cursor-pointer pointer-events-auto active:scale-90 transition-transform shadow-md"
                 aria-label="Previous Slide"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={() => scrollNext()}
-                className="w-10 h-10 rounded-full bg-white shadow-md border border-stone-200 flex items-center justify-center text-primary hover:text-secondary cursor-pointer pointer-events-auto active:scale-90 transition-transform"
+                className="w-10 h-10 rounded-full bg-[#0c2333]/90 border border-white/10 flex items-center justify-center text-white hover:text-accent-cyan hover:border-accent-cyan/30 cursor-pointer pointer-events-auto active:scale-90 transition-transform shadow-md"
                 aria-label="Next Slide"
               >
                 <ChevronRight className="w-5 h-5" />
