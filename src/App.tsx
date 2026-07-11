@@ -1636,7 +1636,6 @@ interface HomePageProps {
 
 function HomePage({ setCurrentView, areas }: HomePageProps) {
   const [scrollTop, setScrollTop] = useState(() => typeof window !== "undefined" ? window.scrollY : 0);
-  const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Programs Split-Showcase State
   const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -1647,23 +1646,6 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           setScrollTop(window.scrollY);
-
-          // Mobile scroll-spy accordion logic
-          if (window.innerWidth < 1024) {
-            const threshold = window.innerHeight * 0.45;
-            let activeIdx = 0;
-            for (let i = 0; i < areas.length; i++) {
-              const card = mobileCardRefs.current[i];
-              if (card) {
-                const rect = card.getBoundingClientRect();
-                if (rect.top <= threshold) {
-                  activeIdx = i;
-                }
-              }
-            }
-            setActiveCardIndex(activeIdx);
-          }
-
           ticking = false;
         });
         ticking = true;
@@ -1671,7 +1653,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [areas.length]);
+  }, []);
 
   const yTextParallax = (scrollTop || 0) * -0.4;
   const textOpacityParallax = Math.max(0, 1 - (scrollTop || 0) / 400);
@@ -2020,88 +2002,65 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
               </div>
             </div>
 
-            {/* 2. Mobile & Tablet View (Interactive Accordion Stack - visible on mobile/tablet) */}
-            <div className="lg:hidden flex flex-col gap-4 max-w-2xl mx-auto">
-              {areas.map((area, idx) => {
-                const isOpen = activeCardIndex === idx;
-                return (
-                  <div
-                    key={area.id}
-                    ref={(el) => { mobileCardRefs.current[idx] = el; }}
-                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                      isOpen
-                        ? "bg-[#0c2333]/95 border-accent-cyan/40 shadow-lg shadow-accent-cyan/5 text-white"
-                        : "bg-white/5 border-white/5 text-stone-300"
-                    }`}
-                  >
-                    {/* Accordion Trigger Header */}
-                    <button
-                      onClick={() => setActiveCardIndex(idx)}
-                      className="w-full flex items-center justify-between p-5 text-left cursor-pointer focus:outline-none"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={`p-2.5 rounded-xl transition-colors duration-300 ${isOpen ? "bg-accent-cyan text-[#00263C]" : "bg-white/5 text-stone-400"}`}>
-                          <area.icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <span className="font-display font-bold text-base text-white">{area.title}</span>
-                          <p className="text-[10px] text-stone-400 mt-0.5">{area.tagline}</p>
-                        </div>
-                      </div>
-                      <span className={`font-mono text-xs font-bold ${isOpen ? "text-accent-cyan" : "text-stone-500"}`}>
-                        0{idx + 1}
-                      </span>
-                    </button>
-
-                    {/* Accordion Expansion Panel */}
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                        >
-                          <div className="px-5 pb-5 pt-2 border-t border-white/5 space-y-4 text-left">
-                            <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                              {area.description}
-                            </p>
-
-                            <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan space-y-1">
-                              <span className="font-mono font-bold text-[8px] uppercase text-accent-cyan tracking-wider block">
-                                Key Focus & Status:
-                              </span>
-                              <p className="text-xs font-semibold text-stone-200">
-                                {area.accomplishments}
-                              </p>
-                            </div>
-
-                            <div className="h-40 rounded-xl overflow-hidden relative">
-                              <img
-                                src={area.image}
-                                alt={area.title}
-                                className="w-full h-full object-cover"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-[#0c2333] via-transparent to-transparent pointer-events-none" />
-                            </div>
-
-                            <div className="pt-2">
-                              <a
-                                href={`#${area.id}`}
-                                onClick={(e) => { e.preventDefault(); setCurrentView(area.id as any); }}
-                                className="inline-flex items-center gap-1.5 text-xs font-bold text-accent-cyan hover:text-white transition-colors uppercase tracking-wider font-display"
-                              >
-                                Explore Full Initiative
-                                <ChevronRight className="w-4 h-4" />
-                              </a>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+            {/* 2. Mobile & Tablet View (Horizontal Scroll Snap Stack - always open, image above details) */}
+            <div className="lg:hidden flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 px-6 scrollbar-none">
+              {areas.map((area, idx) => (
+                <div
+                  key={area.id}
+                  className="w-[82vw] max-w-[320px] shrink-0 snap-center bg-[#0c2333]/95 border border-white/10 rounded-3xl overflow-hidden text-white flex flex-col shadow-2xl shadow-accent-cyan/5 text-left"
+                >
+                  {/* Image placed above the program details */}
+                  <div className="h-44 w-full relative overflow-hidden shrink-0">
+                    <img
+                      src={area.image}
+                      alt={area.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c2333]/90 to-transparent pointer-events-none" />
+                    <span className="absolute top-4 right-4 font-mono text-xs font-bold text-accent-cyan bg-[#00263C]/80 px-2 py-1 rounded-md">
+                      0{idx + 1}
+                    </span>
                   </div>
-                );
-              })}
+
+                  {/* Program details */}
+                  <div className="p-5 flex flex-col justify-between flex-1 space-y-4">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <area.icon className="w-4 h-4 text-accent-cyan shrink-0" />
+                        <span className="font-mono text-[9px] font-extrabold tracking-widest text-accent-cyan uppercase truncate">
+                          {area.tagline}
+                        </span>
+                      </div>
+                      <h3 className="font-display font-bold text-base sm:text-lg text-white leading-tight">
+                        {area.title}
+                      </h3>
+                      <p className="text-xs text-stone-300 leading-relaxed font-sans line-clamp-4">
+                        {area.description}
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-white/5 border-l-4 border-accent-cyan space-y-0.5">
+                      <span className="font-mono font-bold text-[8px] uppercase text-accent-cyan tracking-wider block">
+                        Focus & Status:
+                      </span>
+                      <p className="text-[11px] font-medium text-stone-200 leading-tight">
+                        {area.accomplishments}
+                      </p>
+                    </div>
+
+                    <div className="pt-1">
+                      <a
+                        href={`#${area.id}`}
+                        onClick={(e) => { e.preventDefault(); setCurrentView(area.id as any); }}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-accent-cyan hover:text-white transition-colors uppercase tracking-wider font-display"
+                      >
+                        Explore Full Initiative
+                        <ChevronRight className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
