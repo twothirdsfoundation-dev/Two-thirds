@@ -1939,7 +1939,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
 
         {/* 4. About Section */}
-        <section id="about" className="pt-24 pb-0 bg-white border-b border-stone-200/30 relative overflow-hidden z-20">
+        <section id="about" className="pt-24 pb-0 bg-white relative overflow-hidden z-20">
           {/* Decorative fish-school illustrations in the background edges */}
           <div className="absolute top-10 left-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
             <svg className="w-full h-full fill-current" viewBox="0 0 200 200">
@@ -2017,7 +2017,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center pt-10 pb-0">
             <div className="space-y-6 max-w-3xl mx-auto">
               <span className="font-mono text-xs font-bold tracking-widest text-[#e8935a] uppercase block">
                 ABOUT US
@@ -2048,7 +2048,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </div>
 
             {/* Large Fish/Boat transition divider illustration at the bottom of the section */}
-            <div className="max-w-5xl mx-auto mt-20 px-4 opacity-90 select-none pointer-events-none">
+            <div className="max-w-5xl mx-auto mt-20 px-4 opacity-90 select-none pointer-events-none -mb-[18px]">
               <img
                 src={elementsFish}
                 alt="Fish school transition divider"
