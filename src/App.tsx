@@ -7,7 +7,6 @@ import {
   X,
   Landmark,
   ChevronRight,
-  ChevronLeft,
   BookOpen,
   Anchor,
   Fish,
@@ -1656,234 +1655,8 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
   const yTextParallax = (scrollTop || 0) * -0.4;
   const textOpacityParallax = Math.max(0, 1 - (scrollTop || 0) / 400);
 
-  // Programs Carousel Synchronization Ref & States
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const programRefs = useRef<(HTMLDivElement | null)[]>([]);
+  // Programs Split-Showcase State
   const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
-  const isProgrammaticScrollRef = useRef(false);
-
-  // Custom pill navigation click
-  const handlePillClick = (index: number) => {
-    setActiveCardIndex(index);
-    const container = scrollContainerRef.current;
-    const N = areas.length;
-    const target = programRefs.current[N + index]; // Target the middle set for stability
-    if (container && target) {
-      isProgrammaticScrollRef.current = true;
-      container.scrollTo({
-        left: target.offsetLeft - container.offsetLeft - (container.clientWidth - target.clientWidth) / 2,
-        behavior: "smooth"
-      });
-      setTimeout(() => {
-        isProgrammaticScrollRef.current = false;
-      }, 500);
-    }
-  };
-
-  const scrollNext = () => {
-    const container = scrollContainerRef.current;
-    if (!container || isProgrammaticScrollRef.current) return;
-
-    const scrollLeft = container.scrollLeft;
-    const clientWidth = container.clientWidth;
-    const N = areas.length;
-
-    // Find the current physical closest index
-    let closestIndex = N;
-    let minDistance = Infinity;
-    programRefs.current.forEach((el, index) => {
-      if (el) {
-        const elCenter = el.offsetLeft + el.clientWidth / 2;
-        const containerCenter = scrollLeft + clientWidth / 2;
-        const distance = Math.abs(elCenter - containerCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = index;
-        }
-      }
-    });
-
-    const nextPhysicalIndex = closestIndex + 1;
-    const target = programRefs.current[nextPhysicalIndex];
-    const firstCard = programRefs.current[0];
-    const middleCard = programRefs.current[N];
-
-    if (target && firstCard && middleCard) {
-      const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
-      isProgrammaticScrollRef.current = true;
-
-      container.scrollTo({
-        left: target.offsetLeft - container.offsetLeft - (container.clientWidth - target.clientWidth) / 2,
-        behavior: "smooth"
-      });
-
-      // After the animation finishes, check if we need to wrap silently
-      setTimeout(() => {
-        if (!container) {
-          isProgrammaticScrollRef.current = false;
-          return;
-        }
-
-        if (nextPhysicalIndex >= 2 * N) {
-          container.style.scrollBehavior = "auto";
-          container.scrollLeft -= setWidth;
-          setTimeout(() => {
-            if (container) container.style.scrollBehavior = "smooth";
-          }, 15);
-          setActiveCardIndex((nextPhysicalIndex - N) % N);
-        } else {
-          setActiveCardIndex(nextPhysicalIndex % N);
-        }
-
-        isProgrammaticScrollRef.current = false;
-      }, 500);
-    }
-  };
-
-  const scrollPrev = () => {
-    const container = scrollContainerRef.current;
-    if (!container || isProgrammaticScrollRef.current) return;
-
-    const scrollLeft = container.scrollLeft;
-    const clientWidth = container.clientWidth;
-    const N = areas.length;
-
-    // Find the current physical closest index
-    let closestIndex = N;
-    let minDistance = Infinity;
-    programRefs.current.forEach((el, index) => {
-      if (el) {
-        const elCenter = el.offsetLeft + el.clientWidth / 2;
-        const containerCenter = scrollLeft + clientWidth / 2;
-        const distance = Math.abs(elCenter - containerCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = index;
-        }
-      }
-    });
-
-    const prevPhysicalIndex = closestIndex - 1;
-    const target = programRefs.current[prevPhysicalIndex];
-    const firstCard = programRefs.current[0];
-    const middleCard = programRefs.current[N];
-
-    if (target && firstCard && middleCard) {
-      const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
-      isProgrammaticScrollRef.current = true;
-
-      container.scrollTo({
-        left: target.offsetLeft - container.offsetLeft - (container.clientWidth - target.clientWidth) / 2,
-        behavior: "smooth"
-      });
-
-      // After the animation finishes, check if we need to wrap silently
-      setTimeout(() => {
-        if (!container) {
-          isProgrammaticScrollRef.current = false;
-          return;
-        }
-
-        if (prevPhysicalIndex < N) {
-          container.style.scrollBehavior = "auto";
-          container.scrollLeft += setWidth;
-          setTimeout(() => {
-            if (container) container.style.scrollBehavior = "smooth";
-          }, 15);
-          setActiveCardIndex((prevPhysicalIndex - N + N) % N);
-        } else {
-          setActiveCardIndex(prevPhysicalIndex % N);
-        }
-
-        isProgrammaticScrollRef.current = false;
-      }, 500);
-    }
-  };
-
-  // Sync scroll positioning to update active pill indicator
-  const handleScroll = () => {
-    const container = scrollContainerRef.current;
-    if (!container || isProgrammaticScrollRef.current) return;
-
-    const scrollLeft = container.scrollLeft;
-    const clientWidth = container.clientWidth;
-    const N = areas.length;
-
-    // Find the physical card closest to container center
-    let closestIndex = N;
-    let minDistance = Infinity;
-    programRefs.current.forEach((el, index) => {
-      if (el) {
-        const elCenter = el.offsetLeft + el.clientWidth / 2;
-        const containerCenter = scrollLeft + clientWidth / 2;
-        const distance = Math.abs(elCenter - containerCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = index;
-        }
-      }
-    });
-
-    // Silently wrap scroll if user goes outside [N, 2N - 1]
-    const firstCard = programRefs.current[0];
-    const middleCard = programRefs.current[N];
-    if (firstCard && middleCard) {
-      const setWidth = middleCard.offsetLeft - firstCard.offsetLeft;
-
-      if (closestIndex < N) {
-        // Scrolled too far left -> wrap to right
-        container.style.scrollBehavior = "auto";
-        container.scrollLeft += setWidth;
-        setTimeout(() => {
-          if (container) container.style.scrollBehavior = "smooth";
-        }, 15);
-        setActiveCardIndex((closestIndex - N + N) % N);
-      } else if (closestIndex >= 2 * N) {
-        // Scrolled too far right -> wrap to left
-        container.style.scrollBehavior = "auto";
-        container.scrollLeft -= setWidth;
-        setTimeout(() => {
-          if (container) container.style.scrollBehavior = "smooth";
-        }, 15);
-        setActiveCardIndex((closestIndex - N) % N);
-      } else {
-        setActiveCardIndex(closestIndex % N);
-      }
-    }
-  };
-
-  // Infinite cycle interval
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isCarouselHovered && !isProgrammaticScrollRef.current) {
-        scrollNext();
-      }
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isCarouselHovered]);
-
-  // On mount, scroll to the middle set
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const container = scrollContainerRef.current;
-      const N = areas.length;
-      const target = programRefs.current[N]; // Index of middle first card
-      if (container && target) {
-        container.style.scrollBehavior = "auto";
-        container.scrollLeft = target.offsetLeft - container.offsetLeft - (container.clientWidth - target.clientWidth) / 2;
-        setTimeout(() => {
-          if (container) container.style.scrollBehavior = "smooth";
-        }, 15);
-      }
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-
-
-
-  const duplicatedAreas = [...areas, ...areas, ...areas];
 
   return (
     <>
@@ -2114,7 +1887,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* 7. Programs Section (Scroll Synchronized Focus Areas - Redesigned to Immersive Deep Ocean Theme) */}
+      {/* 7. Programs Section (Scroll Synchronized Focus Areas - Redesigned to Immersive Split-Showcase Dashboard) */}
       <section id="programs" className="py-24 bg-gradient-to-b from-[#021B2A] via-[#05324E] to-[#0A2637] border-y border-stone-900/60 relative overflow-hidden z-20 text-white">
         {/* Ambient underwater floating lights */}
         <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none z-0" />
@@ -2131,119 +1904,98 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </h2>
             <div className="w-16 h-1 bg-accent-cyan mx-auto rounded-full" />
             <p className="text-stone-300 text-sm">
-              Hover over the carousel to pause cycling. Tap on indicators to skip, or swipe the cards directly.
+              Select any operational domain below to dive into our core initiatives and strategic focus areas.
             </p>
           </div>
 
-          {/* Sync Indicators/Thumbnails Row */}
-          <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
-            {areas.map((area, idx) => (
-              <button
-                key={area.id}
-                onClick={() => handlePillClick(idx)}
-                className={`px-4 py-2 text-xs font-display font-bold rounded-full border transition-all cursor-pointer flex items-center justify-center ${activeCardIndex === idx
-                  ? "bg-accent-cyan border-accent-cyan text-[#00263C] shadow-lg shadow-accent-cyan/20 font-bold"
-                  : "bg-white/5 border-white/10 text-white/80 hover:bg-white/10"
+          {/* Interactive Split Showcase */}
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch max-w-7xl mx-auto">
+            {/* Left: Tab selection list (Horizontal scrollbar on mobile, vertical list on desktop) */}
+            <div className="flex flex-row overflow-x-auto lg:flex-col gap-4 pb-4 lg:pb-0 scrollbar-none shrink-0 lg:col-span-4 justify-start lg:justify-center">
+              {areas.map((area, idx) => (
+                <button
+                  key={area.id}
+                  onClick={() => setActiveCardIndex(idx)}
+                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 cursor-pointer group shrink-0 max-w-[280px] lg:max-w-none ${activeCardIndex === idx
+                    ? "bg-white/10 border-accent-cyan/40 shadow-lg shadow-accent-cyan/5 text-white"
+                    : "bg-white/5 border-white/5 text-stone-300 hover:bg-white/10 hover:border-white/10"
                   }`}
-              >
-                <area.icon className={`w-4 h-4 mr-1.5 inline-block shrink-0 ${activeCardIndex === idx ? "text-[#00263C]" : "text-white/60"}`} />
-                {area.title.split(" ")[0]}
-              </button>
-            ))}
-          </div>
-
-          {/* Horizontal scroll container with snap */}
-          <div
-            className="relative"
-            onMouseEnter={() => setIsCarouselHovered(true)}
-            onMouseLeave={() => setIsCarouselHovered(false)}
-            onMouseDown={() => setIsCarouselHovered(true)}
-            onMouseUp={() => setIsCarouselHovered(false)}
-            onTouchStart={() => setIsCarouselHovered(true)}
-            onTouchEnd={() => setIsCarouselHovered(false)}
-          >
-            <div
-              ref={scrollContainerRef}
-              onScroll={handleScroll}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-8 px-[15vw] md:px-[20vw] scrollbar-none"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              {duplicatedAreas.map((area, idx) => (
-                <div
-                  key={`${area.id}-${idx}`}
-                  ref={(el) => {
-                    programRefs.current[idx] = el;
-                  }}
-                  className="w-[70vw] md:w-[60vw] max-w-[750px] shrink-0 snap-center"
                 >
-                  <div className="bg-[#0c2333]/85 backdrop-blur-xl rounded-3xl shadow-xl border border-white/10 overflow-hidden grid md:grid-cols-12 h-auto md:h-[400px] text-white transition-all duration-300 hover:border-accent-cyan/30 hover:shadow-2xl hover:shadow-accent-cyan/5">
-
-                    {/* Left Column: Details */}
-                    <div className="p-8 md:col-span-7 flex flex-col justify-between text-left space-y-6 relative z-10">
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2.5 bg-white/5 rounded-xl border border-white/10 text-accent-cyan">
-                            <area.icon className="w-6 h-6 text-accent-cyan" />
-                          </div>
-                          <a href={`#${area.id}`} className="hover:text-accent-cyan transition-all">
-                            <h4 className="font-display font-bold text-lg text-white">{area.title}</h4>
-                          </a>
-                        </div>
-                        <p className="text-[10px] font-mono tracking-wider font-bold text-accent-cyan uppercase">
-                          {area.tagline}
-                        </p>
-                        <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                          {area.description}
-                        </p>
-                      </div>
-
-                      <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan">
-                        <span className="font-mono font-bold text-[9px] uppercase text-accent-cyan tracking-wider block">Accomplished status:</span>
-                        <p className="text-xs font-semibold text-stone-200 mt-1">{area.accomplishments}</p>
-                      </div>
-
-                      <div className="pt-1">
-                        <a
-                          href={`#${area.id}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-accent-cyan hover:text-white group transition-colors uppercase tracking-wider font-display"
-                        >
-                          Explore Full Initiative
-                          <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Right Column: Image */}
-                    <div className="bg-stone-950 md:col-span-5 relative h-48 md:h-full">
-                      <img
-                        src={area.image}
-                        alt={area.title}
-                        className="w-full h-full object-cover opacity-90"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0c2333] via-[#0c2333]/30 to-transparent pointer-events-none" />
-                    </div>
-
+                  <div className={`p-3 rounded-xl transition-colors duration-300 ${activeCardIndex === idx ? "bg-accent-cyan text-[#00263C]" : "bg-white/5 text-stone-400 group-hover:text-white"}`}>
+                    <area.icon className="w-5 h-5" />
                   </div>
-                </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="font-display font-bold text-sm sm:text-base truncate mr-2">{area.title}</span>
+                      <span className={`font-mono text-[10px] font-bold tracking-wider ${activeCardIndex === idx ? "text-accent-cyan" : "text-stone-500"}`}>
+                        0{idx + 1}
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-stone-400 truncate mt-0.5">{area.tagline}</p>
+                  </div>
+                </button>
               ))}
             </div>
 
-            {/* Carousel navigation arrows */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 hidden md:flex justify-between px-2 pointer-events-none">
-              <button
-                onClick={() => scrollPrev()}
-                className="w-10 h-10 rounded-full bg-[#0c2333]/90 border border-white/10 flex items-center justify-center text-white hover:text-accent-cyan hover:border-accent-cyan/30 cursor-pointer pointer-events-auto active:scale-90 transition-transform shadow-md"
-                aria-label="Previous Slide"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => scrollNext()}
-                className="w-10 h-10 rounded-full bg-[#0c2333]/90 border border-white/10 flex items-center justify-center text-white hover:text-accent-cyan hover:border-accent-cyan/30 cursor-pointer pointer-events-auto active:scale-90 transition-transform shadow-md"
-                aria-label="Next Slide"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+            {/* Right: Detailed Showcase Panel with Framer Motion slide-fade transition */}
+            <div className="lg:col-span-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCardIndex}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.25 }}
+                  className="bg-[#0c2333]/95 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden grid md:grid-cols-12 h-full min-h-[420px] shadow-2xl shadow-accent-cyan/5 text-white text-left"
+                >
+                  {/* Details column */}
+                  <div className="p-8 md:col-span-7 flex flex-col justify-between space-y-6 relative z-10">
+                    <div className="space-y-4">
+                      <div className="space-y-1">
+                        <span className="font-mono text-[10px] font-extrabold tracking-widest text-accent-cyan uppercase">
+                          {areas[activeCardIndex].tagline}
+                        </span>
+                        <h3 className="font-display font-bold text-2xl sm:text-3xl text-white leading-tight">
+                          {areas[activeCardIndex].title}
+                        </h3>
+                      </div>
+                      <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
+                        {areas[activeCardIndex].description}
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan space-y-1">
+                      <span className="font-mono font-bold text-[9px] uppercase text-accent-cyan tracking-wider block">
+                        Key Focus & Status:
+                      </span>
+                      <p className="text-xs font-semibold text-stone-200">
+                        {areas[activeCardIndex].accomplishments}
+                      </p>
+                    </div>
+
+                    <div>
+                      <a
+                        href={`#${areas[activeCardIndex].id}`}
+                        onClick={(e) => { e.preventDefault(); setCurrentView(areas[activeCardIndex].id as any); }}
+                        className="inline-flex items-center gap-2 text-xs font-bold text-accent-cyan hover:text-white transition-colors group uppercase tracking-wider font-display"
+                      >
+                        Explore Full Initiative
+                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Full image column */}
+                  <div className="bg-stone-950 md:col-span-5 relative h-48 md:h-full overflow-hidden">
+                    <img
+                      src={areas[activeCardIndex].image}
+                      alt={areas[activeCardIndex].title}
+                      className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0c2333] via-[#0c2333]/20 to-transparent pointer-events-none" />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
 
