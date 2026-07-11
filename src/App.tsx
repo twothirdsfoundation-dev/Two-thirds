@@ -1909,96 +1909,182 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           </div>
 
           {/* Interactive Split Showcase */}
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch max-w-7xl mx-auto">
-            {/* Left: Tab selection list (Horizontal scrollbar on mobile, vertical list on desktop) */}
-            <div className="flex flex-row overflow-x-auto lg:flex-col gap-4 pb-4 lg:pb-0 scrollbar-none shrink-0 lg:col-span-4 justify-start lg:justify-center">
-              {areas.map((area, idx) => (
-                <button
-                  key={area.id}
-                  onClick={() => setActiveCardIndex(idx)}
-                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 cursor-pointer group shrink-0 max-w-[280px] lg:max-w-none ${activeCardIndex === idx
-                    ? "bg-white/10 border-accent-cyan/40 shadow-lg shadow-accent-cyan/5 text-white"
-                    : "bg-white/5 border-white/5 text-stone-300 hover:bg-white/10 hover:border-white/10"
-                  }`}
-                >
-                  <div className={`p-3 rounded-xl transition-colors duration-300 ${activeCardIndex === idx ? "bg-accent-cyan text-[#00263C]" : "bg-white/5 text-stone-400 group-hover:text-white"}`}>
-                    <area.icon className="w-5 h-5" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <span className="font-display font-bold text-sm sm:text-base truncate mr-2">{area.title}</span>
-                      <span className={`font-mono text-[10px] font-bold tracking-wider ${activeCardIndex === idx ? "text-accent-cyan" : "text-stone-500"}`}>
+          {/* Responsive Layout container */}
+          <div>
+            {/* 1. Desktop View (Split Showcase Dashboard - hidden on mobile/tablet) */}
+            <div className="hidden lg:grid grid-cols-12 gap-8 items-stretch max-w-7xl mx-auto">
+              {/* Left Column: Selector list */}
+              <div className="col-span-4 flex flex-col gap-4 justify-center">
+                {areas.map((area, idx) => (
+                  <button
+                    key={area.id}
+                    onClick={() => setActiveCardIndex(idx)}
+                    className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center gap-4 cursor-pointer group ${activeCardIndex === idx
+                      ? "bg-white/10 border-accent-cyan/40 shadow-lg shadow-accent-cyan/5 text-white"
+                      : "bg-white/5 border-white/5 text-stone-300 hover:bg-white/10 hover:border-white/10"
+                    }`}
+                  >
+                    <div className={`p-3 rounded-xl transition-colors duration-300 ${activeCardIndex === idx ? "bg-accent-cyan text-[#00263C]" : "bg-white/5 text-stone-400 group-hover:text-white"}`}>
+                      <area.icon className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <span className="font-display font-bold text-sm sm:text-base truncate mr-2">{area.title}</span>
+                        <span className={`font-mono text-[10px] font-bold tracking-wider ${activeCardIndex === idx ? "text-accent-cyan" : "text-stone-500"}`}>
+                          0{idx + 1}
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-stone-400 truncate mt-0.5">{area.tagline}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Right Column: Detailed Showcase Card */}
+              <div className="col-span-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeCardIndex}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.25 }}
+                    className="bg-[#0c2333]/95 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden grid grid-cols-12 h-full min-h-[420px] shadow-2xl shadow-accent-cyan/5 text-white text-left"
+                  >
+                    {/* Showcase Details */}
+                    <div className="p-8 col-span-7 flex flex-col justify-between space-y-6 relative z-10">
+                      <div className="space-y-4">
+                        <div className="space-y-1">
+                          <span className="font-mono text-[10px] font-extrabold tracking-widest text-accent-cyan uppercase">
+                            {areas[activeCardIndex].tagline}
+                          </span>
+                          <h3 className="font-display font-bold text-2xl sm:text-3xl text-white leading-tight">
+                            {areas[activeCardIndex].title}
+                          </h3>
+                        </div>
+                        <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
+                          {areas[activeCardIndex].description}
+                        </p>
+                      </div>
+
+                      <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan space-y-1">
+                        <span className="font-mono font-bold text-[9px] uppercase text-accent-cyan tracking-wider block">
+                          Key Focus & Status:
+                        </span>
+                        <p className="text-xs font-semibold text-stone-200">
+                          {areas[activeCardIndex].accomplishments}
+                        </p>
+                      </div>
+
+                      <div>
+                        <a
+                          href={`#${areas[activeCardIndex].id}`}
+                          onClick={(e) => { e.preventDefault(); setCurrentView(areas[activeCardIndex].id as any); }}
+                          className="inline-flex items-center gap-2 text-xs font-bold text-accent-cyan hover:text-white transition-colors group uppercase tracking-wider font-display"
+                        >
+                          Explore Full Initiative
+                          <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Showcase Image */}
+                    <div className="bg-stone-955 col-span-5 relative h-full overflow-hidden">
+                      <img
+                        src={areas[activeCardIndex].image}
+                        alt={areas[activeCardIndex].title}
+                        className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#0c2333] via-[#0c2333]/20 to-transparent pointer-events-none" />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* 2. Mobile & Tablet View (Interactive Accordion Stack - visible on mobile/tablet) */}
+            <div className="lg:hidden flex flex-col gap-4 max-w-2xl mx-auto">
+              {areas.map((area, idx) => {
+                const isOpen = activeCardIndex === idx;
+                return (
+                  <div
+                    key={area.id}
+                    className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                      isOpen
+                        ? "bg-[#0c2333]/95 border-accent-cyan/40 shadow-lg shadow-accent-cyan/5 text-white"
+                        : "bg-white/5 border-white/5 text-stone-300"
+                    }`}
+                  >
+                    {/* Accordion Trigger Header */}
+                    <button
+                      onClick={() => setActiveCardIndex(idx)}
+                      className="w-full flex items-center justify-between p-5 text-left cursor-pointer focus:outline-none"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`p-2.5 rounded-xl transition-colors duration-300 ${isOpen ? "bg-accent-cyan text-[#00263C]" : "bg-white/5 text-stone-400"}`}>
+                          <area.icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-display font-bold text-base text-white">{area.title}</span>
+                          <p className="text-[10px] text-stone-400 mt-0.5">{area.tagline}</p>
+                        </div>
+                      </div>
+                      <span className={`font-mono text-xs font-bold ${isOpen ? "text-accent-cyan" : "text-stone-500"}`}>
                         0{idx + 1}
                       </span>
-                    </div>
-                    <p className="text-[10px] text-stone-400 truncate mt-0.5">{area.tagline}</p>
+                    </button>
+
+                    {/* Accordion Expansion Panel */}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <div className="px-5 pb-5 pt-2 border-t border-white/5 space-y-4 text-left">
+                            <p className="text-xs text-stone-300 leading-relaxed font-sans">
+                              {area.description}
+                            </p>
+
+                            <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan space-y-1">
+                              <span className="font-mono font-bold text-[8px] uppercase text-accent-cyan tracking-wider block">
+                                Key Focus & Status:
+                              </span>
+                              <p className="text-xs font-semibold text-stone-200">
+                                {area.accomplishments}
+                              </p>
+                            </div>
+
+                            <div className="h-40 rounded-xl overflow-hidden relative">
+                              <img
+                                src={area.image}
+                                alt={area.title}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#0c2333] via-transparent to-transparent pointer-events-none" />
+                            </div>
+
+                            <div className="pt-2">
+                              <a
+                                href={`#${area.id}`}
+                                onClick={(e) => { e.preventDefault(); setCurrentView(area.id as any); }}
+                                className="inline-flex items-center gap-1.5 text-xs font-bold text-accent-cyan hover:text-white transition-colors uppercase tracking-wider font-display"
+                              >
+                                Explore Full Initiative
+                                <ChevronRight className="w-4 h-4" />
+                              </a>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </button>
-              ))}
-            </div>
-
-            {/* Right: Detailed Showcase Panel with Framer Motion slide-fade transition */}
-            <div className="lg:col-span-8">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCardIndex}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.25 }}
-                  className="bg-[#0c2333]/95 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden grid md:grid-cols-12 h-full min-h-[420px] shadow-2xl shadow-accent-cyan/5 text-white text-left"
-                >
-                  {/* Details column */}
-                  <div className="p-8 md:col-span-7 flex flex-col justify-between space-y-6 relative z-10">
-                    <div className="space-y-4">
-                      <div className="space-y-1">
-                        <span className="font-mono text-[10px] font-extrabold tracking-widest text-accent-cyan uppercase">
-                          {areas[activeCardIndex].tagline}
-                        </span>
-                        <h3 className="font-display font-bold text-2xl sm:text-3xl text-white leading-tight">
-                          {areas[activeCardIndex].title}
-                        </h3>
-                      </div>
-                      <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-sans">
-                        {areas[activeCardIndex].description}
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-white/5 border-l-4 border-accent-cyan space-y-1">
-                      <span className="font-mono font-bold text-[9px] uppercase text-accent-cyan tracking-wider block">
-                        Key Focus & Status:
-                      </span>
-                      <p className="text-xs font-semibold text-stone-200">
-                        {areas[activeCardIndex].accomplishments}
-                      </p>
-                    </div>
-
-                    <div>
-                      <a
-                        href={`#${areas[activeCardIndex].id}`}
-                        onClick={(e) => { e.preventDefault(); setCurrentView(areas[activeCardIndex].id as any); }}
-                        className="inline-flex items-center gap-2 text-xs font-bold text-accent-cyan hover:text-white transition-colors group uppercase tracking-wider font-display"
-                      >
-                        Explore Full Initiative
-                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Full image column */}
-                  <div className="bg-stone-950 md:col-span-5 relative h-48 md:h-full overflow-hidden">
-                    <img
-                      src={areas[activeCardIndex].image}
-                      alt={areas[activeCardIndex].title}
-                      className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0c2333] via-[#0c2333]/20 to-transparent pointer-events-none" />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                );
+              })}
             </div>
           </div>
-
         </div>
       </section>
 
