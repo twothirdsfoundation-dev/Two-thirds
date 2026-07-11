@@ -1903,22 +1903,13 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           style={{ transform: `translateY(${yTextParallax}px)`, opacity: textOpacityParallax }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform space-y-6"
         >
-          <span className="inline-block text-[#FFB076] font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.25em] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
-            Kerala Shoreline Initiative
-          </span>
           <h1 
             style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3)" }}
             className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.15]"
           >
-            For the <span className="text-[#FFB076] italic font-serif font-semibold">Two-Thirds</span> <br />
+            For the <span className="text-[#FFB076] italic font-display font-extrabold">Two-Thirds</span> <br />
             who deserve better.
           </h1>
-          <p 
-            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
-            className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans font-medium mt-4"
-          >
-            Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
-          </p>
         </div>
       </div>
 
