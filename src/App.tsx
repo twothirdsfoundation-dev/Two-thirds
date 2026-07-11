@@ -1893,65 +1893,28 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           alt="Kerala beach loungers"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Soft dark blue overlay to improve text readability & keep image visible */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-white/5 to-[#0d1f2d]/70 z-10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.78)_30%,rgba(13,31,45,0.45)_100%)] z-10" />
 
-        {/* Foreground Depth: Dark tropical palm leaves framing left and right edges */}
-        {/* Left framing palm leaf SVG */}
-        <div className="absolute left-0 top-0 bottom-0 w-[24%] max-w-[280px] opacity-90 pointer-events-none select-none z-15 flex items-center">
-          <svg className="w-full h-auto fill-[#09151e]" viewBox="0 0 100 200">
-            <path d="M0,0 Q35,45 15,100 T0,200 L0,200 Z" />
-            <path d="M0,15 Q65,35 25,55" stroke="#09151e" strokeWidth="3" fill="none" />
-            <path d="M0,45 Q80,65 35,85" stroke="#09151e" strokeWidth="4" fill="none" />
-            <path d="M0,75 Q90,105 40,125" stroke="#09151e" strokeWidth="4" fill="none" />
-            <path d="M0,105 Q95,135 45,160" stroke="#09151e" strokeWidth="4" fill="none" />
-            <path d="M0,135 Q85,165 35,190" stroke="#09151e" strokeWidth="3" fill="none" />
-          </svg>
-        </div>
-        
-        {/* Right framing palm leaf SVG */}
-        <div className="absolute right-0 top-0 bottom-0 w-[24%] max-w-[280px] opacity-90 pointer-events-none select-none z-15 flex items-center justify-end">
-          <svg className="w-full h-auto fill-[#09151e] transform scale-x-[-1]" viewBox="0 0 100 200">
-            <path d="M0,0 Q35,45 15,100 T0,200 L0,200 Z" />
-            <path d="M0,15 Q65,35 25,55" stroke="#09151e" strokeWidth="3" fill="none" />
-            <path d="M0,45 Q80,65 35,85" stroke="#09151e" strokeWidth="4" fill="none" />
-            <path d="M0,75 Q90,105 40,125" stroke="#09151e" strokeWidth="4" fill="none" />
-            <path d="M0,105 Q95,135 45,160" stroke="#09151e" strokeWidth="4" fill="none" />
-            <path d="M0,135 Q85,165 35,190" stroke="#09151e" strokeWidth="3" fill="none" />
-          </svg>
-        </div>
+
+
 
         {/* Hero Content Layer (Centred and fixed in viewport) */}
         <div 
           style={{ transform: `translateY(${yTextParallax}px)`, opacity: textOpacityParallax }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform"
         >
-          <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest bg-white/40 px-3.5 py-1.5 rounded-full backdrop-blur-sm mb-4">
-            Kerala Shoreline Initiative
-          </span>
-          <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15]">
-            For the <span className="text-[#B24C35] italic font-serif font-semibold">two-thirds</span> <br />
-            who deserve better.
-          </h1>
-          
-          <p className="text-stone-700 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-semibold mt-4">
-            Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
-          </p>
-
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <a
-              href="#contact"
-              className="bg-[#1e6f9f] hover:bg-[#155377] text-white font-display font-semibold text-xs tracking-wider px-8 py-3.5 transition-all uppercase rounded-none border-none cursor-pointer w-48 sm:w-auto text-center shadow-md hover:shadow-lg active:scale-95"
-            >
-              Get Involved
-            </a>
-            <a
-              href="#about"
-              className="bg-white/20 hover:bg-white/30 text-[#003B5C] font-display font-semibold text-xs tracking-wider px-8 py-3.5 transition-all border border-[#003B5C]/30 uppercase w-48 sm:w-auto text-center backdrop-blur-md rounded-none shadow-sm active:scale-95"
-            >
-              Explore Our Work
-            </a>
+          {/* Premium Editorial Card for 100% text legibility and premium editorial feel */}
+          <div className="bg-white/85 backdrop-blur-md border border-[#e2e8ed] p-8 sm:p-12 max-w-4xl mx-auto shadow-2xl space-y-6 text-center">
+            <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest border-b border-[#e8935a]/30 pb-1.5">
+              Kerala Shoreline Initiative
+            </span>
+            <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-[#003B5C] leading-tight">
+              For the <span className="text-[#B24C35] italic font-serif font-semibold">Two-Thirds</span> <br />
+              who deserve better.
+            </h1>
+            <div className="w-12 h-[1px] bg-[#003B5C]/20 mx-auto" />
+            <p className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-sans font-medium">
+              Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
+            </p>
           </div>
         </div>
       </div>
@@ -1961,8 +1924,8 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         {/* Invisible spacer allowing hero to remain fully visible on initial load */}
         <div className="h-screen pointer-events-none" />
 
-        {/* Wave Splash Transition Divider (Sitting exactly at the top of About section, covering fixed content behind) */}
-        <div className="relative w-full h-32 overflow-visible pointer-events-none z-30 select-none bg-transparent">
+        {/* Wave Splash Transition Divider (Sitting exactly at the bottom of Hero / top of About section, covering fixed content behind) */}
+        <div className="relative w-full h-32 -mt-32 overflow-visible pointer-events-none z-30 select-none bg-transparent">
           <svg 
             className="absolute bottom-0 left-0 w-full h-full block fill-[#FAF7F2]" 
             viewBox="0 0 1440 250" 
