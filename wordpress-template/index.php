@@ -78,6 +78,34 @@
         endif;
         ?>
     ];
+
+    window.wpEvents = [
+        <?php
+        $args = array('post_type' => 'event', 'posts_per_page' => -1, 'post_status' => 'publish');
+        $query = new WP_Query($args);
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+                $date = get_post_meta(get_the_ID(), 'event_date', true) ?: '';
+                $time = get_post_meta(get_the_ID(), 'event_time', true) ?: '';
+                $location = get_post_meta(get_the_ID(), 'event_location', true) ?: '';
+                $link = get_post_meta(get_the_ID(), 'event_link', true) ?: '';
+                
+                $event_data = array(
+                    'id' => strval(get_the_ID()),
+                    'title' => get_the_title(),
+                    'description' => wp_strip_all_tags(get_the_content()),
+                    'date' => $date,
+                    'time' => $time,
+                    'location' => $location,
+                    'link' => $link ?: get_permalink(),
+                    'image' => get_the_post_thumbnail_url(get_the_ID(), 'full') ?: ''
+                );
+                echo json_encode($event_data) . ',';
+            endwhile;
+            wp_reset_postdata();
+        endif;
+        ?>
+    ];
     </script>
 
     <div id="root"></div>

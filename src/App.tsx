@@ -196,6 +196,51 @@ export const activeTeamMembers: TeamMember[] = (typeof window !== "undefined" &&
   ? (window as any).wpTeamMembers 
   : teamMembers;
 
+export interface FoundationEvent {
+  id: string | number;
+  title: string;
+  description: string;
+  date: string;
+  time?: string;
+  location: string;
+  link?: string;
+  image?: string;
+}
+
+export const defaultEvents: FoundationEvent[] = [
+  {
+    id: "e1",
+    title: "Coastal Mangrove Planting & Conservation",
+    date: "July 24, 2026",
+    time: "07:30 AM - 11:30 AM",
+    location: "Perumathura Estuary, Trivandrum",
+    description: "Join hands with local traditional fisherfolk to plant mangrove saplings along the estuary, helping rebuild coastal defense lines and support local marine nurseries.",
+    link: "#"
+  },
+  {
+    id: "e2",
+    title: "Penma Solar Dry-Fish Value Addition Workshop",
+    date: "August 12, 2026",
+    time: "10:00 AM - 02:00 PM",
+    location: "Women Cooperative Center, Ward 5",
+    description: "A shepherded training and demonstration workshop led by the Penma SHG on solar drying tech, packaging standards, and direct cooperative market links.",
+    link: "#"
+  },
+  {
+    id: "e3",
+    title: "Educare Center Evening Tutor Interactive Session",
+    date: "September 05, 2026",
+    time: "04:30 PM - 06:30 PM",
+    location: "Supplementary Study Center, Perumathura",
+    description: "Interactive session bringing together teachers, parent representatives, and volunteers to align curricula with school boards and celebrate reading accomplishments.",
+    link: "#"
+  }
+];
+
+export const activeEvents: FoundationEvent[] = (typeof window !== "undefined" && (window as any).wpEvents)
+  ? (window as any).wpEvents
+  : defaultEvents;
+
 
 
 
@@ -2327,6 +2372,96 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                   </div>
                 </div>
               ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 7.8. Events Section (Upcoming Events & Campaigns) */}
+      <section id="events" className="py-24 bg-gradient-to-b from-[#0A2637] to-[#021B2A] border-t border-stone-900/60 relative overflow-hidden z-20 text-white">
+        <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none z-0" />
+        <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full bg-primary-light/5 blur-3xl pointer-events-none z-0" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-4">
+            <span className="inline-block text-accent-cyan font-mono text-xs font-bold uppercase tracking-wider">
+              Get Involved
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white">
+              Upcoming Events &amp; Campaigns
+            </h2>
+            <div className="w-16 h-1 bg-accent-cyan mx-auto rounded-full" />
+            <p className="text-stone-300 text-sm">
+              Participate in our field drives, workshops, and interactive sessions along the shores of Kerala.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-center text-left">
+            {activeEvents.map((event) => (
+              <div
+                key={event.id}
+                className="bg-[#0c2333]/90 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 shadow-lg hover:border-accent-cyan/30 hover:shadow-2xl hover:shadow-accent-cyan/5 transition-all duration-300 flex flex-col h-full group"
+              >
+                {/* Event Card Header (Image optional, default fallback icon banner) */}
+                <div className="relative h-44 overflow-hidden bg-stone-950 shrink-0">
+                  {event.image ? (
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    // Aesthetic vector backdrop as fallback
+                    <div className="w-full h-full bg-gradient-to-br from-[#05324E] to-[#0A2637] flex items-center justify-center relative">
+                      <Calendar className="w-12 h-12 text-accent-cyan/30 absolute" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1),transparent_70%)]" />
+                    </div>
+                  )}
+                  {/* Floating Date Badge */}
+                  <span className="absolute top-4 left-4 bg-accent-cyan text-primary-dark font-mono text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-md shadow-md">
+                    {event.date ? event.date.split(",")[0] : "TBD"}
+                  </span>
+                </div>
+
+                {/* Event Details */}
+                <div className="p-6 flex flex-col flex-grow space-y-4">
+                  {/* Meta */}
+                  <div className="flex flex-col gap-2 text-stone-300 text-[10px] font-mono">
+                    {event.time && (
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5 text-accent-cyan" />
+                        {event.time}
+                      </span>
+                    )}
+                    <span className="flex items-center gap-1.5">
+                      <Compass className="w-3.5 h-3.5 text-accent-cyan" />
+                      {event.location}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display font-bold text-lg text-white leading-snug group-hover:text-accent-cyan transition-colors line-clamp-2">
+                    {event.title}
+                  </h3>
+
+                  <p className="text-stone-300 text-xs leading-relaxed font-sans line-clamp-3 flex-grow">
+                    {event.description}
+                  </p>
+
+                  <div className="pt-2">
+                    <a
+                      href={event.link || "#"}
+                      target={event.link && event.link.startsWith("http") ? "_blank" : "_self"}
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-xs font-bold text-accent-cyan hover:text-white transition-colors uppercase tracking-wider font-display"
+                    >
+                      Learn More / RSVP
+                      <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
         </div>
