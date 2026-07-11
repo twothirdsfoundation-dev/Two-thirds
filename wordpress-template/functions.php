@@ -609,12 +609,29 @@ function twothirds_save_post_details_meta( $post_id ) {
 add_action( 'save_post', 'twothirds_save_post_details_meta' );
 
 /**
+ * Helper to safely get or create a category (available on both admin and front-end requests)
+ */
+function twothirds_get_or_create_category( $name ) {
+    $term = get_term_by( 'name', $name, 'category' );
+    if ( $term ) {
+        return $term->term_id;
+    }
+    
+    $inserted = wp_insert_term( $name, 'category' );
+    if ( ! is_wp_error( $inserted ) && isset( $inserted['term_id'] ) ) {
+        return $inserted['term_id'];
+    }
+    
+    return 0;
+}
+
+/**
  * Automatically insert default blog posts on activation if they don't exist
  */
 function twothirds_insert_default_posts() {
-    // Create categories first
-    $field_diaries_cat = wp_create_category( 'Field Diaries' );
-    $impact_stories_cat = wp_create_category( 'Impact Stories' );
+    // Create categories safely
+    $field_diaries_cat = twothirds_get_or_create_category( 'Field Diaries' );
+    $impact_stories_cat = twothirds_get_or_create_category( 'Impact Stories' );
 
     $default_posts = array(
         array(
