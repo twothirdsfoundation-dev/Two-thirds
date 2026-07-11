@@ -32,6 +32,8 @@ import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
 import beachBackground from "./assets/Gemini_Generated_Image_sgbtqwsgbtqwsgbt.png";
 import waveSplash from "./assets/Hero Below.png";
+import elementsCrow from "./assets/Elements-Crow.jpg";
+import elementsFish from "./assets/Eloements-Fish.jpg";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -2003,29 +2005,60 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             </svg>
           </div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-10">
-            <div className="space-y-6 max-w-3xl mx-auto">
-              <span className="font-mono text-xs font-bold tracking-widest text-[#e8935a] uppercase block">
-                ABOUT US
-              </span>
-              <h2 className="font-display font-light text-4xl sm:text-5xl text-[#003B5C] tracking-tight">
-                About Two-Thirds
-              </h2>
-              <div className="w-12 h-[1px] bg-[#003B5C]/20 mx-auto" />
-              
-              <p className="font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed py-4">
-                Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it, how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed. At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
-              </p>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-10">
+            <div className="grid md:grid-cols-12 gap-12 items-center">
+              {/* Text narrative column */}
+              <div className="md:col-span-8 space-y-6 text-left">
+                <span className="font-mono text-xs font-bold tracking-widest text-[#e8935a] uppercase block">
+                  ABOUT US
+                </span>
+                <h2 className="font-display font-light text-4xl sm:text-5xl text-[#003B5C] tracking-tight">
+                  About Two-Thirds
+                </h2>
+                <div className="w-12 h-[2px] bg-[#e8935a]" />
+                
+                <div className="space-y-4 font-sans text-stone-600 text-base sm:text-lg leading-relaxed">
+                  <p>
+                    Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it—how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed.
+                  </p>
+                  <p>
+                    At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
+                  </p>
+                </div>
 
-              <div className="pt-4">
-                <a
-                  href="#about-us"
-                  onClick={() => setCurrentView("about-us")}
-                  className="group inline-flex items-center gap-2 text-[#003B5C] font-mono tracking-widest text-xs font-bold border-b border-[#003B5C]/20 pb-1.5 hover:border-[#003B5C] transition-all uppercase cursor-pointer"
-                >
-                  READ OUR FULL STORY →
-                </a>
+                <div className="pt-4">
+                  <a
+                    href="#about-us"
+                    onClick={() => setCurrentView("about-us")}
+                    className="group inline-flex items-center gap-2 text-[#003B5C] font-mono tracking-widest text-xs font-bold border-b border-[#003B5C]/20 pb-1.5 hover:border-[#003B5C] transition-all uppercase cursor-pointer"
+                  >
+                    READ OUR FULL STORY →
+                  </a>
+                </div>
               </div>
+
+              {/* Crow illustration margin column */}
+              <div className="md:col-span-4 flex justify-center select-none pointer-events-none">
+                <div className="relative max-w-[200px] md:max-w-[260px] text-center">
+                  <img
+                    src={elementsCrow}
+                    alt="Kerala coastal crow illustration"
+                    className="w-full h-auto mix-blend-multiply opacity-85"
+                  />
+                  <div className="mt-2 font-mono text-[9px] text-stone-400 tracking-wider uppercase whitespace-nowrap">
+                    House Crow (Corvus splendens)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Fish divider illustration at the bottom of the section */}
+            <div className="max-w-md mx-auto mt-16 opacity-85 select-none pointer-events-none">
+              <img
+                src={elementsFish}
+                alt="Fish school transition divider"
+                className="w-full h-auto mix-blend-multiply"
+              />
             </div>
           </div>
         </section>
