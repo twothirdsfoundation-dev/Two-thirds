@@ -1900,22 +1900,24 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         {/* Hero Content Layer (Centred and fixed in viewport) */}
         <div 
           style={{ transform: `translateY(${yTextParallax}px)`, opacity: textOpacityParallax }}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform space-y-6"
         >
-          {/* Premium Editorial Card for 100% text legibility and premium editorial feel */}
-          <div className="bg-white/85 backdrop-blur-md border border-[#e2e8ed] p-8 sm:p-12 max-w-4xl mx-auto shadow-2xl space-y-6 text-center">
-            <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest border-b border-[#e8935a]/30 pb-1.5">
-              Kerala Shoreline Initiative
-            </span>
-            <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-[#003B5C] leading-tight">
-              For the <span className="text-[#B24C35] italic font-serif font-semibold">Two-Thirds</span> <br />
-              who deserve better.
-            </h1>
-            <div className="w-12 h-[1px] bg-[#003B5C]/20 mx-auto" />
-            <p className="text-stone-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-sans font-medium">
-              Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
-            </p>
-          </div>
+          <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest bg-white/70 px-4 py-1.5 rounded-full backdrop-blur-sm shadow-sm border border-[#e8935a]/20">
+            Kerala Shoreline Initiative
+          </span>
+          <h1 
+            style={{ textShadow: "0 1px 4px rgba(255, 255, 255, 0.85), 0 2px 12px rgba(255, 255, 255, 0.5)" }}
+            className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15]"
+          >
+            For the <span className="text-[#B24C35] italic font-serif font-semibold">Two-Thirds</span> <br />
+            who deserve better.
+          </h1>
+          <p 
+            style={{ textShadow: "0 1px 3px rgba(255, 255, 255, 0.95)" }}
+            className="text-[#0B2533] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans font-semibold mt-4"
+          >
+            Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
+          </p>
         </div>
       </div>
 
