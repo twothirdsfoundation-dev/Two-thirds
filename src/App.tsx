@@ -32,7 +32,7 @@ import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
 import beachBackground from "./assets/Gemini_Generated_Image_sgbtqwsgbtqwsgbt.png";
 import waveSplash from "./assets/Hero Below.png";
-import elementsCrow from "./assets/Elements-Crow.jpg";
+import elementsCrow from "./assets/Elements-Crow.png";
 import elementsFish from "./assets/Eloements-Fish.jpg";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
@@ -2042,11 +2042,11 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 <div className="relative max-w-[200px] md:max-w-[260px] text-center">
                   <img
                     src={elementsCrow}
-                    alt="Kerala coastal crow illustration"
-                    className="w-full h-auto mix-blend-multiply opacity-85"
+                    alt="Coastal birds in flight"
+                    className="w-full h-auto opacity-90"
                   />
                   <div className="mt-2 font-mono text-[9px] text-stone-400 tracking-wider uppercase whitespace-nowrap">
-                    House Crow (Corvus splendens)
+                    Coastal Birds in Flight
                   </div>
                 </div>
               </div>
