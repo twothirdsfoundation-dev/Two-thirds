@@ -31,6 +31,7 @@ import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
 import healthNutrition from "./assets/health-nutrition.png";
 import beachBackground from "./assets/Gemini_Generated_Image_sgbtqwsgbtqwsgbt.png";
+import waveSplash from "./assets/Hero Below.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
@@ -1893,28 +1894,27 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           alt="Kerala beach loungers"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-
-
-
+        {/* Soft cinematic dark gradient to make white text pop, fading out before the bottom sand */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/55 via-[#0d1f2d]/25 to-transparent z-10" />
 
         {/* Hero Content Layer (Centred and fixed in viewport) */}
         <div 
           style={{ transform: `translateY(${yTextParallax}px)`, opacity: textOpacityParallax }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform space-y-6"
         >
-          <span className="inline-block text-[#e8935a] font-mono text-xs font-bold uppercase tracking-widest bg-white/70 px-4 py-1.5 rounded-full backdrop-blur-sm shadow-sm border border-[#e8935a]/20">
+          <span className="inline-block text-[#FFB076] font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.25em] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             Kerala Shoreline Initiative
           </span>
           <h1 
-            style={{ textShadow: "0 1px 4px rgba(255, 255, 255, 0.85), 0 2px 12px rgba(255, 255, 255, 0.5)" }}
-            className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-[#003B5C] leading-[1.15]"
+            style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3)" }}
+            className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.15]"
           >
-            For the <span className="text-[#B24C35] italic font-serif font-semibold">Two-Thirds</span> <br />
+            For the <span className="text-[#FFB076] italic font-serif font-semibold">Two-Thirds</span> <br />
             who deserve better.
           </h1>
           <p 
-            style={{ textShadow: "0 1px 3px rgba(255, 255, 255, 0.95)" }}
-            className="text-[#0B2533] text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans font-semibold mt-4"
+            style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+            className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-sans font-medium mt-4"
           >
             Co-designing ecological security, regional health clinics, and micro-livelihoods alongside the coastal knowledge-holders of Kerala.
           </p>
@@ -1927,50 +1927,17 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         <div className="h-screen pointer-events-none" />
 
         {/* Wave Splash Transition Divider (Sitting exactly at the bottom of Hero / top of About section, covering fixed content behind) */}
-        <div className="relative w-full h-32 -mt-32 overflow-visible pointer-events-none z-30 select-none bg-transparent">
-          <svg 
-            className="absolute bottom-0 left-0 w-full h-full block fill-[#FAF7F2]" 
-            viewBox="0 0 1440 250" 
-            preserveAspectRatio="none"
-            style={{ filter: "drop-shadow(0px -10px 15px rgba(250,247,242,0.5))" }}
-          >
-            {/* Soft background wave splash depth */}
-            <path d="M0,130 C180,100 360,200 540,140 C720,80 900,240 1080,150 C1260,80 1350,140 1440,130 L1440,250 L0,250 Z" opacity="0.4" />
-            
-            {/* Main foreground wave splash */}
-            <path d="M0,170 C150,130 280,200 420,170 C560,140 680,220 820,180 C960,140 1100,210 1240,160 C1340,120 1400,170 1440,160 L1440,250 L0,250 Z" />
-            
-            {/* Detailed spray droplets */}
-            <circle cx="80" cy="110" r="4.5" />
-            <circle cx="110" cy="90" r="3" />
-            <circle cx="140" cy="120" r="5" />
-            <circle cx="170" cy="105" r="3.5" />
-            <circle cx="210" cy="130" r="4" />
-            <circle cx="300" cy="100" r="5.5" />
-            <circle cx="330" cy="80" r="3" />
-            <circle cx="360" cy="110" r="4.5" />
-            <circle cx="390" cy="95" r="3.5" />
-            <circle cx="550" cy="120" r="5" />
-            <circle cx="580" cy="100" r="3.5" />
-            <circle cx="610" cy="130" r="4" />
-            <circle cx="640" cy="115" r="3" />
-            <circle cx="680" cy="140" r="4.5" />
-            <circle cx="850" cy="110" r="6" />
-            <circle cx="880" cy="85" r="4" />
-            <circle cx="910" cy="120" r="5" />
-            <circle cx="940" cy="100" r="3.5" />
-            <circle cx="1120" cy="100" r="5" />
-            <circle cx="1150" cy="80" r="3" />
-            <circle cx="1180" cy="110" r="4.5" />
-            <circle cx="1210" cy="90" r="3.5" />
-            <circle cx="1260" cy="120" r="4" />
-            <circle cx="1320" cy="105" r="5.5" />
-            <circle cx="1350" cy="85" r="3" />
-          </svg>
+        <div className="relative w-full h-[120px] sm:h-[180px] -mt-[120px] sm:-mt-[180px] overflow-visible pointer-events-none z-30 select-none bg-transparent">
+          <img
+            src={waveSplash}
+            alt="Wave Splash Foam Divider"
+            className="w-full h-full object-fill object-bottom pointer-events-none"
+            style={{ filter: "drop-shadow(0px -10px 15px rgba(255,255,255,0.45))" }}
+          />
         </div>
 
         {/* 4. About Section */}
-        <section id="about" className="py-24 bg-[#FAF7F2] border-b border-stone-200/30 relative overflow-hidden z-20">
+        <section id="about" className="py-24 bg-white border-b border-stone-200/30 relative overflow-hidden z-20">
           {/* Decorative fish-school illustrations in the background edges */}
           <div className="absolute top-10 left-10 w-72 h-72 opacity-[0.12] pointer-events-none select-none text-stone-400 z-0">
             <svg className="w-full h-full fill-current" viewBox="0 0 200 200">
