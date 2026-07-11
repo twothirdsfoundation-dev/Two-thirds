@@ -35,6 +35,7 @@ import elementsCrow from "./assets/Elements-Crow.png";
 import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
+import underwaterBackdrop from "./assets/underwater-backdrop.jpg";
 
 // Import Environment Initiative images
 import envImage1 from "./assets/Enviroment/image 1.webp";
@@ -1895,8 +1896,13 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         </div>
       </section>
 
-      {/* 7. Programs Section (Scroll Synchronized Focus Areas - Redesigned to Immersive Split-Showcase Dashboard) */}
-      <section id="programs" className="py-24 bg-gradient-to-b from-[#021B2A] via-[#05324E] to-[#0A2637] border-y border-stone-900/60 relative overflow-hidden z-20 text-white">
+      <section
+        id="programs"
+        className="py-24 border-y border-stone-900/60 relative overflow-hidden z-20 text-white bg-cover bg-center"
+        style={{ backgroundImage: `url(${underwaterBackdrop})` }}
+      >
+        {/* Dark overlay for contrast */}
+        <div className="absolute inset-0 bg-[#021B2A]/90 mix-blend-multiply z-0 pointer-events-none" />
         {/* Ambient underwater floating lights */}
         <div className="absolute top-1/4 left-0 w-80 h-80 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none z-0" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 rounded-full bg-primary-light/10 blur-3xl pointer-events-none z-0" />
