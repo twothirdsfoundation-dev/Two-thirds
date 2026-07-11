@@ -1636,6 +1636,10 @@ interface HomePageProps {
 
 function HomePage({ setCurrentView, areas }: HomePageProps) {
   const [scrollTop, setScrollTop] = useState(() => typeof window !== "undefined" ? window.scrollY : 0);
+  const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Programs Split-Showcase State
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   useEffect(() => {
     let ticking = false;
@@ -1643,6 +1647,23 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           setScrollTop(window.scrollY);
+
+          // Mobile scroll-spy accordion logic
+          if (window.innerWidth < 1024) {
+            const threshold = window.innerHeight * 0.45;
+            let activeIdx = 0;
+            for (let i = 0; i < areas.length; i++) {
+              const card = mobileCardRefs.current[i];
+              if (card) {
+                const rect = card.getBoundingClientRect();
+                if (rect.top <= threshold) {
+                  activeIdx = i;
+                }
+              }
+            }
+            setActiveCardIndex(activeIdx);
+          }
+
           ticking = false;
         });
         ticking = true;
@@ -1650,13 +1671,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [areas.length]);
 
   const yTextParallax = (scrollTop || 0) * -0.4;
   const textOpacityParallax = Math.max(0, 1 - (scrollTop || 0) / 400);
-
-  // Programs Split-Showcase State
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   return (
     <>
@@ -2009,6 +2027,7 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
                 return (
                   <div
                     key={area.id}
+                    ref={(el) => { mobileCardRefs.current[idx] = el; }}
                     className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                       isOpen
                         ? "bg-[#0c2333]/95 border-accent-cyan/40 shadow-lg shadow-accent-cyan/5 text-white"
