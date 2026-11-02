@@ -1879,7 +1879,7 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
 
       {/* 4.5. Approach Section (Immersive full-width banner inspired by Dakshin.org) */}
       <section
-        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
+        className="relative py-28 text-white overflow-hidden text-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${coastalApproachBg})` }}
       >
         {/* Dark overlay for text contrast */}
@@ -2137,18 +2137,18 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
       </section>
 
       {/* 5. SDG Alignment Grid */}
-      <section id="sdg" className="py-24 bg-[#E0F2FE]/15 border-y border-stone-200/40 relative">
+      <section id="sdg" className="py-24 bg-[#F8FAFC] border-y border-stone-200/60 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
 
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <span className="inline-block text-[#155E75] font-mono text-xs font-bold uppercase tracking-wider">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0369A1] font-mono text-[11px] font-bold uppercase tracking-wider">
               Global Standards Integration
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[#003B5C] tracking-tight">
               Strategic Alignment with UN SDGs
             </h2>
             <div className="w-16 h-1 bg-[#155E75] mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
+            <p className="text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
               We align our local projects with United Nations Sustainable Development Goals (SDGs) to coordinate regional impact.
             </p>
           </div>
