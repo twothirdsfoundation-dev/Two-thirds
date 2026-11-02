@@ -1677,8 +1677,8 @@ function AboutUsPage() {
 
             <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <span className="block font-bold text-white text-sm">Adil</span>
-                <span className="block text-xs text-stone-400">Founder, Two-Thirds Community Foundation</span>
+                <span className="block font-bold text-white text-sm">Ahmed Sajid</span>
+                <span className="block text-xs text-stone-400">Founder & Director, Two-Thirds Community Foundation</span>
               </div>
               <span className="bg-secondary/20 text-secondary text-[10px] font-mono font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 Est. 2018 • Incorporated 2026
