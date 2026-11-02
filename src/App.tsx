@@ -28,8 +28,9 @@ import empowermentWomen from "./assets/empowerment-women.png";
 import mangroveRestoration from "./assets/mangrove-restoration.png";
 import coastalLivelihoods from "./assets/coastal-livelihoods.png";
 import logo from "./assets/logo.png";
+import logoWhite from "./assets/logo-white.png";
 import healthNutrition from "./assets/health-nutrition.png";
-import beachBackground from "./assets/Gemini_Generated_Image_sgbtqwsgbtqwsgbt.png";
+import heroBackground from "./assets/hero-sunset-waves.png";
 import waveSplash from "./assets/Hero Below.png";
 import elementsCrow from "./assets/Elements-Crow.png";
 import educareClassroom from "./assets/educare-classroom.png";
@@ -1728,12 +1729,12 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
       <div className="fixed top-0 left-0 w-full h-screen overflow-hidden z-0 bg-[#0d1f2d]">
         {/* Background Image */}
         <img
-          src={beachBackground}
-          alt="Kerala beach loungers"
+          src={heroBackground}
+          alt="Sunset coastal waves"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Soft cinematic dark gradient to make white text pop, fading out before the bottom sand */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/55 via-[#0d1f2d]/25 to-transparent z-10" />
+        {/* Soft cinematic dark gradient to make white text pop */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-[#0d1f2d]/20 to-[#0d1f2d]/40 z-10" />
 
         {/* Hero Content Layer (Centred and fixed in viewport) */}
         <div 
@@ -1741,10 +1742,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform space-y-6"
         >
           <h1 
-            style={{ textShadow: "0 2px 10px rgba(0,0,0,0.5), 0 4px 20px rgba(0,0,0,0.3)" }}
+            style={{ textShadow: "0 4px 16px rgba(0,0,0,0.65), 0 8px 32px rgba(0,0,0,0.4)" }}
             className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.15]"
           >
-            For the <span className="text-[#FFB076] italic font-display font-extrabold">Two-Thirds</span> <br />
+            For the <span className="text-white italic font-display font-extrabold">Two-Thirds</span> <br />
             who deserve better.
           </h1>
         </div>
@@ -1856,11 +1857,11 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
               
               <div className="space-y-4 font-sans text-stone-600 text-base sm:text-lg md:text-xl leading-relaxed py-4">
                 <p>
-                  Two-thirds of our world is ocean. The communities living along its edges have built centuries of knowledge around it—how to read the weather, manage the catch, and sustain the coastline. We have an 8-year relationship with the community, working alongside them, and this is an extension of what we observed that the shores needed.
+                  Two-thirds of our world is ocean, connecting people, places, and ways of life. Inspired by this connection, Two-Thirds Community Foundation works alongside coastal communities, building on years of engagement and shared learning.
+
+Through education, health, sustainable livelihoods, and environmental stewardship, we bring together people, knowledge, and ideas to nurture community-led change and shape a more equitable and sustainable future.
                 </p>
-                <p>
-                  At Two-Thirds, we work across education, livelihoods, environment, and health in partnership with these communities. We do not bring outside solutions; we start with what they already know and build from there.
-                </p>
+                
               </div>
 
               <div className="pt-4">
@@ -2632,22 +2633,13 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               setCurrentView("home");
               window.location.hash = "";
             }}
-            className="flex items-center gap-3 group"
+            className="flex items-center group py-1"
           >
             <img
-              src={logo}
-              alt="Two-Thirds Community Foundation Logo"
-              className="w-12 h-12 object-contain rounded-xl border border-stone-200/80 bg-white p-1 transition-transform group-hover:scale-105 shadow-sm"
+              src={isScrolled ? logo : logoWhite}
+              alt="Two-Thirds Community Foundation"
+              className="h-11 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
             />
-            <div className="flex flex-col">
-              <span className={`font-display font-black text-xl tracking-tight bg-gradient-to-r ${isScrolled ? "from-primary via-[#0A5F8F] to-[#D05A3F]" : "from-white via-[#FFB076] to-white/95"} bg-clip-text text-transparent leading-none drop-shadow-sm group-hover:opacity-85 transition-all duration-300`}>
-                Two-Thirds
-              </span>
-              <span className={`text-[8px] sm:text-[9px] font-sans font-extrabold tracking-[0.2em] uppercase leading-none mt-1 flex items-center gap-1 transition-colors duration-300 ${isScrolled ? "text-secondary" : "text-white/80"}`}>
-                Community Foundation
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan inline-block animate-pulse"></span>
-              </span>
-            </div>
           </a>
 
           {/* Desktop Navigation Links */}
@@ -3449,15 +3441,12 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
 
           {/* Logo & description */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center">
               <img
-                src={logo}
-                alt="Two-Thirds Logo"
-                className="w-10 h-10 object-contain rounded-lg bg-white p-1"
+                src={logoWhite}
+                alt="Two-Thirds Community Foundation"
+                className="h-12 sm:h-14 w-auto object-contain"
               />
-              <h3 className="font-display font-bold text-base text-white">
-                Two-Thirds Community Foundation
-              </h3>
             </div>
             <p className="text-xs text-stone-400 leading-relaxed max-w-sm">
               Registered Section 8 nonprofit dedicated to empowering coastal fishing hamlets and traditional communities across Kerala, India through education, sustainable livelihoods, and climate resilience.
