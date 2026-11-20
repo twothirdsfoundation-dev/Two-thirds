@@ -1717,8 +1717,8 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
 
   return (
     <div className="relative w-full bg-[#FAF9F6]">
-      {/* 2. Sticky Hero Banner (Natural curtain-reveal: stays in place while content scrolls over it, never leaks into lower sections) */}
-      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden z-0 bg-[#0d1f2d]">
+      {/* 2. Hero Banner */}
+      <div className="relative w-full min-h-[92vh] lg:min-h-screen flex flex-col justify-between overflow-hidden bg-[#0d1f2d]">
         {/* Background Image */}
         <img
           src={heroBackground}
@@ -1726,12 +1726,12 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Soft cinematic dark gradient to make white text pop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-[#0d1f2d]/20 to-[#0d1f2d]/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/55 via-[#0d1f2d]/25 to-[#0d1f2d]/40 z-10" />
 
         {/* Hero Content Layer (Parallax animated on compositor via Framer Motion without React re-renders) */}
         <motion.div 
           style={{ y: yTextParallax, opacity: textOpacityParallax }}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 space-y-6 pointer-events-none"
+          className="relative z-20 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-32 pb-12 space-y-6 pointer-events-none"
         >
           <h1 
             style={{ textShadow: "0 4px 16px rgba(0,0,0,0.65), 0 8px 32px rgba(0,0,0,0.4)" }}
@@ -1741,19 +1741,20 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             who deserve better.
           </h1>
         </motion.div>
-      </div>
 
-      {/* Scrollable container on top of the hero banner */}
-      <div className="relative z-10 w-full bg-[#FAF9F6]">
-        {/* Wave Splash Transition Divider (Sitting across the boundary, covering the bottom of the hero) */}
-        <div className="relative w-full h-[160px] sm:h-[240px] -mt-[140px] sm:-mt-[220px] overflow-visible pointer-events-none z-30 select-none bg-transparent">
+        {/* Wave Splash Foam Divider (Sitting seamlessly at the bottom of Hero, cresting into the ocean and merging into the white About section below) */}
+        <div className="relative w-full z-20 pointer-events-none select-none -mb-[1px]">
           <img
             src={waveSplash}
             alt="Wave Splash Foam Divider"
-            className="w-full h-full object-fill object-bottom pointer-events-none"
-            style={{ filter: "drop-shadow(0px -10px 15px rgba(255,255,255,0.45))" }}
+            className="w-full h-[120px] sm:h-[180px] md:h-[220px] lg:h-[260px] object-fill pointer-events-none block"
+            style={{ filter: "drop-shadow(0px -8px 12px rgba(255,255,255,0.4))" }}
           />
         </div>
+      </div>
+
+      {/* Main Content Sections */}
+      <div className="relative z-10 w-full bg-[#FAF9F6]">
 
         {/* 4. About Section */}
         <section id="about" className="py-24 bg-white relative overflow-hidden z-20">
