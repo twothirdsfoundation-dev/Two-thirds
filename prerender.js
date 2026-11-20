@@ -39,7 +39,7 @@ async function run() {
       { view: 'get-involved', templateName: 'Get Involved Page', filename: 'page-get-involved.php' },
       { view: 'team', templateName: 'Our Team Page', filename: 'page-team.php' },
       { view: 'women-empowerment', templateName: 'Women\'s Empowerment Page', filename: 'page-women-empowerment.php' },
-      { view: 'livelihoods', templateName: 'Sustainable Livelihoods Page', filename: 'page-livelihoods.php' },
+      { view: 'livelihoods', templateName: 'Youth & Sustainable Livelihood Page', filename: 'page-livelihoods.php' },
       { view: 'health', templateName: 'Health & Nutrition Page', filename: 'page-health.php' },
     ];
 

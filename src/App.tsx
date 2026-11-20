@@ -19,7 +19,11 @@ import {
   Calendar,
   User,
   Clock,
-  ArrowLeft
+  ArrowLeft,
+  HeartHandshake,
+  Library,
+  MessageSquare,
+  Sparkles
 } from "lucide-react";
 
 // Import local images from assets
@@ -37,6 +41,7 @@ import educareClassroom from "./assets/educare-classroom.png";
 import coastalApproachBg from "./assets/coastal-approach-bg.png";
 import perumathuraVillage from "./assets/perumathura-village.png";
 import underwaterBackdrop from "./assets/underwater-backdrop.jpg";
+import coastalCommunityHero from "./assets/coastal-community-hero.jpg";
 
 // Import Environment Initiative images
 import envImage1 from "./assets/Enviroment/image 1.webp";
@@ -1952,6 +1957,268 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
         </div>
       </section>
 
+      {/* 3.5. Community Space Section (The Modern Horegallu) */}
+      <section
+        id="community-space"
+        className="py-24 bg-[#FAF9F6] relative overflow-hidden z-20 border-t border-stone-200/60 text-[#1A2D37]"
+      >
+        {/* Ambient atmospheric glows */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.06),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(232,147,90,0.07),transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto space-y-5">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/80 text-teal-800 font-mono text-[11px] font-bold uppercase tracking-wider shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-teal-600" />
+              Community Space &bull; The Horegallu
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-5xl text-[#003B5C] tracking-tight leading-tight">
+              Where All Threads Connect
+            </h2>
+            <div className="w-16 h-1 bg-[#E8935A] mx-auto rounded-full" />
+            <p className="text-stone-600 text-base sm:text-lg leading-relaxed font-sans">
+              In coastal tradition, a <strong className="text-stone-800 font-semibold italic">Horegallu</strong> is a stone bench sheltered beneath a village tree—a sanctuary where travelers and daily wage workers set down heavy loads, catch their breath, and speak freely with one another. We are establishing this vital anchor: an authentic community home where every thread of village life gathers to rest, learn, deliberate, and power our grassroots initiatives.
+            </p>
+          </div>
+
+          {/* Featured Visual & Concept Anchor Banner */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-stone-200/70 shadow-sm relative overflow-hidden">
+            {/* Subtle corner glow */}
+            <div className="absolute -top-12 -right-12 w-32 h-32 bg-secondary/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="lg:col-span-7 space-y-6">
+              <div className="space-y-3">
+                <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#E8935A]">
+                  The Living Hearth
+                </span>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#003B5C] leading-snug">
+                  More than a physical room. A shared sanctuary for dignity, knowledge, and collective strength.
+                </h3>
+              </div>
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+                Every resilient shoreline needs a space that belongs unconditionally to its community. Our Community Space operates as an open-door harbor: a quiet library for coastal students who lack study spaces at home, an unhurried meeting place for women's enterprise circles, an open floor for weekend civic deliberations, and the operational launchpad that anchors all of Two-Thirds’ field programs.
+              </p>
+
+              {/* Quote Block */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border-l-4 border-[#003B5C] space-y-1">
+                <p className="text-xs sm:text-sm text-stone-700 italic font-medium leading-relaxed font-serif">
+                  “A horegallu does not remove the traveler&apos;s load, but it gives them the solace, companionship, and renewed spirit to carry it forward.”
+                </p>
+                <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400">
+                  — Coastal Village Ethos
+                </span>
+              </div>
+
+              {/* Quick Pillars highlight pills */}
+              <div className="flex flex-wrap gap-2 pt-2">
+                <span className="px-3 py-1 bg-sky-50 text-sky-800 border border-sky-200/70 rounded-full text-xs font-medium font-sans">
+                  Open Village Library
+                </span>
+                <span className="px-3 py-1 bg-amber-50 text-amber-800 border border-amber-200/70 rounded-full text-xs font-medium font-sans">
+                  The Modern Horegallu
+                </span>
+                <span className="px-3 py-1 bg-teal-50 text-teal-800 border border-teal-200/70 rounded-full text-xs font-medium font-sans">
+                  Weekend Dialogue Circles
+                </span>
+                <span className="px-3 py-1 bg-indigo-50 text-indigo-800 border border-indigo-200/70 rounded-full text-xs font-medium font-sans">
+                  Operational Anchor Hub
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-md group aspect-[4/3] sm:aspect-[16/10] lg:aspect-square">
+                <img
+                  src={coastalCommunityHero}
+                  alt="Coastal community space and gathering hearth"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003B5C]/80 via-[#003B5C]/25 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white p-3.5 backdrop-blur-xs bg-black/25 rounded-xl border border-white/10">
+                  <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-[#2DD4BF] mb-1">
+                    Grassroots Sanctuary
+                  </span>
+                  <p className="text-xs font-sans font-medium text-stone-100 leading-snug">
+                    Rooted in local trust, intergenerational solidarity, and coastal community stewardship.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Four Core Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {/* Pillar 1 */}
+            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#E8935A] group-hover:bg-[#E8935A] group-hover:text-white transition-colors duration-300">
+                  <HeartHandshake className="w-6 h-6" />
+                </div>
+                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                  The Modern Horegallu
+                </h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  A load-bearing hearth where daily wage workers, fisherfolk, mothers, and elders can set down their headloads, sit together in companionship, and find mutual comfort.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-amber-700 flex items-center justify-between">
+                <span>Rest &amp; Solidarity</span>
+                <span>01</span>
+              </div>
+            </div>
+
+            {/* Pillar 2 */}
+            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#0369A1] group-hover:bg-[#0369A1] group-hover:text-white transition-colors duration-300">
+                  <Library className="w-6 h-6" />
+                </div>
+                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                  Community Library &amp; Study
+                </h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Open bookshelves of regional coastal literature, science learning kits, scholastic archives, and quiet study desks for students needing an inspiring evening sanctuary.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-sky-700 flex items-center justify-between">
+                <span>Knowledge Haven</span>
+                <span>02</span>
+              </div>
+            </div>
+
+            {/* Pillar 3 */}
+            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200/60 flex items-center justify-center text-[#0D9488] group-hover:bg-[#0D9488] group-hover:text-white transition-colors duration-300">
+                  <MessageSquare className="w-6 h-6" />
+                </div>
+                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                  Weekend Circles &amp; Dialogues
+                </h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  Weekly open-circle gatherings, intergenerational storytelling, youth career mentoring, and civic roundtables where community members deliberate and co-design village solutions.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-teal-700 flex items-center justify-between">
+                <span>Dialogue &amp; Co-Creation</span>
+                <span>03</span>
+              </div>
+            </div>
+
+            {/* Pillar 4 */}
+            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#4338CA] group-hover:bg-[#4338CA] group-hover:text-white transition-colors duration-300">
+                  <Anchor className="w-6 h-6" />
+                </div>
+                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                  Operational Anchor
+                </h4>
+                <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                  The physical launchpad powering all Two-Thirds operations—anchoring Educare materials, women&apos;s handicraft storage, health checkup logistics, and volunteer emergency teams.
+                </p>
+              </div>
+              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-indigo-700 flex items-center justify-between">
+                <span>Action Base Station</span>
+                <span>04</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Weekly Rhythm at the Space (Schedule Strip) */}
+          <div className="bg-gradient-to-br from-[#003B5C] to-[#0A2540] rounded-3xl p-6 sm:p-8 md:p-10 text-white relative overflow-hidden shadow-lg">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-teal-400/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 space-y-6">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+                <div>
+                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#2DD4BF]">
+                    Weekly Rhythm
+                  </span>
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl text-white mt-1">
+                    How the Space Lives &amp; Breathes
+                  </h3>
+                </div>
+                <p className="text-stone-300 text-xs sm:text-sm max-w-md font-sans">
+                  From morning reading hours to evening circles, our doors remain open as an inclusive common ground.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2DD4BF] mb-1">
+                    Daily &bull; All Day
+                  </div>
+                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
+                    Open Library &amp; Quiet Study
+                  </h5>
+                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
+                    Newspapers, book collections, digital resources, and cool drinking water for anyone needing shelter or reading space.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFB076] mb-1">
+                    Mon - Fri &bull; 4:30 PM
+                  </div>
+                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
+                    Educare Learning Hours
+                  </h5>
+                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
+                    Structured evening tutoring, homework assistance, reading aloud circles, and foundational STEM learning for village students.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2DD4BF] mb-1">
+                    Saturdays &bull; 3:00 PM
+                  </div>
+                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
+                    Youth &amp; Climate Circles
+                  </h5>
+                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
+                    Workshops on marine ecology, documentary screenings, career guidance, and open discussions tackling shoreline challenges.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFB076] mb-1">
+                    Sundays &bull; 10:00 AM
+                  </div>
+                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
+                    Community Hearth &amp; Dialogue
+                  </h5>
+                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
+                    Intergenerational storytelling, village elder reflections, women&apos;s enterprise co-op planning, and mutual consensus.
+                  </p>
+                </div>
+              </div>
+
+              {/* Action buttons inside banner */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span className="text-xs text-stone-300 font-sans">
+                  Have books, learning kits, or ideas to contribute to our Community Space?
+                </span>
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <a
+                    href="#get-involved"
+                    onClick={() => setCurrentView("get-involved")}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2DD4BF] hover:bg-[#14B8A6] text-[#003B5C] font-display font-bold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+                  >
+                    <span>Support the Space</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       <section
         id="programs"
         className="py-24 border-y border-stone-900/60 relative overflow-hidden z-20 text-white bg-cover bg-center"
@@ -2236,81 +2503,7 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
       </section>
 
 
-      {/* 7. Impact Stories Section */}
-      <section id="impact-stories" className="py-24 bg-stone-50 border-t border-stone-200/40 relative overflow-hidden">
-        {/* Soft marine glows */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(0,59,92,0.03),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(224,122,95,0.02),transparent_70%)] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
-          
-          <div className="max-w-2xl mx-auto space-y-4">
-            <span className="inline-block px-3 py-1 rounded-full bg-[#E6FFFA] text-[#155E75] font-mono text-[10px] font-bold uppercase tracking-wider">
-              Community Voices
-            </span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-              Impact Stories
-            </h2>
-            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
-            <p className="text-stone-600 text-sm">
-              Real testimonials of transformation and empowerment along the shores of Perumathura.
-            </p>
-          </div>
-
-          {/* Infinite Scrolling Ticker Wrapper */}
-          <div className="relative w-full overflow-hidden py-4 select-none">
-            {/* Overlay gradients to fade the edges (very premium visual effect!) */}
-            <div className="absolute top-0 bottom-0 left-0 w-16 md:w-32 bg-gradient-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute top-0 bottom-0 right-0 w-16 md:w-32 bg-gradient-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
-
-            <div className="animate-ticker gap-8 flex items-stretch">
-              {/* Duplicate the posts array to allow seamless scrolling loop */}
-              {Array(3).fill(activeImpactStories).flat().map((post, idx) => (
-                <div
-                  key={`${post.id}-${idx}`}
-                  onClick={() => {
-                    window.location.hash = "#blog/" + post.slug;
-                  }}
-                  className="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-sm hover:shadow-md hover:scale-[1.01] hover:border-stone-300 transition-all duration-300 flex flex-col justify-between cursor-pointer group h-[340px] w-[350px] md:w-[400px] shrink-0 relative"
-                >
-                  <div className="space-y-4">
-                    {/* Big double quote sign */}
-                    <span className="block font-serif text-5xl text-secondary leading-none -mb-4">“</span>
-                    <p className="text-stone-700 text-xs sm:text-sm leading-relaxed italic font-medium font-sans line-clamp-6">
-                      {post.quote}
-                    </p>
-                  </div>
-
-                  <div className="pt-6 border-t border-stone-100 flex items-center justify-between mt-auto">
-                    <div className="flex items-center gap-3">
-                      {/* Avatar Initials Badge */}
-                      <div className="w-10 h-10 rounded-full bg-stone-50 border border-dashed border-[#155E75] flex items-center justify-center font-display font-bold text-xs text-[#003B5C]">
-                        {post.avatarInitials || "CO"}
-                      </div>
-                      <div className="text-left leading-none">
-                        <span className="block font-display font-bold text-xs text-primary mb-1">
-                          {post.author}
-                        </span>
-                        <span className="text-[10px] font-mono font-bold text-stone-400 uppercase tracking-wider">
-                          {post.authorRole}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Small dynamic chevron circle icon */}
-                    <div className="w-8 h-8 rounded-full bg-stone-50 text-stone-400 flex items-center justify-center transition-all group-hover:bg-primary group-hover:text-white shrink-0">
-                      <ChevronRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 7.5. Field Diaries (Blog Section) */}
+      {/* 7. Field Diaries (Blog Section) */}
       <section id="blog-preview" className="py-24 bg-stone-100/50 border-t border-stone-200/40 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
 
@@ -2664,6 +2857,27 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
               About Us
             </a>
 
+            <a
+              href="#community-space"
+              onClick={(e) => {
+                e.preventDefault();
+                if (currentView !== "home") {
+                  setCurrentView("home");
+                  setTimeout(() => {
+                    const el = document.getElementById("community-space");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
+                } else {
+                  const el = document.getElementById("community-space");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }
+                window.location.hash = "#community-space";
+              }}
+              className="hover:text-secondary transition-colors font-bold"
+            >
+              Community Space
+            </a>
+
             {/* Programmes Dropdown */}
             <div
               className="relative"
@@ -2775,6 +2989,27 @@ function Navbar({ currentView, setCurrentView }: NavbarProps) {
                 className={`py-2 border-b border-stone-100 hover:text-secondary ${currentView === "about-us" ? "font-bold text-secondary" : ""}`}
               >
                 About Us
+              </a>
+
+              <a
+                href="#community-space"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  if (currentView !== "home") {
+                    setCurrentView("home");
+                    setTimeout(() => {
+                      const el = document.getElementById("community-space");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }, 100);
+                  } else {
+                    const el = document.getElementById("community-space");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }
+                  window.location.hash = "#community-space";
+                }}
+                className="py-2 border-b border-stone-100 hover:text-secondary"
+              >
+                Community Space
               </a>
 
               {/* Collapsible Programmes for Mobile */}
@@ -2899,11 +3134,11 @@ const defaultProgramsData: RawFocusArea[] = [
   },
   {
     id: "livelihoods",
-    title: "Sustainable Livelihoods",
+    title: "Youth and Sustainable Livelihood",
     iconName: "Fish",
-    tagline: "Beyond fishing: aquaculture, value addition, market links",
-    description: "Diversifying income streams via safe marine cage farming, seaweed cultivation, modern drying equipment, and direct market integration that eliminates predatory middlemen.",
-    accomplishments: "Established 3 cooperative fish-dryer micro-units.",
+    tagline: "Youth skilling, aquaculture, value addition & modern market links",
+    description: "Empowering coastal youth and fishing families to diversify income streams through entrepreneurship, modern aquaculture, seaweed cultivation, and direct market integration that eliminates predatory middlemen.",
+    accomplishments: "Mentoring coastal youth across 3 cooperative fish-dryer micro-units and enterprise tracks.",
     imageName: "coastalLivelihoods"
   },
   {
@@ -2945,7 +3180,7 @@ function LivelihoodsPage() {
       <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
         <img
           src={coastalLivelihoods}
-          alt="Sustainable Livelihoods"
+          alt="Youth and Sustainable Livelihood"
           className="absolute inset-0 w-full h-full object-cover opacity-30 filter brightness-90"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/60 to-transparent" />
@@ -2958,7 +3193,7 @@ function LivelihoodsPage() {
             className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md"
           >
             <Fish className="w-3.5 h-3.5 text-secondary" />
-            Coastal Livelihoods
+            Youth & Livelihoods
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -2966,7 +3201,7 @@ function LivelihoodsPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase"
           >
-            SUSTAINABLE LIVELIHOODS
+            YOUTH AND SUSTAINABLE LIVELIHOOD
           </motion.h1>
           <motion.div
             initial={{ width: 0 }}
@@ -2980,7 +3215,7 @@ function LivelihoodsPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-stone-200 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-sans font-medium"
           >
-            Beyond traditional fishing: seaweed aquaculture, safe marine cages, and micro-drying units.
+            Empowering coastal youth and communities with vocational skills, seaweed aquaculture, safe marine cages, and micro-drying units.
           </motion.p>
         </div>
       </section>
@@ -2998,13 +3233,13 @@ function LivelihoodsPage() {
             Our Approach
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
-            Building Local Economic Power
+            Building Local Economic Power & Youth Leadership
           </h2>
           <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
-            "For traditional fishing communities, the ocean is both a home and a harvest. Yet, credit exclusion and predatory middlemen have historically separated fishers from the true value of their labor. We co-create alternate livelihood models that build local economic power."
+            "For traditional fishing communities, the ocean is both a home and a harvest. Yet, credit exclusion and predatory middlemen have historically separated fishers from the true value of their labor. We co-create alternate livelihood models that build local economic power and open modern enterprise pathways for coastal youth."
           </p>
           <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-            By introducing advanced marine technologies and building micro-cooperative business models, we empower coastal families to retain more catch value and build diverse income streams. Our programs are designed to fit the seasonal rhythms of the ocean while opening up new markets for sustainable aquaculture.
+            By equipping coastal youth with vocational skills, introducing advanced marine technologies, and building micro-cooperative business models, we empower local families to retain more catch value and build diverse income streams. Our programs are designed to fit the seasonal rhythms of the ocean while opening up new markets for sustainable aquaculture and youth-led enterprises.
           </p>
         </motion.div>
 
