@@ -41,6 +41,7 @@ async function run() {
       { view: 'women-empowerment', templateName: 'Women\'s Empowerment Page', filename: 'page-women-empowerment.php' },
       { view: 'livelihoods', templateName: 'Youth & Sustainable Livelihood Page', filename: 'page-livelihoods.php' },
       { view: 'health', templateName: 'Health & Nutrition Page', filename: 'page-health.php' },
+      { view: 'community-space', templateName: 'Community Space Page', filename: 'page-community-space.php' },
     ];
 
     const wpAssetPathPrefix = '<?php echo get_template_directory_uri(); ?>/assets/';

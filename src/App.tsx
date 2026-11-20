@@ -23,7 +23,11 @@ import {
   HeartHandshake,
   Library,
   MessageSquare,
-  Sparkles
+  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  Coffee,
+  Users
 } from "lucide-react";
 
 // Import local images from assets
@@ -1957,19 +1961,19 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
         </div>
       </section>
 
-      {/* 3.5. Community Space Section (The Modern Horegallu) */}
+      {/* 3.5. Community Space Section (Simplified Overview for Home Page) */}
       <section
         id="community-space"
-        className="py-24 bg-[#FAF9F6] relative overflow-hidden z-20 border-t border-stone-200/60 text-[#1A2D37]"
+        className="py-20 bg-[#FAF9F6] relative overflow-hidden z-20 border-t border-stone-200/60 text-[#1A2D37]"
       >
         {/* Ambient atmospheric glows */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.06),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,rgba(232,147,90,0.07),transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.06),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(232,147,90,0.07),transparent_70%)] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
 
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto space-y-5">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/80 text-teal-800 font-mono text-[11px] font-bold uppercase tracking-wider shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-teal-600" />
               Community Space &bull; The Horegallu
@@ -1978,242 +1982,103 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
               Where All Threads Connect
             </h2>
             <div className="w-16 h-1 bg-[#E8935A] mx-auto rounded-full" />
-            <p className="text-stone-600 text-base sm:text-lg leading-relaxed font-sans">
-              In coastal tradition, a <strong className="text-stone-800 font-semibold italic">Horegallu</strong> is a stone bench sheltered beneath a village tree—a sanctuary where travelers and daily wage workers set down heavy loads, catch their breath, and speak freely with one another. We are establishing this vital anchor: an authentic community home where every thread of village life gathers to rest, learn, deliberate, and power our grassroots initiatives.
+            <p className="text-stone-600 text-sm sm:text-base md:text-lg leading-relaxed font-sans">
+              Inspired by the coastal tradition of the <strong className="text-stone-800 font-semibold italic">Horegallu</strong>—a resting stone bench under village shade—our Community Space is an open sanctuary where fisherfolk, students, and elders set down life&apos;s burdens, learn together, and anchor our collective future.
             </p>
           </div>
 
-          {/* Featured Visual & Concept Anchor Banner */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-stone-200/70 shadow-sm relative overflow-hidden">
-            {/* Subtle corner glow */}
-            <div className="absolute -top-12 -right-12 w-32 h-32 bg-secondary/10 rounded-full blur-2xl pointer-events-none" />
-
-            <div className="lg:col-span-7 space-y-6">
-              <div className="space-y-3">
-                <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#E8935A]">
-                  The Living Hearth
-                </span>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#003B5C] leading-snug">
-                  More than a physical room. A shared sanctuary for dignity, knowledge, and collective strength.
-                </h3>
-              </div>
-              <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-                Every resilient shoreline needs a space that belongs unconditionally to its community. Our Community Space operates as an open-door harbor: a quiet library for coastal students who lack study spaces at home, an unhurried meeting place for women's enterprise circles, an open floor for weekend civic deliberations, and the operational launchpad that anchors all of Two-Thirds’ field programs.
-              </p>
-
-              {/* Quote Block */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border-l-4 border-[#003B5C] space-y-1">
-                <p className="text-xs sm:text-sm text-stone-700 italic font-medium leading-relaxed font-serif">
-                  “A horegallu does not remove the traveler&apos;s load, but it gives them the solace, companionship, and renewed spirit to carry it forward.”
-                </p>
-                <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400">
-                  — Coastal Village Ethos
-                </span>
-              </div>
-
-              {/* Quick Pillars highlight pills */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                <span className="px-3 py-1 bg-sky-50 text-sky-800 border border-sky-200/70 rounded-full text-xs font-medium font-sans">
-                  Open Village Library
-                </span>
-                <span className="px-3 py-1 bg-amber-50 text-amber-800 border border-amber-200/70 rounded-full text-xs font-medium font-sans">
-                  The Modern Horegallu
-                </span>
-                <span className="px-3 py-1 bg-teal-50 text-teal-800 border border-teal-200/70 rounded-full text-xs font-medium font-sans">
-                  Weekend Dialogue Circles
-                </span>
-                <span className="px-3 py-1 bg-indigo-50 text-indigo-800 border border-indigo-200/70 rounded-full text-xs font-medium font-sans">
-                  Operational Anchor Hub
-                </span>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-md group aspect-[4/3] sm:aspect-[16/10] lg:aspect-square">
-                <img
-                  src={coastalCommunityHero}
-                  alt="Coastal community space and gathering hearth"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#003B5C]/80 via-[#003B5C]/25 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white p-3.5 backdrop-blur-xs bg-black/25 rounded-xl border border-white/10">
-                  <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-[#2DD4BF] mb-1">
-                    Grassroots Sanctuary
-                  </span>
-                  <p className="text-xs font-sans font-medium text-stone-100 leading-snug">
-                    Rooted in local trust, intergenerational solidarity, and coastal community stewardship.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Four Core Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 4 Crisp Overview Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             {/* Pillar 1 */}
-            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#E8935A] group-hover:bg-[#E8935A] group-hover:text-white transition-colors duration-300">
-                  <HeartHandshake className="w-6 h-6" />
+            <div className="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200/60 flex items-center justify-center text-[#E8935A] group-hover:bg-[#E8935A] group-hover:text-white transition-colors duration-300">
+                  <HeartHandshake className="w-5 h-5" />
                 </div>
-                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                <h4 className="font-display font-bold text-lg text-[#003B5C]">
                   The Modern Horegallu
                 </h4>
                 <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  A load-bearing hearth where daily wage workers, fisherfolk, mothers, and elders can set down their headloads, sit together in companionship, and find mutual comfort.
+                  A load-bearing hearth for daily laborers, fishers, and mothers to set down burdens, rest in shade, and find quiet solidarity.
                 </p>
               </div>
-              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-amber-700 flex items-center justify-between">
-                <span>Rest &amp; Solidarity</span>
-                <span>01</span>
+              <div className="pt-4 mt-3 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-700">
+                Rest &amp; Solidarity
               </div>
             </div>
 
             {/* Pillar 2 */}
-            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#0369A1] group-hover:bg-[#0369A1] group-hover:text-white transition-colors duration-300">
-                  <Library className="w-6 h-6" />
+            <div className="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-sky-50 border border-sky-200/60 flex items-center justify-center text-[#0369A1] group-hover:bg-[#0369A1] group-hover:text-white transition-colors duration-300">
+                  <Library className="w-5 h-5" />
                 </div>
-                <h4 className="font-display font-bold text-xl text-[#003B5C]">
-                  Community Library &amp; Study
+                <h4 className="font-display font-bold text-lg text-[#003B5C]">
+                  Village Library &amp; Study
                 </h4>
                 <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Open bookshelves of regional coastal literature, science learning kits, scholastic archives, and quiet study desks for students needing an inspiring evening sanctuary.
+                  Open shelves of regional literature, STEM learning kits, and quiet desks for children lacking quiet study nooks at home.
                 </p>
               </div>
-              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-sky-700 flex items-center justify-between">
-                <span>Knowledge Haven</span>
-                <span>02</span>
+              <div className="pt-4 mt-3 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-wider text-sky-700">
+                Knowledge Haven
               </div>
             </div>
 
             {/* Pillar 3 */}
-            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-200/60 flex items-center justify-center text-[#0D9488] group-hover:bg-[#0D9488] group-hover:text-white transition-colors duration-300">
-                  <MessageSquare className="w-6 h-6" />
+            <div className="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-teal-50 border border-teal-200/60 flex items-center justify-center text-[#0D9488] group-hover:bg-[#0D9488] group-hover:text-white transition-colors duration-300">
+                  <MessageSquare className="w-5 h-5" />
                 </div>
-                <h4 className="font-display font-bold text-xl text-[#003B5C]">
-                  Weekend Circles &amp; Dialogues
+                <h4 className="font-display font-bold text-lg text-[#003B5C]">
+                  Weekend Dialogues
                 </h4>
                 <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  Weekly open-circle gatherings, intergenerational storytelling, youth career mentoring, and civic roundtables where community members deliberate and co-design village solutions.
+                  Weekly open-circle gatherings, youth career circles, intergenerational storytelling, and consensus for village progress.
                 </p>
               </div>
-              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-teal-700 flex items-center justify-between">
-                <span>Dialogue &amp; Co-Creation</span>
-                <span>03</span>
+              <div className="pt-4 mt-3 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-wider text-teal-700">
+                Deliberation &amp; Circles
               </div>
             </div>
 
             {/* Pillar 4 */}
-            <div className="bg-white rounded-2xl p-7 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#4338CA] group-hover:bg-[#4338CA] group-hover:text-white transition-colors duration-300">
-                  <Anchor className="w-6 h-6" />
+            <div className="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+              <div className="space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-indigo-50 border border-indigo-200/60 flex items-center justify-center text-[#4338CA] group-hover:bg-[#4338CA] group-hover:text-white transition-colors duration-300">
+                  <Anchor className="w-5 h-5" />
                 </div>
-                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                <h4 className="font-display font-bold text-lg text-[#003B5C]">
                   Operational Anchor
                 </h4>
                 <p className="text-xs text-stone-500 leading-relaxed font-sans">
-                  The physical launchpad powering all Two-Thirds operations—anchoring Educare materials, women&apos;s handicraft storage, health checkup logistics, and volunteer emergency teams.
+                  The ground station coordinating Educare supplies, women&apos;s micro-enterprise planning, and coastal emergency logistics.
                 </p>
               </div>
-              <div className="pt-5 mt-4 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-widest text-indigo-700 flex items-center justify-between">
-                <span>Action Base Station</span>
-                <span>04</span>
+              <div className="pt-4 mt-3 border-t border-stone-100 text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-700">
+                Action Launchpad
               </div>
             </div>
 
           </div>
 
-          {/* Weekly Rhythm at the Space (Schedule Strip) */}
-          <div className="bg-gradient-to-br from-[#003B5C] to-[#0A2540] rounded-3xl p-6 sm:p-8 md:p-10 text-white relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-teal-400/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="relative z-10 space-y-6">
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
-                <div>
-                  <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#2DD4BF]">
-                    Weekly Rhythm
-                  </span>
-                  <h3 className="font-display font-bold text-2xl sm:text-3xl text-white mt-1">
-                    How the Space Lives &amp; Breathes
-                  </h3>
-                </div>
-                <p className="text-stone-300 text-xs sm:text-sm max-w-md font-sans">
-                  From morning reading hours to evening circles, our doors remain open as an inclusive common ground.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2DD4BF] mb-1">
-                    Daily &bull; All Day
-                  </div>
-                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
-                    Open Library &amp; Quiet Study
-                  </h5>
-                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                    Newspapers, book collections, digital resources, and cool drinking water for anyone needing shelter or reading space.
-                  </p>
-                </div>
-
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFB076] mb-1">
-                    Mon - Fri &bull; 4:30 PM
-                  </div>
-                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
-                    Educare Learning Hours
-                  </h5>
-                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                    Structured evening tutoring, homework assistance, reading aloud circles, and foundational STEM learning for village students.
-                  </p>
-                </div>
-
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#2DD4BF] mb-1">
-                    Saturdays &bull; 3:00 PM
-                  </div>
-                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
-                    Youth &amp; Climate Circles
-                  </h5>
-                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                    Workshops on marine ecology, documentary screenings, career guidance, and open discussions tackling shoreline challenges.
-                  </p>
-                </div>
-
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FFB076] mb-1">
-                    Sundays &bull; 10:00 AM
-                  </div>
-                  <h5 className="font-display font-bold text-sm sm:text-base text-white mb-1.5">
-                    Community Hearth &amp; Dialogue
-                  </h5>
-                  <p className="text-xs text-stone-300 leading-relaxed font-sans">
-                    Intergenerational storytelling, village elder reflections, women&apos;s enterprise co-op planning, and mutual consensus.
-                  </p>
-                </div>
-              </div>
-
-              {/* Action buttons inside banner */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <span className="text-xs text-stone-300 font-sans">
-                  Have books, learning kits, or ideas to contribute to our Community Space?
-                </span>
-                <div className="flex items-center gap-3 w-full sm:w-auto">
-                  <a
-                    href="#get-involved"
-                    onClick={() => setCurrentView("get-involved")}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2DD4BF] hover:bg-[#14B8A6] text-[#003B5C] font-display font-bold text-xs tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
-                  >
-                    <span>Support the Space</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
+          {/* CTA Row bridging to dedicated page */}
+          <div className="text-center pt-2">
+            <button
+              onClick={() => {
+                setCurrentView("community-space");
+                window.location.hash = "#community-space";
+              }}
+              className="group inline-flex items-center gap-2.5 bg-primary hover:bg-primary-light text-white font-display font-bold text-xs sm:text-sm tracking-wider px-7 py-3.5 rounded-2xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+            >
+              <span>Explore The Community Space</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+            <p className="text-stone-400 text-xs mt-3 font-sans">
+              Discover our weekly rhythm, facilities, library collections, and how to get involved.
+            </p>
           </div>
 
         </div>
@@ -3473,6 +3338,487 @@ function HealthPage() {
   );
 }
 
+interface CommunitySpacePageProps {
+  setCurrentView?: (view: string) => void;
+}
+
+function CommunitySpacePage({ setCurrentView }: CommunitySpacePageProps) {
+  const weeklyRhythm = [
+    {
+      time: "Daily • 8:00 AM – 8:00 PM",
+      title: "Open Community Library & Study Desks",
+      desc: "Full open access to bookshelves, curated local archives, daily regional newspapers, Wi-Fi connectivity, and cool drinking water for study and quiet reading.",
+      tag: "All Day",
+      accent: "bg-sky-50 text-sky-700 border-sky-200"
+    },
+    {
+      time: "Mon – Fri • 4:30 PM – 7:30 PM",
+      title: "Educare Guided Learning & Mentorship",
+      desc: "Quiet homework supervision, guided reading aloud circles, foundational science experiments, and digital tablet access for coastal school children.",
+      tag: "Evenings",
+      accent: "bg-amber-50 text-amber-700 border-amber-200"
+    },
+    {
+      time: "Saturdays • 3:00 PM – 6:00 PM",
+      title: "Youth Climate Circles & Creative Labs",
+      desc: "Interactive workshops on marine ecology, ocean plastic reduction, career mentorship, spoken-word storytelling, and documentary film screenings.",
+      tag: "Saturdays",
+      accent: "bg-teal-50 text-teal-700 border-teal-200"
+    },
+    {
+      time: "Sundays • 10:00 AM – 1:00 PM",
+      title: "The Horegallu Hearth: Intergenerational Dialogues",
+      desc: "Village elders, fisherfolk, and women's self-help groups gather for storytelling, mutual support, community concern resolution, and co-creating initiatives.",
+      tag: "Sundays",
+      accent: "bg-indigo-50 text-indigo-700 border-indigo-200"
+    }
+  ];
+
+  const amenities = [
+    {
+      icon: BookOpen,
+      title: "Curated Open Library",
+      desc: "Literature in Malayalam & English, school textbooks, entrance exam resources, and children's picture books."
+    },
+    {
+      icon: Landmark,
+      title: "Quiet Study Desks",
+      desc: "Comfortable ergonomic seating with focused study lighting for children who lack study nooks at home."
+    },
+    {
+      icon: Sparkles,
+      title: "Digital Access & Power",
+      desc: "Solar-backed battery backup and internet-connected tablets for mentored digital literacy and research."
+    },
+    {
+      icon: Coffee,
+      title: "Safe Rest & Tea Hearth",
+      desc: "Clean drinking water, tea station, shaded porch, and comfortable resting benches open to everyone unconditionally."
+    },
+    {
+      icon: Users,
+      title: "Dialogue & Circle Floor",
+      desc: "An open discussion floor equipped with whiteboards and display screens for civic and youth roundtables."
+    },
+    {
+      icon: Anchor,
+      title: "Field Action Launchpad",
+      desc: "Storage and operational dispatch depot for Educare materials, marine safety kits, and community health camps."
+    }
+  ];
+
+  return (
+    <div className="bg-stone-50 min-h-screen text-stone-800 pb-24">
+      {/* 1. Immersive Hero Banner */}
+      <section className="relative h-[55vh] sm:h-[65vh] flex items-center justify-center overflow-hidden bg-[#003B5C]">
+        <img
+          src={coastalCommunityHero}
+          alt="Two-Thirds Community Space and Horegallu"
+          className="absolute inset-0 w-full h-full object-cover opacity-35 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-[#003B5C]/70 to-transparent" />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-4">
+          <motion.span
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-1.5 text-secondary font-mono text-xs font-bold uppercase tracking-widest bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-secondary" />
+            Shoreline Sanctuary &bull; Grassroots Anchor
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display font-bold text-4xl sm:text-6xl text-white tracking-tight leading-tight uppercase"
+          >
+            THE COMMUNITY SPACE
+          </motion.h1>
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 bg-secondary mx-auto rounded-full"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-stone-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-sans font-medium"
+          >
+            The modern Horegallu where all threads of coastal life connect — an unconditional resting hearth, a vibrant village library, and an open ground for collective dialogue.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 2. Philosophy & Narrative Section */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-12 items-center overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:col-span-7 space-y-6 text-left"
+        >
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            The Horegallu Philosophy
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C] leading-tight">
+            Setting Down Burdens, Rebuilding Strength Together
+          </h2>
+          <p className="text-stone-700 text-sm sm:text-base leading-relaxed font-serif italic bg-white p-6 rounded-2xl border-l-4 border-primary shadow-sm">
+            &ldquo;In coastal villages across Kerala, a <em>Horegallu</em> is a horizontal stone bench erected under the deep shade of a banyan or mango tree. Weary porters, fisherfolk carrying heavy baskets, and daily travelers rest their burdens upon the stone, wipe the sweat from their brows, drink cool water from an earthen pitcher, and share unhurried words with one another. It does not carry the load for them, but it gives them the renewed strength to carry it forward.&rdquo;
+          </p>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            Along our coastlines today, families face compounding challenges: erratic weather shocks, seasonal debt, educational divides, and shrinking public commons. We believe every hamlet deserves a living, contemporary Horegallu—a physical sanctuary that is completely free, non-commercial, and open to all.
+          </p>
+          <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
+            Here, every thread of community life gathers under one roof: school students studying late into the evening, women&apos;s co-operatives planning sustainable enterprises, village elders passing down oral marine wisdom, and our team coordinating frontline field operations.
+          </p>
+        </motion.div>
+
+        {/* Space Impact Metrics Card */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:col-span-5 bg-white p-8 rounded-3xl border border-stone-200/60 shadow-lg space-y-6 text-left"
+        >
+          <h3 className="font-display font-bold text-lg text-primary border-b border-stone-100 pb-3">
+            Hearth Highlights
+          </h3>
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-secondary">
+                <CountUp target={1200} suffix="+" />
+              </span>
+              <span className="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold block mt-1">
+                Books in Library
+              </span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-primary">
+                <CountUp target={100} suffix="%" />
+              </span>
+              <span className="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold block mt-1">
+                Free &amp; Open Access
+              </span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-primary">
+                <CountUp target={4} suffix="/wk" />
+              </span>
+              <span className="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold block mt-1">
+                Dialogue Circles
+              </span>
+            </div>
+            <div>
+              <span className="block font-display font-extrabold text-3xl text-secondary">
+                <CountUp target={500} suffix="+" />
+              </span>
+              <span className="text-xs font-mono uppercase tracking-wider text-stone-500 font-bold block mt-1">
+                Monthly Visitors
+              </span>
+            </div>
+          </div>
+          <div className="pt-4 border-t border-stone-100">
+            <span className="text-[11px] font-mono text-stone-500 uppercase tracking-widest block font-bold mb-1">
+              Core Principles
+            </span>
+            <p className="text-xs text-stone-600 leading-relaxed font-sans">
+              No fees, no registration barriers, unconditional dignity. Open to every child, elder, worker, and changemaker along the shoreline.
+            </p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* 3. Four Core Pillars Detailed Showcase */}
+      <section className="py-20 bg-stone-100/60 border-y border-stone-200/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Operational Functions
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              The Four Anchors of the Space
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm sm:text-base font-sans">
+              How the Community Space fulfills its promise as a load-bearing anchor for the village.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 text-left">
+            {/* Anchor 1 */}
+            <div className="bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-amber-50 text-[#E8935A] flex items-center justify-center border border-amber-200/60">
+                <HeartHandshake className="w-6 h-6" />
+              </div>
+              <h3 className="font-display font-bold text-2xl text-[#003B5C]">
+                1. The Modern Horegallu (Rest &amp; Solidarity)
+              </h3>
+              <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                A public living room where physical and psychological burdens can be set down without transaction. Daily wage laborers returning from fishing harbors, headload workers, and mothers find shaded seating, clean drinking water, and unconditional companionship.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-stone-600 font-sans">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Safe, shaded common room open to daily laborers and elders</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Intergenerational mentorship sharing coastal folklore &amp; ocean navigation lore</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Zero commercial gatekeeping or entry fees of any kind</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Anchor 2 */}
+            <div className="bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-sky-50 text-[#0369A1] flex items-center justify-center border border-sky-200/60">
+                <Library className="w-6 h-6" />
+              </div>
+              <h3 className="font-display font-bold text-2xl text-[#003B5C]">
+                2. Community Library &amp; Study Hearth
+              </h3>
+              <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                A quiet, light-filled knowledge sanctuary for village children whose homes lack dedicated study tables or quiet space. Stocked with curated literature, reference books, regional poetry, and digital learning devices.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-stone-600 font-sans">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Open-access lending library spanning Malayalam &amp; English literature</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Evening guided study desks with solar battery lighting during grid cuts</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Mentored digital literacy station with tablets and educational apps</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Anchor 3 */}
+            <div className="bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-teal-50 text-[#0D9488] flex items-center justify-center border border-teal-200/60">
+                <MessageSquare className="w-6 h-6" />
+              </div>
+              <h3 className="font-display font-bold text-2xl text-[#003B5C]">
+                3. Weekend Dialogue Circles &amp; Civic Voice
+              </h3>
+              <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                A weekly gathering floor where village voices directly shape local priorities. Sunday townhalls, youth eco-clubs, and women&apos;s self-help circles deliberate on sustainable fishing, beach cleanliness, and social welfare in open circles.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-stone-600 font-sans">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Weekly community circles for democratic, non-partisan problem-solving</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Women&apos;s micro-enterprise planning and financial literacy brainstorms</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Youth debates, career mentoring sessions, and marine documentary screenings</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Anchor 4 */}
+            <div className="bg-white p-8 rounded-3xl border border-stone-200/80 shadow-sm space-y-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-[#4338CA] flex items-center justify-center border border-indigo-200/60">
+                <Anchor className="w-6 h-6" />
+              </div>
+              <h3 className="font-display font-bold text-2xl text-[#003B5C]">
+                4. Operational Anchor &amp; Dispatch Hub
+              </h3>
+              <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                The physical nerve center anchoring all Two-Thirds Community Foundation programs. It houses Educare classroom curriculum kits, women&apos;s handicraft materials, and emergency coastal safety gear.
+              </p>
+              <ul className="space-y-2 pt-2 text-xs text-stone-600 font-sans">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Dispatch depot for Educare packs, scholastic awards &amp; science materials</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Marine weather bulletin board, life jacket depot &amp; first-aid medical station</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Co-working base for local frontline fellows, student interns, and volunteers</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Weekly Rhythm Matrix */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center max-w-3xl mx-auto space-y-4">
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+            Living Schedule
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            A Week at the Horegallu
+          </h2>
+          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+          <p className="text-stone-600 text-sm sm:text-base font-sans">
+            How our community space breathes life into the neighborhood through structured morning, evening, and weekend gatherings.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 text-left">
+          {weeklyRhythm.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-7 rounded-3xl border border-stone-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className={`px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider border ${item.accent}`}>
+                    {item.tag}
+                  </span>
+                  <span className="text-xs font-mono text-stone-400 font-semibold">
+                    {item.time}
+                  </span>
+                </div>
+                <h4 className="font-display font-bold text-xl text-[#003B5C]">
+                  {item.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
+                  {item.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. Amenities & Facilities Grid */}
+      <section className="py-20 bg-stone-100/60 border-y border-stone-200/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider">
+              Space Infrastructure
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+              What You Will Find Inside
+            </h2>
+            <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+            <p className="text-stone-600 text-sm sm:text-base font-sans">
+              Thoughtfully curated amenities designed for safety, dignity, learning, and comfortable community fellowship.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {amenities.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-xs hover:shadow-md transition-all flex items-start gap-4"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 text-[#003B5C] flex items-center justify-center shrink-0 border border-teal-100">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-display font-bold text-base text-[#003B5C]">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-stone-500 leading-relaxed font-sans">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Community Code & Visiting Guidelines */}
+      <section className="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <div className="space-y-3">
+          <span className="text-secondary font-mono text-xs font-bold uppercase tracking-wider block">
+            Visiting &amp; Common Values
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#003B5C]">
+            The Ethos of the Hearth
+          </h2>
+          <div className="w-16 h-1 bg-secondary mx-auto rounded-full" />
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-6 text-left">
+          <div className="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-xs space-y-2">
+            <h4 className="font-display font-bold text-sm text-[#003B5C]">1. Free for All</h4>
+            <p className="text-xs text-stone-600 leading-relaxed font-sans">
+              No entry tickets, memberships, or caste, gender, or religious exclusions. The space is common property of the community.
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-xs space-y-2">
+            <h4 className="font-display font-bold text-sm text-[#003B5C]">2. Mutual Respect</h4>
+            <p className="text-xs text-stone-600 leading-relaxed font-sans">
+              Quiet voices during study hours, open ears during Sunday circles. We listen generously and speak with kindness.
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-xs space-y-2">
+            <h4 className="font-display font-bold text-sm text-[#003B5C]">3. Collective Care</h4>
+            <p className="text-xs text-stone-600 leading-relaxed font-sans">
+              Every book returned safely to its shelf, every cup washed, every corner kept clean by those who use it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Call to Action Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-[#003B5C] to-[#0A2540] rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-teal-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-2xl mx-auto space-y-4">
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#2DD4BF]">
+              Be Part of the Hearth
+            </span>
+            <h3 className="font-display font-bold text-3xl sm:text-4xl text-white">
+              Contribute Books, Host a Circle, or Volunteer
+            </h3>
+            <p className="text-stone-300 text-sm leading-relaxed font-sans">
+              Whether you want to donate children&apos;s books, teach evening robotics, mentor a student, or simply come by for a cup of tea and conversation—our doors are open.
+            </p>
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="#get-involved"
+                onClick={() => setCurrentView?.("get-involved")}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2DD4BF] hover:bg-[#14B8A6] text-[#003B5C] font-display font-bold text-xs tracking-wider px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 uppercase cursor-pointer"
+              >
+                <span>Get Involved With Us</span>
+                <ChevronRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#about-us"
+                onClick={() => setCurrentView?.("about-us")}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-display font-bold text-xs tracking-wider px-6 py-3 rounded-xl transition-all border border-white/20 uppercase cursor-pointer"
+              >
+                <span>Read About Two-Thirds</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 interface DynamicProgramPageProps {
   area: FocusArea;
 }
@@ -3571,12 +3917,14 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
       const hash = window.location.hash;
       const path = window.location.pathname;
       const cleanPath = path.replace(/^\/|\/$/g, '');
-      const defaultRoutes = ["educare", "environment", "get-involved", "team", "women-empowerment", "about-us", "livelihoods", "health"];
+      const defaultRoutes = ["educare", "environment", "get-involved", "team", "women-empowerment", "about-us", "livelihoods", "health", "community-space"];
 
       if (hash === "#educare" || path.includes("/educare")) {
         setCurrentView("educare");
       } else if (hash === "#environment" || path.includes("/environment")) {
         setCurrentView("environment");
+      } else if (hash === "#community-space" || path.includes("/community-space")) {
+        setCurrentView("community-space");
       } else if (hash === "#get-involved" || path.includes("/get-involved") || hash === "#internships" || path.includes("/internships")) {
         setCurrentView("get-involved");
       } else if (hash === "#team" || path.includes("/team")) {
@@ -3646,6 +3994,8 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
         <HomePage setCurrentView={setCurrentView} areas={areas} />
       ) : currentView === "about-us" ? (
         <AboutUsPage />
+      ) : currentView === "community-space" ? (
+        <CommunitySpacePage setCurrentView={setCurrentView} />
       ) : currentView === "educare" ? (
         <EducarePage />
       ) : currentView === "environment" ? (
@@ -3696,10 +4046,11 @@ export default function App({ initialView = "home" }: { initialView?: string }) 
           <div className="md:col-span-3 space-y-3">
             <h4 className="font-display font-semibold text-stone-200 text-sm">Focus Anchors</h4>
             <div className="grid gap-2 text-xs">
-              <a href="#about-us" className="text-stone-400 hover:text-secondary transition-colors">About Us</a>
-              <a href="#get-involved" className="text-stone-400 hover:text-secondary transition-colors">Get Involved</a>
-              <a href="#programs" className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
-              <a href="#team" className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
+              <a href="#about-us" onClick={() => setCurrentView("about-us")} className="text-stone-400 hover:text-secondary transition-colors">About Us</a>
+              <a href="#community-space" onClick={() => setCurrentView("community-space")} className="text-stone-400 hover:text-secondary transition-colors">Community Space</a>
+              <a href="#get-involved" onClick={() => setCurrentView("get-involved")} className="text-stone-400 hover:text-secondary transition-colors">Get Involved</a>
+              <a href="#programs" onClick={() => { setCurrentView("home"); window.location.hash = "#programs"; }} className="text-stone-400 hover:text-secondary transition-colors">Strategic Focus Areas</a>
+              <a href="#team" onClick={() => setCurrentView("team")} className="text-stone-400 hover:text-secondary transition-colors">Meet the Team</a>
             </div>
           </div>
 
