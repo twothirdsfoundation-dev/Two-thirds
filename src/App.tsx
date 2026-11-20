@@ -1,6 +1,6 @@
 // Trigger Vercel rebuild for reverted layout
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import {
   ShieldCheck,
   Menu,
@@ -1707,35 +1707,18 @@ interface HomePageProps {
 }
 
 function HomePage({ setCurrentView, areas }: HomePageProps) {
-  const [scrollTop, setScrollTop] = useState(() => typeof window !== "undefined" ? window.scrollY : 0);
-
   // Programs Split-Showcase State
   const [activeCardIndex, setActiveCardIndex] = useState(0);
 
-
-
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollTop(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const yTextParallax = (scrollTop || 0) * -0.4;
-  const textOpacityParallax = Math.max(0, 1 - (scrollTop || 0) / 400);
+  // Smooth compositor-level parallax text without causing whole-page React re-renders on scroll
+  const { scrollY } = useScroll();
+  const yTextParallax = useTransform(scrollY, [0, 500], [0, -140]);
+  const textOpacityParallax = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <>
-      {/* 2. Fixed Hero Banner (Fixed viewport container behind the scrollable content) */}
-      <div className="fixed top-0 left-0 w-full h-screen overflow-hidden z-0 bg-[#0d1f2d]">
+    <div className="relative w-full bg-[#FAF9F6]">
+      {/* 2. Sticky Hero Banner (Natural curtain-reveal: stays in place while content scrolls over it, never leaks into lower sections) */}
+      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden z-0 bg-[#0d1f2d]">
         {/* Background Image */}
         <img
           src={heroBackground}
@@ -1745,10 +1728,10 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
         {/* Soft cinematic dark gradient to make white text pop */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0d1f2d]/50 via-[#0d1f2d]/20 to-[#0d1f2d]/40 z-10" />
 
-        {/* Hero Content Layer (Centred and fixed in viewport) */}
-        <div 
-          style={{ transform: `translateY(${yTextParallax}px)`, opacity: textOpacityParallax }}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 will-change-transform space-y-6"
+        {/* Hero Content Layer (Parallax animated on compositor via Framer Motion without React re-renders) */}
+        <motion.div 
+          style={{ y: yTextParallax, opacity: textOpacityParallax }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 z-20 space-y-6 pointer-events-none"
         >
           <h1 
             style={{ textShadow: "0 4px 16px rgba(0,0,0,0.65), 0 8px 32px rgba(0,0,0,0.4)" }}
@@ -1757,16 +1740,13 @@ function HomePage({ setCurrentView, areas }: HomePageProps) {
             For the <span className="text-white italic font-display font-extrabold">Two-Thirds</span> <br />
             who deserve better.
           </h1>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Scrollable container on top of the fixed hero background */}
-      <div className="relative z-10 w-full">
-        {/* Invisible spacer allowing hero to remain fully visible on initial load */}
-        <div className="h-screen pointer-events-none" />
-
-        {/* Wave Splash Transition Divider (Sitting exactly at the bottom of Hero / top of About section, covering fixed content behind) */}
-        <div className="relative w-full h-[160px] sm:h-[240px] -mt-[200px] sm:-mt-[300px] overflow-visible pointer-events-none z-30 select-none bg-transparent">
+      {/* Scrollable container on top of the hero banner */}
+      <div className="relative z-10 w-full bg-[#FAF9F6]">
+        {/* Wave Splash Transition Divider (Sitting across the boundary, covering the bottom of the hero) */}
+        <div className="relative w-full h-[160px] sm:h-[240px] -mt-[140px] sm:-mt-[220px] overflow-visible pointer-events-none z-30 select-none bg-transparent">
           <img
             src={waveSplash}
             alt="Wave Splash Foam Divider"
@@ -2534,7 +2514,7 @@ Through education, health, sustainable livelihoods, and environmental stewardshi
 
       </div>
 
-    </>
+    </div>
   );
 }
 
